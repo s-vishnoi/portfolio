@@ -37,8 +37,7 @@
           <a :href="post.link" target="_blank" class="link link-hover text-lg text-accent font-semibold">
             {{ post.title }}
           </a>
-          <p class="text-sm text-secondary italic">{{ post.description }}</p>
-          <p class="text-sm text-gray-500">{{ new Date(post.pubDate).toLocaleDateString() }}</p>
+          
         </div>
       </div>
       <div v-else>

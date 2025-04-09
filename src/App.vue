@@ -4,12 +4,13 @@
       <div class="flex-1">
         <router-link to="/" class="btn btn-ghost text-xl">Samvardhan</router-link>
       </div>
-      <div class="flex gap-4 px-2">
+      <div class="flex gap-4 px-2 items-center">
         <router-link to="/" class="btn btn-ghost">Home</router-link>
-        <router-link to="/demographics" class="btn btn-ghost">Demographics</router-link>
-        <router-link to="/urban-scaling" class="btn btn-ghost">Urban Scaling</router-link>
         <router-link to="/blog" class="btn btn-ghost">Blog</router-link>
-        <button class="btn btn-sm" @click="toggleTheme"><i class="fas fa-moon"></i></button>
+        <button class="text-xl" @click="toggleTheme">
+          <span v-if="theme === 'dark'">🌙</span>
+          <span v-else>☀️</span>
+        </button>
       </div>
     </nav>
     <router-view />
@@ -17,9 +18,19 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
+
+const theme = ref('pastel')
+
 const toggleTheme = () => {
   const root = document.documentElement
   const current = root.getAttribute('data-theme')
-  root.setAttribute('data-theme', current === 'dark' ? 'pastel' : 'dark')
+  const next = current === 'dark' ? 'pastel' : 'dark'
+  theme.value = next
+  root.setAttribute('data-theme', next)
 }
+
+onMounted(() => {
+  theme.value = document.documentElement.getAttribute('data-theme') || 'pastel'
+})
 </script>
