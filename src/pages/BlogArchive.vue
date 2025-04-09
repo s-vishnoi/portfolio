@@ -29,7 +29,6 @@ export default {
         this.blogPosts = data.items.map(post => ({
           title: post.title,
           link: post.link,
-          guid: post.guid,
           likes: null, // Placeholder for likes
           claps: null  // Placeholder for claps
         }));

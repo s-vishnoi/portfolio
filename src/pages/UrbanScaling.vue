@@ -12,10 +12,9 @@
       how various urban indicators grow with population size.
     </p>
     <p>
-      Using FBI and Census data across hundreds of U.S. cities, I modeled how crime rates, infrastructure needs,
-      and economic output scale with city size. I applied Bayesian and regression techniques to account for reporting
+      Using FBI and Census data across hundreds of U.S. cities, I modeled how crime rates, demographic indicators,
+      and economic distributions scale with city size. I applied Bayesian and regression techniques to robustly account for wide reporting
       gaps and uncertainty in the data.
     </p>
-    <p><strong>Impact:</strong> Offers a framework to compare cities fairly, identify outliers, and inform urban planning decisions that account for nonlinear growth patterns.</p>
   </main>
 </template>
