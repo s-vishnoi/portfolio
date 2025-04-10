@@ -3,7 +3,7 @@ import Home from './pages/Home.vue'
 import UrbanScaling from './pages/UrbanScaling.vue'
 import Demographics from './pages/Demographics.vue'
 import BlogArchive from './pages/BlogArchive.vue'
-import Resume from './pages/Resume.vuer'
+import Resume from './pages/Resume.vur'
 
 const routes = [
   { path: '/', component: Home },
