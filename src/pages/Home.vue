@@ -78,7 +78,7 @@
       <h2 class="text-2xl font-bold mb-4">Associations</h2>
       <div class="flex flex-wrap">
         <a href="https://physics.northwestern.edu" target="_blank">
-          <img src="/logos/NU_logo.svg" alt="Northwestern University" class="h-12" />
+          <img src="/logos/NU_logo.png" alt="Northwestern University" class="h-12" />
         </a>
         <a href="https://www.demogr.mpg.de/en" target="_blank">
           <img src="/logos/max_planck_logo.png" alt="Max Planck Institute for Demographic Research" class="h-12" />
