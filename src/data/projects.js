@@ -1,14 +1,14 @@
 export const projects = [
   {
     title: "Urban Scaling Laws",
-    description: "Modeling city size vs. crime, income, and infrastructure using scaling laws and statistical models.",
+    description: "Modeling city size vs. crime, income, and infrastructure using scaling laws",
     image: "/images/projects/urban-scaling.jpg",
-    link: "/pages/UrbanScaling.vue"
+    link: "/pages/urban-scaling"
   },
   {
     title: "Global Researcher Demographics",
-    description: "Tracked 95M+ papers and 33M researchers to reveal global academic inequality.",
+    description: "Leveraging publication records to build a global researcher database",
     image: "/images/projects/demography-map.jpg",
-    link: "/pages/Demographics.vue"
+    link: "/pages/demographics"
   }
 ];
