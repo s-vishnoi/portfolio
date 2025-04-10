@@ -71,23 +71,25 @@
         <p>Loading latest posts from Medium…</p>
       </div>
     </section>
-  </main>
+  
 
   <!-- Associations Section -->
-  <section id="associations" class="bg-base-100 p-6 rounded-box shadow">
-  <h2 class="text-2xl font-bold mb-4">Associations</h2>
-  <div class="flex flex-wrap items-center justify-center gap-6">
-    <a href="https://amaral.northwestern.edu" target="_blank">
-      <img src="https://amaral.northwestern.edu/themes/custom/amaral/logo.png" alt="Amaral Lab" class="h-12" />
-    </a>
-    <a href="https://www.demogr.mpg.de/en" target="_blank">
-      <img src="https://www.demogr.mpg.de/layout/images/logo.png" alt="Max Planck Institute for Demographic Research" class="h-12" />
-    </a>
-    <a href="https://www.it.northwestern.edu/departments/it-services-support/research/staff/" target="_blank">
-      <img src="https://brand.northwestern.edu/img/wordmarks/northwestern_wordmark_purple.svg" alt="Northwestern University" class="h-12" />
-    </a>
-  </div>
-</section>
+    <section id="associations" class="bg-base-100 p-6 rounded-box shadow">
+      <h2 class="text-2xl font-bold mb-4">Associations</h2>
+      <div class="flex flex-wrap items-center justify-center gap-6">
+        <a href="https://amaral.northwestern.edu" target="_blank">
+          <img src="https://amaral.northwestern.edu/themes/custom/amaral/logo.png" alt="Amaral Lab" class="h-12" />
+        </a>
+        <a href="https://www.demogr.mpg.de/en" target="_blank">
+          <img src="https://www.demogr.mpg.de/layout/images/logo.png" alt="Max Planck Institute for Demographic Research" class="h-12" />
+        </a>
+        <a href="https://www.it.northwestern.edu/departments/it-services-support/research/staff/" target="_blank">
+          <img src="https://brand.northwestern.edu/img/wordmarks/northwestern_wordmark_purple.svg" alt="Northwestern University" class="h-12" />
+        </a>
+      </div>
+    </section>
+
+  </main>
 
 
 </template>
