@@ -1,7 +1,7 @@
 
 <template>
   <div class="p-6">
-    <h1 class="text-3xl font-bold mb-4">Blog Archive</h1>
+    <h1 class="text-3xl font-bold mb-4">Tutorials</h1>
     <ul class="space-y-4">
       <li v-for="post in blogPosts" :key="post.guid" class="border-b pb-2">
         <a
