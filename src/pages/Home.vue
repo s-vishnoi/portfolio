@@ -66,9 +66,12 @@ import { onMounted, ref } from 'vue'
 
 const blogPosts = ref([])
 
-function extractFirstH4(html) {
-  const match = html.match(/<h4[^>]*>(.*?)<\/h4>/i)
-  return match ? match[1] : null
+function extractFirstLine(html) {
+  // Strip all HTML tags
+  const textOnly = html.replace(/<[^>]+>/g, '')
+  // Split into lines and return the first non-empty one
+  const firstLine = textOnly.split('\n').find(line => line.trim() !== '')
+  return firstLine || null
 }
 
 onMounted(async () => {
@@ -82,10 +85,16 @@ onMounted(async () => {
       "Spatio-Temporal Data Visualization: My Top 3 techniques by experience": 103
     }
 
+    const subsMap = {
+      "Bayesian Linear Regression: A Complete Beginner’s guide": ,
+      "Bayesian Data Science: The What, Why, and How": ,
+      "Spatio-Temporal Data Visualization: My Top 3 techniques by experience": 
+    }
+
     blogPosts.value = data.items.slice(0, 3).map(post => ({
       ...post,
       claps: clapsMap[post.title] || 100,
-      subtitle: extractFirstH4(post.description)
+      subtitle: extractFirstLine(post.description)
     }))
   } catch (err) {
     console.error("Failed to load blog posts:", err)
