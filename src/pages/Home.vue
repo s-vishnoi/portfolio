@@ -57,7 +57,7 @@
             class="text-lg text-accent font-semibold flex items-center gap-2"
           >
             <span>{{ post.title }}</span>
-            <span class="text-sm text-accent flex items-center gap-1">
+            <span class="text-sm text-gray-400 flex items-center gap-1">
               <i class="fas fa-sign-language"></i> {{ post.claps || 100 }}
             </span>
           </a>
