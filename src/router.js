@@ -10,7 +10,7 @@ const routes = [
   { path: '/urban-scaling', component: UrbanScaling },
   { path: '/demographics', component: Demographics },
   { path: '/blog', component: BlogArchive },
-  { path: '/resume', component: Resume } // ✅ Add this line
+  { path: '/resume', component: Resume } 
 ]
 
 
