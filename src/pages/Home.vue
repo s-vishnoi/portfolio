@@ -76,7 +76,7 @@
   <!-- Associations Section -->
     <section id="associations" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Associations</h2>
-      <div class="flex flex-wrap">
+      <div class="flex flex-wrap gap-6">
         <a href="https://physics.northwestern.edu" target="_blank">
           <img src="/logos/NU_PA_logo.svg" alt="Northwestern University" class="h-12" />
         </a>
