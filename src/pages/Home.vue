@@ -35,21 +35,22 @@
     <!-- Blog Section -->
     <section id="blog" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Blog</h2>
-      <div v-if="blogPosts.length" class="space-y-4">
-        <div v-for="post in blogPosts" :key="post.guid" class="mb-4">
+      <div v-for="post in blogPosts" :key="post.guid" class="mb-4">
           <a
             :href="post.link"
             target="_blank"
-            class="link link-hover text-lg text-accent font-semibold flex items-center gap-2"
+            class="text-lg text-green-700 dark:text-green-400 font-semibold flex items-center gap-2"
           >
             <span>{{ post.title }}</span>
-            <span class="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
+            <span class="text-sm text-green-400 dark:text-green-300 flex items-center gap-1">
               <i class="fas fa-sign-language"></i> {{ post.claps || 100 }}
             </span>
           </a>
-        </div>
+          <p v-if="post.description" class="text-sm text-gray-500 dark:text-gray-400 italic">
+            {{ post.description }}
+          </p>
+      <div>
       </div>
-      <div v-else>
         <p>Loading latest posts from Medium…</p>
       </div>
     </section>
