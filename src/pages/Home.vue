@@ -6,19 +6,20 @@
       <div>
         <h2 class="text-2xl font-bold mb-4">About Me</h2>
         <p v-for="line in profile.description.split('\\n\\n')" :key="line" class="mb-2">{{ line }}</p>
-        <div class="flex gap-4 mt-4 text-2xl">
-          <a href="mailto:svishnoi@u.northwestern.edu" target="_blank" class="text-red-500 hover:opacity-80">
-            <i class="fas fa-envelope"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/samvardhan-vishnoi/" target="_blank" class="text-blue-600 hover:opacity-80">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://github.com/s-vishnoi" target="_blank" class="text-gray-800 dark:text-white hover:opacity-80">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://www.instagram.com/vishhnnoi/" target="_blank" class="text-pink-500 hover:opacity-80">
-            <i class="fab fa-instagram"></i>
-          </a>
+          <div class="flex gap-4 mt-4 text-2xl">
+            <a href="mailto:svishnoi@u.northwestern.edu" target="_blank" aria-label="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/samvardhan-vishnoi/" target="_blank" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/s-vishnoi" target="_blank" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.instagram.com/vishhnnoi/" target="_blank" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+</div>
         </div>
 
       </div>
