@@ -1,9 +1,8 @@
 
 <template>
   <div class="p-6">
-    <h1 class="text-3xl font-bold mb-4">Tutorials</h1>
+    <h1 class="text-3xl font-bold mb-4">Posts</h1>
     <ul class="space-y-4">
-      <li v-for="post in blogPosts" :key="post.guid" class="border-b pb-2">
         <a
           v-for="post in blogPosts"
           :key="post.guid"
@@ -29,7 +28,6 @@
         <p v-if="post.likes || post.claps" class="text-sm text-gray-500">
           👍 {{ post.likes || '0' }} &nbsp; 👏 {{ post.claps || '0' }}
         </p>
-      </li>
     </ul>
   </div>
 </template>
