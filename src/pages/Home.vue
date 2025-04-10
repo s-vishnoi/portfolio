@@ -34,10 +34,10 @@
       <h2 class="text-2xl font-bold mb-4">Blog</h2>
       <div v-if="blogPosts.length" class="space-y-4">
         <div v-for="post in blogPosts" :key="post.guid" class="mb-4">
-          <a :href="post.link" target="_blank" class="link link-hover text-lg text-accent font-semibold">
-            {{ post.title }}
+          <a :href="post.link" target="_blank" class="link link-hover text-lg text-accent font-semibold flex items-center gap-2">
+            <span>{{ post.title }}</span>
+            <span class="text-yellow-500">👏 {{ post.claps || 0 }}</span>
           </a>
-          
         </div>
       </div>
       <div v-else>
@@ -58,9 +58,21 @@ onMounted(async () => {
   try {
     const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@s-vishnoi")
     const data = await res.json()
-    blogPosts.value = data.items.slice(0, 3)
+
+    // Add clap counts manually
+    const clapsMap = {
+      "Bayesian Linear Regression: A Complete Beginner’s guide": 307,
+      "Bayesian Data Science: The What, Why, and How": 480,
+      "Spatio-Temporal Data Visualization: My Top 3 techniques by experience": 103
+    }
+
+    blogPosts.value = data.items.slice(0, 3).map(post => ({
+      ...post,
+      claps: clapsMap[post.title] || 0
+    }))
   } catch (err) {
     console.error("Failed to load blog posts:", err)
   }
 })
+
 </script>
