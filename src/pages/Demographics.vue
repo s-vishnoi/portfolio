@@ -7,13 +7,15 @@
 
     <h1 class="text-3xl font-bold mt-4">Global Researcher Demographics</h1>
     <p>
-      I developed a dataset covering 95M+ papers and 33M researchers to analyze how academic opportunities are
-      distributed around the world.
+      While representation in academia has been studied extensively in individual aspects of the acadmeic career
+      pipeline i.e. joining academia, dropping out, location, and mobility etc. There has been a lack of large scale 
+      ground truth data in informing our progress towards academic equality. 
     </p>
     <p>
-      We tracked publication trends, migration networks, and long-term productivity by country, gender, and institution.
-      This lets universities and policymakers see where systemic bias or imbalance exists — and how it changes over time.
+      We leverage publication records from SCOPUS on 95M+ papers to create a novel global dataset on researchers and 
+      analyze how academic opportunities are distributed around the world.
+      We track publication trends, migration networks, and long-term productivity by country, gender, and institution.
+      This lets universities and policymakers see where systemic bias or imbalance exists — and how it has changed over time.
     </p>
-    <p><strong>Impact:</strong> First-of-its-kind dataset revealing invisible inequalities in global science careers. Supports more equitable research systems.</p>
   </main>
 </template>

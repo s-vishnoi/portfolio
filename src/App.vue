@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar bg-base-100 shadow mb-6">
       <div class="flex-1">
-        <router-link to="/" class="btn btn-ghost text-xl">Samvardhan</router-link>
+        <router-link to="/" class="btn btn-ghost text-xl">Vishnoi</router-link>
       </div>
       <div class="flex gap-4 px-2 items-center">
         <router-link to="/" class="btn btn-ghost">Home</router-link>
