@@ -58,7 +58,7 @@ onMounted(async () => {
   try {
     const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@s-vishnoi")
     const data = await res.json()
-    blogPosts.value = data.items.slice(0, 1)
+    blogPosts.value = data.items.slice(0, 3)
   } catch (err) {
     console.error("Failed to load blog posts:", err)
   }

@@ -13,7 +13,9 @@
         </button>
       </div>
     </nav>
-    <router-view />
+    <transition name="slide" mode="out-in">
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -34,3 +36,17 @@ onMounted(() => {
   theme.value = document.documentElement.getAttribute('data-theme') || 'pastel'
 })
 </script>
+
+<style>
+.slide-enter-active, .slide-leave-active {
+  transition: all 0.4s ease;
+}
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(20px);
+}
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+</style>
