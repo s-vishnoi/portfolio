@@ -8,8 +8,8 @@
         <router-link to="/" class="btn btn-ghost">Home</router-link>
         <router-link to="/blog" class="btn btn-ghost">Blog</router-link>
         <button class="text-xl" @click="toggleTheme">
-          <span v-if="theme === 'dark'">🌗</span>
-          <span v-else>☀️</span>
+          <span v-if="theme === 'dark'">🌖</span>
+          <span v-else>🌘</span>
         </button>
       </div>
     </nav>
