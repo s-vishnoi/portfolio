@@ -19,10 +19,9 @@
             <a href="https://www.instagram.com/vishhnnoi/" target="_blank" aria-label="Instagram">
               <i class="fa-brands fa-instagram"></i>
             </a>
-</div>
-        </div>
-
-      </div>
+          </div>
+      <div>
+        
     </section>
 
     <!-- Projects Section -->
