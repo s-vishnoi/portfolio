@@ -67,7 +67,7 @@ import { onMounted, ref } from 'vue'
 const blogPosts = ref([])
 
 function extractFirstH4(html) {
-  const match = html.match(/<h4[^>]*>(.*?)<\\/h4>/i)
+  const match = html.match(/<h4[^>]*>(.*?)<\/h4>/i)
   return match ? match[1] : null
 }
 
