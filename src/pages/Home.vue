@@ -1,5 +1,6 @@
 <template>
   <main class="max-w-4xl mx-auto p-6 space-y-12">
+    <!-- About Section -->
     <section id="about" class="bg-base-100 p-6 rounded-box shadow flex flex-col md:flex-row gap-6 items-start">
       <img src="/images/samvardhan.jpg" alt="Samvardhan Vishnoi" class="w-32 h-32 object-cover rounded-full shadow" />
       <div>
@@ -9,6 +10,7 @@
       </div>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Projects</h2>
       <div class="grid gap-6 md:grid-cols-2">
@@ -30,13 +32,20 @@
       </div>
     </section>
 
+    <!-- Blog Section -->
     <section id="blog" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Blog</h2>
       <div v-if="blogPosts.length" class="space-y-4">
         <div v-for="post in blogPosts" :key="post.guid" class="mb-4">
-          <a :href="post.link" target="_blank" class="link link-hover text-lg text-accent font-semibold flex items-center gap-2">
+          <a
+            :href="post.link"
+            target="_blank"
+            class="link link-hover text-lg text-accent font-semibold flex items-center gap-2"
+          >
             <span>{{ post.title }}</span>
-            <span class="text-yellow-400">👏 {{ post.claps || 100 }}</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
+              <i class="fas fa-sign-language"></i> {{ post.claps || 100 }}
+            </span>
           </a>
         </div>
       </div>
@@ -74,5 +83,4 @@ onMounted(async () => {
     console.error("Failed to load blog posts:", err)
   }
 })
-
 </script>
