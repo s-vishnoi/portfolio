@@ -36,7 +36,7 @@
         <div v-for="post in blogPosts" :key="post.guid" class="mb-4">
           <a :href="post.link" target="_blank" class="link link-hover text-lg text-accent font-semibold flex items-center gap-2">
             <span>{{ post.title }}</span>
-            <span class="text-yellow-500">👏 {{ post.claps || 0 }}</span>
+            <span class="text-yellow-400">👏 {{ post.claps || 100 }}</span>
           </a>
         </div>
       </div>
@@ -68,7 +68,7 @@ onMounted(async () => {
 
     blogPosts.value = data.items.slice(0, 3).map(post => ({
       ...post,
-      claps: clapsMap[post.title] || 0
+      claps: clapsMap[post.title] || 100
     }))
   } catch (err) {
     console.error("Failed to load blog posts:", err)
