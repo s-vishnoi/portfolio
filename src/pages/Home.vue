@@ -76,9 +76,9 @@
   <!-- Associations Section -->
     <section id="associations" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Associations</h2>
-      <div class="flex flex-wrap items-center justify-center gap-6">
+      <div class="flex flex-wrap">
         <a href="https://physics.northwestern.edu" target="_blank">
-          <img src="/logos/NU_PA_logo.svg" alt="Northwestern University" class="h-12" />
+          <img src="/logos/NU_logo.svg" alt="Northwestern University" class="h-12" />
         </a>
         <a href="https://www.demogr.mpg.de/en" target="_blank">
           <img src="/logos/max_planck_logo.png" alt="Max Planck Institute for Demographic Research" class="h-12" />
@@ -86,8 +86,8 @@
         <a href="https://www.it.northwestern.edu/departments/it-services-support/research/staff/" target="_blank">
           <img src="/logos/NU_IT_logo.png" alt="Northwestern University" class="h-12" />
         </a>
-        <a href="https://towardsdatascience.com" target="_blank">
-          <img src="/logos/TDS-Vector-Logo.svg" alt="Towards Data Science" class="h-12" />
+        <a href="https://towardsdatascience.com" target="_blank" >
+          <img src="/logos/tds_logo.jpeg" alt="Towards Data Science" class="h-12" />
         </a>
       </div>
     </section>
