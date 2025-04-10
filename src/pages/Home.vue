@@ -20,7 +20,8 @@
               <i class="fa-brands fa-instagram"></i>
             </a>
           </div>
-      <div>
+      </div>
+  
         
     </section>
 
