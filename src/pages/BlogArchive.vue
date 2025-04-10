@@ -29,7 +29,7 @@ export default {
         this.blogPosts = data.items.map(post => ({
           title: post.title,
           link: post.link,
-          claps: 100+ // Placeholder for claps
+          likes: 100+ // Placeholder for claps
 
         }));
       });
