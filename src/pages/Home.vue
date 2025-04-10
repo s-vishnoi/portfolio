@@ -85,11 +85,6 @@ onMounted(async () => {
       "Spatio-Temporal Data Visualization: My Top 3 techniques by experience": 103
     }
 
-    const subsMap = {
-      "Bayesian Linear Regression: A Complete Beginner’s guide": ,
-      "Bayesian Data Science: The What, Why, and How": ,
-      "Spatio-Temporal Data Visualization: My Top 3 techniques by experience": 
-    }
 
     blogPosts.value = data.items.slice(0, 3).map(post => ({
       ...post,
