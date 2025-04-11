@@ -18,9 +18,7 @@
           <h3 class="text-lg font-semibold text-accent mb-2">
             {{ post.title }}
           </h3>
-          <p class="text-sm text-gray-500 italic mb-1">
-            {{ post.subtitle || 'No description available.' }}
-          </p>
+          
           <p class="text-xs text-gray-400">{{ post.date }}</p>
         </div>
       </a>
