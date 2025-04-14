@@ -17,5 +17,10 @@
       We track publication trends, migration networks, and long-term productivity by country, gender, and institution.
       This lets universities and policymakers see where systemic bias or imbalance exists — and how it has changed over time.
     </p>
+
+    <h1 class="font-bold mt-4">Publications</h1>
+    <p>
+      
+    </p>
   </main>
 </template>

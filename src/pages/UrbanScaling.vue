@@ -17,5 +17,10 @@
       I use a Bayesian Heirarchical scaling model with census data on income, education, and demography to fill these gaps
       and shed light on arresting biases and inform fairer policy. 
     </p>
+
+    <h1 class="font-bold mt-4">Publications</h1>
+    <p>
+      
+    </p>
   </main>
 </template>
