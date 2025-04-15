@@ -4,7 +4,9 @@
 
     <!-- Northwestern University Section -->
     <div class="space-y-6">
-      <h2 class="text-2xl font-semibold text-accent">Northwestern University</h2>
+      <h2 class="text-2xl font-semibold text-black">Northwestern University
+        <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
+      </h2>
       <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
         <ul class="list-disc list-inside text-gray-700 mb-4">
           <li>General Physics - 2021 Fall | 2022 Winter Spring | 2023 Fall Winter | 2025 Winter</li>
