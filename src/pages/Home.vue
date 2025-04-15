@@ -146,11 +146,18 @@ const roles = [
   },
   {
     title: "Research Consultant",
-    institution: "Towards Data Science & Amaral Lab",
+    institution: "Northwestern University IT",
     description: "Advises interdisciplinary teams on statistical modeling, AI pipelines, and equity-focused research.",
+    logo: "/logos/NU_PA_logo.svg"
+  },
+  {
+    title: "Writer",
+    institution: "Towards Data Science",
+    description: "Writes about Bayesian modeling, data science, and statistical thinking for a global audience.",
     logo: "/logos/tds_logo.jpeg"
   }
 ]
+
 
 const currentIndex = ref(0)
 const nextRole = () => currentIndex.value = (currentIndex.value + 1) % roles.length
