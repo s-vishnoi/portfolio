@@ -25,23 +25,33 @@
         
     </section>
     
-    <!-- Active Roles Section -->
+    <!-- Active Roles Carousel -->
     <section id="roles" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Active Roles</h2>
-      <div class="grid md:grid-cols-2 gap-4">
-        <div
-          v-for="role in roles"
-          :key="role.title"
-          class="bg-base-200 p-4 rounded-lg shadow flex items-start gap-4"
-        >
-          <img :src="role.logo" :alt="role.title + ' logo'" class="h-10 mt-1" />
+      <div class="relative flex items-center justify-center">
+        <!-- Left Button -->
+        <button @click="prevRole" class="btn btn-circle absolute left-0 z-10">
+          ‹
+        </button>
+
+        <!-- Role Card -->
+        <div class="bg-base-200 p-6 rounded-lg shadow w-full max-w-md mx-auto flex gap-4 items-start">
+          <img :src="roles[currentIndex].logo" class="h-10 mt-1" />
           <div>
-            <h3 class="font-bold text-lg text-accent dark:text-accent-content">{{ role.title }}</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">{{ role.description }}</p>
+            <h3 class="font-bold text-lg text-accent dark:text-accent-content">
+              {{ roles[currentIndex].title }}
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">{{ roles[currentIndex].description }}</p>
           </div>
         </div>
+
+        <!-- Right Button -->
+        <button @click="nextRole" class="btn btn-circle absolute right-0 z-10">
+          ›
+        </button>
       </div>
     </section>
+
 
 
     <!-- Projects Section -->
@@ -93,20 +103,20 @@
   
 
   <!-- Associations Section -->
-    <section id="associations" class="bg-base-100 p-6 rounded-box shadow">
-      <h2 class="text-2xl font-bold mb-4">Associations</h2>
-      <div class="flex flex-wrap gap-6">
-        <a href="https://physics.northwestern.edu" target="_blank">
-          <img src="/logos/NU_PA_logo.svg" alt="Northwestern University" class="h-12" />
-        </a>
-        <a href="https://www.demogr.mpg.de/en" target="_blank">
-          <img src="/logos/max_planck_logo.jpeg" alt="Max Planck Institute for Demographic Research" class="h-12" />
-        </a>
-        <a href="https://towardsdatascience.com" target="_blank" >
-          <img src="/logos/tds_logo.jpeg" alt="Towards Data Science" class="h-12" />
-        </a>
-      </div>
-    </section>
+      <section id="associations" class="bg-base-100 p-6 rounded-box shadow">
+        <h2 class="text-2xl font-bold mb-4">Associations</h2>
+        <div class="flex flex-wrap gap-6">
+          <a href="https://physics.northwestern.edu" target="_blank">
+            <img src="/logos/NU_PA_logo.svg" alt="Northwestern University" class="h-12" />
+          </a>
+          <a href="https://www.demogr.mpg.de/en" target="_blank">
+            <img src="/logos/max_planck_logo.jpeg" alt="Max Planck Institute for Demographic Research" class="h-12" />
+          </a>
+          <a href="https://towardsdatascience.com" target="_blank" >
+            <img src="/logos/tds_logo.jpeg" alt="Towards Data Science" class="h-12" />
+          </a>
+        </div>
+      </section>
 
 
   </main>
@@ -134,6 +144,9 @@ const roles = [
     logo: "/logos/tds_logo.jpeg"
   }
 ]
+const currentIndex = ref(0)
+const nextRole = () => currentIndex.value = (currentIndex.value + 1) % roles.length
+const prevRole = () => currentIndex.value = (currentIndex.value - 1 + roles.length) % roles.length
 
 import { projects } from '../data/projects'
 import { onMounted, ref } from 'vue'
