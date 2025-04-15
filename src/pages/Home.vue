@@ -50,21 +50,21 @@
           </a>
         </transition>
 
-            <!-- Left Button -->
-            <button
-              @click="prevRole"
-              class="absolute left-[-60px] top-1/2 -translate-y-1/2 z-20 px-3 py-6 bg-gray-200 text-gray-700 font-bold text-2xl hover:bg-gray-300 transition rounded"
-            >
-              ‹
-            </button>
+          <!-- Left Button -->
+          <button
+            @click="prevRole"
+            class="absolute left-[-60px] top-1/2 -translate-y-1/2 z-20 px-3 py-6 bg-gray-200 text-gray-700 font-bold text-2xl hover:bg-gray-300 transition rounded"
+          >
+            ‹
+          </button>
 
-            <!-- Right Button -->
-            <button
-              @click="nextRole"
-              class="absolute right-[-60px] top-1/2 -translate-y-1/2 z-20 px-3 py-6 bg-gray-200 text-gray-700 font-bold text-2xl hover:bg-gray-300 transition rounded"
-            >
-              ›
-            </button>
+          <!-- Right Button -->
+          <button
+            @click="nextRole"
+            class="absolute right-[-60px] top-1/2 -translate-y-1/2 z-20 px-3 py-6 bg-gray-200 text-gray-700 font-bold text-2xl hover:bg-gray-300 transition rounded"
+          >
+            ›
+          </button>
 
 
 
