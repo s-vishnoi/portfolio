@@ -23,31 +23,42 @@
       </div>
     </section>
 
-    <!-- Active Roles: Expanding Grid -->
-    <section id="roles" class="bg-base-100 p-6 rounded-box shadow">
-      <h2 class="text-2xl font-bold mb-4">Active Roles</h2>
-      <div class="grid gap-4 md:grid-cols-2">
-        <div
-          v-for="(role, index) in roles"
-          :key="role.title"
-          class="bg-base-200 p-4 rounded-lg shadow transition cursor-pointer hover:shadow-lg"
-          @click="activeRoleIndex = activeRoleIndex === index ? null : index"
+
+    <!-- Active Roles Carousel -->
+    <section id="roles" class="bg-base-100 p-6 rounded-box shadow text-center">
+      <h2 class="text-2xl font-bold mb-6">Active Roles</h2>
+      <div class="relative max-w-xl mx-auto flex items-center justify-center">
+        <!-- Left Button -->
+        <button @click="prevRole" class="btn btn-circle absolute left-0">
+          ‹
+        </button>
+
+        <!-- Role Card -->
+        <a
+          :href="roles[currentIndex].link"
+          target="_blank"
+          class="bg-base-200 p-6 rounded-lg shadow w-full flex gap-4 items-start hover:ring-2 hover:ring-accent transition"
         >
-          <div class="flex items-center gap-4">
-            <img :src="role.logo" class="h-10 w-10 rounded-full border border-base-content" />
-            <div>
-              <h3 class="text-lg font-semibold text-accent dark:text-accent-content">{{ role.title }}</h3>
-              <p class="text-sm text-gray-500 dark:text-gray-400">{{ role.institution }}</p>
-            </div>
+          <img :src="roles[currentIndex].logo" class="h-10 mt-1" />
+          <div>
+            <h3 class="font-bold text-lg text-accent dark:text-accent-content">
+              {{ roles[currentIndex].title }}
+            </h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+              {{ roles[currentIndex].institution }}
+            </p>
+            <p class="text-xs text-gray-400 mt-1">{{ roles[currentIndex].duration }}</p>
+            <p class="text-sm text-gray-600 dark:text-gray-300 mt-2" v-html="roles[currentIndex].description" />
           </div>
-          <div v-if="activeRoleIndex === index" class="mt-3 border-t border-base-content pt-3">
-            <p class="text-sm text-gray-600 dark:text-gray-300">{{ role.description }}</p>
-            <p class="text-xs mt-1 text-gray-400">{{ role.duration }}</p>
-            <a :href="role.link" target="_blank" class="text-xs text-accent underline mt-2 inline-block">Learn more ↗</a>
-          </div>
-        </div>
+        </a>
+
+        <!-- Right Button -->
+        <button @click="nextRole" class="btn btn-circle absolute right-0">
+          ›
+        </button>
       </div>
     </section>
+
 
     <!-- Projects Section -->
     <section id="projects" class="bg-base-100 p-6 rounded-box shadow">
@@ -120,7 +131,10 @@ import { roles } from '../data/roles'
 import { projects } from '../data/projects'
 import { onMounted, ref } from 'vue'
 
-const activeRoleIndex = ref(null)
+const currentIndex = ref(0)
+const nextRole = () => currentIndex.value = (currentIndex.value + 1) % roles.length
+const prevRole = () => currentIndex.value = (currentIndex.value - 1 + roles.length) % roles.length
+
 const blogPosts = ref([])
 
 function extractFirstLine(html) {
