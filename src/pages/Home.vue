@@ -55,7 +55,7 @@
           <a
             :href="post.link"
             target="_blank"
-            class="text-lg text-accent font-semibold flex items-center gap-2"
+            class="text-lg text-gray-600 font-semibold flex items-center gap-2"
           >
             <span>{{ post.title }}</span>
             <span class="text-sm text-gray-400 flex items-center gap-1">
