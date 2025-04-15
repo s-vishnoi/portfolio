@@ -35,19 +35,22 @@
         </button>
 
         <!-- Role Card -->
-        
-
-        <div class="bg-base-200 p-6 rounded-lg shadow w-full max-w-md mx-auto flex gap-4 items-start">
+        <a
+          :href="roles[currentIndex].link"
+          target="_blank"
+          class="bg-base-200 p-6 rounded-lg shadow w-full max-w-md mx-auto flex gap-4 items-start hover:ring-2 hover:ring-accent transition"
+        >
           <img :src="roles[currentIndex].logo" class="h-10 mt-1" />
           <div>
-            <h3 class="font-bold text-lg text-accent dark:text-accent-content">
-              {{ roles[currentIndex].title }}
-            </h3>
-            <p class="text-sm text-gray-500 dark:text-gray-400 -mt-1">
-              {{ roles[currentIndex].institution }}
-            </p>
+            <h3 class="font-bold text-lg text-accent dark:text-accent-content">{{ roles[currentIndex].title }}</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 -mt-1">{{ roles[currentIndex].institution }}</p>
+            <p class="text-xs text-gray-400 mt-1">{{ roles[currentIndex].duration }}</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt-2" v-html="roles[currentIndex].description" />
           </div>
-        </div>
+        </a>
+
+
+       
 
         <!-- Right Button -->
         <button @click="nextRole" class="btn btn-circle absolute right-0 z-10">
@@ -131,30 +134,40 @@
 <script setup>
 import { profile } from '../data/profile'
 
-const roles = [
+
+
+export const roles = [
   {
-    title: "PhD Candidate",
+    title: "PhD Candidate, Physics",
     institution: "Northwestern University",
-    description: "Final-year PhD in Physics at Northwestern, specializing in data science and causal inference.",
-    logo: "/logos/NU_PA_logo.svg"
+    duration: "Sep 2020 – Dec 2025 (Expected)",
+    description: `Specializing in complexity, data science, and causal inference. Advised by <a href="https://en.wikipedia.org/wiki/Luís_Amaral" target="_blank" class="underline text-accent">Luís Amaral</a>.`,
+    logo: "/logos/NU_PA_logo.svg",
+    link: "https://amaral.northwestern.edu"
   },
   {
     title: "Data Scientist",
     institution: "Max Planck Institute for Demographic Research",
-    description: "Builds models to reveal patterns in social behavior, systems, and outcomes.",
-    logo: "/logos/max_planck_logo.jpeg"
+    duration: "Jun 2023 – Present",
+    description: "Designing methods to track global academic representation from publication records.",
+    logo: "/logos/max_planck_logo.jpeg",
+    link: "https://www.demogr.mpg.de/en"
   },
   {
-    title: "Research Consultant",
-    institution: "Northwestern University IT",
-    description: "Advises interdisciplinary teams on statistical modeling, AI pipelines, and equity-focused research.",
-    logo: "/logos/NU_PA_logo.svg"
+    title: "Data Science Research Consultant",
+    institution: "Northwestern University Information Technology",
+    duration: "Aug 2023 – Present",
+    description: "Consultant for statistical modeling, ML workflows, and research computing.",
+    logo: "/logos/NU_PA_logo.svg",
+    link: "https://www.it.northwestern.edu/departments/it-services-support/research/"
   },
   {
     title: "Writer",
     institution: "Towards Data Science",
-    description: "Writes about Bayesian modeling, data science, and statistical thinking for a global audience.",
-    logo: "/logos/tds_logo.jpeg"
+    duration: "2022 – Present",
+    description: "Writes accessible tutorials on Bayesian modeling and data science.",
+    logo: "/logos/tds_logo.jpeg",
+    link: "https://medium.com/@s-vishnoi"
   }
 ]
 
