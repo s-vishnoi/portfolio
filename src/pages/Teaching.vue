@@ -4,7 +4,7 @@
 
     <!-- Northwestern University Section -->
     <div class="space-y-6">
-      <h2 class="text-2xl font-semibold text-accent flex items-center gap-3">
+      <h2 class="text-2xl font-semibold text-black-400 flex items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
         Northwestern University
       </h2>
