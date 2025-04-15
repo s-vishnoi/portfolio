@@ -50,23 +50,22 @@
           </a>
         </transition>
 
-        <!-- Left Button -->
-        <button
-          @click="prevRole"
-          class="btn btn-circle absolute -left-5 top-1/2 -translate-y-1/2 z-20 shadow"
-        >
-          ‹
-        </button>
+            <!-- Left Button -->
+            <button
+              @click="prevRole"
+              class="absolute left-[-60px] top-1/2 -translate-y-1/2 z-20 px-3 py-6 bg-gray-200 text-gray-700 font-bold text-2xl hover:bg-gray-300 transition rounded"
+            >
+              ‹
+            </button>
 
-        <!-- Right Button -->
-        <button
-          @click="nextRole"
-          class="btn btn-circle absolute -right-5 top-1/2 -translate-y-1/2 z-20 shadow"
-        >
-          ›
-        </button>
-      </div>
-    </section>
+            <!-- Right Button -->
+            <button
+              @click="nextRole"
+              class="absolute right-[-60px] top-1/2 -translate-y-1/2 z-20 px-3 py-6 bg-gray-200 text-gray-700 font-bold text-2xl hover:bg-gray-300 transition rounded"
+            >
+              ›
+            </button>
+
 
 
 
