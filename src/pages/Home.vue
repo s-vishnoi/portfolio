@@ -45,7 +45,7 @@
                 {{ roles[currentIndex].institution }}
               </p>
               <p class="text-xs text-gray-400 mt-1">{{ roles[currentIndex].duration }}</p>
-              <p class="text-sm text-gray-600 dark:text-gray-300 mt-2" v-html="roles[currentIndex].description" />
+              <p class="text-sm text-gray-600 dark:text-gray-300 mt-2" v-html="roles[currentIndex].description"></p>
             </div>
           </a>
         </transition>
