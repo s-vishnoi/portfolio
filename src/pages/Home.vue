@@ -25,39 +25,49 @@
 
 
     <!-- Active Roles Carousel -->
-    <section id="roles" class="bg-base-100 p-6 rounded-box shadow text-center">
+    <section id="roles" class="bg-base-100 p-6 rounded-box shadow text-center relative">
       <h2 class="text-2xl font-bold mb-6">Active Roles</h2>
-      <div class="relative max-w-xl mx-auto flex items-center justify-center">
+      <div class="relative max-w-xl mx-auto overflow-hidden">
+        <!-- Slide container -->
+        <transition name="slide-fade" mode="out-in">
+          <a
+            :key="roles[currentIndex].title"
+            :href="roles[currentIndex].link"
+            target="_blank"
+            class="bg-base-200 p-6 rounded-lg shadow w-full flex gap-4 items-start hover:ring-2 hover:ring-accent transition relative z-10"
+          >
+            <img :src="roles[currentIndex].logo" class="h-10 mt-1" />
+            <div>
+              <h3 class="font-bold text-lg text-accent dark:text-accent-content">
+                {{ roles[currentIndex].title }}
+              </h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                {{ roles[currentIndex].institution }}
+              </p>
+              <p class="text-xs text-gray-400 mt-1">{{ roles[currentIndex].duration }}</p>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mt-2" v-html="roles[currentIndex].description" />
+            </div>
+          </a>
+        </transition>
+
         <!-- Left Button -->
-        <button @click="prevRole" class="btn btn-circle absolute left-0">
+        <button
+          @click="prevRole"
+          class="btn btn-circle absolute -left-5 top-1/2 -translate-y-1/2 z-20 shadow"
+        >
           ‹
         </button>
 
-        <!-- Role Card -->
-        <a
-          :href="roles[currentIndex].link"
-          target="_blank"
-          class="bg-base-200 p-6 rounded-lg shadow w-full flex gap-4 items-start hover:ring-2 hover:ring-accent transition"
-        >
-          <img :src="roles[currentIndex].logo" class="h-10 mt-1" />
-          <div>
-            <h3 class="font-bold text-lg text-accent dark:text-accent-content">
-              {{ roles[currentIndex].title }}
-            </h3>
-            <p class="text-sm text-gray-500 dark:text-gray-400">
-              {{ roles[currentIndex].institution }}
-            </p>
-            <p class="text-xs text-gray-400 mt-1">{{ roles[currentIndex].duration }}</p>
-            <p class="text-sm text-gray-600 dark:text-gray-300 mt-2" v-html="roles[currentIndex].description" />
-          </div>
-        </a>
-
         <!-- Right Button -->
-        <button @click="nextRole" class="btn btn-circle absolute right-0">
+        <button
+          @click="nextRole"
+          class="btn btn-circle absolute -right-5 top-1/2 -translate-y-1/2 z-20 shadow"
+        >
           ›
         </button>
       </div>
     </section>
+
 
 
     <!-- Projects Section -->
@@ -129,11 +139,35 @@
 import { profile } from '../data/profile'
 import { roles } from '../data/roles'
 import { projects } from '../data/projects'
-import { onMounted, ref } from 'vue'
+import { onMounted, onBeforeUnmount, ref } from 'vue'
+
 
 const currentIndex = ref(0)
 const nextRole = () => currentIndex.value = (currentIndex.value + 1) % roles.length
 const prevRole = () => currentIndex.value = (currentIndex.value - 1 + roles.length) % roles.length
+
+// Auto-scroll every 5 seconds
+let interval
+onMounted(() => {
+  interval = setInterval(nextRole, 5000)
+
+  // Swipe support
+  let startX = 0
+  const el = document.getElementById("roles")
+  if (el) {
+    el.addEventListener('touchstart', e => startX = e.touches[0].clientX)
+    el.addEventListener('touchend', e => {
+      const delta = e.changedTouches[0].clientX - startX
+      if (delta > 50) prevRole()
+      if (delta < -50) nextRole()
+    })
+  }
+})
+
+onBeforeUnmount(() => {
+  clearInterval(interval)
+})
+
 
 const blogPosts = ref([])
 
@@ -169,4 +203,17 @@ onMounted(async () => {
 #roles {
   overflow: hidden;
 }
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-enter-from {
+  opacity: 0;
+  transform: translateX(20px);
+}
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
 </style>
