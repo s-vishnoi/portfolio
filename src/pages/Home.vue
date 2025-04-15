@@ -28,7 +28,7 @@
 
       <section id="roles" class="bg-base-100 p-6 rounded-box shadow text-left relative">
         <h2 class="text-2xl font-bold mb-6">Active Roles</h2>
-        <div class="relative max-w-xl mx-auto overflow-hidden">
+        <div class="relative w-full mx-auto px-12">
           <transition name="slide-fade" mode="out-in">
             <a
               :key="roles[currentIndex].title"
