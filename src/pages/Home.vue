@@ -26,8 +26,8 @@
     </section>
     
     <!-- Active Roles Carousel -->
-      <template>
-        <section id="roles" class="bg-base-100 p-6 rounded-box shadow text-center">
+      
+      <section id="roles" class="bg-base-100 p-6 rounded-box shadow text-center">
           <h2 class="text-2xl font-bold mb-6">Active Roles</h2>
           <div class="relative w-full h-[350px] flex items-center justify-center">
             <div
@@ -42,17 +42,7 @@
               </a>
             </div>
           </div>
-        </section>
-      </template>
-
-
-
-
-
-       
-
-  
-
+      </section>
 
 
     <!-- Projects Section -->
