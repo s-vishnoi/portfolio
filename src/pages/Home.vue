@@ -35,13 +35,17 @@
         </button>
 
         <!-- Role Card -->
+        
+
         <div class="bg-base-200 p-6 rounded-lg shadow w-full max-w-md mx-auto flex gap-4 items-start">
           <img :src="roles[currentIndex].logo" class="h-10 mt-1" />
           <div>
             <h3 class="font-bold text-lg text-accent dark:text-accent-content">
               {{ roles[currentIndex].title }}
             </h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">{{ roles[currentIndex].description }}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 -mt-1">
+              {{ roles[currentIndex].institution }}
+            </p>
           </div>
         </div>
 
@@ -130,20 +134,24 @@ import { profile } from '../data/profile'
 const roles = [
   {
     title: "PhD Candidate",
+    institution: "Northwestern University",
     description: "Final-year PhD in Physics at Northwestern, specializing in data science and causal inference.",
     logo: "/logos/NU_PA_logo.svg"
   },
   {
     title: "Data Scientist",
+    institution: "Max Planck Institute for Demographic Research",
     description: "Builds models to reveal patterns in social behavior, systems, and outcomes.",
     logo: "/logos/max_planck_logo.jpeg"
   },
   {
     title: "Research Consultant",
+    institution: "Towards Data Science & Amaral Lab",
     description: "Advises interdisciplinary teams on statistical modeling, AI pipelines, and equity-focused research.",
     logo: "/logos/tds_logo.jpeg"
   }
 ]
+
 const currentIndex = ref(0)
 const nextRole = () => currentIndex.value = (currentIndex.value + 1) % roles.length
 const prevRole = () => currentIndex.value = (currentIndex.value - 1 + roles.length) % roles.length
