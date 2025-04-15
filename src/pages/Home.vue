@@ -26,38 +26,32 @@
     </section>
     
     <!-- Active Roles Carousel -->
-    <section id="roles" class="bg-base-100 p-6 rounded-box shadow">
-      <h2 class="text-2xl font-bold mb-4">Active Roles</h2>
-      <div class="relative flex items-center justify-center">
-        <!-- Left Button -->
-        <button @click="prevRole" class="btn btn-circle absolute left-0 z-10">
-          ‹
-        </button>
-
-        <!-- Role Card -->
-        <a
-          :href="roles[currentIndex].link"
-          target="_blank"
-          class="bg-base-200 p-6 rounded-lg shadow w-full max-w-md mx-auto flex gap-4 items-start hover:ring-2 hover:ring-accent transition"
-        >
-          <img :src="roles[currentIndex].logo" class="h-10 mt-1" />
-          <div>
-            <h3 class="font-bold text-lg text-accent dark:text-accent-content">{{ roles[currentIndex].title }}</h3>
-            <p class="text-sm text-gray-500 dark:text-gray-400 -mt-1">{{ roles[currentIndex].institution }}</p>
-            <p class="text-xs text-gray-400 mt-1">{{ roles[currentIndex].duration }}</p>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mt-2" v-html="roles[currentIndex].description" />
+      <template>
+        <section id="roles" class="bg-base-100 p-6 rounded-box shadow text-center">
+          <h2 class="text-2xl font-bold mb-6">Active Roles</h2>
+          <div class="relative w-full h-[350px] flex items-center justify-center">
+            <div
+              v-for="(role, index) in roles"
+              :key="role.title"
+              :style="getPositionStyle(index, roles.length)"
+              class="absolute transform transition-all duration-500 hover:scale-110 cursor-pointer"
+            >
+              <a :href="role.link" target="_blank" class="flex flex-col items-center group">
+                <img :src="role.logo" :alt="role.title" class="h-12 w-12 mb-2 rounded-full border border-base-content" />
+                <div class="text-sm text-accent dark:text-accent-content font-medium group-hover:underline">{{ role.title }}</div>
+              </a>
+            </div>
           </div>
-        </a>
+        </section>
+      </template>
+
+
+
 
 
        
 
-        <!-- Right Button -->
-        <button @click="nextRole" class="btn btn-circle absolute right-0 z-10">
-          ›
-        </button>
-      </div>
-    </section>
+  
 
 
 
@@ -135,10 +129,18 @@
 import { profile } from '../data/profile'
 
 import { roles } from '../data/roles'
+function getPositionStyle(index, total) {
+  const angle = (360 / total) * index
+  const radius = 120
+  const rad = (angle * Math.PI) / 180
+  const x = Math.cos(rad) * radius
+  const y = Math.sin(rad) * radius
+  return {
+    left: `calc(50% + ${x}px - 24px)`,
+    top: `calc(50% + ${y}px - 24px)`
+  }
+}
 
-const currentIndex = ref(0)
-const nextRole = () => currentIndex.value = (currentIndex.value + 1) % roles.length
-const prevRole = () => currentIndex.value = (currentIndex.value - 1 + roles.length) % roles.length
 
 import { projects } from '../data/projects'
 import { onMounted, ref } from 'vue'
@@ -177,3 +179,10 @@ onMounted(async () => {
 
 
 </script>
+
+
+<style scoped>
+#roles {
+  overflow: hidden;
+}
+</style>
