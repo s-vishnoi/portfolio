@@ -25,21 +25,24 @@
         
     </section>
     
-    <!-- Roles Section -->
+    <!-- Active Roles Section -->
     <section id="roles" class="bg-base-100 p-6 rounded-box shadow">
-      <h2 class="text-2xl font-bold mb-4">Roles</h2>
-      <div class="flex overflow-x-auto gap-4 snap-x scroll-smooth px-1">
+      <h2 class="text-2xl font-bold mb-4">Active Roles</h2>
+      <div class="grid md:grid-cols-2 gap-4">
         <div
           v-for="role in roles"
           :key="role.title"
-          class="min-w-[250px] snap-start bg-base-200 p-4 rounded-lg shadow flex-shrink-0 space-y-2"
+          class="bg-base-200 p-4 rounded-lg shadow flex items-start gap-4"
         >
-          <img :src="role.logo" :alt="role.title + ' logo'" class="h-10" />
-          <h3 class="font-bold text-lg text-accent dark:text-accent-content">{{ role.title }}</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">{{ role.description }}</p>
+          <img :src="role.logo" :alt="role.title + ' logo'" class="h-10 mt-1" />
+          <div>
+            <h3 class="font-bold text-lg text-accent dark:text-accent-content">{{ role.title }}</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">{{ role.description }}</p>
+          </div>
         </div>
       </div>
     </section>
+
 
     <!-- Projects Section -->
     <section id="projects" class="bg-base-100 p-6 rounded-box shadow">
