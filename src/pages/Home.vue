@@ -5,45 +5,49 @@
       <img src="/images/samvardhan.jpg" alt="Samvardhan Vishnoi" class="w-32 h-32 object-cover rounded-full shadow" />
       <div>
         <h2 class="text-2xl font-bold mb-4">About Me</h2>
-        <p v-for="line in profile.description.split('\\n\\n')" :key="line" class="mb-2">{{ line }}</p>
-          <div class="flex gap-4 mt-4 text-2xl">
-            <a href="mailto:svishnoi@u.northwestern.edu" target="_blank" aria-label="Email">
-              <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/samvardhan-vishnoi/" target="_blank" aria-label="LinkedIn">
-              <i class="fa-brands fa-linkedin"></i>
-            </a>
-            <a href="https://github.com/s-vishnoi" target="_blank" aria-label="GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://www.instagram.com/vishhnnoi/" target="_blank" aria-label="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-          </div>
+        <p v-for="line in profile.description.split('\n\n')" :key="line" class="mb-2">{{ line }}</p>
+        <div class="flex gap-4 mt-4 text-2xl">
+          <a href="mailto:svishnoi@u.northwestern.edu" target="_blank" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/samvardhan-vishnoi/" target="_blank" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/s-vishnoi" target="_blank" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://www.instagram.com/vishhnnoi/" target="_blank" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
       </div>
-  
-        
     </section>
-    
-    <!-- Active Roles Carousel -->
-      
-      <section id="roles" class="bg-base-100 p-6 rounded-box shadow text-center">
-          <h2 class="text-2xl font-bold mb-6">Active Roles</h2>
-          <div class="relative w-full h-[350px] flex items-center justify-center">
-            <div
-              v-for="(role, index) in roles"
-              :key="role.title"
-              :style="getPositionStyle(index, roles.length)"
-              class="absolute transform transition-all duration-500 hover:scale-110 cursor-pointer"
-            >
-              <a :href="role.link" target="_blank" class="flex flex-col items-center group">
-                <img :src="role.logo" :alt="role.title" class="h-12 w-12 mb-2 rounded-full border border-base-content" />
-                <div class="text-sm text-accent dark:text-accent-content font-medium group-hover:underline">{{ role.title }}</div>
-              </a>
+
+    <!-- Active Roles: Expanding Grid -->
+    <section id="roles" class="bg-base-100 p-6 rounded-box shadow">
+      <h2 class="text-2xl font-bold mb-4">Active Roles</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div
+          v-for="(role, index) in roles"
+          :key="role.title"
+          class="bg-base-200 p-4 rounded-lg shadow transition cursor-pointer hover:shadow-lg"
+          @click="activeRoleIndex = activeRoleIndex === index ? null : index"
+        >
+          <div class="flex items-center gap-4">
+            <img :src="role.logo" class="h-10 w-10 rounded-full border border-base-content" />
+            <div>
+              <h3 class="text-lg font-semibold text-accent dark:text-accent-content">{{ role.title }}</h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400">{{ role.institution }}</p>
             </div>
           </div>
-      </section>
-
+          <div v-if="activeRoleIndex === index" class="mt-3 border-t border-base-content pt-3">
+            <p class="text-sm text-gray-600 dark:text-gray-300">{{ role.description }}</p>
+            <p class="text-xs mt-1 text-gray-400">{{ role.duration }}</p>
+            <a :href="role.link" target="_blank" class="text-xs text-accent underline mt-2 inline-block">Learn more ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Projects Section -->
     <section id="projects" class="bg-base-100 p-6 rounded-box shadow">
@@ -91,56 +95,36 @@
         <p>Loading latest posts from Medium…</p>
       </div>
     </section>
-  
 
-  <!-- Associations Section -->
-      <section id="associations" class="bg-base-100 p-6 rounded-box shadow">
-        <h2 class="text-2xl font-bold mb-4">Associations</h2>
-        <div class="flex flex-wrap gap-6">
-          <a href="https://physics.northwestern.edu" target="_blank">
-            <img src="/logos/NU_PA_logo.svg" alt="Northwestern University" class="h-12" />
-          </a>
-          <a href="https://www.demogr.mpg.de/en" target="_blank">
-            <img src="/logos/max_planck_logo.jpeg" alt="Max Planck Institute for Demographic Research" class="h-12" />
-          </a>
-          <a href="https://towardsdatascience.com" target="_blank" >
-            <img src="/logos/tds_logo.jpeg" alt="Towards Data Science" class="h-12" />
-          </a>
-        </div>
-      </section>
-
-
+    <!-- Associations Section -->
+    <section id="associations" class="bg-base-100 p-6 rounded-box shadow">
+      <h2 class="text-2xl font-bold mb-4">Associations</h2>
+      <div class="flex flex-wrap gap-6">
+        <a href="https://physics.northwestern.edu" target="_blank">
+          <img src="/logos/NU_PA_logo.svg" alt="Northwestern University" class="h-12" />
+        </a>
+        <a href="https://www.demogr.mpg.de/en" target="_blank">
+          <img src="/logos/max_planck_logo.jpeg" alt="Max Planck Institute for Demographic Research" class="h-12" />
+        </a>
+        <a href="https://towardsdatascience.com" target="_blank" >
+          <img src="/logos/tds_logo.jpeg" alt="Towards Data Science" class="h-12" />
+        </a>
+      </div>
+    </section>
   </main>
-
-
 </template>
 
 <script setup>
 import { profile } from '../data/profile'
-
 import { roles } from '../data/roles'
-function getPositionStyle(index, total) {
-  const angle = (360 / total) * index
-  const radius = 120
-  const rad = (angle * Math.PI) / 180
-  const x = Math.cos(rad) * radius
-  const y = Math.sin(rad) * radius
-  return {
-    left: `calc(50% + ${x}px - 24px)`,
-    top: `calc(50% + ${y}px - 24px)`
-  }
-}
-
-
 import { projects } from '../data/projects'
 import { onMounted, ref } from 'vue'
 
+const activeRoleIndex = ref(null)
 const blogPosts = ref([])
 
 function extractFirstLine(html) {
-  // Strip all HTML tags
   const textOnly = html.replace(/<[^>]+>/g, '')
-  // Split into lines and return the first non-empty one
   const firstLine = textOnly.split('\n').find(line => line.trim() !== '')
   return firstLine || null
 }
@@ -156,7 +140,6 @@ onMounted(async () => {
       "Spatio-Temporal Data Visualization: My Top 3 techniques by experience": 103
     }
 
-
     blogPosts.value = data.items.slice(0, 3).map(post => ({
       ...post,
       claps: clapsMap[post.title] || 100,
@@ -166,10 +149,7 @@ onMounted(async () => {
     console.error("Failed to load blog posts:", err)
   }
 })
-
-
 </script>
-
 
 <style scoped>
 #roles {
