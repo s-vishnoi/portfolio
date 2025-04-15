@@ -25,32 +25,32 @@
 
 
     <!-- Active Roles Carousel -->
-    <section id="roles" class="bg-base-100 p-6 rounded-box shadow text-left relative">
-      <h2 class="text-2xl font-bold mb-6">Active Roles</h2>
-      <div class="relative max-w-xl mx-auto overflow-hidden">
-        <!-- Slide container -->
-        <transition name="slide-fade" mode="out-in">
-          <a
-            :key="roles[currentIndex].title"
-            :href="roles[currentIndex].link"
-            target="_blank"
-            class="bg-base-200 p-6 rounded-lg shadow w-full flex gap-4 items-start hover:ring-2 hover:ring-accent transition relative z-10"
-          >
-            <img :src="roles[currentIndex].logo" class="h-10 mt-1" />
-            <div>
-              <h3 class="font-bold text-lg text-accent dark:text-accent-content">
-                {{ roles[currentIndex].title }}
-              </h3>
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                {{ roles[currentIndex].institution }}
-              </p>
-              <p class="text-xs text-gray-400 mt-1">{{ roles[currentIndex].duration }}</p>
-              <p class="text-sm text-gray-600 dark:text-gray-300 mt-2" v-html="roles[currentIndex].description"></p>
-            </div>
-          </a>
-        </transition>
 
-          <!-- Left Button -->
+      <section id="roles" class="bg-base-100 p-6 rounded-box shadow text-left relative">
+        <h2 class="text-2xl font-bold mb-6">Active Roles</h2>
+        <div class="relative max-w-xl mx-auto overflow-hidden">
+          <transition name="slide-fade" mode="out-in">
+            <a
+              :key="roles[currentIndex].title"
+              :href="roles[currentIndex].link"
+              target="_blank"
+              class="bg-base-200 p-6 rounded-lg shadow w-full flex gap-4 items-start hover:ring-2 hover:ring-accent transition relative z-10"
+            >
+              <img :src="roles[currentIndex].logo" class="h-10 mt-1" />
+              <div>
+                <h3 class="font-bold text-lg text-accent dark:text-accent-content">
+                  {{ roles[currentIndex].title }}
+                </h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                  {{ roles[currentIndex].institution }}
+                </p>
+                <p class="text-xs text-gray-400 mt-1">{{ roles[currentIndex].duration }}</p>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-2" v-html="roles[currentIndex].description"></p>
+              </div>
+            </a>
+          </transition>
+
+          <!-- Navigation Buttons -->
           <button
             @click="prevRole"
             class="absolute left-[-60px] top-1/2 -translate-y-1/2 z-20 px-3 py-6 bg-gray-200 text-gray-700 font-bold text-2xl hover:bg-gray-300 transition rounded"
@@ -58,14 +58,15 @@
             ‹
           </button>
 
-          <!-- Right Button -->
           <button
             @click="nextRole"
             class="absolute right-[-60px] top-1/2 -translate-y-1/2 z-20 px-3 py-6 bg-gray-200 text-gray-700 font-bold text-2xl hover:bg-gray-300 transition rounded"
           >
             ›
           </button>
-    </section>
+        </div> <!-- ✅ close carousel wrapper -->
+      </section>
+
 
 
 
