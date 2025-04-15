@@ -50,13 +50,13 @@
         <!-- Visible Buttons -->
         <button
           @click="prevRole"
-          class="absolute left-0 top-1/2 -translate-y-1/2 z-20 px-3 py-6 bg-gray-200 text-gray-700 font-bold text-2xl hover:bg-gray-300 transition rounded"
+          class="absolute left-0 top-1/2 -translate-y-1/2 z-20 text-gray-700 text-4xl hover:text-accent transition"
         >
           ‹
         </button>
         <button
           @click="nextRole"
-          class="absolute right-0 top-1/2 -translate-y-1/2 z-20 px-3 py-6 bg-gray-200 text-gray-700 font-bold text-2xl hover:bg-gray-300 transition rounded"
+          class="absolute right-0 top-1/2 -translate-y-1/2 z-20 text-gray-700 text-4xl hover:text-accent transition"
         >
           ›
         </button>
