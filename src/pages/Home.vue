@@ -24,6 +24,22 @@
   
         
     </section>
+    
+    <!-- Roles Section -->
+    <section id="roles" class="bg-base-100 p-6 rounded-box shadow">
+      <h2 class="text-2xl font-bold mb-4">Roles</h2>
+      <div class="flex overflow-x-auto gap-4 snap-x scroll-smooth px-1">
+        <div
+          v-for="role in roles"
+          :key="role.title"
+          class="min-w-[250px] snap-start bg-base-200 p-4 rounded-lg shadow flex-shrink-0 space-y-2"
+        >
+          <img :src="role.logo" :alt="role.title + ' logo'" class="h-10" />
+          <h3 class="font-bold text-lg text-accent dark:text-accent-content">{{ role.title }}</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ role.description }}</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Projects Section -->
     <section id="projects" class="bg-base-100 p-6 rounded-box shadow">
@@ -97,6 +113,25 @@
 
 <script setup>
 import { profile } from '../data/profile'
+
+const roles = [
+  {
+    title: "PhD Candidate",
+    description: "Final-year PhD in Physics at Northwestern, specializing in data science and causal inference.",
+    logo: "/logos/NU_PA_logo.svg"
+  },
+  {
+    title: "Data Scientist",
+    description: "Builds models to reveal patterns in social behavior, systems, and outcomes.",
+    logo: "/logos/max_planck_logo.jpeg"
+  },
+  {
+    title: "Research Consultant",
+    description: "Advises interdisciplinary teams on statistical modeling, AI pipelines, and equity-focused research.",
+    logo: "/logos/tds_logo.jpeg"
+  }
+]
+
 import { projects } from '../data/projects'
 import { onMounted, ref } from 'vue'
 
@@ -131,4 +166,6 @@ onMounted(async () => {
     console.error("Failed to load blog posts:", err)
   }
 })
+
+
 </script>
