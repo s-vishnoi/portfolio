@@ -4,8 +4,9 @@
 
     <!-- Northwestern University Section -->
     <div class="space-y-6">
-      <h2 class="text-2xl font-semibold text-black">Northwestern University
+      <h2 class="text-2xl font-semibold text-accent flex items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
+        Northwestern University
       </h2>
       <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
         <ul class="list-disc list-inside text-gray-700 mb-4">
