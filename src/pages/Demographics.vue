@@ -19,9 +19,9 @@
       This lets universities and policymakers see where systemic bias or imbalance exists — and how it has changed over time.
     </p>
 
-    <h1 class="text-2xl font-bold mt-4">Publications</h1>
+    <h1 class="text-1.5xl font-bold mt-4">Publications</h1>
 
-    <p class = "font-italic">
+    <p class = "italic">
       Global progress towards representational equality within academia has stalled, 2025 (pending review)
     </p>
   </main>
