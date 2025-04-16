@@ -1,5 +1,6 @@
 <template>
   <main class="max-w-4xl mx-auto p-6 space-y-12">
+    
     <!-- About Section -->
     <section id="about" class="bg-base-100 p-6 rounded-box shadow flex flex-col md:flex-row gap-6 items-start">
       <img src="/images/samvardhan.jpg" alt="Samvardhan Vishnoi" class="w-32 h-32 object-cover rounded-full shadow" />
@@ -64,9 +65,6 @@
     </section>
 
 
-
-
-
     <!-- Projects Section -->
     <section id="projects" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Projects</h2>
@@ -129,6 +127,9 @@
         </a>
       </div>
     </section>
+
+
+
   </main>
 </template>
 
