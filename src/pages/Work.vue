@@ -31,7 +31,7 @@
 
       <!-- Independent Consultations Title + Button -->
       <div class="flex items-center justify-between">
-        <h3 class="text-lg font-bold text-accent">Independent Consultations</h3>
+        <h3 class="text-lg font-bold text-accent">Lead Consultations</h3>
         <a
           href="https://www.it.northwestern.edu/departments/it-services-support/teaching/learning.html"
           target="_blank"
