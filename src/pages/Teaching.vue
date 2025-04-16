@@ -47,38 +47,37 @@
     <div v-else>
       <h2 class="text-2xl font-semibold text-black-400 flex items-center gap-3 mb-4">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
-        Data Science Research Consultant 
+        Research Consulting @ Northwestern IT
       </h2>
 
-      <div 
-        v-for="(item, index) in consults" 
-        :key="index" 
-        class="perspective"
-      >
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <!-- Front -->
-            <div class="flip-card-front bg-base-200 p-4 rounded-lg shadow-sm border border-base-300 flex items-center justify-center text-center">
-              <h3 class="font-semibold text-base-content">{{ item.topic }}</h3>
-            </div>
-            <!-- Back -->
-            <div class="flip-card-back bg-base-100 p-4 rounded-lg shadow-sm border border-base-300 text-sm text-gray-600 dark:text-gray-400">
-              <p>{{ item.description }}</p>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div
+          v-for="(consult, index) in consults"
+          :key="index"
+          class="perspective"
+        >
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <!-- Front -->
+              <div class="flip-card-front bg-base-200 p-4 rounded shadow hover:ring-2 hover:ring-accent transition flex items-center justify-center text-center">
+                <h3 class="text-sm font-bold text-accent">{{ consult.topic }}</h3>
+              </div>
+              <!-- Back -->
+              <div class="flip-card-back bg-base-100 p-4 rounded shadow text-xs text-gray-600 flex items-center justify-center text-center">
+                {{ consult.description }}
+              </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-  </section>
-</template>
 
 <script setup>
-  import { ref } from 'vue'
-  import { nuTestimonials } from '../data/nuTestimonials.js'
-  import { consults } from '../data/nuConsults.js'
+import { ref } from 'vue'
+import { nuTestimonials } from '../data/nuTestimonials.js'
+import { consults } from '../data/nuConsults.js'
 
-  const currentView = ref('ta')
+const currentView = ref('ta')
 </script>
 
 <style scoped>
@@ -96,8 +95,8 @@
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.6s;
     transform-style: preserve-3d;
+    transition: transform 0.6s ease;
   }
 
   .flip-card:hover .flip-card-inner {
@@ -110,9 +109,8 @@
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 0.5rem;
+    padding: 1rem;
   }
 
   .flip-card-back {
