@@ -67,7 +67,7 @@
 <script setup>
 import { ref } from 'vue'
 import { nuTestimonials } from '../data/nuTestimonials.js'
-import { consults } from '../data/consults.js'
+import { consults } from '../data/nuConsults.js'
 
 const currentView = ref('ta')
 </script>
