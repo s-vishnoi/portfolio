@@ -29,56 +29,52 @@
         Research Consulting @ Northwestern IT
       </h2>
 
-      <!-- One-on-One Consultations -->
-      <div>
-        <h3 class="text-lg font-bold text-accent mb-2">One-on-One Consultations</h3>
-        <p class="text-sm text-gray-600 mb-4">
-          Selected consultations I led with research teams at Northwestern
-        </p>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          <div
-            v-for="(consult, index) in consults"
-            :key="index"
-            class="perspective"
-          >
-            <div class="flip-card">
-              <div class="flip-card-inner">
-                <!-- Front -->
-                <div class="flip-card-front bg-base-200 p-4 rounded shadow hover:ring-2 hover:ring-accent transition flex items-center justify-center text-center">
-                  <h3 class="text-sm font-bold text-accent">{{ consult.topic }}</h3>
-                </div>
-                <!-- Back -->
-                <div class="flip-card-back bg-base-100 p-4 rounded shadow text-xs text-gray-600 flex items-center justify-center text-center">
-                  {{ consult.description }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Request Consult Button -->
-      <div class="mt-4 text-right">
+      <!-- Independent Consultations Title + Button -->
+      <div class="flex items-center justify-between">
+        <h3 class="text-lg font-bold text-accent">Independent Consultations</h3>
         <a
           href="https://www.it.northwestern.edu/departments/it-services-support/teaching/learning.html"
           target="_blank"
-          class="text-sm bg-base-300 hover:bg-base-200 px-4 py-2 rounded shadow transition"
+          class="text-sm bg-base-300 hover:bg-base-200 px-4 py-2 rounded shadow transition whitespace-nowrap"
         >
           Request a Consult →
         </a>
       </div>
 
-      <!-- Workshops -->
+      <!-- Flip Cards -->
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div
+          v-for="(consult, index) in consults"
+          :key="index"
+          class="perspective"
+        >
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <!-- Front -->
+              <div class="flip-card-front bg-base-200 p-4 rounded shadow hover:ring-2 hover:ring-accent transition flex items-center justify-center text-center">
+                <h3 class="text-sm font-bold text-accent">{{ consult.topic }}</h3>
+              </div>
+              <!-- Back -->
+              <div class="flip-card-back bg-base-100 p-4 rounded shadow text-xs text-gray-600 flex items-center justify-center text-center">
+                {{ consult.description }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workshops Section -->
       <div>
         <h3 class="text-lg font-bold text-accent mt-8 mb-2">Workshops</h3>
         <div class="bg-base-200 p-4 rounded shadow flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <p class="text-sm font-medium text-gray-700">
-              <span class="font-semibold">Bayesian Modeling Workshop</span> — Taught in Winter 2024 & Winter 2025.
+              <span class="font-semibold">Bayesian Modeling Workshop</span> — Taught in Winter 2024 and Winter 2025.
             </p>
             <p class="text-xs text-gray-500">Hosted by Northwestern IT | Open-source Jupyter Notebook on GitHub</p>
           </div>
           <a
-            href="https://github.com/nuitrcs/bayesian_inference_stan/blob/main/stan_workshop.ipynb"
+            href="https://github.com/s-vishnoi/Bayesian_Regression/blob/main/stan_workshop.ipynb"
             target="_blank"
             class="text-sm bg-accent text-white px-4 py-2 rounded hover:bg-accent-focus transition"
           >
@@ -86,9 +82,9 @@
           </a>
         </div>
       </div>
-
-      
     </div>
+
+
 
 
     <!-- Teaching Assistant Section -->
