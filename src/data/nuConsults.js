@@ -48,10 +48,7 @@ export const consults = [
           topic: "Clinical Image Registration",
           description: "Aligning retinal images from multiple time points using openCV."
         },
-        {
-          topic: "Data Visualization",
-          description: "Converting processed datasets into compelling, informative visualizations."
-        }
+    
     ]
 
   
