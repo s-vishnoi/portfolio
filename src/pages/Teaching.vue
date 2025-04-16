@@ -1,7 +1,7 @@
 <template>
   <section class="max-w-4xl mx-auto p-6 space-y-10">
     <!-- Toggle Header -->
-    <h1 class="text-2xl text-gray-500 mb-6 text-left">
+    <h1 class="text-1xl text-gray-500 mb-6 text-left">
       <button
         @click="currentView = 'consultant'"
         :class="currentView === 'consultant' ? 'bg-accent text-white' : 'bg-base-300 text-gray-700 hover:text-accent'"
