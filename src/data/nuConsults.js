@@ -1,5 +1,5 @@
+
 export const consults = [
-    export const consults = [
         {
           topic: "Hierarchical Modeling in Stan",
           description: "Diagnosing and resolving divergent transitions in hierarchical Bayesian models using Stan."
@@ -26,7 +26,11 @@ export const consults = [
         },
         {
           topic: "Parallel Vectorization + Array Jobs",
-          description: "Integrating job array indexing and vectorized batch computation into a 3-DOF Python script."
+          description: "Integrating job array indexing and vectorized batch computation into a Python script."
+        },
+        {
+          topic: "Efficient Compute via Quest",
+          description: "Optimizing Python-based workflows to explore and analyze massive datasets on Quest clusters."
         },
         {
           topic: "BMI Calculator",
@@ -38,23 +42,16 @@ export const consults = [
         },
         {
           topic: "Census Interpolation",
-          description: "Applying constrained interpolation for annual tract-level census estimates within valid bounds."
-        },
-        {
-          topic: "Efficient Compute via Quest",
-          description: "Optimizing Python-based workflows to explore and analyze massive datasets on Quest clusters."
+          description: "Applying interpolation for annual tract-level census estimates within valid bounds."
         },
         {
           topic: "Clinical Image Registration",
           description: "Aligning retinal images from multiple time points using openCV."
         },
         {
-          topic: "Graphic Design",
+          topic: "Data Visualization",
           description: "Converting processed datasets into compelling, informative visualizations."
         }
-      ]
-      
-  ]
-  
+    ]
 
   
