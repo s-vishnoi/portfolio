@@ -146,7 +146,7 @@ const prevRole = () => currentIndex.value = (currentIndex.value - 1 + roles.leng
 // Auto-scroll every 5 seconds
 let interval
 onMounted(() => {
-  interval = setInterval(nextRole, 5000)
+  interval = setInterval(nextRole, 10000)
 
   // Swipe support
   let startX = 0
@@ -202,7 +202,7 @@ onMounted(async () => {
 }
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-  transition: all 1.0s ease;
+  transition: all 0.3s ease;
 }
 .slide-fade-enter-from {
   opacity: 0;
