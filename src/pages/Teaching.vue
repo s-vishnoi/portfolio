@@ -24,7 +24,7 @@
     <div v-if="currentView === 'consultant'">
       <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3 mb-4">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
-        Research Consulting @ Northwestern IT
+        Research Computing and Data Services @ Northwestern IT
       </h2>
 
       <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -53,7 +53,7 @@
     <div v-else class="space-y-6">
       <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
-        Northwestern University
+        Northwestern University Physics and Astronomy
       </h2>
       <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
         <ul class="list-disc list-inside text-gray-700 mb-4">
