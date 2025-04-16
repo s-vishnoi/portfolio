@@ -97,7 +97,7 @@
         </h2>
         <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
           <ul class="list-disc list-inside text-gray-700 mb-4">
-            <li>General Physics - 2021 Fall | 2022 Winter Spring | 2023 Fall Winter | 2025 Winter</li>
+            <li>General Physics - 2021 Fall | 2022 Winter, Spring | 2023 Fall, Winter | 2025 Winter</li>
           </ul>
 
           <!-- Scrollable Testimonials -->
@@ -120,7 +120,7 @@
           Temple University – Student Success Center 
         </h2>
         <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
-          <ul class="text-gray-700 mb-2">
+          <ul class="font-semibold text-gray-700 mb-2">
             <li>STEM tutor, 2017-2019</li>
           </ul>
           <ul class="list-disc list-inside text-gray-700 mb-2">
