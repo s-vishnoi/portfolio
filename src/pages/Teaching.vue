@@ -1,7 +1,7 @@
 <template>
   <section class="max-w-4xl mx-auto p-6 space-y-10">
     <!-- Toggle Header -->
-    <h1 class="text-2xl font-bold mb-6 text-left">
+    <h1 class="text-2xl font-bold text-gray-500 mb-6 text-left">
       <button
         @click="currentView = 'ta'"
         :class="currentView === 'ta' ? 'bg-accent text-white' : 'bg-base-300 text-gray-700 hover:text-accent'"
@@ -20,7 +20,7 @@
 
     <!-- Consultant Section -->
     <div v-if="currentView === 'consultant'">
-      <h2 class="text-2xl font-semibold text-gray-500 flex items-center gap-3 mb-4">
+      <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3 mb-4">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
         Research Consulting @ Northwestern IT
       </h2>
@@ -49,7 +49,7 @@
 
     <!-- Teaching Assistant Section -->
     <div v-else class="space-y-6">
-      <h2 class="text-2xl font-semibold text-gray-500 flex items-center gap-3">
+      <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
         Northwestern University
       </h2>
