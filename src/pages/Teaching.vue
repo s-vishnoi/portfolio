@@ -117,9 +117,12 @@
       <div class="space-y-6">
         <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3">
           <img src="/logos/TU_logo.svg" alt="Temple logo" class="h-8" />
-          Temple University – STEM Tutor, Student Success Center (2017-2019)
+          Temple University – Student Success Center 
         </h2>
         <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
+          <ul class="text-gray-700 mb-2">
+            <li>STEM tutor, 2017-2019</li>
+          </ul>
           <ul class="list-disc list-inside text-gray-700 mb-2">
             <li>Differential Equations with Linear Algebra</li>
             <li>Probability Theory</li>
