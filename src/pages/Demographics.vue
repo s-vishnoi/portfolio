@@ -1,9 +1,10 @@
 <template>
   <main class="max-w-3xl mx-auto p-6 space-y-6">
-    <img src="/images/projects/demography-map.jpg" alt="Demography Visualization" class="w-full rounded shadow" />
+    <!--  <img src="/images/projects/demography-map.jpg" alt="Demography Visualization" class="w-full rounded shadow" />
     <figcaption class="text-sm text-gray-500 mt-1">
       Visualizing researcher migration and publication networks across 95M+ papers.
-    </figcaption>
+    </figcaption> 
+    -->
 
     <h1 class="text-3xl font-bold mt-4">Global Researcher Demographics</h1>
     <p>
@@ -19,6 +20,7 @@
     </p>
 
     <h1 class="font-bold mt-4">Publications</h1>
+
     <p>
       
     </p>
