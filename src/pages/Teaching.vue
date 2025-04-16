@@ -88,28 +88,48 @@
 
 
     <!-- Teaching Assistant Section -->
-    <div v-else class="space-y-6">
-      <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3">
-        <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
-        Northwestern University Physics and Astronomy
-      </h2>
-      <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
-        <ul class="list-disc list-inside text-gray-700 mb-4">
-          <li>General Physics - 2021 Fall | 2022 Winter Spring | 2023 Fall Winter | 2025 Winter</li>
-        </ul>
+    <div v-else class="space-y-10">
+      <!-- Northwestern -->
+      <div class="space-y-6">
+        <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3">
+          <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
+          Northwestern University Physics and Astronomy
+        </h2>
+        <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
+          <ul class="list-disc list-inside text-gray-700 mb-4">
+            <li>General Physics - 2021 Fall | 2022 Winter Spring | 2023 Fall Winter | 2025 Winter</li>
+          </ul>
 
-        <!-- Scrollable Testimonials -->
-        <div class="max-h-64 overflow-y-auto space-y-4 p-4 border rounded bg-base-200">
-          <blockquote
-            v-for="(quote, index) in nuTestimonials"
-            :key="index"
-            class="italic text-sm text-gray-600 border-l-4 border-accent pl-4"
-          >
-            “{{ quote }}”
-          </blockquote>
+          <!-- Scrollable Testimonials -->
+          <div class="max-h-64 overflow-y-auto space-y-4 p-4 border rounded bg-base-200">
+            <blockquote
+              v-for="(quote, index) in nuTestimonials"
+              :key="index"
+              class="italic text-sm text-gray-600 border-l-4 border-accent pl-4"
+            >
+              “{{ quote }}”
+            </blockquote>
+          </div>
+        </div>
+      </div>
+
+      <!-- Temple University -->
+      <div class="space-y-6">
+        <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3">
+          <img src="/logos/TU_logo.svg" alt="Temple logo" class="h-8" />
+          Temple University – STEM Tutor, Student Success Center (2017-2019)
+        </h2>
+        <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
+          <ul class="list-disc list-inside text-gray-700 mb-2">
+            <li>Differential Equations with Linear Algebra</li>
+            <li>Probability Theory</li>
+            <li>Math Concepts in Computing I</li>
+            <li>Data Structures</li>
+          </ul>
         </div>
       </div>
     </div>
+
   </section>
 </template>
 
