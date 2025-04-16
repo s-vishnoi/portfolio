@@ -20,34 +20,75 @@
       
     </h1>
 
+    
+
     <!-- Consultant Section -->
-    <div v-if="currentView === 'consultant'">
-      <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3 mb-4">
+    <div v-if="currentView === 'consultant'" class="space-y-8">
+      <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3 mb-2">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
-        Research Computing and Data Services @ Northwestern IT
+        Research Consulting @ Northwestern IT
       </h2>
 
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <div
-          v-for="(consult, index) in consults"
-          :key="index"
-          class="perspective"
-        >
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <!-- Front -->
-              <div class="flip-card-front bg-base-200 p-4 rounded shadow hover:ring-2 hover:ring-accent transition flex items-center justify-center text-center">
-                <h3 class="text-sm font-bold text-accent">{{ consult.topic }}</h3>
-              </div>
-              <!-- Back -->
-              <div class="flip-card-back bg-base-100 p-4 rounded shadow text-xs text-gray-600 flex items-center justify-center text-center">
-                {{ consult.description }}
+      <!-- One-on-One Consultations -->
+      <div>
+        <h3 class="text-lg font-bold text-accent mb-2">One-on-One Consultations</h3>
+        <p class="text-sm text-gray-600 mb-4">
+          Independent consultations I led with Northwestern research teams, focused on technical and methodological challenges.
+        </p>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div
+            v-for="(consult, index) in consults"
+            :key="index"
+            class="perspective"
+          >
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <!-- Front -->
+                <div class="flip-card-front bg-base-200 p-4 rounded shadow hover:ring-2 hover:ring-accent transition flex items-center justify-center text-center">
+                  <h3 class="text-sm font-bold text-accent">{{ consult.topic }}</h3>
+                </div>
+                <!-- Back -->
+                <div class="flip-card-back bg-base-100 p-4 rounded shadow text-xs text-gray-600 flex items-center justify-center text-center">
+                  {{ consult.description }}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Workshops -->
+      <div>
+        <h3 class="text-lg font-bold text-accent mt-8 mb-2">Workshops</h3>
+        <div class="bg-base-200 p-4 rounded shadow flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <p class="text-sm font-medium text-gray-700">
+              <span class="font-semibold">Bayesian Modeling Workshop</span> — Taught in Winter 2024 and Winter 2025.
+            </p>
+            <p class="text-xs text-gray-500">Hosted by Northwestern IT | Open-source Jupyter Notebook on GitHub</p>
+          </div>
+          <a
+            href="https://github.com/s-vishnoi/Bayesian_Regression/blob/main/stan_workshop.ipynb"
+            target="_blank"
+            class="text-sm bg-accent text-white px-4 py-2 rounded hover:bg-accent-focus transition"
+          >
+            View Workshop Repo ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Request Consult Button -->
+      <div class="mt-4 text-right">
+        <a
+          href="https://www.it.northwestern.edu/departments/it-services-support/teaching/learning.html"
+          target="_blank"
+          class="text-sm bg-base-300 hover:bg-base-200 px-4 py-2 rounded shadow transition"
+        >
+          Request a Consult →
+        </a>
+      </div>
     </div>
+
 
     <!-- Teaching Assistant Section -->
     <div v-else class="space-y-6">
