@@ -3,7 +3,7 @@ export const roles = [
       title: "PhD Candidate, Physics",
       institution: "Northwestern University",
       duration: "Sep 2020 – Dec 2025 (Expected)",
-      description: `Specializing in complexity, data science, and causal inference. Advised by <a href="https://en.wikipedia.org/wiki/Luís_Amaral" target="_blank" class="underline text-accent">Luís Amaral</a>.`,
+      description: `Specializing in complexity, data science, and causal inference. Advised by <a href="https://en.wikipedia.org/wiki/Luís_Amaral" target="_blank" class="underline text-accent">Dr. Luís Amaral</a>.`,
       logo: "/logos/NU_PA_logo.svg",
       link: "https://amaral.northwestern.edu"
     },
@@ -27,7 +27,7 @@ export const roles = [
       title: "Writer",
       institution: "Towards Data Science",
       duration: "2022 – Present",
-      description: "Writes accessible tutorials on Bayesian modeling and data science.",
+      description: "Writing tutorials on cutting-edge data science for a broader audience.",
       logo: "/logos/tds_logo.jpeg",
       link: "https://medium.com/@s-vishnoi"
     }
