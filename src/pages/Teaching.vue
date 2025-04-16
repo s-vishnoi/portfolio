@@ -33,7 +33,7 @@
       <div>
         <h3 class="text-lg font-bold text-accent mb-2">One-on-One Consultations</h3>
         <p class="text-sm text-gray-600 mb-4">
-          Independent consultations I led with Northwestern research teams, focused on technical and methodological challenges.
+          Selected consultations I led with research teams at Northwestern
         </p>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <div
@@ -56,27 +56,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Workshops -->
-      <div>
-        <h3 class="text-lg font-bold text-accent mt-8 mb-2">Workshops</h3>
-        <div class="bg-base-200 p-4 rounded shadow flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div>
-            <p class="text-sm font-medium text-gray-700">
-              <span class="font-semibold">Bayesian Modeling Workshop</span> — Taught in Winter 2024 and Winter 2025.
-            </p>
-            <p class="text-xs text-gray-500">Hosted by Northwestern IT | Open-source Jupyter Notebook on GitHub</p>
-          </div>
-          <a
-            href="https://github.com/s-vishnoi/Bayesian_Regression/blob/main/stan_workshop.ipynb"
-            target="_blank"
-            class="text-sm bg-accent text-white px-4 py-2 rounded hover:bg-accent-focus transition"
-          >
-            View Workshop Repo ↗
-          </a>
-        </div>
-      </div>
-
       <!-- Request Consult Button -->
       <div class="mt-4 text-right">
         <a
@@ -87,6 +66,28 @@
           Request a Consult →
         </a>
       </div>
+
+      <!-- Workshops -->
+      <div>
+        <h3 class="text-lg font-bold text-accent mt-8 mb-2">Workshops</h3>
+        <div class="bg-base-200 p-4 rounded shadow flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <p class="text-sm font-medium text-gray-700">
+              <span class="font-semibold">Bayesian Modeling Workshop</span> — Taught in Winter 2024 & Winter 2025.
+            </p>
+            <p class="text-xs text-gray-500">Hosted by Northwestern IT | Open-source Jupyter Notebook on GitHub</p>
+          </div>
+          <a
+            href="https://github.com/nuitrcs/bayesian_inference_stan/blob/main/stan_workshop.ipynb"
+            target="_blank"
+            class="text-sm bg-accent text-white px-4 py-2 rounded hover:bg-accent-focus transition"
+          >
+            View Workshop Repo ↗
+          </a>
+        </div>
+      </div>
+
+      
     </div>
 
 
