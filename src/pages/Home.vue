@@ -202,7 +202,7 @@ onMounted(async () => {
 }
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-  transition: all 0.3s ease;
+  transition: all 1.0s ease;
 }
 .slide-fade-enter-from {
   opacity: 0;
