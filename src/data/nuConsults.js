@@ -13,7 +13,7 @@ export const consults = [
           description: "Setting up a connection to CMS data APIs and running SQL-based queries for statistical analysis."
         },
         {
-          topic: "Sequence Extraction",
+          topic: "Gene Sequence Extraction",
           description: "Correcting sequence extraction errors from VCF files and ensuring consistent strand handling."
         },
         {
@@ -41,7 +41,7 @@ export const consults = [
           description: "Advising on prior selection and implementation for converting linear mixed models to Bayesian."
         },
         {
-          topic: "Census Interpolation",
+          topic: "Census Data nterpolation",
           description: "Applying interpolation for annual tract-level census estimates within valid bounds."
         },
         {

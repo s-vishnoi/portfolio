@@ -3,51 +3,31 @@
     <!-- Toggle Header -->
     <h1 class="text-2xl font-bold mb-6 text-left">
       <button
-        @click="currentView = 'consultant'"
-        :class="currentView === 'consultant' ? activeBtn : inactiveBtn"
-        class="mx-2 transition"
-      >
-        Research Consultant
-      </button>
-      |
-      <button
         @click="currentView = 'ta'"
-        :class="currentView === 'ta' ? activeBtn : inactiveBtn"
-        class="mx-2 transition"
+        :class="currentView === 'ta' ? 'text-accent underline' : 'text-gray-400 hover:text-accent'"
+        class="mx-2"
       >
         Teaching Assistant
       </button>
+      |
+      <button
+        @click="currentView = 'consultant'"
+        :class="currentView === 'consultant' ? 'text-accent underline' : 'text-gray-400 hover:text-accent'"
+        class="mx-2"
+      >
+        Research Consultant
+      </button>
     </h1>
 
-    <!-- Consultant Section -->
-    <div v-if="currentView === 'consultant'" class="space-y-6">
-      <div class="flex items-center gap-3 mb-4">
-        <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
-        <h2 class="text-2xl font-semibold">Research Consulting @ Northwestern IT</h2>
-      </div>
-
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <div
-          v-for="(consult, index) in consults"
-          :key="index"
-          class="bg-base-100 p-4 rounded-box shadow-md border border-base-200 hover:ring-2 hover:ring-accent transition"
-        >
-          <h3 class="text-sm font-bold text-accent mb-2">{{ consult.topic }}</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 leading-snug">{{ consult.description }}</p>
-        </div>
-      </div>
-    </div>
-
     <!-- Teaching Assistant Section -->
-    <div v-else class="space-y-6">
-      <div class="flex items-center gap-3">
+    <div v-if="currentView === 'ta'" class="space-y-6">
+      <h2 class="text-2xl font-semibold text-black-400 flex items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
-        <h2 class="text-2xl font-semibold">Northwestern University</h2>
-      </div>
-
-      <div class="bg-base-100 p-4 rounded-box shadow space-y-4">
+        Northwestern University
+      </h2>
+      <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
         <ul class="list-disc list-inside text-gray-700 mb-4">
-          <li>General Physics – 2021 Fall | 2022 Winter Spring | 2023 Fall Winter | 2025 Winter</li>
+          <li>General Physics - 2021 Fall | 2022 Winter Spring | 2023 Fall Winter | 2025 Winter</li>
         </ul>
 
         <!-- Scrollable Testimonials -->
@@ -62,16 +42,80 @@
         </div>
       </div>
     </div>
+
+    <!-- Consultant Section -->
+    <div v-else>
+      <h2 class="text-2xl font-semibold text-black-400 flex items-center gap-3 mb-4">
+        <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
+        Data Science Research Consultant 
+      </h2>
+
+      <div 
+        v-for="(item, index) in consults" 
+        :key="index" 
+        class="perspective"
+      >
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <!-- Front -->
+            <div class="flip-card-front bg-base-200 p-4 rounded-lg shadow-sm border border-base-300 flex items-center justify-center text-center">
+              <h3 class="font-semibold text-base-content">{{ item.topic }}</h3>
+            </div>
+            <!-- Back -->
+            <div class="flip-card-back bg-base-100 p-4 rounded-lg shadow-sm border border-base-300 text-sm text-gray-600 dark:text-gray-400">
+              <p>{{ item.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </section>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { consults } from '../data/nuConsults'
-import { nuTestimonials } from '../data/nuTestimonials'
+  import { ref } from 'vue'
+  import { nuTestimonials } from '../data/nuTestimonials.js'
+  import { consults } from '../data/nuConsults.js'
 
-const currentView = ref('consultant')
-
-const activeBtn = 'text-accent font-semibold underline'
-const inactiveBtn = 'text-gray-400 hover:text-accent'
+  const currentView = ref('ta')
 </script>
+
+<style scoped>
+  .perspective {
+    perspective: 1000px;
+  }
+
+  .flip-card {
+    width: 100%;
+    height: 120px;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+</style>
