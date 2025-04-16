@@ -1,7 +1,7 @@
 <template>
   <section class="max-w-4xl mx-auto p-6 space-y-10">
     <!-- Toggle Header -->
-    <h1 class="text-3xl font-bold mb-6 text-center">
+    <h1 class="text-2xl font-bold mb-6 text-left">
       <button
         @click="currentView = 'consultant'"
         :class="currentView === 'consultant' ? activeBtn : inactiveBtn"
