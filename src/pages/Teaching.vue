@@ -65,7 +65,7 @@
 
       <!-- Workshops Section -->
       <div>
-        <h3 class="text-lg font-bold text-accent mt-8 mb-2">Workshops</h3>
+        <h3 class="text-lg font-bold text-accent mt-8 mb-2">Group Workshops</h3>
         <div class="bg-base-200 p-4 rounded shadow flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <p class="text-sm font-medium text-gray-700">
@@ -76,7 +76,7 @@
           <a
             href="https://github.com/s-vishnoi/Bayesian_Regression/blob/main/stan_workshop.ipynb"
             target="_blank"
-            class="text-sm bg-accent text-white px-4 py-2 rounded hover:bg-accent-focus transition"
+            class="text-sm bg-base-300 hover:bg-base-200 px-4 py-2 rounded shadow transition whitespace-nowrap"
           >
             View Workshop Repo ↗
           </a>
