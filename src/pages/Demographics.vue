@@ -9,7 +9,7 @@
     <h1 class="text-3xl font-bold mt-4">Global Researcher Demographics</h1>
     <p>
       While representation in academia has been studied extensively in individual aspects of the acadmeic career
-      pipeline i.e. joining academia, dropping out, location, and mobility etc. There has been a lack of large scale 
+      pipeline i.e. joining academia, dropping out, location, and mobility etc. there has been a lack of large scale 
       ground truth data in informing our progress towards academic equality. 
     </p>
     <p>
@@ -22,7 +22,7 @@
     <h1 class="font-bold mt-4">Publications</h1>
 
     <p>
-      
+      Global progress towards representational equality within academia has stalled, 2025 (pending review)
     </p>
   </main>
 </template>
