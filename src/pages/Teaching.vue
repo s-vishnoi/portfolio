@@ -20,7 +20,7 @@
 
     <!-- Consultant Section -->
     <div v-if="currentView === 'consultant'">
-      <h2 class="text-2xl font-semibold text-black-400 flex items-center gap-3 mb-4">
+      <h2 class="text-2xl font-semibold text-gray-500 flex items-center gap-3 mb-4">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
         Research Consulting @ Northwestern IT
       </h2>
@@ -49,7 +49,7 @@
 
     <!-- Teaching Assistant Section -->
     <div v-else class="space-y-6">
-      <h2 class="text-2xl font-semibold text-black-400 flex items-center gap-3">
+      <h2 class="text-2xl font-semibold text-gray-500 flex items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
         Northwestern University
       </h2>
@@ -78,7 +78,7 @@ import { ref } from 'vue'
 import { nuTestimonials } from '../data/nuTestimonials.js'
 import { consults } from '../data/nuConsults.js'
 
-const currentView = ref('consultant') // ✅ Default is now 'consultant'
+const currentView = ref('consultant') 
 </script>
 
 <style scoped>
