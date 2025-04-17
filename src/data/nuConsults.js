@@ -41,7 +41,7 @@ export const consults = [
           description: "Advising on prior selection and implementation for converting linear mixed models to Bayesian."
         },
         {
-          topic: "Census Data nterpolation",
+          topic: "Census Data Interpolation",
           description: "Applying interpolation for annual tract-level census estimates within valid bounds."
         },
         {
