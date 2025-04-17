@@ -65,13 +65,12 @@
 
       <!-- Workshops Section -->
       <div>
-        <h3 class="text-lg font-bold text-accent mt-8 mb-2">Group Workshops</h3>
         <div class="bg-base-200 p-4 rounded shadow flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <p class="text-sm font-medium text-gray-700">
               <span class="font-semibold">Bayesian Modeling Workshop</span> — Taught in Winter 2024 and Winter 2025.
             </p>
-            <p class="text-xs text-gray-500">Hosted by Northwestern IT | Open-source Jupyter Notebook on GitHub</p>
+            <p class="text-xs text-gray-500">Open-source Jupyter Notebook on GitHub | Hosted by Northwestern IT</p>
           </div>
           <a
             href="https://github.com/s-vishnoi/Bayesian_Regression/blob/main/stan_workshop.ipynb"
