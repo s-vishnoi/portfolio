@@ -23,13 +23,15 @@ export const roles = [
       logo: "/logos/NU_PA_logo.svg",
       link: "https://www.it.northwestern.edu/departments/it-services-support/research/"
     },
-    {
-      title: "Writer",
-      institution: "Towards Data Science",
-      duration: "2022 – Present",
-      description: "Writing tutorials on cutting-edge data science for a broader audience.",
-      logo: "/logos/tds_logo.jpeg",
-      link: "https://medium.com/@s-vishnoi"
-    }
+     
+   
   ];
   
+  /*{
+    title: "Writer",
+    institution: "Towards Data Science",
+    duration: "2022 – Present",
+    description: "Writing tutorials on cutting-edge data science for a broader audience.",
+    logo: "/logos/tds_logo.jpeg",
+    link: "https://medium.com/@s-vishnoi"
+  }*/
