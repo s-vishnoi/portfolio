@@ -2,7 +2,7 @@ export const nuTestimonials = [
     "He was very good at explaining the experiments so much so that it was very digestible even though the experiments were difficult at surface level. He was also enthusiastic about his work which made it more fun and exciting to learn. Overall, amazing TA and the best lab TA I've had. Really wanted students to learn rather than trick them !",
     "Great lab TA. Very helpful and never made students feel ashamed for asking ANY question (no matter how dumb they were). Always willing to help and very good at explaining concepts. Best lab TA I had in northwestern.",
     "Samvardhan Vishnoi is a great TA. He is well–prepared for instruction in each class. He is able to help all students understand the material and gives brief lectures at the beginning of class as an overview. Overall, a great experience.",
-    "Vishnoi was super helpful and always gave us relevant practice problems during discussions. He really knows his stuff! Sad to have had him leave but his replacement TA was also very similar and helpful.",
+    "Vishnoi was super helpful and always gave us relevant practice problems during discussions. He really knows his stuff!",
     "Vishnoi was very good at explaining concepts! Every time I had questions, Vishnoi answered my questions very well! Overall, they were a great TA!",
     "Vishnoi answered questions very well! They did an amazing job at teaching class content. They were always willing to help and was incredibly kind.",
     "He was clear when we asked questions and kept instruction at the beginning of the lab succinct.",
