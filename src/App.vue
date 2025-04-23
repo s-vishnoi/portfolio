@@ -24,18 +24,18 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-const theme = ref('pastel')
+const theme = ref('mycustom')
 
 const toggleTheme = () => {
   const root = document.documentElement
   const current = root.getAttribute('data-theme')
-  const next = current === 'dark' ? 'pastel' : 'dark'
+  const next = current === 'dark' ? 'mycustom' : 'dark'
   theme.value = next
   root.setAttribute('data-theme', next)
 }
 
 onMounted(() => {
-  theme.value = document.documentElement.getAttribute('data-theme') || 'pastel'
+  theme.value = document.documentElement.getAttribute('data-theme') || 'mycustom'
 })
 </script>
 
