@@ -10,7 +10,7 @@ module.exports = {
     themes: [
       {
         mycustom: {
-          ...pastel["[data-theme=pastel]"],
+          
           "base-100": "#f7f8fa", // slightly off-white
           "base-200": "#e7e9ef", // deeper contrast for boxes
           "primary": "#7d9acc",  // richer pastel blue
