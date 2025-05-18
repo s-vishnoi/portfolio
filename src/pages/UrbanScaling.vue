@@ -1,9 +1,6 @@
 <template>
   <main class="max-w-3xl mx-auto p-6 space-y-6">
-    <img src="/images/projects/urban-scaling.jpg" alt="Missing Arrest Data" class="w-full rounded shadow" />
-    <figcaption class="text-sm text-gray-500 mt-1">
-      Gaps in collected arrest data for U.S. states from 1985-2015.
-    </figcaption>
+    
 
     <h1 class="text-3xl font-bold mt-4">Urban Scaling Laws</h1>
     <p>
@@ -17,6 +14,10 @@
       I use a Bayesian Heirarchical scaling model with census data on income, education, and demography to fill these gaps
       and shed light on arresting biases and inform fairer policy. 
     </p>
+    <img src="/images/projects/urban-scaling.jpg" alt="Missing Arrest Data" class="w-full rounded shadow" />
+    <figcaption class="text-sm text-gray-500 mt-1">
+      Gaps in collected arrest data for U.S. states from 1985-2015.
+    </figcaption>
 
     <h1 class="font-bold mt-4">Publications</h1>
     <p>
