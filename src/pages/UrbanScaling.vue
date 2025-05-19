@@ -11,14 +11,17 @@
     </p>
     <p>
       Arrest data collected from law agencies acorss the U.S. is heavily missing due to a voluntary reporting program. 
-      I use a Bayesian Heirarchical scaling model with census data on income, education, and demography to fill these gaps
-      and shed light on arresting biases and inform fairer policy. 
+      A major challenge remains identfying missing and underreported values.  
     </p>
+      
     <img src="/images/projects/urban-scaling.jpg" alt="Missing Arrest Data" class="w-full rounded shadow" />
     <figcaption class="text-sm text-gray-500 mt-1">
-      Gaps in collected arrest data for U.S. states from 1985-2015.
+      Missingness (1985-2015, 30 years) in arrest data from U.S. states
     </figcaption>
-
+    <p>
+      I leverage scaling laws to inform corrected rates as well as uncertainty estimates for 300 U.S. cities. 
+      I utilize multi-level Bayesian estimations for including time and regional variations while maintainting transparency in model certainty. 
+    </p>
     <h1 class="font-bold mt-4">Publications</h1>
     <p>
       
