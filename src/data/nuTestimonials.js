@@ -40,11 +40,11 @@ export const nuTestimonials = [
     "Was the best TA ever. Weaknesses: none.",
     "super kind and willing to help out",
     "great guy and great at teaching, super patient and accurate",
-    "Good at going over concepts",
+    /*"Good at going over concepts",
     "Knows ab the stuff",
     "he helped out",
     "They’re a nice person",
     "He was really nice and helpful.",
     "Very helpful when we were confused and had questions",
-    "They did a great job at teaching class content.",
+    "They did a great job at teaching class content.",*/
   ];
