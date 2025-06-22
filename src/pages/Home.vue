@@ -79,7 +79,7 @@
           <img
             :src="project.image"
             :alt="project.title"
-            class="w-full h-48 object-cover rounded mb-3"
+            class="w-full h-48 object-cover object-top rounded mb-3"
           />
           <h3 class="font-bold text-lg">{{ project.title }}</h3>
           <p>{{ project.description }}</p>
