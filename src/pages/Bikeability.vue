@@ -4,15 +4,16 @@
       <p class="text-gray-600">
         Explore community-level crash severity, lane types, and bikeability across Chicago.
       </p>
-  
+  <!--
       <div class="rounded-lg overflow-hidden shadow-md border border-gray-200">
         <iframe
-          <--src="https://chicago-bike-dashboard.onrender.com"-->
+          src="https://chicago-bike-dashboard.onrender.com" 
           width="100%"
           height="900"
           style="border: none;"
         ></iframe>
       </div>
+    -->
     </main>
 </template>
   
