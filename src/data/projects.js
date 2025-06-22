@@ -14,7 +14,7 @@ export const projects = [
   {
     title: "Global Researcher Demographics",
     description: "Leveraging publication records to build a global researcher database",
-    image: "/images/projects/demography-map.jpg",
+    image: "/images/projects/demography-map.png",
     link: "/demographics"
   }
 ];

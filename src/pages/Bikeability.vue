@@ -18,7 +18,7 @@
             Hosted using Docker and Render.
       </p>
     <!--
-      <p class="text-blue-600 hover:underline text-sm">
+    <p class="text-blue-600 hover:underline text-sm">
       <a href="blog link here" target="_blank">
         📖 Read more about the data, methods, and design choices behind this dashboard.
       </a>
