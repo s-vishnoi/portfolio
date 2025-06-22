@@ -13,7 +13,17 @@
           style="border: none;"
         ></iframe>
       </div>
-        
+      <p class="text-sm text-gray-500 italic">
+            Built with Dash and Plotly using data from the City of Chicago.<br />
+            Hosted using Docker and Render.
+      </p>
+    <!--
+      <p class="text-blue-600 hover:underline text-sm">
+      <a href="blog link here" target="_blank">
+        📖 Read more about the data, methods, and design choices behind this dashboard.
+      </a>
+    </p>
+    -->
     </main>
 </template>
   
