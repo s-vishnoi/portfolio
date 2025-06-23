@@ -1,9 +1,10 @@
 <template>
     <main class="max-w-6xl mx-auto p-6 space-y-6">
-      <h1 class="text-2xl font-semibold">🚲 Chicago Bike Dashboard</h1>
+      <h1 class="text-2xl font-semibold">🚲 Chicago Bikeability Dashboard</h1>
         <p class="text-gray-600">
-            This dashboard visualizes bike crash data, lane types, and bikeability scores across Chicago neighborhoods.
-            It provides insights into cycling safety and infrastructure, helping to identify areas for improvement.
+            This dashboard visualizes bike traffic crashes, bike lane types, and assigns bikeability scores across Chicago community areas. 
+            Users can glean quick insights into biking infrastructure and safety, helping to identify areas for improvement.
+            Please allow 1-2 minutes for the interactive application's initial load. 
         </p>
       <div class="rounded-lg overflow-hidden shadow-md border border-gray-200">
         <iframe
@@ -14,7 +15,7 @@
         ></iframe>
       </div>
       <p class="text-sm text-gray-500 italic">
-            Built with Dash and Plotly using data from the City of Chicago.<br />
+            Built with Plotly and Dash using data from the City of Chicago.<br />
             Hosted using Docker and Render.
       </p>
     <!--
