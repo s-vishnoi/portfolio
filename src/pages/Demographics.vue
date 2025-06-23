@@ -20,9 +20,14 @@
     </p>
 
     <h1 class="text-2xl font-bold mt-4">Publications</h1>
+    <p class="italic">
+      Global Improvements in the Representation of Women in Science Are Stalling <br>
+      <span class="not-italic">(First author, 2025, <em>Science</em> — under review)</span>
+    </p>
 
-    <p class = "italic">
-      Global progress towards representational equality within academia has stalled, 2025 (pending review)
+    <h1 class="text-2xl font-bold mt-4">Code</h1>
+    <p>
+      The open-source code repository will be made available after publication.
     </p>
   </main>
 </template>

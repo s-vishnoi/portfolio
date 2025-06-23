@@ -2,7 +2,7 @@ export const projects = [
   {
     title: "Chicago Bike Dashboard",
     description: "A community data resource for Chicago's bike infrastructure",
-    image: "/images/projects/biking.png",
+    image: "/images/projects/bike_accidents.png",
     link: "/bikeability"
   },
   {
