@@ -13,19 +13,18 @@
       ground truth data informing global equality remains missing.  
     </p>
     <p>
-      We leverage records of 95M+ research papers to create a novel dataset on researchers in 180 countries.
-      We introduce methods to measure and track academic growth, migration networks, and demographic inequalities, 
-      informing key decision metrics for universities and policy makers.
+      We leverage 45M+ research records to extract the career trajectories of 30M+ researchers (anonymized) in ~200 countries.
+      We define and measure country-level academic growth, migration networks, and demographic equality- providing a novel global outlook for policy.
       
     </p>
 
-    <h1 class="text-1.5xl font-bold mt-2">Publications</h1>
+    <h1 class="text-1.5xl font-bold mt-2 mb-1">Publications</h1>
     <p class="italic">
       Global Improvements in the Representation of Women in Science Are Stalling <br>
       <span class="not-italic">(First author, 2025, <em>Science</em> — under review)</span>
     </p>
 
-    <h1 class="text-1.5xl font-bold mt-2">Code</h1>
+    <h1 class="text-1.5xl font-bold mt-2 mb-1">Code</h1>
     <p>
       The open-source data and code repository will be made available after publication.
     </p>
