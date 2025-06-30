@@ -2,7 +2,7 @@
   <main class="max-w-3xl mx-auto p-6 space-y-6">
     
 
-    <h1 class="text-3xl font-bold mt-4">Urban Scaling Laws</h1>
+    <h1 class="text-3xl font-bold mt-4">City Scaling Laws</h1>
     <p>
       Most cities grow, but they don't grow evenly. Larger cities often have disproportionate increases in crime,
       income, and innovation.
@@ -16,7 +16,7 @@
     <p>
       Arrest data collected from law agencies acorss the U.S. is heavily missing due to a voluntary reporting program (Uniform Crime Reporting, FBI).
       Current criminology research often ignores this missingness, leading to biased conclusions.
-      Identfying missing/underreported values remains a major statistical challenge, preventing reliable research and weakening policy initiatives.
+      Identfying missing/underreported values remains a major statistical challenge, preventing reliable research and weakening policy initiatives for equitable policing. 
         </p>
       
     <img src="/images/projects/urban-scaling.jpg" alt="Missing Arrest Data" class="w-full rounded shadow" />
@@ -25,7 +25,7 @@
     </figcaption>
     <p>
       I leverage scaling laws to inform corrected arrest rates as well as uncertainty for 300 U.S. cities. 
-      State-of-the-art Bayesian estimations allow modeling for time and region variations heirarchically, while maintainting transparency. 
+      Bayesian methods allow modeling for time and regional variations heirarchically while maintaining transparency, delivering state-of-the-art estimates.
     </p>
 
     <h2 class="text-1.5xl font-bold mt-2">Publications</h2>

@@ -6,7 +6,7 @@
     </figcaption> 
     -->
 
-    <h1 class="text-3xl font-bold mt-4">Global Researcher Demographics</h1>
+    <h1 class="text-3xl font-bold mt-4">Research Demographic Equality</h1>
     <p>
       While representation in academia has been studied extensively in individual aspects
       i.e. joining, dropping out, location, and mobility etc., comprehensive  

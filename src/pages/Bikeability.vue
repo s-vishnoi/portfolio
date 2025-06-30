@@ -14,7 +14,7 @@
         ></iframe>
       </div>
       <p>
-      Please allow 1-2 minutes for initial loading of the interactive application. 
+      Please allow 1-2 minutes for initial load of the interactive application. 
       </p>
       <p class="text-sm text-gray-500 italic">
             Built with Plotly and Dash using data from the City of Chicago.<br />
