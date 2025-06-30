@@ -2,8 +2,8 @@
     <main class="max-w-6xl mx-auto p-6 space-y-6">
       <h1 class="text-2xl font-semibold">🚲 Chicago Bikeability Dashboard</h1>
         <p class="text-gray-600">
-            This dashboard visualizes bike traffic crashes, bike lane types, and assigns bikeability scores across Chicago community areas. 
-            Users can glean quick insights into biking infrastructure and safety, helping to identify areas for improvement.
+            This dashboard visualizes bike traffic crashes and assigns bikeability scores across Chicago community areas. 
+            Users can glean quick insights and help identify areas for improvement.
         </p>
       <div class="rounded-lg overflow-hidden shadow-md border border-gray-200">
         <iframe
