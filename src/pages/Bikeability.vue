@@ -4,7 +4,6 @@
         <p class="text-gray-600">
             This dashboard visualizes bike traffic crashes, bike lane types, and assigns bikeability scores across Chicago community areas. 
             Users can glean quick insights into biking infrastructure and safety, helping to identify areas for improvement.
-            Please allow 1-2 minutes for the interactive application's initial load. 
         </p>
       <div class="rounded-lg overflow-hidden shadow-md border border-gray-200">
         <iframe
@@ -14,10 +13,14 @@
           style="border: none;"
         ></iframe>
       </div>
+      <p>
+      Please allow 1-2 minutes for initial loading of the interactive application. 
+      </p>
       <p class="text-sm text-gray-500 italic">
             Built with Plotly and Dash using data from the City of Chicago.<br />
             Hosted using Docker and Render.
       </p>
+
     <!--
     <p class="text-blue-600 hover:underline text-sm">
       <a href="blog link here" target="_blank">

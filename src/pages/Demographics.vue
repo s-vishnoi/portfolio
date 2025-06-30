@@ -8,15 +8,15 @@
 
     <h1 class="text-3xl font-bold mt-4">Global Researcher Demographics</h1>
     <p>
-      While representation in academia has been studied extensively in individual aspects of the acadmeic career
-      pipeline i.e. joining academia, dropping out, location, and mobility etc. there has been a lack of large scale 
-      ground truth data in informing our progress towards academic equality. 
+      While representation in academia has been studied extensively in individual aspects
+      i.e. joining, dropping out, location, and mobility etc., comprehensive  
+      ground truth data informing global equality remains missing.  
     </p>
     <p>
-      We leverage publication records from SCOPUS on 95M+ papers to create a novel global dataset on researchers and 
-      analyze how academic opportunities are distributed around the world.
-      We track publication trends, migration networks, and long-term productivity by country, gender, and institution.
-      This lets universities and policymakers see where systemic bias or imbalance exists — and how it has changed over time.
+      We leverage records of 95M+ research papers to create a novel dataset on researchers in 180 countries.
+      We introduce methods to measure and track academic growth, migration networks, and demographic inequalities, 
+      informing key decision metrics for universities and policy makers.
+      
     </p>
 
     <h1 class="text-2xl font-bold mt-4">Publications</h1>
@@ -27,7 +27,7 @@
 
     <h1 class="text-2xl font-bold mt-4">Code</h1>
     <p>
-      The open-source code repository will be made available after publication.
+      The open-source data and code repository will be made available after publication.
     </p>
   </main>
 </template>

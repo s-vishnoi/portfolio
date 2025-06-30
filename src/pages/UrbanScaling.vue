@@ -16,15 +16,24 @@
       
     <img src="/images/projects/urban-scaling.jpg" alt="Missing Arrest Data" class="w-full rounded shadow" />
     <figcaption class="text-sm text-gray-500 mt-1">
-      Missingness (1985-2015, 30 years) in arrest data from U.S. states
+      Estimated missingness (1980-2022, 42 years) in arrest data across U.S. counties
     </figcaption>
     <p>
-      I leverage scaling laws to inform corrected rates as well as uncertainty estimates for 300 U.S. cities. 
-      I utilize multi-level Bayesian estimations for including time and regional variations while maintainting transparency in model certainty. 
+      I leverage scaling laws to inform corrected arrest rates as well as uncertainty for 300 U.S. cities. 
+      State-of-the-art Bayesian estimations allow modeling for time and region variations heirarchically, while maintainting transparency. 
     </p>
-    <h1 class="font-bold mt-4">Publications</h1>
+
+    <h1 class="text-2xl font-bold mt-4">Publications</h1>
+    <p class="italic">
+      Changes in poverty and ethnic diversity predict the murder rate of US metropolitan statistical areas over a 60-year period <br>
+      <span class="not-italic">(Second author, 2025, <em>Nature Human Behavior</em> — under review)</span>
+    </p>
+
+    <h1 class="text-2xl font-bold mt-4">Code</h1>
     <p>
-      
+      The open-source data and code repository will be made available after publication.
     </p>
+
+    
   </main>
 </template>
