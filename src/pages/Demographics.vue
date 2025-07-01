@@ -21,7 +21,7 @@
     <h2 class="text-1.5xl font-bold mt-2 mb-1">Publications</h2>
     <p>
       Global Improvements in the Representation of Women in Science Are Stalling <br>
-      <span class="not-italic">(First author, 2025, <em>Science</em> — under review)</span>
+      <span class="not-italic">(First author, 2025, <em>Science</em> — in review)</span>
     </p>
 
     <h2 class="text-1.5xl font-bold mt-2 mb-1">Code</h2>

@@ -5,7 +5,7 @@
             This dashboard visualizes bike traffic crashes and assigns bikeability scores across Chicago community areas. 
             Users can glean quick insights and help identify areas for improvement.
         </p>
-        <div class="-mx-6 sm:-mx-8 md:-mx-12 lg:-mx-20 overflow-x-auto">
+        <div class="-mx-6 sm:-mx-8 md:-mx-12 lg:-mx-20 overflow-x-auto rounded-lg">
           <div class="min-w-[1280px] mx-auto shadow-md rounded-lg">
             <iframe
               src="https://chicago-bike-dashboard.onrender.com"
@@ -15,9 +15,9 @@
             ></iframe>
           </div>
         </div>
-      <p>
-      Please allow 1-2 minutes for initial load of the interactive application. 
-      </p>
+        <p>
+            Please allow 1-2 minutes for initial load of the interactive application. 
+        </p>
       <p class="text-sm text-gray-500 italic">
             Built with Plotly and Dash using data from the City of Chicago.<br />
             Hosted using Docker and Render.

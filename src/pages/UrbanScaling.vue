@@ -31,7 +31,7 @@
     <h2 class="text-1.5xl font-bold mt-2">Publications</h2>
     <p class="italic">
       Changes in poverty and ethnic diversity predict the murder rate of US metropolitan statistical areas over a 60-year period <br>
-      <span class="not-italic">(Second author, 2025, <em>Nature Human Behavior</em> — under review)</span>
+      <span class="not-italic">(Second author, 2025, <em>Nature Human Behavior</em> — in review)</span>
     </p>
 
     <h2 class="text-1.5xl font-bold mt-2">Code</h2>
