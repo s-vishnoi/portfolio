@@ -28,13 +28,13 @@
       Bayesian methods allow modeling for time and regional variations heirarchically while maintaining transparency, delivering state-of-the-art estimates.
     </p>
 
-    <h3 class="text-1.5xl font-bold mt-2">Publications</h3>
+    <h2 class="text-1.5xl font-bold mt-2">Publications</h2>
     <p class="italic">
       Changes in poverty and ethnic diversity predict the murder rate of US metropolitan statistical areas over a 60-year period <br>
       <span class="not-italic">(Second author, 2025, <em>Nature Human Behavior</em> — under review)</span>
     </p>
 
-    <h3 class="text-1.5xl font-bold mt-2">Code</h3>
+    <h2 class="text-1.5xl font-bold mt-2">Code</h2>
     <p>
       The open-source data and code repository will be made available after publication.
     </p>
