@@ -8,8 +8,8 @@
       <div class="overflow-hidden shadow-md">
         <iframe
           src="https://chicago-bike-dashboard.onrender.com" 
-          width="120%"
-          height="900"
+          width="w-full"
+          height="h-full"
           style="border: none;"
         ></iframe>
       </div>
