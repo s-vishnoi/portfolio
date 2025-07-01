@@ -18,13 +18,13 @@
       
     </p>
 
-    <h1 class="text-1.5xl font-bold mt-2 mb-1">Publications</h1>
+    <h2 class="text-1.5xl font-bold mt-2 mb-1">Publications</h2>
     <p>
       Global Improvements in the Representation of Women in Science Are Stalling <br>
       <span class="not-italic">(First author, 2025, <em>Science</em> — under review)</span>
     </p>
 
-    <h1 class="text-1.5xl font-bold mt-2 mb-1">Code</h1>
+    <h2 class="text-1.5xl font-bold mt-2 mb-1">Code</h2>
     <p>
       The open-source data and code repository will be made available after publication.
     </p>

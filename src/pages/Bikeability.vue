@@ -5,10 +5,10 @@
             This dashboard visualizes bike traffic crashes and assigns bikeability scores across Chicago community areas. 
             Users can glean quick insights and help identify areas for improvement.
         </p>
-      <div class="rounded-lg overflow-hidden shadow-md">
+      <div class="overflow-hidden shadow-md">
         <iframe
           src="https://chicago-bike-dashboard.onrender.com" 
-          width="110%"
+          width="120%"
           height="1000"
           style="border: none;"
         ></iframe>
