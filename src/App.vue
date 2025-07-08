@@ -5,7 +5,7 @@
         <router-link to="/" class="btn btn-ghost text-xl">Vishnoi</router-link>
       </div>
       <div class="flex gap-4 px-2 items-center">
-        <router-link to="/" class="btn btn-ghost">Home</router-link>
+        <!--router-link to="/" class="btn btn-ghost">Home</router-link-->
         <router-link to="/work" class="btn btn-ghost">Work</router-link>
         <router-link to="/blog" class="btn btn-ghost">Blog</router-link>
         <router-link to="/resume" class="btn btn-ghost">Resume</router-link>
