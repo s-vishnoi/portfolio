@@ -14,10 +14,16 @@
           <span v-else>🌘</span>
         </button>
       </div>
+
     </nav>
     <transition name="slide" mode="out-in">
       <router-view />
     </transition>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t text-sm text-center text-gray-400 py-4">
+      <!-- Leave blank or add text -->
+    </footer>
   </div>
 </template>
 
