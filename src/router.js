@@ -5,7 +5,7 @@ import UrbanScaling from './pages/UrbanScaling.vue'
 import Demographics from './pages/Demographics.vue'
 import BlogArchive from './pages/BlogArchive.vue'
 import Resume from './pages/Resume.vue'
-import Roles from './pages/Roles.vue'
+import Work from './pages/Work.vue'
 
 const routes = [
   { path: '/', component: Home },
@@ -14,7 +14,7 @@ const routes = [
   { path: '/demographics', component: Demographics },
   { path: '/blog', component: BlogArchive },
   { path: '/resume', component: Resume },
-  { path: '/roles', component: Roles }
+  { path: '/work', component: Work }
 ]
 
 
