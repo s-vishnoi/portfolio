@@ -20,9 +20,9 @@
       <router-view />
     </transition>
 
-    <!-- Footer -->
-    <footer class="mt-auto border-t text-sm text-center text-gray-400 py-4">
-      <!-- Leave blank or add text -->
+    <footer class="navbar bg-base-100 shadow mt-6">
+      <div class="flex-1"></div>
+      <div class="flex gap-4 px-2 items-center"></div>
     </footer>
   </div>
 </template>
