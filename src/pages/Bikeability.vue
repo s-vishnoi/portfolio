@@ -2,8 +2,7 @@
     <main class="max-w-6xl mx-auto p-6 space-y-6">
       <h1 class="text-2xl font-semibold"> Chicago Bikeability Map </h1>
         <p class="text-gray-600">
-          An interactive cartogram visualizing bike traffic crashes and infrastructure across Chicago community areas.
-          Users can glean city-wide insights and help identify areas for improvement.
+          This interactive map analyzes bikeability across Chicago communities using crash data, injury severity, and road infrastructure. Users can glean city-wide insights and explore bike safety by neighborhood. 
         </p>
         <div class="-mx-6 sm:-mx-8 md:-mx-12 lg:-mx-20 overflow-x-auto rounded-lg">
           <div class="min-w-[1280px] mx-auto shadow-md rounded-lg">
@@ -15,9 +14,6 @@
             ></iframe>
           </div>
         </div>
-        <p>
-            Please allow 1-2 minutes for initial load of the interactive application. 
-        </p>
       <p class="text-sm text-gray-500 italic">
             Built with Plotly and Dash using data from the City of Chicago.<br />
             Hosted using Docker and Render.
