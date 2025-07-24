@@ -3,7 +3,7 @@
 
     <!-- About Section -->
     <section id="about" class="bg-base-100 p-6 rounded-box shadow flex flex-col md:flex-row gap-6 items-start">
-      <img src="/images/samvardhan.jpg" alt="Samvardhan Vishnoi" class="w-32 h-32 object-cover rounded-full shadow" />
+      <img src="/images/samvardhan.png" alt="Samvardhan Vishnoi" class="w-32 h-32 object-cover rounded-full shadow" />
       <div>
         <h2 class="text-2xl font-bold mb-4">About Me</h2>
         <p v-for="line in profile.description.split('\n\n')" :key="line" class="mb-2">{{ line }}</p>
