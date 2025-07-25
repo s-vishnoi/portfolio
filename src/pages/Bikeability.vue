@@ -4,13 +4,13 @@
         <p class="text-gray-600">
           This interactive map analyzes bikeability across Chicago communities using crash data, injury severity, and road infrastructure. Users can glean city-wide insights and explore bike safety by neighborhood. 
         </p>
-        <div class="-mx-6 sm:-mx-8 md:-mx-12 lg:-mx-20 overflow-x-auto rounded-lg">
+        <div class="-mx-6 sm:-mx-8 md:-mx-12 lg:-mx-20 rounded-lg">
           <div class="min-w-[1280px] mx-auto shadow-md rounded-lg">
             <iframe
               src="https://chicago-bike-dashboard.onrender.com"
               class="w-full"
-              height="1050"
-              width ="950"
+              height="1100"
+              width ="1000"
               style="border: none;"
             ></iframe>
           </div>
