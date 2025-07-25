@@ -98,44 +98,78 @@
       <h2 class="text-2xl font-bold mb-4">Skills</h2>
       <div class="grid gap-4 md:grid-cols-2">
 
+        <!-- Statistical Modeling -->
         <div class="bg-base-200 p-4 rounded-lg shadow">
           <h3 class="font-semibold text-lg mb-2">📐 Statistical Modeling</h3>
-          <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
-            <li>Bayesian inference and hierarchical modeling (Stan, PyMC)</li>
-            <li>Time series decomposition, forecasting, and smoothing</li>
-            <li>GLMs, regularization, and imputation for incomplete data</li>
-          </ul>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+            I approach modeling with end-to-end ownership — from framing questions to communicating results. With a physics-trained systems mindset, I prioritize clarity, interpretability, and practical impact. I work closely with domain experts, adapt quickly to evolving goals, and explain statistical tradeoffs without jargon to ensure insights land where they matter.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="bg-base-300 px-2 py-1 rounded-full">Stan</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">PyMC</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">GLMs</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Bayesian Models</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Forecasting</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Imputation</span>
+          </div>
         </div>
 
+        <!-- Data Wrangling & Visualization -->
         <div class="bg-base-200 p-4 rounded-lg shadow">
           <h3 class="font-semibold text-lg mb-2">📊 Data Wrangling & Visualization</h3>
-          <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
-            <li>High-performance data wrangling with pandas & numpy</li>
-            <li>Interactive dashboards and maps (Plotly, Dash, Leaflet)</li>
-            <li>Exploratory visualization with matplotlib and seaborn</li>
-          </ul>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+            I build pipelines that make messy data useful, then design visualizations and dashboards that surface structure and support decisions — not just exploration.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="bg-base-300 px-2 py-1 rounded-full">pandas</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">numpy</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Plotly</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Dash</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Leaflet</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">matplotlib</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">seaborn</span>
+          </div>
         </div>
 
+        <!-- Machine Learning & Deployment -->
         <div class="bg-base-200 p-4 rounded-lg shadow">
-          <h3 class="font-semibold text-lg mb-2">🛠️ Machine Learning</h3>
-          <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
-            <li>Supervised learning with scikit-learn, XGBoost</li>
-            <li>Transformer-based models, fine-tuning LLaMA for NLP tasks</li>
-            <li>Model interpretability with SHAP and feature attributions</li>
-          </ul>
+          <h3 class="font-semibold text-lg mb-2">🛠️ Machine Learning & Deployment</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+            I lead end-to-end research workflows. When the data doesn’t exist, I build the scrapers and APIs to get it. I train high-performing, explainable models (ensembles, fine-tuned transformers), use SHAP and domain insight to ensure accountability, and deliver results through reproducible pipelines, versioned code, Docker containers, and cloud apps.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="bg-base-300 px-2 py-1 rounded-full">scikit-learn</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">XGBoost</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Transformers (LLaMA)</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">SHAP</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Git</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Docker</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Render</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Vercel</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">APIs</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Web Scraping</span>
+          </div>
         </div>
 
+        <!-- Communication & Collaboration -->
         <div class="bg-base-200 p-4 rounded-lg shadow">
-          <h3 class="font-semibold text-lg mb-2">⚙️ Engineering & Deployment</h3>
-          <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
-            <li>Python, R, SQL, HPC, Bash scripting</li>
-            <li>Versioning & collaboration with Git, containerization with Docker</li>
-            <li>API integration, scraping, and cloud app deployment (Render, Vercel)</li>
-          </ul>
+          <h3 class="font-semibold text-lg mb-2">🗣️ Communication & Collaboration</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+            I lead and collaborate with interdisciplinary research teams, often across institutions and time zones. I make complex ideas accessible — whether guiding non-technical stakeholders through model results or translating abstract goals into concrete methods. I prioritize clarity, empathy, and shared understanding to keep projects aligned, adaptive, and moving forward.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="bg-base-300 px-2 py-1 rounded-full">Interdisciplinary Teams</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Stakeholder Communication</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Scientific Writing</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Research Leadership</span>
+            <span class="bg-base-300 px-2 py-1 rounded-full">Collaboration</span>
+          </div>
         </div>
 
       </div>
     </section>
+
+
 
     <!-- Blog Section -->
     <section id="blog" class="bg-base-100 p-6 rounded-box shadow">
