@@ -5,7 +5,7 @@
         <button
           @click="currentView = 'consultant'"
           :class="currentView === 'consultant' ? 'bg-accent text-white' : 'bg-base-300 text-gray-700 hover:text-accent'"
-          class="w-80 text-center mx-2 px-4 py-2 rounded shadow transition"
+          class="w-60 text-center mx-2 px-4 py-2 rounded shadow transition"
         >
           Research Consultant
         </button>
@@ -13,7 +13,7 @@
         <button
           @click="currentView = 'ta'"
           :class="currentView === 'ta' ? 'bg-accent text-white' : 'bg-base-300 text-gray-700 hover:text-accent'"
-          class="w-80 text-center mx-2 px-4 py-2 rounded shadow transition"
+          class="w-60 text-center mx-2 px-4 py-2 rounded shadow transition"
         >
           Teaching Assistant
         </button>
