@@ -2,7 +2,7 @@
     <main class="max-w-6xl mx-auto p-6 space-y-6">
       <h1 class="text-2xl font-semibold"> Chicago Bikeability Map </h1>
         <p class="text-gray-600">
-          This interactive map analyzes bikeability across Chicago communities using crash data, injury severity, and road infrastructure. Users can glean city-wide insights and explore bike safety by neighborhood. 
+          This interactive map ranks Bikeability of Chicago communities based on infrastructure. Explore bike traffic crashes by location, cause, and severity. Users can glean city-wide insights and identify areas for improving safety and equity.
         </p>
         <div class="-mx-6 sm:-mx-8 md:-mx-12 lg:-mx-20 rounded-lg">
           <div class="min-w-[1280px] mx-auto shadow-md rounded-lg">
@@ -20,6 +20,27 @@
             Hosted using Docker and Render.
       </p>
 
+          <!-- 📖 Methodology & Feedback -->
+      <div class="text-sm space-y-1 text-blue-600">
+        <p>
+          <a
+            href="https://github.com/s-vishnoi/chicago-bikeability-map"
+            target="_blank"
+            class="hover:underline"
+          >
+            Methodology
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeFxMoI1pig3d9YPGAEFEN-uDXyC7-F7AdTir7p3XG_DYAhrg/viewform?usp=header"
+            class="hover:underline"
+          >
+            Suggestions?
+          </a>
+        </p>
+      </div>
+
     <!--
     <p class="text-blue-600 hover:underline text-sm">
       <a href="blog link here" target="_blank">
@@ -29,4 +50,3 @@
     -->
     </main>
 </template>
-  
