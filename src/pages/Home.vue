@@ -71,6 +71,29 @@
       </div>
     </section>
 
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="bg-base-100 p-6 rounded-box shadow">
+      <h2 class="text-2xl font-bold mb-4">Achievements</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div class="bg-base-200 p-4 rounded-lg shadow flex items-center gap-3">
+          <span class="text-2xl">🏅</span>
+          <div>
+            <h3 class="font-semibold text-lg">Murray Green Medal</h3>
+            <!--<p class="text-sm text-gray-500 dark:text-gray-400">Awarded for excellence in Physics</p>-->
+          </div>
+        </div>
+        <div class="bg-base-200 p-4 rounded-lg shadow flex items-center gap-3">
+          <span class="text-2xl">🎓</span>
+          <div>
+            <h3 class="font-semibold text-lg">Presidential Scholarship</h3>
+            <!--<p class="text-sm text-gray-500 dark:text-gray-400">Merit-based academic scholarship</p>-->
+          </div>
+        </div>
+      </div>
+    </section>
+
+
     <!-- Blog Section -->
     <section id="blog" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Blog</h2>
