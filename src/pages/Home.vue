@@ -136,7 +136,7 @@
         <div class="bg-base-200 p-4 rounded-lg shadow">
           <h3 class="font-semibold text-lg mb-2">🛠️ Machine Learning & Deployment</h3>
           <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
-            I lead research workflows from data acquisition to deployment. I train explainable models, use SHAP and domain insight to ensure accountability, and deliver results through reproducible, production-ready pipelines.
+            I lead research workflows from data acquisition to deployment. I train explainable models, use domain insight to ensure accountability, and deliver results through reproducible, production-ready pipelines.
           </p>
           <div class="flex flex-wrap gap-2 text-xs">
             <span class="bg-base-300 px-2 py-1 rounded-full">scikit-learn</span>
