@@ -93,7 +93,8 @@
       </div>
     </section>
 
-    <!-- Data Science Skills Section -->
+
+        <!-- Skills Section -->
     <section id="skills" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Skills</h2>
       <div class="grid gap-4 md:grid-cols-2">
@@ -102,7 +103,7 @@
         <div class="bg-base-200 p-4 rounded-lg shadow">
           <h3 class="font-semibold text-lg mb-2">📐 Statistical Modeling</h3>
           <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
-            I approach modeling with end-to-end ownership — from framing questions to communicating results. With a physics-trained systems mindset, I prioritize clarity, interpretability, and practical impact. I work closely with domain experts, adapt quickly to evolving goals, and explain statistical tradeoffs without jargon to ensure insights land where they matter.
+            I approach modeling with end-to-end ownership — from framing questions to communicating results. With a physics-trained mindset, I focus on clarity, interpretability, and practical impact. I work closely with domain experts and adapt to evolving goals.
           </p>
           <div class="flex flex-wrap gap-2 text-xs">
             <span class="bg-base-300 px-2 py-1 rounded-full">Stan</span>
@@ -118,7 +119,7 @@
         <div class="bg-base-200 p-4 rounded-lg shadow">
           <h3 class="font-semibold text-lg mb-2">📊 Data Wrangling & Visualization</h3>
           <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
-            I build pipelines that make messy data useful, then design visualizations and dashboards that surface structure and support decisions — not just exploration.
+            I build pipelines that make messy data useful, and design dashboards that surface structure and support decisions.
           </p>
           <div class="flex flex-wrap gap-2 text-xs">
             <span class="bg-base-300 px-2 py-1 rounded-full">pandas</span>
@@ -135,7 +136,7 @@
         <div class="bg-base-200 p-4 rounded-lg shadow">
           <h3 class="font-semibold text-lg mb-2">🛠️ Machine Learning & Deployment</h3>
           <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
-            I lead end-to-end research workflows. When the data doesn’t exist, I build the scrapers and APIs to get it. I train high-performing, explainable models (ensembles, fine-tuned transformers), use SHAP and domain insight to ensure accountability, and deliver results through reproducible pipelines, versioned code, Docker containers, and cloud apps.
+            I lead research workflows from data acquisition to deployment. I train explainable models, use SHAP and domain insight to ensure accountability, and deliver results through reproducible, production-ready pipelines.
           </p>
           <div class="flex flex-wrap gap-2 text-xs">
             <span class="bg-base-300 px-2 py-1 rounded-full">scikit-learn</span>
@@ -155,7 +156,7 @@
         <div class="bg-base-200 p-4 rounded-lg shadow">
           <h3 class="font-semibold text-lg mb-2">🗣️ Communication & Collaboration</h3>
           <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
-            I lead and collaborate with interdisciplinary research teams, often across institutions and time zones. I make complex ideas accessible — whether guiding non-technical stakeholders through model results or translating abstract goals into concrete methods. I prioritize clarity, empathy, and shared understanding to keep projects aligned, adaptive, and moving forward.
+            I work across institutions and disciplines, translating ideas between technical and non-technical teams. I prioritize clarity, shared goals, and trust to keep collaborative projects on track.
           </p>
           <div class="flex flex-wrap gap-2 text-xs">
             <span class="bg-base-300 px-2 py-1 rounded-full">Interdisciplinary Teams</span>
