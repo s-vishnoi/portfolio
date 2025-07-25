@@ -41,7 +41,7 @@
             <h3 class="font-bold text-lg text-accent dark:text-accent-content">{{ role.title }}</h3>
             <p class="text-sm text-gray-500 dark:text-gray-400">{{ role.institution }}</p>
             <p class="text-xs text-gray-400 mt-1">{{ role.duration }}</p>
-            <p class="text-sm text-gray-600 dark:text-gray-300 mt-2" v-html="role.description"></p>
+            <p class="text-sm text-gray-700 dark:text-gray-300 mt-2" v-html="role.description"></p>
           </div>
         </a>
       </div>
