@@ -154,7 +154,7 @@
 
         <!-- Communication & Collaboration -->
         <div class="bg-base-200 p-4 rounded-lg shadow">
-          <h3 class="font-semibold text-lg mb-2">🤝 Communication & Collaboration</h3>
+          <h3 class="font-semibold text-lg mb-2">🔗 Communication & Collaboration</h3>
           <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
             I work across institutions and disciplines, translating ideas between technical and non-technical teams. I prioritize clarity, shared goals, and trust to keep collaborative projects on track.
           </p>
