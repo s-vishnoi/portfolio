@@ -108,7 +108,7 @@
         </div>
 
         <div class="bg-base-200 p-4 rounded-lg shadow">
-          <h3 class="font-semibold text-lg mb-2">📊 Wrangling & Visualization</h3>
+          <h3 class="font-semibold text-lg mb-2">Data Wrangling & Visualization</h3>
           <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
             <li>High-performance data wrangling with pandas & numpy</li>
             <li>Interactive dashboards and maps (Plotly, Dash, Leaflet)</li>
@@ -117,7 +117,7 @@
         </div>
 
         <div class="bg-base-200 p-4 rounded-lg shadow">
-          <h3 class="font-semibold text-lg mb-2">🛠️ Machine Learning & NLP</h3>
+          <h3 class="font-semibold text-lg mb-2">Machine Learning</h3>
           <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
             <li>Supervised learning with scikit-learn, XGBoost</li>
             <li>Transformer-based models, fine-tuning LLaMA for NLP tasks</li>
@@ -126,9 +126,9 @@
         </div>
 
         <div class="bg-base-200 p-4 rounded-lg shadow">
-          <h3 class="font-semibold text-lg mb-2">⚙️ Engineering & Deployment</h3>
+          <h3 class="font-semibold text-lg mb-2">Engineering & Deployment</h3>
           <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
-            <li>Python, R, SQL, Bash scripting for automation</li>
+            <li>Python, R, SQL, HPC, Bash scripting</li>
             <li>Versioning & collaboration with Git, containerization with Docker</li>
             <li>API integration, scraping, and cloud app deployment (Render, Vercel)</li>
           </ul>
