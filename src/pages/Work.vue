@@ -1,26 +1,26 @@
 <template>
-  <section class="max-w-4xl mx-auto p-6 space-y-10">
-    <!-- Toggle Header -->
-    <h1 class="text-1xl text-gray-500 mb-6 text-left">
-      <button
-        @click="currentView = 'consultant'"
-        :class="currentView === 'consultant' ? 'bg-accent text-white' : 'bg-base-300 text-gray-700 hover:text-accent'"
-        class="mx-2 px-4 py-2 rounded shadow transition"
-      >
-        Research Consultant
-      </button>
-    
-      <button
-        @click="currentView = 'ta'"
-        :class="currentView === 'ta' ? 'bg-accent text-white' : 'bg-base-300 text-gray-700 hover:text-accent'"
-        class="mx-2 px-4 py-2 rounded shadow transition"
-      >
-        Teaching Assistant
-      </button>
-      
-    </h1>
+    <section class="max-w-4xl mx-auto p-6 space-y-10">
+      <!-- Toggle Header -->
+      <h1 class="text-1xl text-gray-500 mb-6 text-left">
+        <button
+          @click="currentView = 'consultant'"
+          :class="currentView === 'consultant' ? 'bg-accent text-white' : 'bg-base-300 text-gray-700 hover:text-accent'"
+          class="w-40 text-center mx-2 px-4 py-2 rounded shadow transition"
+        >
+          Research Consultant
+        </button>
 
-    
+        <button
+          @click="currentView = 'ta'"
+          :class="currentView === 'ta' ? 'bg-accent text-white' : 'bg-base-300 text-gray-700 hover:text-accent'"
+          class="w-40 text-center mx-2 px-4 py-2 rounded shadow transition"
+        >
+          Teaching Assistant
+        </button>
+      </h1>
+    </section>
+
+        
 
     <!-- Consultant Section -->
     <div v-if="currentView === 'consultant'" class="space-y-8">
