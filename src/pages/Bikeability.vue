@@ -9,8 +9,8 @@
             <iframe
               src="https://chicago-bike-dashboard.onrender.com"
               class="w-full"
-              height="1030"
-              width ="900"
+              height="1050"
+              width ="950"
               style="border: none;"
             ></iframe>
           </div>
