@@ -93,6 +93,49 @@
       </div>
     </section>
 
+    <!-- Data Science Skills Section -->
+    <section id="skills" class="bg-base-100 p-6 rounded-box shadow">
+      <h2 class="text-2xl font-bold mb-4">Skills</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+
+        <div class="bg-base-200 p-4 rounded-lg shadow">
+          <h3 class="font-semibold text-lg mb-2">🧠 Statistical Modeling</h3>
+          <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
+            <li>Bayesian inference and hierarchical modeling (Stan, PyMC)</li>
+            <li>Time series decomposition, forecasting, and smoothing</li>
+            <li>GLMs, regularization, and imputation for incomplete data</li>
+          </ul>
+        </div>
+
+        <div class="bg-base-200 p-4 rounded-lg shadow">
+          <h3 class="font-semibold text-lg mb-2">📊 Wrangling & Visualization</h3>
+          <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
+            <li>High-performance data wrangling with pandas & numpy</li>
+            <li>Interactive dashboards and maps (Plotly, Dash, Leaflet)</li>
+            <li>Exploratory visualization with matplotlib and seaborn</li>
+          </ul>
+        </div>
+
+        <div class="bg-base-200 p-4 rounded-lg shadow">
+          <h3 class="font-semibold text-lg mb-2">🛠️ Machine Learning & NLP</h3>
+          <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
+            <li>Supervised learning with scikit-learn, XGBoost</li>
+            <li>Transformer-based models, fine-tuning LLaMA for NLP tasks</li>
+            <li>Model interpretability with SHAP and feature attributions</li>
+          </ul>
+        </div>
+
+        <div class="bg-base-200 p-4 rounded-lg shadow">
+          <h3 class="font-semibold text-lg mb-2">⚙️ Engineering & Deployment</h3>
+          <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
+            <li>Python, R, SQL, Bash scripting for automation</li>
+            <li>Versioning & collaboration with Git, containerization with Docker</li>
+            <li>API integration, scraping, and cloud app deployment (Render, Vercel)</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
 
     <!-- Blog Section -->
     <section id="blog" class="bg-base-100 p-6 rounded-box shadow">
