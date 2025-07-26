@@ -66,7 +66,7 @@
             class="w-full h-48 object-cover rounded mb-3"
           />
           <h3 class="font-bold text-lg">{{ project.title }}</h3>
-          <p>{{ project.description }}</p>
+          <p class="text-sm text-gray-500 dark:text-gray-400">{{ project.description }}</p>
         </router-link>
       </div>
     </section>
