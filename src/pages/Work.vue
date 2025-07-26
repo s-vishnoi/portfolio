@@ -1,26 +1,23 @@
 <template>
-    <section class="max-w-4xl mx-auto p-6 space-y-10">
-      <!-- Toggle Header -->
-      <h1 class="text-1xl text-gray-500 mb-6 text-left">
-        <button
-          @click="currentView = 'consultant'"
-          :class="currentView === 'consultant' ? 'bg-accent text-white' : 'bg-base-300 text-gray-700 hover:text-accent'"
-          class="w-60 text-center mx-2 px-4 py-2 rounded shadow transition"
-        >
-          Research Consultant
-        </button>
+  <section class="max-w-4xl mx-auto p-6 space-y-10">
+    <!-- Toggle Header -->
+    <h1 class="text-1xl text-gray-500 mb-6 text-left">
+      <button
+        @click="currentView = 'consultant'"
+        :class="currentView === 'consultant' ? 'bg-accent text-white' : 'bg-base-300 text-gray-700 hover:text-accent'"
+        class="w-60 text-center mx-2 px-4 py-2 rounded shadow transition"
+      >
+        Research Consultant
+      </button>
 
-        <button
-          @click="currentView = 'ta'"
-          :class="currentView === 'ta' ? 'bg-accent text-white' : 'bg-base-300 text-gray-700 hover:text-accent'"
-          class="w-60 text-center mx-2 px-4 py-2 rounded shadow transition"
-        >
-          Teaching Assistant
-        </button>
-      </h1>
-
-
-        
+      <button
+        @click="currentView = 'ta'"
+        :class="currentView === 'ta' ? 'bg-accent text-white' : 'bg-base-300 text-gray-700 hover:text-accent'"
+        class="w-60 text-center mx-2 px-4 py-2 rounded shadow transition"
+      >
+        Teaching Assistant
+      </button>
+    </h1>
 
     <!-- Consultant Section -->
     <div v-if="currentView === 'consultant'" class="space-y-8">
@@ -83,37 +80,35 @@
       </div>
     </div>
 
+    <!-- Teaching Assistant Section -->
+    <div v-else class="space-y-10">
+      <!-- Northwestern -->
+      <div class="space-y-6">
+        <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3">
+          <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
+          Northwestern University Physics and Astronomy
+        </h2>
 
+        <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
+          <ul class="list-disc list-inside text-gray-700 mb-4">
+            <li>General Physics - 2021 Fall | 2022 Winter, Spring | 2023 Fall, Winter | 2025 Winter</li>
+          </ul>
 
-
-      <!-- Teaching Assistant Section -->
-      <div v-else class="space-y-10">
-        <!-- Northwestern -->
-        <div class="space-y-6">
-          <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3">
-            <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
-            Northwestern University Physics and Astronomy
-          </h2>
-
-          <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
-            <ul class="list-disc list-inside text-gray-700 mb-4">
-              <li>General Physics - 2021 Fall | 2022 Winter, Spring | 2023 Fall, Winter | 2025 Winter</li>
-            </ul>
-
-            <!-- Scrollable Testimonials in 3 Columns, Word-Cloud Style -->
-            <div class="max-h-64 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-4 border rounded bg-base-200">
-              <span
-                v-for="(quote, index) in nuTestimonials"
-                :key="index"
-                class="italic text-sm text-gray-700 bg-base-100 px-3 py-2 rounded shadow-sm border border-gray-300"
-              >
-                “{{ quote }}”
-              </span>
-            </div>
+          <!-- Scrollable Testimonials in 3 Columns, Word-Cloud Style -->
+          <div class="max-h-64 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-4 border rounded bg-base-200">
+            <span
+              v-for="(quote, index) in nuTestimonials"
+              :key="index"
+              class="testimonial-tile"
+              :style="{ backgroundColor: getRandomLightColor() }"
+            >
+              “{{ quote }}”
+            </span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 </template>
 
 <script setup>
@@ -121,12 +116,28 @@ import { ref } from 'vue'
 import { nuTestimonials } from '../data/nuTestimonials.js'
 import { consults } from '../data/nuConsults.js'
 
-const currentView = ref('consultant') 
+const currentView = ref('consultant')
+
+function getRandomLightColor() {
+  const pastelColors = [
+    '#fce4ec', '#e8f5e9', '#e3f2fd', '#fff3e0', '#f3e5f5',
+    '#e0f7fa', '#f9fbe7', '#ede7f6', '#fbe9e7', '#f1f8e9'
+  ]
+  return pastelColors[Math.floor(Math.random() * pastelColors.length)]
+}
 </script>
 
 <style scoped>
 .perspective {
   perspective: 1000px;
+}
+
+.testimonial-tile {
+  @apply italic text-sm text-gray-800 px-3 py-2 rounded shadow-sm border border-gray-300 transition transform duration-300;
+}
+
+.testimonial-tile:hover {
+  @apply scale-105 brightness-110 shadow-md;
 }
 
 .flip-card {
