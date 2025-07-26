@@ -80,14 +80,14 @@
           <span class="text-2xl">🏅</span>
           <div>
             <h3 class="font-semibold text-gray-600">Murray Green Medal</h3>
-            <!--<p class="text-sm text-gray-500 dark:text-gray-400">Awarded for excellence in Physics</p>-->
+            <p class="text-sm text-gray-500 dark:text-gray-400">Outstanding graduate in Physics</p>
           </div>
         </div>
         <div class="bg-base-200 p-4 rounded-lg shadow flex items-center gap-3">
           <span class="text-2xl">🎓</span>
           <div>
             <h3 class="font-semibold text-gray-600">Presidential Scholarship</h3>
-            <!--<p class="text-sm text-gray-500 dark:text-gray-400">Merit-based academic scholarship</p>-->
+            <p class="text-sm text-gray-500 dark:text-gray-400">Full academic scholarship</p>
           </div>
         </div>
       </div>
