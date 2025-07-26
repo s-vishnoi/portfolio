@@ -95,7 +95,7 @@
           </ul>
 
           <!-- Scrollable Testimonials in 3 Columns, Word-Cloud Style -->
-          <div class="max-h-64 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-4 border rounded bg-base-200">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-4 border rounded bg-base-200">
             <span
               v-for="(quote, index) in nuTestimonials"
               :key="index"
