@@ -20,26 +20,6 @@
             Hosted using Docker and Render.
       </p>
 
-          <!-- 📖 Methodology & Feedback -->
-      <div class="text-sm space-y-1 text-blue-600">
-        <p>
-          <a
-            href="https://github.com/s-vishnoi/chicago-bikeability-map"
-            target="_blank"
-            class="hover:underline"
-          >
-            Methodology
-          </a>
-        </p>
-        <p>
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSeFxMoI1pig3d9YPGAEFEN-uDXyC7-F7AdTir7p3XG_DYAhrg/viewform?usp=header"
-            class="hover:underline"
-          >
-            Suggestions?
-          </a>
-        </p>
-      </div>
 
     <!--
     <p class="text-blue-600 hover:underline text-sm">

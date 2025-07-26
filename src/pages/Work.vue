@@ -99,15 +99,16 @@
             <li>General Physics - 2021 Fall | 2022 Winter, Spring | 2023 Fall, Winter | 2025 Winter</li>
           </ul>
 
-          <!-- Scrollable Testimonials -->
-          <div class="max-h-64 overflow-y-auto space-y-4 p-4 border rounded bg-base-200">
-            <blockquote
+          <!-- Scrollable Testimonials Styled Like a Word Cloud -->
+          <div class="max-h-64 overflow-y-auto flex flex-wrap gap-3 p-4 border rounded bg-base-200">
+            <span
               v-for="(quote, index) in nuTestimonials"
               :key="index"
-              class="italic text-sm text-gray-600 border-l-4 border-accent pl-4"
+              class="italic text-sm text-gray-700 bg-base-100 px-3 py-2 rounded shadow-sm border border-gray-300"
+              style="max-width: 16rem"
             >
               “{{ quote }}”
-            </blockquote>
+            </span>
           </div>
         </div>
       </div>
