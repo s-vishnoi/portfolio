@@ -86,54 +86,34 @@
 
 
 
-    <!-- Teaching Assistant Section -->
-    <div v-else class="space-y-10">
-      <!-- Northwestern -->
-      <div class="space-y-6">
-        <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3">
-          <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
-          Northwestern University Physics and Astronomy
-        </h2>
-        <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
-          <ul class="list-disc list-inside text-gray-700 mb-4">
-            <li>General Physics - 2021 Fall | 2022 Winter, Spring | 2023 Fall, Winter | 2025 Winter</li>
-          </ul>
+      <!-- Teaching Assistant Section -->
+      <div v-else class="space-y-10">
+        <!-- Northwestern -->
+        <div class="space-y-6">
+          <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3">
+            <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
+            Northwestern University Physics and Astronomy
+          </h2>
 
-          <!-- Scrollable Testimonials Styled Like a Word Cloud -->
-          <div class="max-h-64 overflow-y-auto flex flex-wrap gap-3 p-4 border rounded bg-base-200">
-            <span
-              v-for="(quote, index) in nuTestimonials"
-              :key="index"
-              class="italic text-sm text-gray-700 bg-base-100 px-3 py-2 rounded shadow-sm border border-gray-300"
-              style="max-width: 16rem"
-            >
-              “{{ quote }}”
-            </span>
+          <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
+            <ul class="list-disc list-inside text-gray-700 mb-4">
+              <li>General Physics - 2021 Fall | 2022 Winter, Spring | 2023 Fall, Winter | 2025 Winter</li>
+            </ul>
+
+            <!-- Scrollable Testimonials in 3 Columns, Word-Cloud Style -->
+            <div class="max-h-64 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-4 border rounded bg-base-200">
+              <span
+                v-for="(quote, index) in nuTestimonials"
+                :key="index"
+                class="italic text-sm text-gray-700 bg-base-100 px-3 py-2 rounded shadow-sm border border-gray-300"
+              >
+                “{{ quote }}”
+              </span>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Temple University -->
-      <div class="space-y-6">
-        <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3">
-          <img src="/logos/TU_logo.svg" alt="Temple logo" class="h-8" />
-          Temple University – Student Success Center 
-        </h2>
-        <div class="bg-base-100 p-4 rounded-box shadow space-y-2">
-          <ul class="font-semibold text-gray-700 mb-2">
-            <li>STEM tutor, 2017-2019</li>
-          </ul>
-          <ul class="list-disc list-inside text-gray-700 mb-2">
-            <li>Differential Equations with Linear Algebra</li>
-            <li>Probability Theory</li>
-            <li>Math Concepts in Computing I</li>
-            <li>Data Structures</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  </section>
+    </section>
 </template>
 
 <script setup>
