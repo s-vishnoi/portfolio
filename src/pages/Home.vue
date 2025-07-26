@@ -41,7 +41,7 @@
             <h3 class="font-bold text-lg text-accent dark:text-accent-content">{{ role.title }}</h3>
             <p class="text-sm text-gray-500 dark:text-gray-400">{{ role.institution }}</p>
             <p class="text-xs text-gray-400 mt-1">{{ role.duration }}</p>
-            <p class="text-sm text-gray-700 dark:text-gray-300 mt-2" v-html="role.description"></p>
+            <p class="text-sm text-gray-700 dark:text-gray-400 mt-2" v-html="role.description"></p>
           </div>
         </a>
       </div>
@@ -102,7 +102,7 @@
         <!-- Statistical Modeling -->
         <div class="bg-base-200 p-4 rounded-lg shadow">
           <h3 class="font-semibold text-lg mb-2">📐 Statistical Modeling</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
             I approach modeling with end-to-end ownership — from framing questions to communicating results. With a physics-trained mindset, I focus on clarity, interpretability, and practical impact. I work closely with domain experts and adapt to evolving goals.
           </p>
           <div class="flex flex-wrap gap-2 text-xs">
@@ -118,7 +118,7 @@
         <!-- Data Wrangling & Visualization -->
         <div class="bg-base-200 p-4 rounded-lg shadow">
           <h3 class="font-semibold text-lg mb-2">📊 Data Wrangling & Visualization</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
             I build pipelines that make messy data useful, and design dashboards that surface structure and support decisions.
           </p>
           <div class="flex flex-wrap gap-2 text-xs">
@@ -135,7 +135,7 @@
         <!-- Machine Learning & Deployment -->
         <div class="bg-base-200 p-4 rounded-lg shadow">
           <h3 class="font-semibold text-lg mb-2">🛠️ Machine Learning & Deployment</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
             I lead research workflows from data acquisition to deployment. I train explainable models, use domain insight to ensure accountability, and deliver results through reproducible, production-ready pipelines.
           </p>
           <div class="flex flex-wrap gap-2 text-xs">
@@ -155,7 +155,7 @@
         <!-- Communication & Collaboration -->
         <div class="bg-base-200 p-4 rounded-lg shadow">
           <h3 class="font-semibold text-lg mb-2">🔗 Communication & Collaboration</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
             I work across institutions and disciplines, translating ideas between technical and non-technical teams. I prioritize clarity, shared goals, and trust to keep collaborative projects on track.
           </p>
           <div class="flex flex-wrap gap-2 text-xs">
