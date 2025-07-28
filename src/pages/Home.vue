@@ -57,7 +57,7 @@
           v-for="project in projects"
           :key="project.title"
           :to="project.link"
-          class="card bg-base-200 p-4 hover:shadow-lg transition block"
+          class="card bg-base-200 p-4 hover:ring-2 hover:ring-accent hover:shadow-lg transition block"
           data-aos="fade-up"
         >
           <img
@@ -133,7 +133,7 @@
               ref="collapsibles"
               class="overflow-hidden"
             >
-              <p class="text-sm text-gray-700 dark:text-gray-300 mb-2 mt-1">
+              <p class="text-sm text-gray-800 dark:text-gray-300 mb-2 mt-1">
                 {{ skill.description }}
               </p>
               <div class="flex flex-wrap gap-2 text-xs">
