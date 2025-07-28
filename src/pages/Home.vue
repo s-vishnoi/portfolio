@@ -92,8 +92,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Skills Section -->
     <section id="skills" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Skills</h2>
       <div class="grid gap-4 md:grid-cols-2">
@@ -102,6 +100,7 @@
           :key="index"
           class="bg-base-200 p-4 rounded-lg shadow transition hover:shadow-xl hover:ring-2 hover:ring-accent group"
         >
+          <!-- Toggle Button -->
           <button
             class="w-full flex justify-between items-center text-left text-lg font-semibold mb-2"
             @click="toggleSkill(index)"
@@ -115,24 +114,33 @@
               <path d="M6 9l6 6 6-6" />
             </svg>
           </button>
-          <div
-            class="transition-all duration-300 overflow-hidden"
-            :class="skillToggles[index] ? 'max-h-[500px] mt-2' : 'max-h-0'"
+
+          <!-- Animated Transition -->
+          <transition
+            name="collapse"
+            @enter="onEnter"
+            @after-enter="onAfterEnter"
+            @leave="onLeave"
           >
-            <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">{{ skill.description }}</p>
-            <div class="flex flex-wrap gap-2 text-xs">
-              <span
-                v-for="tag in skill.tags"
-                :key="tag"
-                class="bg-base-300 px-2 py-1 rounded-full"
-              >
-                {{ tag }}
-              </span>
+            <div
+              v-show="skillToggles[index]"
+              ref="collapsibles"
+              class="overflow-hidden"
+            >
+              <p class="text-sm text-gray-700 dark:text-gray-300 mb-2 mt-1">
+                {{ skill.description }}
+              </p>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span v-for="tag in skill.tags" :key="tag" class="bg-base-300 px-2 py-1 rounded-full">
+                  {{ tag }}
+                </span>
+              </div>
             </div>
-          </div>
+          </transition>
         </div>
       </div>
     </section>
+
 
 
 
@@ -205,12 +213,26 @@ onMounted(async () => {
 
 
 
-
 const skillToggles = ref([false, false, false, false])
 
 const toggleSkill = index => {
-  skillToggles.value = skillToggles.value.map((_, i) => i === index ? !skillToggles.value[i] : false)
+  skillToggles.value = skillToggles.value.map((open, i) => i === index ? !open : false)
 }
+
+// Optional: for smooth height measurement
+const onEnter = (el) => {
+  el.style.maxHeight = el.scrollHeight + "px"
+}
+const onAfterEnter = (el) => {
+  el.style.maxHeight = "none"
+}
+const onLeave = (el) => {
+  el.style.maxHeight = el.scrollHeight + "px"
+  requestAnimationFrame(() => {
+    el.style.maxHeight = "0"
+  })
+}
+
 
 </script>
 
@@ -230,5 +252,21 @@ const toggleSkill = index => {
   opacity: 0;
   transform: translateX(-20px);
 }
+
+.collapse-enter-active,
+.collapse-leave-active {
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+.collapse-enter-from,
+.collapse-leave-to {
+  max-height: 0;
+  opacity: 0;
+}
+.collapse-enter-to,
+.collapse-leave-from {
+  max-height: 500px;
+  opacity: 1;
+}
+
 
 </style>
