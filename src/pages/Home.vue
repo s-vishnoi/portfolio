@@ -93,140 +93,47 @@
       </div>
     </section>
 
-    
+    <!-- Skills Section -->
     <section id="skills" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Skills</h2>
       <div class="grid gap-4 md:grid-cols-2">
-        
-        <!-- 📐 Statistical Modeling -->
-        <div class="bg-base-200 p-4 rounded-lg shadow transition hover:shadow-xl hover:ring-2 hover:ring-accent group">
-          <button class="w-full flex justify-between items-center text-left text-lg font-semibold mb-2" @click="toggleSkill(0)">
-            <span class="transition group-hover:text-accent">📐 Statistical Modeling</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-chevron-down w-4 h-4 transition-transform duration-300"
+        <div
+          v-for="(skill, index) in skills"
+          :key="index"
+          class="bg-base-200 p-4 rounded-lg shadow transition hover:shadow-xl hover:ring-2 hover:ring-accent group"
+        >
+          <button
+            class="w-full flex justify-between items-center text-left text-lg font-semibold mb-2"
+            @click="toggleSkill(index)"
+            :aria-expanded="skillToggles[index]"
+          >
+            <span class="transition group-hover:text-accent">{{ skill.icon }} {{ skill.title }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                class="lucide lucide-chevron-down w-4 h-4 transition-transform duration-300 group-hover:text-accent"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
-                :class="{ 'rotate-180': skillToggles[0] }">
+                :class="{ 'rotate-180': skillToggles[index] }">
               <path d="M6 9l6 6 6-6" />
             </svg>
           </button>
-          <div class="transition-all duration-300 overflow-hidden" :class="skillToggles[0] ? 'max-h-[400px] mt-2' : 'max-h-0'">
-            <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
-              I approach modeling with end-to-end ownership — from framing questions to communicating results. With a physics-trained mindset, I focus on models grounded in reality, clarity, and interpretability.
-            </p>
+          <div
+            class="transition-all duration-300 overflow-hidden"
+            :class="skillToggles[index] ? 'max-h-[500px] mt-2' : 'max-h-0'"
+          >
+            <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">{{ skill.description }}</p>
             <div class="flex flex-wrap gap-2 text-xs">
-              <span class="bg-base-300 px-2 py-1 rounded-full">Stan</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">PyMC</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">GLMs</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Bayesian Models</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Forecasting</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Imputation</span>
+              <span
+                v-for="tag in skill.tags"
+                :key="tag"
+                class="bg-base-300 px-2 py-1 rounded-full"
+              >
+                {{ tag }}
+              </span>
             </div>
           </div>
         </div>
-
-        <!-- 📊 Data Wrangling & Visualization -->
-        <div class="bg-base-200 p-4 rounded-lg shadow transition hover:shadow-xl hover:ring-2 hover:ring-accent group">
-          <button class="w-full flex justify-between items-center text-left text-lg font-semibold mb-2" @click="toggleSkill(1)">
-            <span class="transition group-hover:text-accent">📊 Data Wrangling & Visualization</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-chevron-down w-4 h-4 transition-transform duration-300"
-                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
-                :class="{ 'rotate-180': skillToggles[1] }">
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </button>
-          <div class="transition-all duration-300 overflow-hidden" :class="skillToggles[1] ? 'max-h-[400px] mt-2' : 'max-h-0'">
-            <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
-              I build pipelines that make messy data useful, and design dashboards that surface structure and support decisions.
-            </p>
-            <div class="flex flex-wrap gap-2 text-xs">
-              <span class="bg-base-300 px-2 py-1 rounded-full">pandas</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">numpy</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Plotly</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Dash</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Leaflet</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">matplotlib</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">seaborn</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 🛠️ Machine Learning & Deployment -->
-        <div class="bg-base-200 p-4 rounded-lg shadow transition hover:shadow-xl hover:ring-2 hover:ring-accent group">
-          <button class="w-full flex justify-between items-center text-left text-lg font-semibold mb-2" @click="toggleSkill(2)">
-            <span class="transition group-hover:text-accent">🛠️ Machine Learning & Deployment</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-chevron-down w-4 h-4 transition-transform duration-300"
-                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
-                :class="{ 'rotate-180': skillToggles[2] }">
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </button>
-          <div class="transition-all duration-300 overflow-hidden" :class="skillToggles[2] ? 'max-h-[400px] mt-2' : 'max-h-0'">
-            <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
-              I train explainable models, use domain insight to ensure accountability, and deliver results through reproducible, production-ready pipelines.
-            </p>
-            <div class="flex flex-wrap gap-2 text-xs">
-              <span class="bg-base-300 px-2 py-1 rounded-full">scikit-learn</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">XGBoost</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Transformers (LLaMA)</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">SHAP</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Git</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Docker</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Render</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Vercel</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">APIs</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Web Scraping</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 🔗 Communication & Collaboration -->
-        <div class="bg-base-200 p-4 rounded-lg shadow transition hover:shadow-xl hover:ring-2 hover:ring-accent group">
-          <button class="w-full flex justify-between items-center text-left text-lg font-semibold mb-2" @click="toggleSkill(3)">
-            <span class="transition group-hover:text-accent">🔗 Communication & Collaboration</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-chevron-down w-4 h-4 transition-transform duration-300"
-                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
-                :class="{ 'rotate-180': skillToggles[3] }">
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </button>
-          <div class="transition-all duration-300 overflow-hidden" :class="skillToggles[3] ? 'max-h-[400px] mt-2' : 'max-h-0'">
-            <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
-              I work globally across institutions and disciplines, translating ideas between technical and non-technical teams. I prioritize clarity, shared goals, and trust to keep collaborative projects on track.
-            </p>
-            <div class="flex flex-wrap gap-2 text-xs">
-              <span class="bg-base-300 px-2 py-1 rounded-full">Interdisciplinary Teams</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Stakeholder Communication</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Scientific Writing</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Research Leadership</span>
-              <span class="bg-base-300 px-2 py-1 rounded-full">Collaboration</span>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
-
-
-
-
-
-    <!-- Associations Section -->
-    <!--
-    <section id="associations" class="bg-base-100 p-6 rounded-box shadow">
-      <h2 class="text-2xl font-bold mb-4">Associations</h2>
-      <div class="flex flex-wrap gap-6">
-        <a href="https://physics.northwestern.edu" target="_blank">
-          <img src="/logos/NU_PA_logo.svg" alt="Northwestern University" class="h-12" />
-        </a>
-        <a href="https://www.demogr.mpg.de/en" target="_blank">
-          <img src="/logos/max_planck_logo.jpeg" alt="Max Planck Institute for Demographic Research" class="h-12" />
-        </a>
-        <a href="https://towardsdatascience.com" target="_blank" >
-          <img src="/logos/tds_logo.jpeg" alt="Towards Data Science" class="h-12" />
-        </a>
-      </div>
-    </section>
-    -->
 
 
   </main>
@@ -236,6 +143,7 @@
 import { profile } from '../data/profile'
 import { roles } from '../data/roles'
 import { projects } from '../data/projects'
+import { skills } from '../data/skills'
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 
 
@@ -300,7 +208,6 @@ onMounted(async () => {
 
 const skillToggles = ref([false, false, false, false])
 
-const skillToggles = ref([false, false, false, false])
 const toggleSkill = index => {
   skillToggles.value = skillToggles.value.map((_, i) => i === index ? !skillToggles.value[i] : false)
 }
