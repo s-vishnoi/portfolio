@@ -8,16 +8,21 @@
         insights and identify areas for improving safety and equity.
       </p>
 
-      <div class="-mx-6 sm:-mx-8 md:-mx-12 lg:-mx-20 rounded-lg">
-        <div class="min-w-[1280px] mx-auto shadow-md rounded-lg">
-          <iframe
-            src="https://chicago-bike-dashboard.onrender.com"
-            class="w-full"
-            height="1080"
-            width="1000"
-            style="border: none;"
-          ></iframe>
-        </div>
+      <button
+        @click="showFullscreen = true"
+        class="btn btn-accent mt-4"
+      >
+        View Fullscreen Map
+      </button>
+
+      <!-- Inline preview iframe -->
+      <div class="rounded-lg overflow-hidden shadow mt-6">
+        <iframe
+          src="https://chicago-bike-dashboard.onrender.com"
+          class="w-full"
+          height="500"
+          style="border: none;"
+        ></iframe>
       </div>
 
       <p class="text-sm text-gray-400 italic">
@@ -25,5 +30,29 @@
         Hosted using Docker and Render.
       </p>
     </main>
+
+    <!-- Fullscreen overlay -->
+    <div
+      v-if="showFullscreen"
+      class="fixed inset-0 bg-black z-50"
+    >
+      <button
+        @click="showFullscreen = false"
+        class="absolute top-4 left-4 bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200 z-10"
+      >
+        ← Back
+      </button>
+      <iframe
+        src="https://chicago-bike-dashboard.onrender.com"
+        class="w-full h-full"
+        style="border: none;"
+      ></iframe>
+    </div>
   </div>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+
+const showFullscreen = ref(false)
+</script>
