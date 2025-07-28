@@ -77,14 +77,14 @@
       <h2 class="text-2xl font-bold mb-4">Achievements</h2>
       <div class="grid gap-4 md:grid-cols-2">
         <div class="bg-base-200 p-4 rounded-lg shadow flex items-center gap-3">
-          <!--<span class="text-2xl">🏅</span>-->
+          <span class="text-2xl">🥇</span>
           <div>
             <h3 class="font-semibold text-gray-600">Murray Green Medal</h3>
             <p class="text-sm text-gray-500 dark:text-gray-400">Outstanding graduate in Physics</p>
           </div>
         </div>
         <div class="bg-base-200 p-4 rounded-lg shadow flex items-center gap-3">
-          <!--<span class="text-2xl">🎓</span>-->
+          <span class="text-2xl">🏛️</span>
           <div>
             <h3 class="font-semibold text-gray-600">Presidential Scholarship</h3>
             <p class="text-sm text-gray-500 dark:text-gray-400">Full academic scholarship</p>
@@ -94,76 +94,96 @@
     </section>
 
 
-        <!-- Skills Section -->
+    <!-- Skills Section -->
     <section id="skills" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Skills</h2>
       <div class="grid gap-4 md:grid-cols-2">
 
-        <!-- Statistical Modeling -->
+        <!-- 📐 Statistical Modeling -->
         <div class="bg-base-200 p-4 rounded-lg shadow">
-          <h3 class="font-semibold text-lg mb-2">📐 Statistical Modeling</h3>
-          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
-            I approach modeling with end-to-end ownership — from framing questions to communicating results. With a physics-trained mindset, I focus on clarity, interpretability, and practical impact. I work closely with domain experts and adapt to evolving goals.
-          </p>
-          <div class="flex flex-wrap gap-2 text-xs">
-            <span class="bg-base-300 px-2 py-1 rounded-full">Stan</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">PyMC</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">GLMs</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Bayesian Models</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Forecasting</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Imputation</span>
+          <button class="w-full text-left font-semibold text-lg mb-2 flex justify-between items-center" onclick="toggleSection(this)">
+            <span>📐 Statistical Modeling</span>
+            <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path class="chevron" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="content hidden">
+            <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
+              I approach modeling with end-to-end ownership — from framing questions to communicating results. With a physics-trained mindset, I focus on clarity, interpretability, and practical impact. I work closely with domain experts and adapt to evolving goals.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="bg-base-300 px-2 py-1 rounded-full">Stan</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">PyMC</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">GLMs</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Bayesian Models</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Forecasting</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Imputation</span>
+            </div>
           </div>
         </div>
 
-        <!-- Data Wrangling & Visualization -->
+        <!-- 📊 Data Wrangling & Visualization -->
         <div class="bg-base-200 p-4 rounded-lg shadow">
-          <h3 class="font-semibold text-lg mb-2">📊 Data Wrangling & Visualization</h3>
-          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
-            I build pipelines that make messy data useful, and design dashboards that surface structure and support decisions.
-          </p>
-          <div class="flex flex-wrap gap-2 text-xs">
-            <span class="bg-base-300 px-2 py-1 rounded-full">pandas</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">numpy</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Plotly</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Dash</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Leaflet</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">matplotlib</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">seaborn</span>
+          <button class="w-full text-left font-semibold text-lg mb-2 flex justify-between items-center" onclick="toggleSection(this)">
+            <span>📊 Data Wrangling & Visualization</span>
+            <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path class="chevron" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="content hidden">
+            <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
+              I build pipelines that make messy data useful, and design dashboards that surface structure and support decisions.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="bg-base-300 px-2 py-1 rounded-full">pandas</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">numpy</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Plotly</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Dash</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Leaflet</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">matplotlib</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">seaborn</span>
+            </div>
           </div>
         </div>
 
-        <!-- Machine Learning & Deployment -->
+        <!-- 🛠️ Machine Learning & Deployment -->
         <div class="bg-base-200 p-4 rounded-lg shadow">
-          <h3 class="font-semibold text-lg mb-2">🛠️ Machine Learning & Deployment</h3>
-          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
-            I lead research workflows from data acquisition to deployment. I train explainable models, use domain insight to ensure accountability, and deliver results through reproducible, production-ready pipelines.
-          </p>
-          <div class="flex flex-wrap gap-2 text-xs">
-            <span class="bg-base-300 px-2 py-1 rounded-full">scikit-learn</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">XGBoost</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Transformers (LLaMA)</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">SHAP</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Git</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Docker</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Render</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Vercel</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">APIs</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Web Scraping</span>
+          <button class="w-full text-left font-semibold text-lg mb-2 flex justify-between items-center" onclick="toggleSection(this)">
+            <span>🛠️ Machine Learning & Deployment</span>
+            <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path class="chevron" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="content hidden">
+            <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
+              I lead research workflows from data acquisition to deployment. I train explainable models, use domain insight to ensure accountability, and deliver results through reproducible, production-ready pipelines.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="bg-base-300 px-2 py-1 rounded-full">scikit-learn</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">XGBoost</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Transformers (LLaMA)</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">SHAP</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Git</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Docker</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Render</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Vercel</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">APIs</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Web Scraping</span>
+            </div>
           </div>
         </div>
 
-        <!-- Communication & Collaboration -->
+        <!-- 🔗 Communication & Collaboration -->
         <div class="bg-base-200 p-4 rounded-lg shadow">
-          <h3 class="font-semibold text-lg mb-2">🔗 Communication & Collaboration</h3>
-          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
-            I work across institutions and disciplines, translating ideas between technical and non-technical teams. I prioritize clarity, shared goals, and trust to keep collaborative projects on track.
-          </p>
-          <div class="flex flex-wrap gap-2 text-xs">
-            <span class="bg-base-300 px-2 py-1 rounded-full">Interdisciplinary Teams</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Stakeholder Communication</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Scientific Writing</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Research Leadership</span>
-            <span class="bg-base-300 px-2 py-1 rounded-full">Collaboration</span>
+          <button class="w-full text-left font-semibold text-lg mb-2 flex justify-between items-center" onclick="toggleSection(this)">
+            <span>🔗 Communication & Collaboration</span>
+            <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path class="chevron" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="content hidden">
+            <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
+              I work across institutions and disciplines, translating ideas between technical and non-technical teams. I prioritize clarity, shared goals, and trust to keep collaborative projects on track.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="bg-base-300 px-2 py-1 rounded-full">Interdisciplinary Teams</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Stakeholder Communication</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Scientific Writing</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Research Leadership</span>
+              <span class="bg-base-300 px-2 py-1 rounded-full">Collaboration</span>
+            </div>
           </div>
         </div>
 
@@ -172,31 +192,9 @@
 
 
 
-    <!-- Blog Section 
-    <section id="blog" class="bg-base-100 p-6 rounded-box shadow">
-      <h2 class="text-2xl font-bold mb-4">Blog</h2>
-      <div v-if="blogPosts.length" class="space-y-4">
-        <div v-for="post in blogPosts" :key="post.guid" class="mb-4">
-          <a
-            :href="post.link"
-            target="_blank"
-            class="text-lg light:text-accent-content dark:text-accent font-semibold flex items-center gap-2"
-          >
-            <span>{{ post.title }}</span>
-            <span class="text-sm text-gray-400 flex items-center gap-1">
-              <i class="fas fa-sign-language"></i> {{ post.claps || 100 }}
-            </span>
-          </a>
-          <p v-if="post.subtitle" class="text-sm text-gray-700 dark:text-gray-400 italic">
-            {{ post.subtitle }}
-          </p>
-        </div>
-      </div>
-      <div v-else>
-        <p>Loading latest posts from Medium…</p>
-      </div>
-    </section>
-    -->
+
+
+
 
     <!-- Associations Section -->
     <!--
@@ -282,6 +280,14 @@ onMounted(async () => {
     console.error("Failed to load blog posts:", err)
   }
 })
+
+
+function toggleSection(button) {
+    const content = button.nextElementSibling;
+    const icon = button.querySelector("svg");
+    content.classList.toggle("hidden");
+    icon.classList.toggle("rotate-180");
+}
 </script>
 
 <style scoped>
