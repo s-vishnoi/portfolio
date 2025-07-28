@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-900 text-white min-h-screen">
+  <div class="!bg-gray-900 !text-white min-h-screen">
     <main class="max-w-6xl mx-auto p-6 space-y-6">
       <h1 class="text-2xl font-semibold">Chicago Bikeability Map</h1>
       <p class="text-gray-300">
