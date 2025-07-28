@@ -93,33 +93,22 @@
       </div>
     </section>
 
-
-
-
-    <!-- Skills Section -->
-
+    
     <section id="skills" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Skills</h2>
       <div class="grid gap-4 md:grid-cols-2">
-
+        
         <!-- 📐 Statistical Modeling -->
-        <div class="bg-base-200 p-4 rounded-lg shadow hover:ring-2 hover:ring-accent hover:shadow-lg transition">
-          <button
-            class="w-full text-left font-semibold text-lg mb-2 flex justify-between items-center"
-            @click="toggleSkill(0)"
-          >
-            <span>📐 Statistical Modeling</span>
-            <svg
-              class="w-4 h-4 transition-transform duration-200"
-              :class="{ 'rotate-180': skillToggles[0] }"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        <div class="bg-base-200 p-4 rounded-lg shadow transition hover:shadow-xl hover:ring-2 hover:ring-accent group">
+          <button class="w-full flex justify-between items-center text-left text-lg font-semibold mb-2" @click="toggleSkill(0)">
+            <span class="transition group-hover:text-accent">📐 Statistical Modeling</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-chevron-down w-4 h-4 transition-transform duration-300"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                :class="{ 'rotate-180': skillToggles[0] }">
+              <path d="M6 9l6 6 6-6" />
             </svg>
           </button>
-          <div v-show="skillToggles[0]">
+          <div class="transition-all duration-300 overflow-hidden" :class="skillToggles[0] ? 'max-h-[400px] mt-2' : 'max-h-0'">
             <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
               I approach modeling with end-to-end ownership — from framing questions to communicating results. With a physics-trained mindset, I focus on models grounded in reality, clarity, and interpretability.
             </p>
@@ -135,23 +124,16 @@
         </div>
 
         <!-- 📊 Data Wrangling & Visualization -->
-        <div class="bg-base-200 p-4 rounded-lg shadow hover:ring-2 hover:ring-accent hover:shadow-lg transition">
-          <button
-            class="w-full text-left font-semibold text-lg mb-2 flex justify-between items-center"
-            @click="toggleSkill(1)"
-          >
-            <span>📊 Data Wrangling & Visualization</span>
-            <svg
-              class="w-4 h-4 transition-transform duration-200"
-              :class="{ 'rotate-180': skillToggles[1] }"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        <div class="bg-base-200 p-4 rounded-lg shadow transition hover:shadow-xl hover:ring-2 hover:ring-accent group">
+          <button class="w-full flex justify-between items-center text-left text-lg font-semibold mb-2" @click="toggleSkill(1)">
+            <span class="transition group-hover:text-accent">📊 Data Wrangling & Visualization</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-chevron-down w-4 h-4 transition-transform duration-300"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                :class="{ 'rotate-180': skillToggles[1] }">
+              <path d="M6 9l6 6 6-6" />
             </svg>
           </button>
-          <div v-show="skillToggles[1]">
+          <div class="transition-all duration-300 overflow-hidden" :class="skillToggles[1] ? 'max-h-[400px] mt-2' : 'max-h-0'">
             <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
               I build pipelines that make messy data useful, and design dashboards that surface structure and support decisions.
             </p>
@@ -168,23 +150,16 @@
         </div>
 
         <!-- 🛠️ Machine Learning & Deployment -->
-        <div class="bg-base-200 p-4 rounded-lg shadow hover:ring-2 hover:ring-accent hover:shadow-lg transition">
-          <button
-            class="w-full text-left font-semibold text-lg mb-2 flex justify-between items-center"
-            @click="toggleSkill(2)"
-          >
-            <span>🛠️ Machine Learning & Deployment</span>
-            <svg
-              class="w-4 h-4 transition-transform duration-200"
-              :class="{ 'rotate-180': skillToggles[2] }"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        <div class="bg-base-200 p-4 rounded-lg shadow transition hover:shadow-xl hover:ring-2 hover:ring-accent group">
+          <button class="w-full flex justify-between items-center text-left text-lg font-semibold mb-2" @click="toggleSkill(2)">
+            <span class="transition group-hover:text-accent">🛠️ Machine Learning & Deployment</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-chevron-down w-4 h-4 transition-transform duration-300"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                :class="{ 'rotate-180': skillToggles[2] }">
+              <path d="M6 9l6 6 6-6" />
             </svg>
           </button>
-          <div v-show="skillToggles[2]">
+          <div class="transition-all duration-300 overflow-hidden" :class="skillToggles[2] ? 'max-h-[400px] mt-2' : 'max-h-0'">
             <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
               I train explainable models, use domain insight to ensure accountability, and deliver results through reproducible, production-ready pipelines.
             </p>
@@ -204,23 +179,16 @@
         </div>
 
         <!-- 🔗 Communication & Collaboration -->
-        <div class="bg-base-200 p-4 rounded-lg shadow hover:ring-2 hover:ring-accent hover:shadow-lg transition">
-          <button
-            class="w-full text-left font-semibold text-lg mb-2 flex justify-between items-center"
-            @click="toggleSkill(3)"
-          >
-            <span>🔗 Communication & Collaboration</span>
-            <svg
-              class="w-4 h-4 transition-transform duration-200"
-              :class="{ 'rotate-180': skillToggles[3] }"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        <div class="bg-base-200 p-4 rounded-lg shadow transition hover:shadow-xl hover:ring-2 hover:ring-accent group">
+          <button class="w-full flex justify-between items-center text-left text-lg font-semibold mb-2" @click="toggleSkill(3)">
+            <span class="transition group-hover:text-accent">🔗 Communication & Collaboration</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-chevron-down w-4 h-4 transition-transform duration-300"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                :class="{ 'rotate-180': skillToggles[3] }">
+              <path d="M6 9l6 6 6-6" />
             </svg>
           </button>
-          <div v-show="skillToggles[3]">
+          <div class="transition-all duration-300 overflow-hidden" :class="skillToggles[3] ? 'max-h-[400px] mt-2' : 'max-h-0'">
             <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
               I work globally across institutions and disciplines, translating ideas between technical and non-technical teams. I prioritize clarity, shared goals, and trust to keep collaborative projects on track.
             </p>
@@ -236,7 +204,6 @@
 
       </div>
     </section>
-
 
 
 
@@ -333,8 +300,9 @@ onMounted(async () => {
 
 const skillToggles = ref([false, false, false, false])
 
+const skillToggles = ref([false, false, false, false])
 const toggleSkill = index => {
-  skillToggles.value[index] = !skillToggles.value[index]
+  skillToggles.value = skillToggles.value.map((_, i) => i === index ? !skillToggles.value[i] : false)
 }
 
 </script>
