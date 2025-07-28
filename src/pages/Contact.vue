@@ -1,63 +1,49 @@
 <template>
-    <main class="max-w-3xl mx-auto p-6 space-y-12 bg-base-100 rounded-box shadow mt-6">
+    <section class="max-w-3xl mx-auto p-6 space-y-6">
+      <h1 class="text-3xl font-bold">Contact Me</h1>
+      <p class="text-gray-500 dark:text-gray-400">
+        Feel free to reach out with questions, ideas, or to schedule a quick call.
+      </p>
   
-      <h1 class="text-3xl font-bold text-center mb-6">Contact Me</h1>
+      <form class="space-y-4" @submit.prevent="submitForm">
+        <div>
+          <label class="block text-sm font-medium mb-1">Name</label>
+          <input v-model="form.name" type="text" required class="input input-bordered w-full" />
+        </div>
   
-      <!-- Contact Form -->
-      <section>
-        <h2 class="text-2xl font-semibold mb-4">📧 Send a Message</h2>
-        <form @submit.prevent="submitEmail">
-          <div class="grid gap-4">
-            <input v-model="emailForm.name" type="text" placeholder="Your Name" class="input input-bordered w-full" required />
-            <input v-model="emailForm.email" type="email" placeholder="Your Email" class="input input-bordered w-full" required />
-            <textarea v-model="emailForm.message" placeholder="Your Message" class="textarea textarea-bordered w-full h-32" required></textarea>
-            <button type="submit" class="btn btn-primary w-fit">Send Message</button>
-          </div>
-        </form>
-      </section>
+        <div>
+          <label class="block text-sm font-medium mb-1">Email</label>
+          <input v-model="form.email" type="email" required class="input input-bordered w-full" />
+        </div>
   
-      <div class="divider">OR</div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Message or Call Request</label>
+          <textarea v-model="form.message" required rows="5" class="textarea textarea-bordered w-full"></textarea>
+        </div>
   
-      <!-- Call Request Form -->
-      <section>
-        <h2 class="text-2xl font-semibold mb-4">📞 Request a Call</h2>
-        <form @submit.prevent="submitCallRequest">
-          <div class="grid gap-4">
-            <input v-model="callForm.name" type="text" placeholder="Your Name" class="input input-bordered w-full" required />
-            <input v-model="callForm.phone" type="tel" placeholder="Phone Number" class="input input-bordered w-full" required />
-            <input v-model="callForm.time" type="datetime-local" class="input input-bordered w-full" required />
-            <button type="submit" class="btn btn-secondary w-fit">Request Call</button>
-          </div>
-        </form>
-      </section>
+        <button type="submit" class="btn btn-accent">Send</button>
+      </form>
   
-      <!-- Success Message -->
-      <div v-if="successMessage" class="alert alert-success mt-4">
-        {{ successMessage }}
-      </div>
-  
-    </main>
+      <p v-if="success" class="text-green-500 mt-4">{{ success }}</p>
+    </section>
   </template>
   
   <script setup>
   import { ref } from 'vue'
   
-  const emailForm = ref({ name: '', email: '', message: '' })
-  const callForm = ref({ name: '', phone: '', time: '' })
-  const successMessage = ref('')
+  const form = ref({
+    name: '',
+    email: '',
+    message: ''
+  })
   
-  const submitEmail = () => {
-    const subject = encodeURIComponent("Message from " + emailForm.value.name)
-    const body = encodeURIComponent(emailForm.value.message + "\n\nReply to: " + emailForm.value.email)
-    window.location.href = `mailto:svishnoi@u.northwestern.edu?subject=${subject}&body=${body}`
-    successMessage.value = 'Your email draft has opened. Please review and send it from your email client.'
-  }
+  const success = ref('')
   
-  const submitCallRequest = () => {
-    const subject = encodeURIComponent("Call Request from " + callForm.value.name)
-    const body = encodeURIComponent(`Call requested by ${callForm.value.name}\nPhone: ${callForm.value.phone}\nTime: ${callForm.value.time}`)
-    window.location.href = `mailto:svishnoi@u.northwestern.edu?subject=${subject}&body=${body}`
-    successMessage.value = 'Your call request email draft has opened. Please review and send it.'
+  const submitForm = () => {
+    // Simulate a successful submission
+    console.log('Submitted:', form.value)
+    success.value = '✅ Message sent! I’ll get back to you soon.'
+    form.value = { name: '', email: '', message: '' }
   }
   </script>
   
