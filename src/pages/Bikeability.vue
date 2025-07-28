@@ -3,7 +3,7 @@
     <!-- Content aligned just under navbar -->
     <main class="max-w-6xl mx-auto px-6 pt-6 space-y-6">
       <h1 class="text-2xl font-semibold">Chicago Bikeability Map</h1>
-      <p class="text-gray-300">
+      <p class="text-gray-400">
         This interactive map ranks Bikeability of Chicago communities based on infrastructure.
         Explore bike traffic crashes by location, cause, and severity. Users can glean city-wide
         insights and identify areas for improving safety and equity.
