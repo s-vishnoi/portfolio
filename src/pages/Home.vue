@@ -93,59 +93,59 @@
       </div>
     </section>
 
-<!-- Skills Section -->
-<section id="skills" class="bg-base-100 p-6 rounded-box shadow">
-  <h2 class="text-2xl font-bold mb-4">Skills</h2>
-  <div class="grid gap-4 md:grid-cols-2">
-    <div
-      v-for="(skill, index) in skills"
-      :key="index"
-      class="bg-base-200 p-4 rounded-lg shadow transition hover:shadow-xl hover:ring-2 hover:ring-accent group"
-      @mouseenter="hoverToggles[index] = true"
-      @mouseleave="hoverToggles[index] = false"
-    >
-      <!-- Toggle Button -->
-      <button
-        class="w-full flex justify-between items-center text-left text-lg font-semibold mb-2"
-        @click="toggleSkill(index)"
-        :aria-expanded="skillToggles[index] || hoverToggles[index]"
-      >
-        <span class="transition group-hover:text-accent">
-          {{ skill.icon }} {{ skill.title }}
-        </span>
-        <svg xmlns="http://www.w3.org/2000/svg"
-            class="lucide lucide-chevron-down w-4 h-4 transition-transform duration-300 group-hover:text-accent"
-            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
-            :class="{ 'rotate-180': skillToggles[index] || hoverToggles[index] }">
-          <path d="M6 9l6 6 6-6" />
-        </svg>
-      </button>
-
-      <!-- Animated Transition -->
-      <transition
-        name="collapse"
-        @enter="onEnter"
-        @after-enter="onAfterEnter"
-        @leave="onLeave"
-      >
+    <!-- Skills Section -->
+    <section id="skills" class="bg-base-100 p-6 rounded-box shadow">
+      <h2 class="text-2xl font-bold mb-4">Skills</h2>
+      <div class="grid gap-4 md:grid-cols-2">
         <div
-          v-show="skillToggles[index] || hoverToggles[index]"
-          ref="collapsibles"
-          class="overflow-hidden"
+          v-for="(skill, index) in skills"
+          :key="index"
+          class="bg-base-200 p-4 rounded-lg shadow transition hover:shadow-xl hover:ring-2 hover:ring-accent group"
+          @mouseenter="hoverToggles[index] = true"
+          @mouseleave="hoverToggles[index] = false"
         >
-          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2 mt-1">
-            {{ skill.description }}
-          </p>
-          <div class="flex flex-wrap gap-2 text-xs">
-            <span v-for="tag in skill.tags" :key="tag" class="bg-base-300 px-2 py-1 rounded-full">
-              {{ tag }}
+          <!-- Toggle Button -->
+          <button
+            class="w-full flex justify-between items-center text-left text-lg font-semibold mb-2"
+            @click="toggleSkill(index)"
+            :aria-expanded="skillToggles[index] || hoverToggles[index]"
+          >
+            <span class="transition group-hover:text-accent">
+              {{ skill.icon }} {{ skill.title }}
             </span>
-          </div>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                class="lucide lucide-chevron-down w-4 h-4 transition-transform duration-300 group-hover:text-accent"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                :class="{ 'rotate-180': skillToggles[index] || hoverToggles[index] }">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+
+          <!-- Animated Transition -->
+          <transition
+            name="collapse"
+            @enter="onEnter"
+            @after-enter="onAfterEnter"
+            @leave="onLeave"
+          >
+            <div
+              v-show="skillToggles[index] || hoverToggles[index]"
+              ref="collapsibles"
+              class="overflow-hidden"
+            >
+              <p class="text-sm text-gray-700 dark:text-gray-300 mb-2 mt-1">
+                {{ skill.description }}
+              </p>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span v-for="tag in skill.tags" :key="tag" class="bg-base-300 px-2 py-1 rounded-full">
+                  {{ tag }}
+                </span>
+              </div>
+            </div>
+          </transition>
         </div>
-      </transition>
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
 
 
 
