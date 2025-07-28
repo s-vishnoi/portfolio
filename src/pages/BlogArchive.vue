@@ -10,22 +10,22 @@
         class="block bg-base-200 rounded-lg overflow-hidden shadow transition transform hover:shadow-xl hover:scale-[1.01] hover:ring-2 hover:ring-accent"
       >
         <div class="p-4">
-          <div class="flex items-center justify-between mb-2">
-            <h3 class="text-lg font-semibold text-gray-600">
-              {{ post.title }}
-            </h3>
+          <div class="flex justify-between mb-2">
+            <!-- Logo and Title aligned left -->
             <div class="flex items-center gap-2">
-              <!-- Clap count -->
-              <span class="text-sm text-gray-400 flex items-center gap-1">
-                <i class="fas fa-sign-language"></i> {{ post.claps }}
-              </span>
-              <!-- Publisher logo (if available) -->
               <img
                 v-if="post.logo"
                 :src="post.logo"
                 alt="Publisher Logo"
                 class="h-5 w-auto object-contain rounded"
               />
+              <h3 class="text-lg font-semibold text-gray-600">
+                {{ post.title }}
+              </h3>
+            </div>
+            <!-- Claps on the right -->
+            <div class="flex items-center gap-1 text-sm text-gray-400">
+              <i class="fas fa-sign-language"></i> {{ post.claps }}
             </div>
           </div>
           <p class="text-sm text-gray-500 italic mb-1">
@@ -38,6 +38,7 @@
   </div>
 </template>
 
+
 <script>
 export default {
   data() {
@@ -49,16 +50,16 @@ export default {
     // Manual metadata map
     const postMetaMap = {
       "Bayesian Linear Regression: A Complete Beginner’s guide": {
-        claps: 307,
+        claps: 357,
         logo: "/logos/tds_logo.jpeg",
       },
       "Bayesian Data Science: The What, Why, and How": {
-        claps: 480,
+        claps: 514,
         logo: "/logos/tds_logo.jpeg",
       },
       "Spatio-Temporal Data Visualization: My Top 3 techniques by experience": {
-        claps: 103,
-        logo: "/logos/tds_logo.jpeg",
+        claps: 153,
+        logo: "",
       }
     };
 
