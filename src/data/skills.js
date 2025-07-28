@@ -1,5 +1,5 @@
 
-const skills = [
+export const skills = [
   {
     icon: "📐",
     title: "Statistical Modeling",
