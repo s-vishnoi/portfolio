@@ -133,7 +133,7 @@
               ref="collapsibles"
               class="overflow-hidden"
             >
-              <p class="text-sm text-gray-300 dark:text-gray-600 mb-2 mt-1">
+              <p class="text-sm text-gray-300 dark:text-gray-500 mb-2 mt-1">
                 {{ skill.description }}
               </p>
               <div class="flex flex-wrap gap-2 text-xs">
