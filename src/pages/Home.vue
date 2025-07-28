@@ -172,7 +172,7 @@
 
 
 
-    <!-- Blog Section -->
+    <!-- Blog Section 
     <section id="blog" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Blog</h2>
       <div v-if="blogPosts.length" class="space-y-4">
@@ -196,6 +196,7 @@
         <p>Loading latest posts from Medium…</p>
       </div>
     </section>
+    -->
 
     <!-- Associations Section -->
     <!--
