@@ -100,7 +100,7 @@
         <div
           v-for="(skill, index) in skills"
           :key="index"
-          class="bg-base-200 p-4 rounded-lg shadow transition hover:shadow-xl hover:ring-2 hover:ring-accent group"
+          class="bg-base-200 p-4 rounded-lg shadow transition hover:shadow-xl group"
           @mouseenter="hoverToggles[index] = true"
           @mouseleave="hoverToggles[index] = false"
         >
