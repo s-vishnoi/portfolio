@@ -19,10 +19,11 @@
               <span class="text-sm text-gray-400 flex items-center gap-1">
                 <i class="fas fa-sign-language"></i> {{ post.claps }}
               </span>
-              <!-- TDS logo -->
+              <!-- Publisher logo (if available) -->
               <img
-                src="/logos/tds_logo.jpeg"
-                alt="Towards Data Science"
+                v-if="post.logo"
+                :src="post.logo"
+                alt="Publisher Logo"
                 class="h-5 w-auto object-contain rounded"
               />
             </div>
@@ -37,35 +38,48 @@
   </div>
 </template>
 
-
-<script>export default {
+<script>
+export default {
   data() {
     return {
       blogPosts: [],
     };
   },
   mounted() {
+    // Manual metadata map
+    const postMetaMap = {
+      "Bayesian Linear Regression: A Complete Beginner’s guide": {
+        claps: 307,
+        logo: "/logos/tds_logo.jpeg",
+      },
+      "Bayesian Data Science: The What, Why, and How": {
+        claps: 480,
+        logo: "/logos/tds_logo.jpeg",
+      },
+      "Spatio-Temporal Data Visualization: My Top 3 techniques by experience": {
+        claps: 103,
+        logo: "/logos/tds_logo.jpeg",
+      }
+    };
+
     fetch("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@s-vishnoi")
       .then(res => res.json())
       .then(data => {
-        const clapsMap = {
-          "Bayesian Linear Regression: A Complete Beginner’s guide": 307,
-          "Bayesian Data Science: The What, Why, and How": 480,
-          "Spatio-Temporal Data Visualization: My Top 3 techniques by experience": 103
-        }
-
-        this.blogPosts = data.items.map(post => ({
-          title: post.title,
-          link: post.link,
-          subtitle: this.extractFirstLine(post.description),
-          date: new Date(post.pubDate).toLocaleDateString(undefined, {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric'
-          }),
-          claps: clapsMap[post.title] || 100,
-          isTDS: post.link.includes("towardsdatascience")
-        }));
+        this.blogPosts = data.items.map(post => {
+          const meta = postMetaMap[post.title] || {};
+          return {
+            title: post.title,
+            link: post.link,
+            subtitle: this.extractFirstLine(post.description),
+            date: new Date(post.pubDate).toLocaleDateString(undefined, {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric'
+            }),
+            claps: meta.claps || 100,
+            logo: meta.logo || null
+          };
+        });
       });
   },
   methods: {
@@ -77,5 +91,4 @@
     }
   }
 };
-
 </script>
