@@ -8,6 +8,7 @@
         <!--router-link to="/" class="btn btn-ghost">Home</router-link-->
         <router-link to="/work" class="btn btn-ghost">Work</router-link>
         <router-link to="/blog" class="btn btn-ghost">Blog</router-link>
+        <router-link to="/contact" class="btn btn-ghost">Contact</router-link>
         <!--<router-link to="/resume" class="btn btn-ghost">Resume</router-link>-->
         <button class="text-xl" @click="toggleTheme">
           <span v-if="theme === 'dark'">🌖</span>
