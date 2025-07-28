@@ -21,10 +21,9 @@
               </span>
               <!-- TDS logo -->
               <img
-                v-if="post.isTDS"
                 src="/logos/tds_logo.jpeg"
-                alt="TDS"
-                class="h-6 w-auto"
+                alt="Towards Data Science"
+                class="h-5 w-auto object-contain rounded"
               />
             </div>
           </div>

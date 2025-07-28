@@ -95,12 +95,15 @@
 
 
 
+
+    <!-- Skills Section -->
+
     <section id="skills" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Skills</h2>
       <div class="grid gap-4 md:grid-cols-2">
 
         <!-- 📐 Statistical Modeling -->
-        <div class="bg-base-200 p-4 rounded-lg shadow hover:ring-2 hover:ring-accent transition">
+        <div class="bg-base-200 p-4 rounded-lg shadow hover:ring-2 hover:ring-accent hover:shadow-lg transition">
           <button
             class="w-full text-left font-semibold text-lg mb-2 flex justify-between items-center"
             @click="toggleSkill(0)"
@@ -113,13 +116,12 @@
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path class="chevron" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M19 9l-7 7-7-7" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
           <div v-show="skillToggles[0]">
             <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
-              I approach modeling with end-to-end ownership — from framing questions to communicating results...
+              I approach modeling with end-to-end ownership — from framing questions to communicating results. With a physics-trained mindset, I focus on models grounded in reality, clarity, and interpretability.
             </p>
             <div class="flex flex-wrap gap-2 text-xs">
               <span class="bg-base-300 px-2 py-1 rounded-full">Stan</span>
@@ -133,21 +135,25 @@
         </div>
 
         <!-- 📊 Data Wrangling & Visualization -->
-        <div class="bg-base-200 p-4 rounded-lg shadow hover:ring-2 hover:ring-accent transition">
+        <div class="bg-base-200 p-4 rounded-lg shadow hover:ring-2 hover:ring-accent hover:shadow-lg transition">
           <button
             class="w-full text-left font-semibold text-lg mb-2 flex justify-between items-center"
             @click="toggleSkill(1)"
           >
             <span>📊 Data Wrangling & Visualization</span>
-            <svg class="w-4 h-4 transition-transform duration-200" :class="{ 'rotate-180': skillToggles[1] }"
-                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path class="chevron" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M19 9l-7 7-7-7" />
+            <svg
+              class="w-4 h-4 transition-transform duration-200"
+              :class="{ 'rotate-180': skillToggles[1] }"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
           <div v-show="skillToggles[1]">
             <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
-              I build pipelines that make messy data useful, and design dashboards that surface structure...
+              I build pipelines that make messy data useful, and design dashboards that surface structure and support decisions.
             </p>
             <div class="flex flex-wrap gap-2 text-xs">
               <span class="bg-base-300 px-2 py-1 rounded-full">pandas</span>
@@ -162,21 +168,25 @@
         </div>
 
         <!-- 🛠️ Machine Learning & Deployment -->
-        <div class="bg-base-200 p-4 rounded-lg shadow hover:ring-2 hover:ring-accent transition">
+        <div class="bg-base-200 p-4 rounded-lg shadow hover:ring-2 hover:ring-accent hover:shadow-lg transition">
           <button
             class="w-full text-left font-semibold text-lg mb-2 flex justify-between items-center"
             @click="toggleSkill(2)"
           >
             <span>🛠️ Machine Learning & Deployment</span>
-            <svg class="w-4 h-4 transition-transform duration-200" :class="{ 'rotate-180': skillToggles[2] }"
-                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path class="chevron" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M19 9l-7 7-7-7" />
+            <svg
+              class="w-4 h-4 transition-transform duration-200"
+              :class="{ 'rotate-180': skillToggles[2] }"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
           <div v-show="skillToggles[2]">
             <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
-              I lead research workflows from data acquisition to deployment. I train explainable models...
+              I train explainable models, use domain insight to ensure accountability, and deliver results through reproducible, production-ready pipelines.
             </p>
             <div class="flex flex-wrap gap-2 text-xs">
               <span class="bg-base-300 px-2 py-1 rounded-full">scikit-learn</span>
@@ -194,21 +204,25 @@
         </div>
 
         <!-- 🔗 Communication & Collaboration -->
-        <div class="bg-base-200 p-4 rounded-lg shadow hover:ring-2 hover:ring-accent transition">
+        <div class="bg-base-200 p-4 rounded-lg shadow hover:ring-2 hover:ring-accent hover:shadow-lg transition">
           <button
             class="w-full text-left font-semibold text-lg mb-2 flex justify-between items-center"
             @click="toggleSkill(3)"
           >
             <span>🔗 Communication & Collaboration</span>
-            <svg class="w-4 h-4 transition-transform duration-200" :class="{ 'rotate-180': skillToggles[3] }"
-                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path class="chevron" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M19 9l-7 7-7-7" />
+            <svg
+              class="w-4 h-4 transition-transform duration-200"
+              :class="{ 'rotate-180': skillToggles[3] }"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
           <div v-show="skillToggles[3]">
             <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
-              I work across institutions and disciplines, translating ideas between technical and non-technical teams...
+              I work globally across institutions and disciplines, translating ideas between technical and non-technical teams. I prioritize clarity, shared goals, and trust to keep collaborative projects on track.
             </p>
             <div class="flex flex-wrap gap-2 text-xs">
               <span class="bg-base-300 px-2 py-1 rounded-full">Interdisciplinary Teams</span>
