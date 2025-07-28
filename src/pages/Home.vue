@@ -161,8 +161,8 @@ import { skills } from '../data/skills'
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 
 
-const skillToggles = ref(skills.value.map(() => false))
-const hoverToggles = ref(skills.value.map(() => false))
+const skillToggles = ref(skills.map(() => false))
+const hoverToggles = ref(skills.map(() => false))
 
 const toggleSkill = (index) => {
   skillToggles.value[index] = !skillToggles.value[index]
