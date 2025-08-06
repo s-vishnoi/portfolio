@@ -1,6 +1,5 @@
 <template>
-  <div class="p-6">
-    <h1 class="text-3xl font-bold mb-4">Posts</h1>
+  <div class="p-6 mb-4">
     <ul class="grid gap-6">
       <a
         v-for="post in blogPosts"
