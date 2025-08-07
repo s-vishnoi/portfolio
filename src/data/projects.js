@@ -2,13 +2,13 @@ export const projects = [
   {
     title: "Chicago Bikeability Map",
     description: "A community data resource for exploring Chicago's bike infrastructure",
-    image: "/images/projects/bike_crashes.png",
+    image: "/images/projects/biking.png",
     link: "/bikeability"
   },
   {
     title: "Urban Scaling Laws",
     description: "Modeling US city socioeconomics with scaling laws from physics",
-    image: "/images/projects/urban-scaling.jpg",
+    video: "/videos/urban-scaling.mp4",  // <- use video here
     link: "/urban-scaling"
   },
   {
