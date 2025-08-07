@@ -31,7 +31,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-const theme = ref('pastel')
+const theme = ref('dark')
 
 const toggleTheme = () => {
   const root = document.documentElement
