@@ -8,7 +8,7 @@ export const projects = [
   {
     title: "Urban Scaling Laws",
     description: "Modeling US city socioeconomics with scaling laws from physics",
-    video: "/videos/urban-scaling.mp4",  // <- use video here
+    image: "/images/projects/urban-scaling.jpg",
     link: "/urban-scaling"
   },
   {
