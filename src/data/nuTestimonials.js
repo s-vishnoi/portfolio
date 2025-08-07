@@ -1,9 +1,14 @@
 export const nuTestimonials = [
+    "Kind and understanding. Readily answers questions and very willing to help out.",
     "He was very good at explaining the experiments so much so that it was very digestible even though the experiments were difficult at surface level. He was also enthusiastic about his work which made it more fun and exciting to learn. Overall, amazing TA and the best lab TA I've had. Really wanted students to learn rather than trick them !",
     "Great lab TA. Very helpful and never made students feel ashamed for asking ANY question (no matter how dumb they were). Always willing to help and very good at explaining concepts. Best lab TA I had in northwestern.",
+    "LOVED Vishnoi, very nice TA, answered questions well and provided good discussion reviews before the quizzes.",
+    "Vishnoi was very good at explaining concepts! Every time I had questions, Vishnoi answered my questions very well! Overall, they were a great TA!",
     "Very responsive to emails, conducts lab sessions smoothly, and is receptive to questions.",
     "Vishnoi was really good at explaining the key points of each lab and always came prepared. Vishnoi was friendly, approachable, and fast responder when reached out to via email.",
-    "LOVED Vishnoi, very nice TA, answered questions well and provided good discussion reviews before the quizzes.",
+
+    "Great TA, helped us figure out how to do equations. excellent TA.",
+    "Made sure I didn't feel any pressure during a stressful lab",
     "Samvardhan Vishnoi is a great TA. He is well–prepared for instruction in each class. He is able to help all students understand the material and gives brief lectures at the beginning of class as an overview. Overall, a great experience.",
     "Very helpful. Always willing and able to answer questions.",
     "Nice, knew topics, had good intro lectures and answered all questions well",
@@ -12,14 +17,14 @@ export const nuTestimonials = [
     "Very accommodating and clear about answering questions.",
     "Super kind and was always willing to help out and answer questions in a clear manner",
     "Vishnoi was super helpful and always gave us relevant practice problems during discussions. He really knows his stuff!",
-    "Vishnoi was very good at explaining concepts! Every time I had questions, Vishnoi answered my questions very well! Overall, they were a great TA!",
+
     "Vishnoi answered questions very well! They did an amazing job at teaching class content. They were always willing to help and was incredibly kind.",
     "Strength: very chill, Weakness: too chill",
     "Was the best TA ever. Weaknesses: none.",
     "He was clear when we asked questions and kept instruction at the beginning of the lab succinct.",
     "Very good at explaining things. No weakness.",
-    "Kind and understanding. Readily answers questions and very willing to help out.",
-    "Made sure I didn't feel any pressure during a stressful lab",
+
+
     "Explained stuff well and was helpful when needed.",
     "Overall, great TA! Really knowledgeable and was able to clarify anything that needed clarifying. Very accessible outside of class.",
     "Explained concepts in very simple and easy way to understand. Very helpful.",
@@ -30,7 +35,7 @@ export const nuTestimonials = [
     "He was great! Made sure we were prepared for our quizzes and cleared concepts for us",
     "Vishnoi was a great TA. Clearly enthusiastic about physics, but still had a cool vibe. Great at teaching course content in an approachable manner.",
     "Very kind and helpful every session, and would explain questions in an easy to understand manner. Very chill and cool!",
-    "Great TA, helped us figure out how to do equations. excellent TA.",
+
     "TA Vishnoi answered all of my questions and was very keen on helping me to succeed in the lab!",
     "They were great! They were always eager to help and always well prepared for the discussion section.",
     "He replied quickly and answered questions throughouly",
