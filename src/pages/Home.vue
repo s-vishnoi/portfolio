@@ -50,6 +50,29 @@
       </div>
     </section>
 
+
+    <!-- Active Roles Section (Stacked Cards) -->
+    <section id="roles" class="bg-base-100 p-6 rounded-box shadow text-left">
+      <h2 class="text-2xl font-bold mb-6">Active Roles</h2>
+      <div class="grid gap-4 px-4">
+        <a
+          v-for="role in roles"
+          :key="role.title"
+          :href="role.link"
+          target="_blank"
+          class="bg-base-200 p-6 rounded-lg shadow w-full flex gap-4 items-start hover:ring-2 hover:ring-accent transition relative"
+        >
+          <img :src="role.logo" class="h-10 mt-1" />
+          <div>
+            <h3 class="font-bold text-lg text-accent dark:text-accent-content">{{ role.title }}</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400">{{ role.institution }}</p>
+            <p class="text-xs text-gray-400 mt-1">{{ role.duration }}</p>
+            <p class="text-sm text-gray-800 dark:text-gray-500 mt-2" v-html="role.description"></p>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <!-- Skills Section -->
     <section id="skills" class="bg-base-100 p-6 rounded-box shadow">
       <h2 class="text-2xl font-bold mb-4">Skills</h2>
@@ -105,27 +128,6 @@
     </section>
 
 
-    <!-- Active Roles Section (Stacked Cards) -->
-    <section id="roles" class="bg-base-100 p-6 rounded-box shadow text-left">
-      <h2 class="text-2xl font-bold mb-6">Active Roles</h2>
-      <div class="grid gap-4 px-4">
-        <a
-          v-for="role in roles"
-          :key="role.title"
-          :href="role.link"
-          target="_blank"
-          class="bg-base-200 p-6 rounded-lg shadow w-full flex gap-4 items-start hover:ring-2 hover:ring-accent transition relative"
-        >
-          <img :src="role.logo" class="h-10 mt-1" />
-          <div>
-            <h3 class="font-bold text-lg text-accent dark:text-accent-content">{{ role.title }}</h3>
-            <p class="text-sm text-gray-500 dark:text-gray-400">{{ role.institution }}</p>
-            <p class="text-xs text-gray-400 mt-1">{{ role.duration }}</p>
-            <p class="text-sm text-gray-800 dark:text-gray-500 mt-2" v-html="role.description"></p>
-          </div>
-        </a>
-      </div>
-    </section>
 
 
 
