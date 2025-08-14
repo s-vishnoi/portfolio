@@ -22,6 +22,13 @@
       </div>
     </div>
 
+
+    <!-- Footer -->
+    <footer class="text-sm text-gray-400 italic text-center mt-4 p-4">
+      Built with Plotly and Dash using data from the City of Chicago.<br />
+      Hosted using Docker and Render.
+    </footer>
+
     <!-- Comment Section -->
     <section class="max-w-6xl mx-auto px-6 mt-6 space-y-4">
       <!-- Form -->
@@ -68,11 +75,6 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="text-sm text-gray-400 italic text-center mt-4 p-4">
-      Built with Plotly and Dash using data from the City of Chicago.<br />
-      Hosted using Docker and Render.
-    </footer>
   </div>
 </template>
 
