@@ -7,7 +7,6 @@ function sanitize(input: unknown, maxLen: number) {
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // CORS for your own domain
   res.setHeader('Access-Control-Allow-Origin', req.headers.origin || '*');
   res.setHeader('Vary', 'Origin');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
@@ -18,8 +17,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     if (req.method === 'POST') {
       const { name, neighborhood, comment, honeypot } = req.body || {};
-
-      // Simple bot trap
       if (honeypot) return res.status(200).json({ ok: true });
 
       const _name = sanitize(name, 80);
@@ -34,17 +31,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         INSERT INTO comments (name, neighborhood, comment)
         VALUES (${_name}, ${_hood || null}, ${_comment})
       `;
-
       return res.status(201).json({ ok: true });
     }
 
     if (req.method === 'GET') {
-      const limit = Math.min(parseInt(String(req.query.limit || '20')), 100);
       const { rows } = await sql`
         SELECT id, name, neighborhood, comment, created_at
         FROM comments
         ORDER BY created_at DESC
-        LIMIT ${limit}
       `;
       return res.status(200).json({ ok: true, data: rows });
     }
