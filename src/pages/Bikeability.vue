@@ -57,7 +57,6 @@
           <span v-else-if="success" class="text-success">Thanks! Posted.</span>
         </div>
       </form>
-    </section>
 
       <!-- Scrollable All Comments -->
       <div>
