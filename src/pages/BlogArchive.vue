@@ -76,7 +76,7 @@ export default {
               month: 'short',
               day: 'numeric'
             }),
-            claps: meta.claps || 100,
+            claps: meta.claps || 'N/A',
             logo: meta.logo || null
           };
         });
