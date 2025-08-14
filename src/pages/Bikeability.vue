@@ -30,33 +30,34 @@
     </footer>
 
     <!-- Comment Section -->
-    <section class="max-w-6xl mx-auto px-6 mt-6 space-y-4">
+    <section class="max-w-6xl mx-auto px-6 mt-4 space-y-3">
       <!-- Form -->
       <form @submit.prevent="submitForm"
-            class="rounded-2xl p-4 shadow border border-base-300/50 bg-base-200/50 space-y-3">
+            class="rounded-xl p-2 border border-base-300/40 bg-base-200/40 space-y-2">
         <input v-model="honeypot" type="text" autocomplete="off" tabindex="-1"
-               style="position:absolute;left:-9999px;opacity:0" aria-hidden="true" />
+              style="position:absolute;left:-9999px;opacity:0" aria-hidden="true" />
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-          <input v-model.trim="name" required maxlength="80" placeholder="Your name"
-                 class="input input-bordered bg-base-100" />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+          <input v-model.trim="name" required maxlength="80" placeholder="Name"
+                class="input input-sm input-bordered bg-base-100" />
           <input v-model.trim="neighborhood" maxlength="80" placeholder="Neighborhood (optional)"
-                 class="input input-bordered bg-base-100" />
+                class="input input-sm input-bordered bg-base-100" />
           <button :disabled="loading"
                   type="submit"
-                  class="btn btn-outline">
-            {{ loading ? 'Posting…' : 'Post comment' }}
+                  class="btn btn-sm btn-outline">
+            {{ loading ? 'Posting…' : 'Post' }}
           </button>
         </div>
 
-        <textarea v-model.trim="comment" required maxlength="2000" placeholder="Add your comment…"
-                  class="textarea textarea-bordered bg-base-100 w-full min-h-[96px]"></textarea>
+        <textarea v-model.trim="comment" required maxlength="2000" placeholder="Comment..."
+                  class="textarea textarea-sm textarea-bordered bg-base-100 w-full min-h-[64px]"></textarea>
 
-        <div class="text-sm h-5">
+        <div class="text-xs h-4">
           <span v-if="error" class="text-error">{{ error }}</span>
-          <span v-else-if="success" class="text-success">Thanks! Your comment was posted.</span>
+          <span v-else-if="success" class="text-success">Thanks! Posted.</span>
         </div>
       </form>
+    </section>
 
       <!-- Scrollable All Comments -->
       <div>
