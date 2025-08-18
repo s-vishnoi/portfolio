@@ -7,13 +7,13 @@ export const projects = [
   },
   {
     title: "Urban Scaling Laws",
-    description: "Modeling US city socioeconomics with scaling laws from physics",
+    description: "Modeling US city socioeconomics using scaling laws from physics",
     image: "/images/projects/urban-scaling.jpg",
     link: "/urban-scaling"
   },
   {
     title: "Global Researcher Demographics",
-    description: "Leveraging publication records to study global researcher patterns",
+    description: "Leveraging publication records to study global research patterns and equality",
     image: "/images/projects/demography-map.png",
     link: "/demographics"
   }
