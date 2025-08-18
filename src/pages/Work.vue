@@ -23,7 +23,7 @@
     <div v-if="currentView === 'consultant'" class="space-y-8">
       <h2 class="text-1xl font-semibold text-black-400 flex items-center gap-3 mb-2">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8" />
-        Research Consulting @ Northwestern IT
+        Data Science, Statistics, and Visualization Consultant @ Northwestern IT
       </h2>
 
       <!-- Independent Consultations Title + Button -->
