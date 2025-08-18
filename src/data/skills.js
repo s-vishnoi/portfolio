@@ -3,7 +3,7 @@ export const skills = [
   {
     icon: "📐",
     title: "Statistical Modeling",
-    description: "I approach modeling with end-to-end ownership — from framing questions to communicating results. With a physics-trained mindset, I focus on models grounded in reality, clarity, and interpretability.",
+    description: "I approach modeling with end-to-end ownership — from framing questions to communicating results. With a physics-trained mindset, I focus on grounding models in reality, robustness, and interpretability.",
     tags: ["Stan", "PyMC", "GLMs", "Bayesian Models", "Forecasting", "Imputation"]
   },
   {
@@ -21,7 +21,7 @@ export const skills = [
   {
     icon: "🔗",
     title: "Communication & Collaboration",
-    description: "I work globally across institutions and disciplines, translating ideas between technical and non-technical teams. I prioritize clarity, shared goals, and trust to keep collaborative projects on track.",
+    description: "I work globally across institutions and disciplines, translating ideas between technical and non-technical teams. I prioritize clarity, shared values, and trust to keep projects on track.",
     tags: ["Interdisciplinary Teams", "Stakeholder Communication", "Scientific Writing", "Research Leadership", "Collaboration"]
   }
 ]
