@@ -62,23 +62,29 @@
 
       <!-- Workshops Section -->
       <div>
+        <!-- Workshops Title -->
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-lg font-bold text-accent">Lead Workshops</h3>
+        </div>
+
         <div class="bg-base-200 p-4 rounded shadow flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <p class="text-sm font-medium text-gray-700">
-              <span class="font-semibold">Bayesian Modeling Workshop</span> — Taught in Winter 2024 and Winter 2025.
+              <span class="font-semibold">Bayesian Inference</span> — Winter 2024 | Winter 2025.
             </p>
-            <p class="text-xs text-gray-500">Open-source Jupyter Notebook on GitHub | Hosted by Northwestern IT</p>
+            <p class="text-xs text-gray-500">Intro to Bayesian regression, information metrics, and model comparison.</p>
           </div>
           <a
             href="https://github.com/s-vishnoi/Bayesian_Regression/blob/main/stan_workshop.ipynb"
             target="_blank"
             class="text-sm bg-base-300 hover:bg-base-200 px-4 py-2 rounded shadow transition whitespace-nowrap"
           >
-            View Workshop Repo ↗
+            Open-source code ↗
           </a>
         </div>
       </div>
     </div>
+
 
     <!-- Teaching Assistant Section -->
     <div v-else class="space-y-10">
