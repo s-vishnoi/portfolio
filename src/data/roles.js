@@ -8,7 +8,7 @@ export const roles = [
       link: "https://amaral.northwestern.edu"
     },
     {
-      title: "Data Scientist",
+      title: "Visiting Data Scientist",
       institution: "Max Planck Institute for Demographic Research",
       duration: "Jun 2023 – Present",
       description: "Designing methods to track global academic representation from publication records.",
