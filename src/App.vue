@@ -1,29 +1,40 @@
 <template>
-  <div>
-    <nav class="navbar bg-base-100 shadow mb-6">
-      <div class="flex-1">
-        <router-link to="/" class="btn btn-ghost text-xl">Vishnoi</router-link>
-      </div>
-      <div class="flex gap-4 px-2 items-center">
-        <!--router-link to="/" class="btn btn-ghost">Home</router-link-->
-        <router-link to="/work" class="btn btn-ghost">Work</router-link>
-        <router-link to="/blog" class="btn btn-ghost">Blog</router-link>
-        <router-link to="/contact" class="btn btn-ghost">Contact</router-link>
-        <!--<router-link to="/resume" class="btn btn-ghost">Resume</router-link>-->
-        <button class="text-xl" @click="toggleTheme">
-          <span v-if="theme === 'dark'">🌖</span>
-          <span v-else>🌘</span>
-        </button>
-      </div>
+  <div class="font-ui text-fg">
+    <!-- NAV: minimal, text links, aligned to content column -->
+    <nav class="mb-6">
+      <div class="max-w-prose mx-auto px-4 sm:px-6 flex justify-between items-center py-3">
+        <router-link to="/" class="text-xl font-semibold tracking-tight hover:underline">
+          Vishnoi
+        </router-link>
 
+        <div class="flex items-center gap-4">
+          <!-- Plain text links; underline on hover; subtle active state -->
+          <router-link to="/work" class="hover:underline" active-class="underline">Work</router-link>
+          <router-link to="/blog" class="hover:underline" active-class="underline">Blog</router-link>
+          <router-link to="/contact" class="hover:underline" active-class="underline">Contact</router-link>
+
+          <!-- Theme toggle (kept) -->
+          <button class="text-xl leading-none" @click="toggleTheme" aria-label="Toggle theme">
+            <span v-if="theme === 'dark'">🌖</span>
+            <span v-else>🌘</span>
+          </button>
+        </div>
+      </div>
     </nav>
+
+    <!-- PAGE CONTENT -->
     <transition name="slide" mode="out-in">
-      <router-view />
+      <main class="max-w-prose mx-auto px-4 sm:px-6">
+        <router-view />
+      </main>
     </transition>
 
-    <footer class="navbar bg-base-100 shadow mt-6">
-      <div class="flex-1"></div>
-      <div class="flex gap-4 px-2 items-center"></div>
+    <!-- FOOTER: minimal, aligned to column -->
+    <footer class="mt-8">
+      <div class="max-w-prose mx-auto px-4 sm:px-6">
+        <hr class="border-t border-neutral-200 my-6" />
+        <p class="text-muted text-sm py-2">© {{ year }} Samvardhan Vishnoi</p>
+      </div>
     </footer>
   </div>
 </template>
@@ -32,6 +43,7 @@
 import { ref, onMounted } from 'vue'
 
 const theme = ref('pastel')
+const year = new Date().getFullYear()
 
 const toggleTheme = () => {
   const root = document.documentElement
@@ -47,15 +59,8 @@ onMounted(() => {
 </script>
 
 <style>
-.slide-enter-active, .slide-leave-active {
-  transition: all 1.0s ease;
-}
-.slide-enter-from {
-  opacity: 0;
-  transform: translateX(20px);
-}
-.slide-leave-to {
-  opacity: 0;
-  transform: translateX(-20px);
-}
+/* page transition */
+.slide-enter-active, .slide-leave-active { transition: all 1.0s ease; }
+.slide-enter-from { opacity: 0; transform: translateX(20px); }
+.slide-leave-to   { opacity: 0; transform: translateX(-20px); }
 </style>
