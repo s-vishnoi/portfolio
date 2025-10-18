@@ -1,49 +1,61 @@
 <template>
-  <div class="font-ui text-fg text-[15.5px] leading-relaxed">
-    <!-- HEADER: name + tiny inline nav -->
-    <header class="max-w-prose mx-auto px-4 sm:px-6 py-6">
-      <h1 class="text-[28px] sm:text-[30px] font-semibold tracking-tight">
-        SAMVARDHAN VISHNOI
-      </h1>
-      <nav class="mt-2 text-[15px]">
-        <RouterLink to="/work" class="navlink" active-class="underline">Work</RouterLink>
-        <span class="mx-2">·</span>
-        <RouterLink to="/blog" class="navlink" active-class="underline">Blog</RouterLink>
-        <span class="mx-2">·</span>
-        <RouterLink to="/contact" class="navlink" active-class="underline">Contact</RouterLink>
-      </nav>
-    </header>
+  <div>
+    <nav class="navbar bg-base-100 shadow mb-6">
+      <div class="flex-1">
+        <router-link to="/" class="btn btn-ghost text-xl">Vishnoi</router-link>
+      </div>
+      <div class="flex gap-4 px-2 items-center">
+        <!--router-link to="/" class="btn btn-ghost">Home</router-link-->
+        <router-link to="/work" class="btn btn-ghost">Work</router-link>
+        <router-link to="/blog" class="btn btn-ghost">Blog</router-link>
+        <router-link to="/contact" class="btn btn-ghost">Contact</router-link>
+        <!--<router-link to="/resume" class="btn btn-ghost">Resume</router-link>-->
+        <button class="text-xl" @click="toggleTheme">
+          <span v-if="theme === 'dark'">🌖</span>
+          <span v-else>🌘</span>
+        </button>
+      </div>
 
-    <!-- CONTENT -->
-    <main class="max-w-prose mx-auto px-4 sm:px-6">
-      <transition name="slide" mode="out-in">
-        <router-view />
-      </transition>
-    </main>
+    </nav>
+    <transition name="slide" mode="out-in">
+      <router-view />
+    </transition>
 
-    <!-- FOOTER: thin rule + small text -->
-    <footer class="max-w-prose mx-auto px-4 sm:px-6 py-10">
-      <hr class="border-neutral-200 my-6" />
-      <p class="text-muted text-sm">sam [at] vishnoi [dot] site</p>
-      <p class="text-muted text-sm mt-2">© {{ year }} Samvardhan Vishnoi</p>
+    <footer class="navbar bg-base-100 shadow mt-6">
+      <div class="flex-1"></div>
+      <div class="flex gap-4 px-2 items-center"></div>
     </footer>
   </div>
 </template>
 
 <script setup>
-const year = new Date().getFullYear()
+import { ref, onMounted } from 'vue'
+
+const theme = ref('pastel')
+
+const toggleTheme = () => {
+  const root = document.documentElement
+  const current = root.getAttribute('data-theme')
+  const next = current === 'dark' ? 'pastel' : 'dark'
+  theme.value = next
+  root.setAttribute('data-theme', next)
+}
+
+onMounted(() => {
+  theme.value = document.documentElement.getAttribute('data-theme') || 'pastel'
+})
 </script>
 
 <style>
-/* Minimal page transition (optional) */
-.slide-enter-active, .slide-leave-active { transition: all 0.8s ease; }
-.slide-enter-from { opacity: 0; transform: translateY(6px); }
-.slide-leave-to   { opacity: 0; transform: translateY(-6px); }
-
-/* Charlie-style links: plain text, underline on hover, active underlined */
-.navlink { text-decoration: none; }
-.navlink:hover { text-decoration: underline; }
-
-/* If using Vue Router's default active class instead, you can style it globally: */
-/* .router-link-active { text-decoration: underline; } */
+.slide-enter-active, .slide-leave-active {
+  transition: all 1.0s ease;
+}
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(20px);
+}
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
+}
 </style>
