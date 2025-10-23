@@ -34,11 +34,10 @@
     >
       <h2 class="text-lg font-semibold uppercase tracking-[2px] flex flex-wrap items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-1" />
-        Northwestern IT
+        NU Research Computing & Data Services
       </h2>
 
       <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <h3 class="text-base font-semibold uppercase tracking-[2px] text-ink">Consultations</h3>
         <a
           href="https://www.it.northwestern.edu/departments/it-services-support/teaching/learning.html"
           target="_blank"
@@ -99,7 +98,7 @@
     >
       <h2 class="text-lg font-semibold uppercase tracking-[2px] flex flex-wrap items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-1" />
-        Physics &amp; Astronomy TA
+        NU Department of Physics &amp; Astronomy
       </h2>
 
       <div class="border border-smoke/30 bg-paper p-6 space-y-4">
