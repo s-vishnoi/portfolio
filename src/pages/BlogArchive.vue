@@ -6,7 +6,7 @@
         :key="post.link"
         :href="post.link"
         target="_blank"
-        class="block border-3 border-charcoal bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+        class="block border-3 border-smoke bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
       >
         <div class="flex justify-between gap-4 mb-2">
           <div class="flex items-center gap-2">
@@ -14,7 +14,7 @@
               v-if="post.logo"
               :src="post.logo"
               alt="Publisher Logo"
-              class="h-6 w-auto object-contain border border-charcoal bg-cream p-1"
+              class="h-6 w-auto object-contain border border-smoke bg-cream p-1"
             />
             <h3 class="text-lg font-semibold text-ink">
               {{ post.title }}
