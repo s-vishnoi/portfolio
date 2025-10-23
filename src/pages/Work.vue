@@ -12,7 +12,7 @@
               : 'bg-cream text-smoke hover:-translate-y-0.5'
           ]"
         >
-          Research Consultant
+          Consulting
         </button>
         <button
           @click="currentView = 'ta'"
@@ -23,7 +23,7 @@
               : 'bg-cream text-smoke hover:-translate-y-0.5'
           ]"
         >
-          Teaching Assistant
+          Teaching
         </button>
       </div>
     </div>
@@ -34,11 +34,11 @@
     >
       <h2 class="text-lg font-semibold uppercase tracking-[2px] flex flex-wrap items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-1" />
-        Data Science, Statistics, and Visualization Consultant @ Northwestern IT
+        Consulting at Northwestern IT
       </h2>
 
       <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <h3 class="text-base font-semibold uppercase tracking-[2px] text-ink">Lead Consultations</h3>
+        <h3 class="text-base font-semibold uppercase tracking-[2px] text-ink">Consultations</h3>
         <a
           href="https://www.it.northwestern.edu/departments/it-services-support/teaching/learning.html"
           target="_blank"
@@ -71,7 +71,7 @@
 
       <div>
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-2">
-          <h3 class="text-base font-semibold uppercase tracking-[2px] text-ink">Lead Workshops</h3>
+          <h3 class="text-base font-semibold uppercase tracking-[2px] text-ink">Workshops</h3>
         </div>
         <div class="border border-smoke/30 bg-paper p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -99,7 +99,7 @@
     >
       <h2 class="text-lg font-semibold uppercase tracking-[2px] flex flex-wrap items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-1" />
-        Northwestern University Physics and Astronomy
+        Physics &amp; Astronomy TA
       </h2>
 
       <div class="border border-smoke/30 bg-paper p-6 space-y-4">
