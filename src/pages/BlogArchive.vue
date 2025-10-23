@@ -1,37 +1,33 @@
 <template>
-  <div class="p-6 mb-4">
+  <div class="max-w-4xl mx-auto px-6 py-12">
     <ul class="grid gap-6">
       <a
         v-for="post in blogPosts"
         :key="post.link"
         :href="post.link"
         target="_blank"
-        class="block bg-base-200 rounded-lg overflow-hidden shadow transition transform hover:shadow-xl hover:scale-[1.01] hover:ring-2 hover:ring-accent"
+        class="block border-3 border-ink bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
       >
-        <div class="p-4">
-          <div class="flex justify-between mb-2">
-            <!-- Logo and Title aligned left -->
-            <div class="flex items-center gap-2">
-              <img
-                v-if="post.logo"
-                :src="post.logo"
-                alt="Publisher Logo"
-                class="h-5 w-auto object-contain rounded"
-              />
-              <h3 class="text-lg font-semibold text-gray-600">
-                {{ post.title }}
-              </h3>
-            </div>
-            <!-- Claps on the right -->
-            <div class="flex items-center gap-1 text-sm text-gray-400">
-              <i class="fas fa-sign-language"></i> {{ post.claps }}
-            </div>
+        <div class="flex justify-between gap-4 mb-2">
+          <div class="flex items-center gap-2">
+            <img
+              v-if="post.logo"
+              :src="post.logo"
+              alt="Publisher Logo"
+              class="h-6 w-auto object-contain border border-ink bg-cream p-1"
+            />
+            <h3 class="text-lg font-semibold text-ink">
+              {{ post.title }}
+            </h3>
           </div>
-          <p class="text-sm text-gray-500 italic mb-1">
-            {{ post.subtitle || 'No description available.' }}
-          </p>
-          <p class="text-xs text-gray-400">{{ post.date }}</p>
+          <div class="flex items-center gap-1 text-xs uppercase tracking-[1px] text-smoke">
+            <i class="fas fa-sign-language"></i> {{ post.claps }}
+          </div>
         </div>
+        <p class="text-sm text-charcoal italic mb-2">
+          {{ post.subtitle || 'No description available.' }}
+        </p>
+        <p class="text-xs text-smoke uppercase tracking-[1px]">{{ post.date }}</p>
       </a>
     </ul>
   </div>
