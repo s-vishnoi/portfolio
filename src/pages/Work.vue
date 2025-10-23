@@ -33,7 +33,7 @@
       class="border-4 border-ink bg-paper p-6 space-y-10"
     >
       <h2 class="text-lg font-semibold uppercase tracking-[2px] flex flex-wrap items-center gap-3">
-        <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-1" />
+        <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-0.5" />
         NU Research Computing & Data Services
       </h2>
 
@@ -97,7 +97,7 @@
       class="border-4 border-ink bg-paper p-6 space-y-8"
     >
       <h2 class="text-lg font-semibold uppercase tracking-[2px] flex flex-wrap items-center gap-3">
-        <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-1" />
+        <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-0.5" />
         NU Department of Physics &amp; Astronomy
       </h2>
 
