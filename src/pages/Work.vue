@@ -6,7 +6,7 @@
         <button
           @click="currentView = 'consultant'"
           :class="[
-            'w-60 px-4 py-3 border-2 border-smoke uppercase tracking-[2px] transition-transform duration-200',
+            'w-60 px-4 py-3 border border-smoke/40 uppercase tracking-[2px] transition-transform duration-200',
             currentView === 'consultant'
               ? '-translate-x-1 -translate-y-1 shadow-outline bg-paper text-ink'
               : 'bg-cream text-smoke hover:-translate-y-0.5'
@@ -17,7 +17,7 @@
         <button
           @click="currentView = 'ta'"
           :class="[
-            'w-60 px-4 py-3 border-2 border-smoke uppercase tracking-[2px] transition-transform duration-200',
+            'w-60 px-4 py-3 border border-smoke/40 uppercase tracking-[2px] transition-transform duration-200',
             currentView === 'ta'
               ? '-translate-x-1 -translate-y-1 shadow-outline bg-paper text-ink'
               : 'bg-cream text-smoke hover:-translate-y-0.5'
@@ -33,7 +33,7 @@
       class="border-4 border-ink bg-paper p-6 space-y-10"
     >
       <h2 class="text-lg font-semibold uppercase tracking-[2px] flex flex-wrap items-center gap-3">
-        <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border-2 border-smoke bg-cream p-1" />
+        <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-1" />
         Data Science, Statistics, and Visualization Consultant @ Northwestern IT
       </h2>
 
@@ -42,7 +42,7 @@
         <a
           href="https://www.it.northwestern.edu/departments/it-services-support/teaching/learning.html"
           target="_blank"
-          class="inline-flex items-center gap-2 border-2 border-smoke px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform"
+          class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform"
         >
           Request a Consult ↗
         </a>
@@ -56,12 +56,12 @@
         >
           <div class="flip-card">
             <div class="flip-card-inner">
-              <div class="flip-card-front border-3 border-smoke bg-paper flex items-center justify-center text-center">
+              <div class="flip-card-front border border-smoke/30 bg-paper flex items-center justify-center text-center">
                 <h3 class="text-sm font-semibold uppercase tracking-[1px] text-ink">
                   {{ consult.topic }}
                 </h3>
               </div>
-              <div class="flip-card-back border-3 border-smoke bg-cream text-xs text-charcoal flex items-center justify-center text-center p-4 leading-relaxed">
+              <div class="flip-card-back border border-smoke/30 bg-cream text-xs text-charcoal flex items-center justify-center text-center p-4 leading-relaxed">
                 {{ consult.description }}
               </div>
             </div>
@@ -73,7 +73,7 @@
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-2">
           <h3 class="text-base font-semibold uppercase tracking-[2px] text-ink">Lead Workshops</h3>
         </div>
-        <div class="border-3 border-smoke bg-paper p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div class="border border-smoke/30 bg-paper p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p class="text-sm text-charcoal">
               <span class="font-semibold text-ink uppercase tracking-[1px]">Bayesian Inference</span> — Winter 2024 | Winter 2025.
@@ -85,7 +85,7 @@
           <a
             href="https://github.com/s-vishnoi/Bayesian_Regression/blob/main/stan_workshop.ipynb"
             target="_blank"
-            class="inline-flex items-center gap-2 border-2 border-smoke px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform whitespace-nowrap"
+            class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform whitespace-nowrap"
           >
             Open-source code ↗
           </a>
@@ -98,16 +98,16 @@
       class="border-4 border-ink bg-paper p-6 space-y-8"
     >
       <h2 class="text-lg font-semibold uppercase tracking-[2px] flex flex-wrap items-center gap-3">
-        <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border-2 border-smoke bg-cream p-1" />
+        <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-1" />
         Northwestern University Physics and Astronomy
       </h2>
 
-      <div class="border-3 border-smoke bg-paper p-6 space-y-4">
+      <div class="border border-smoke/30 bg-paper p-6 space-y-4">
         <ul class="list-disc list-inside text-sm text-charcoal leading-relaxed">
           <li>General Physics — 2021 Fall | 2022 Winter, Spring | 2023 Fall, Winter | 2025 Winter</li>
         </ul>
 
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 border-3 border-smoke bg-cream p-4">
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 border border-smoke/30 bg-cream p-4">
           <span
             v-for="(quote, index) in nuTestimonials"
             :key="index"
@@ -135,7 +135,7 @@ const currentView = ref('consultant')
 }
 
 .testimonial-tile {
-  @apply italic text-sm text-charcoal px-3 py-2 border border-smoke bg-paper transition-transform duration-300;
+  @apply italic text-sm text-charcoal px-3 py-2 border border-smoke/30 bg-paper transition-transform duration-300;
 }
 
 .testimonial-tile:hover {

@@ -30,7 +30,7 @@
         <h2 class="text-xl font-semibold uppercase tracking-[3px]">Community Notes</h2>
         <form
           @submit.prevent="submitForm"
-          class="space-y-4 border-3 border-smoke bg-cream p-4"
+          class="space-y-4 border border-smoke/30 bg-cream p-4"
         >
           <input
             v-model="honeypot"
@@ -46,18 +46,18 @@
               required
               maxlength="80"
               placeholder="Name"
-            class="w-full border-2 border-smoke bg-paper px-3 py-2 text-sm text-ink placeholder:text-smoke transition-transform focus:outline-none focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline"
+            class="w-full border border-smoke/40 bg-paper px-3 py-2 text-sm text-ink placeholder:text-smoke transition-transform focus:outline-none focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline"
             />
             <input
               v-model.trim="neighborhood"
               maxlength="80"
               placeholder="Neighborhood (optional)"
-            class="w-full border-2 border-smoke bg-paper px-3 py-2 text-sm text-ink placeholder:text-smoke transition-transform focus:outline-none focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline"
+            class="w-full border border-smoke/40 bg-paper px-3 py-2 text-sm text-ink placeholder:text-smoke transition-transform focus:outline-none focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline"
             />
             <button
               :disabled="loading"
               type="submit"
-              class="border-2 border-smoke px-4 py-2 text-sm uppercase tracking-[2px] transition-transform hover:-translate-y-1 disabled:opacity-60 disabled:pointer-events-none"
+              class="border border-smoke/40 px-4 py-2 text-sm uppercase tracking-[2px] transition-transform hover:-translate-y-1 disabled:opacity-60 disabled:pointer-events-none"
             >
               {{ loading ? 'Posting…' : 'Post' }}
             </button>
@@ -68,7 +68,7 @@
             required
             maxlength="2000"
             placeholder="Comment..."
-            class="w-full border-2 border-smoke bg-paper px-3 py-2 text-sm text-ink placeholder:text-smoke transition-transform focus:outline-none focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline min-h-[120px]"
+            class="w-full border border-smoke/40 bg-paper px-3 py-2 text-sm text-ink placeholder:text-smoke transition-transform focus:outline-none focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline min-h-[120px]"
           ></textarea>
 
           <div class="text-xs min-h-[1rem] text-smoke">
@@ -79,7 +79,7 @@
 
         <div class="space-y-4">
           <h3 class="text-base font-semibold uppercase tracking-[2px]">All Comments</h3>
-          <div class="border-3 border-smoke bg-cream p-4 max-h-72 overflow-y-auto space-y-4">
+          <div class="border border-smoke/30 bg-cream p-4 max-h-72 overflow-y-auto space-y-4">
             <div
               v-for="c in comments"
               :key="c.id"

@@ -6,7 +6,7 @@
         <img
           src="/images/samvardhan.png"
           alt="Samvardhan Vishnoi"
-          class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full border-3 border-smoke"
+          class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full border border-smoke/40"
         />
         <div>
           <h1 class="text-4xl font-bold tracking-tight uppercase">
@@ -22,28 +22,28 @@
             <a
               href="mailto:svishnoi@u.northwestern.edu"
               target="_blank"
-              class="inline-flex items-center gap-2 border-2 border-smoke px-4 py-2 hover:-translate-y-0.5 transition-transform"
+              class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 hover:-translate-y-0.5 transition-transform"
             >
               Email ↗
             </a>
             <a
               href="https://www.linkedin.com/in/samvardhan-vishnoi/"
               target="_blank"
-              class="inline-flex items-center gap-2 border-2 border-smoke px-4 py-2 hover:-translate-y-0.5 transition-transform"
+              class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 hover:-translate-y-0.5 transition-transform"
             >
               LinkedIn ↗
             </a>
             <a
               href="https://github.com/s-vishnoi"
               target="_blank"
-              class="inline-flex items-center gap-2 border-2 border-smoke px-4 py-2 hover:-translate-y-0.5 transition-transform"
+              class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 hover:-translate-y-0.5 transition-transform"
             >
               GitHub ↗
             </a>
             <a
               href="https://www.instagram.com/vishhnnoi/"
               target="_blank"
-              class="inline-flex items-center gap-2 border-2 border-smoke px-4 py-2 hover:-translate-y-0.5 transition-transform"
+              class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 hover:-translate-y-0.5 transition-transform"
             >
               Instagram ↗
             </a>
@@ -61,12 +61,12 @@
           :key="project.title"
           :is="project.external ? 'a' : RouterLink"
           v-bind="projectAttrs(project)"
-          class="block border-3 border-smoke bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline outline-none"
+          class="block border border-smoke/30 bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline outline-none"
         >
           <img
             :src="project.image"
             :alt="project.title"
-            class="w-full h-48 object-cover border-3 border-smoke mb-4"
+            class="w-full h-48 object-cover border border-smoke/30 mb-4"
           />
           <h3 class="text-xl font-semibold uppercase tracking-tight mb-3">
             {{ project.title }}
@@ -88,9 +88,9 @@
           :key="role.title"
           :href="role.link"
           target="_blank"
-          class="border-3 border-smoke bg-paper p-6 flex flex-col md:flex-row gap-4 items-start transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          class="border border-smoke/30 bg-paper p-6 flex flex-col md:flex-row gap-4 items-start transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
         >
-          <img :src="role.logo" class="h-12 border-2 border-smoke bg-cream p-2" />
+          <img :src="role.logo" class="h-12 border border-smoke/30 bg-cream p-2" />
           <div>
             <h3 class="text-lg font-semibold uppercase tracking-[1px]">
               {{ role.title }}
@@ -114,7 +114,7 @@
         <div
           v-for="(skill, index) in skills"
           :key="index"
-          class="border-3 border-smoke bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline group"
+          class="border border-smoke/30 bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline group"
           @mouseenter="hoverToggles[index] = true"
           @mouseleave="hoverToggles[index] = false"
         >
@@ -156,7 +156,7 @@
                 <span
                   v-for="tag in skill.tags"
                   :key="tag"
-                  class="inline-block border border-smoke bg-cream px-2 py-1 uppercase tracking-[1px]"
+                  class="inline-block border border-smoke/20 bg-cream px-2 py-1 uppercase tracking-[1px]"
                 >
                   {{ tag }}
                 </span>
@@ -171,7 +171,7 @@
     <section id="achievements" class="border-4 border-ink bg-paper p-8">
       <h2 class="text-2xl font-bold uppercase tracking-[4px] mb-8">Achievements</h2>
       <div class="grid gap-4 md:grid-cols-2">
-        <div class="border-3 border-smoke bg-paper p-4 flex items-start gap-3">
+        <div class="border border-smoke/30 bg-paper p-4 flex items-start gap-3">
           <span class="text-2xl">🥇</span>
           <div>
             <h3 class="font-semibold uppercase tracking-[1px] text-ink">Murray Green Medal</h3>
@@ -180,7 +180,7 @@
             </p>
           </div>
         </div>
-        <div class="border-3 border-smoke bg-paper p-4 flex items-start gap-3">
+        <div class="border border-smoke/30 bg-paper p-4 flex items-start gap-3">
           <span class="text-2xl">🏛️</span>
           <div>
             <h3 class="font-semibold uppercase tracking-[1px] text-ink">Presidential Scholarship</h3>
