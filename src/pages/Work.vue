@@ -1,31 +1,28 @@
 <template>
   <section class="max-w-4xl mx-auto px-6 py-12 space-y-12">
-    <div class="border-4 border-ink bg-paper p-6">
-      <h1 class="text-2xl font-bold uppercase tracking-[4px] mb-6">Work</h1>
-      <div class="flex flex-wrap gap-4">
-        <button
-          @click="currentView = 'consultant'"
-          :class="[
-            'w-60 px-4 py-3 border border-smoke/40 uppercase tracking-[2px] transition-transform duration-200',
-            currentView === 'consultant'
-              ? '-translate-x-1 -translate-y-1 shadow-outline bg-paper text-ink'
-              : 'bg-cream text-smoke hover:-translate-y-0.5'
-          ]"
-        >
-          Consulting
-        </button>
-        <button
-          @click="currentView = 'ta'"
-          :class="[
-            'w-60 px-4 py-3 border border-smoke/40 uppercase tracking-[2px] transition-transform duration-200',
-            currentView === 'ta'
-              ? '-translate-x-1 -translate-y-1 shadow-outline bg-paper text-ink'
-              : 'bg-cream text-smoke hover:-translate-y-0.5'
-          ]"
-        >
-          Teaching
-        </button>
-      </div>
+    <div class="flex flex-wrap gap-4">
+      <button
+        @click="currentView = 'consultant'"
+        :class="[
+          'w-60 px-4 py-3 border border-smoke/40 uppercase tracking-[2px] transition-transform duration-200 bg-cream',
+          currentView === 'consultant'
+            ? '-translate-x-1 -translate-y-1 shadow-outline text-ink'
+            : 'text-smoke hover:-translate-y-0.5'
+        ]"
+      >
+        Consulting
+      </button>
+      <button
+        @click="currentView = 'ta'"
+        :class="[
+          'w-60 px-4 py-3 border border-smoke/40 uppercase tracking-[2px] transition-transform duration-200 bg-cream',
+          currentView === 'ta'
+            ? '-translate-x-1 -translate-y-1 shadow-outline text-ink'
+            : 'text-smoke hover:-translate-y-0.5'
+        ]"
+      >
+        Teaching
+      </button>
     </div>
 
     <div
@@ -37,7 +34,8 @@
         NU Research Computing & Data Services
       </h2>
 
-      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <h3 class="text-base font-semibold uppercase tracking-[2px] text-ink">Lead Consultations</h3>
         <a
           href="https://www.it.northwestern.edu/departments/it-services-support/teaching/learning.html"
           target="_blank"
