@@ -176,7 +176,7 @@
           <div>
             <h3 class="font-semibold uppercase tracking-[1px] text-ink">Murray Green Medal</h3>
             <p class="text-sm text-smoke">
-              Top graduate in Physics — <span class="font-semibold text-ink">2020</span>
+              Top graduate in Physics — <span class="text-smoke">2020</span>
             </p>
           </div>
         </div>
@@ -185,7 +185,7 @@
           <div>
             <h3 class="font-semibold uppercase tracking-[1px] text-ink">Presidential Scholarship</h3>
             <p class="text-sm text-smoke">
-              Full academic scholarship — <span class="font-semibold text-ink">2016</span>
+              Full academic scholarship — <span class="text-smoke">2016</span>
             </p>
           </div>
         </div>
