@@ -1,11 +1,8 @@
 <template>
   <div class="min-h-screen bg-cream text-ink">
     <header class="border-b-4 border-ink">
-      <div class="max-w-5xl mx-auto flex flex-col gap-4 px-6 py-8 md:flex-row md:items-center md:justify-between">
-        <router-link to="/" class="text-3xl font-bold uppercase tracking-tight">
-          Vishnoi
-        </router-link>
-        <nav class="flex items-center gap-6 text-sm uppercase tracking-[2px]">
+      <div class="max-w-5xl mx-auto px-6 py-8">
+        <nav class="flex flex-wrap justify-center gap-6 text-sm uppercase tracking-[2px]">
           <router-link
             to="/"
             class="border-b-2 border-transparent pb-1 transition-colors hover:border-ink"

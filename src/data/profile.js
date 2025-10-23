@@ -1,5 +1,5 @@
 export const profile = {
-  name: "Samvardhan Vishnoi",
+  name: "Vishnoi",
   title: "Data Scientist",
   description: `I harness data to investigate human society and reimagine a future driven by transparency, equity, and justice. 
 I'm always looking for meaningful problems, good collaborators, and the next system worth exploring.`,
