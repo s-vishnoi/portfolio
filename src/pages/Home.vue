@@ -56,10 +56,11 @@
     <section id="projects" class="border-4 border-ink bg-paper p-8">
       <h2 class="text-2xl font-bold uppercase tracking-[4px] mb-8">Projects</h2>
       <div class="grid gap-6 md:grid-cols-2">
-        <router-link
+        <component
           v-for="project in projects"
           :key="project.title"
-          :to="project.link"
+          :is="project.external ? 'a' : RouterLink"
+          v-bind="projectAttrs(project)"
           class="block border-3 border-ink bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline outline-none"
         >
           <img
@@ -74,7 +75,7 @@
             {{ project.description }}
           </p>
           <span class="mt-4 inline-block text-xs uppercase tracking-[2px]">Explore ↗</span>
-        </router-link>
+        </component>
       </div>
     </section>
 
@@ -195,6 +196,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import { profile } from '../data/profile'
 import { roles } from '../data/roles'
 import { projects } from '../data/projects'
@@ -220,6 +222,11 @@ const onLeave = (el) => {
   el.style.maxHeight = el.scrollHeight + 'px'
   setTimeout(() => (el.style.maxHeight = '0px'), 0)
 }
+
+const projectAttrs = (project) =>
+  project.external
+    ? { href: project.link, target: '_blank', rel: 'noreferrer noopener' }
+    : { to: project.link }
 </script>
 
 <style scoped>

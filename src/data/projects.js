@@ -3,7 +3,8 @@ export const projects = [
     title: "Chicago Bikeability Map",
     description: "A community data resource for exploring Chicago's bike infrastructure",
     image: "/images/projects/biking.png",
-    link: "/bikeability"
+    link: "https://chicago-bike-dashboard.onrender.com",
+    external: true
   },
   {
     title: "Urban Scaling Laws",
