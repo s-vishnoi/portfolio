@@ -14,7 +14,7 @@
               v-if="post.logo"
               :src="post.logo"
               alt="Publisher Logo"
-              class="h-6 w-auto object-contain border border-smoke/30 bg-cream p-1"
+              class="h-6 w-auto object-contain border border-smoke/30 bg-cream p-0.5"
             />
             <h3 class="text-lg font-semibold text-ink">
               {{ post.title }}

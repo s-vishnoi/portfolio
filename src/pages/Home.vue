@@ -90,7 +90,7 @@
           target="_blank"
           class="border border-smoke/30 bg-paper p-6 flex flex-col md:flex-row gap-4 items-start transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
         >
-          <img :src="role.logo" class="h-12 border border-smoke/30 bg-cream p-2" />
+          <img :src="role.logo" class="h-12 border border-smoke/30 bg-cream p-1" />
           <div>
             <h3 class="text-lg font-semibold uppercase tracking-[1px]">
               {{ role.title }}
