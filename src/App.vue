@@ -39,7 +39,7 @@
 
     <footer class="border-t-4 border-ink mt-16">
       <div class="max-w-5xl mx-auto px-6 py-8 text-sm uppercase tracking-[2px] text-smoke">
-        © {{ new Date().getFullYear() }} In God we trust; all others must bring data. - W. Edwards Deming
+        © {{ new Date().getFullYear() }}. In God we trust; all others must bring data. - W. Edwards Deming
       </div>
     </footer>
   </div>
