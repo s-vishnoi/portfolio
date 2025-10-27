@@ -15,9 +15,12 @@
           <p class="mt-2 text-sm uppercase tracking-[3px] text-smoke">
             {{ profile.title }}
           </p>
+          <div class="mt-6 space-y-3 text-base text-charcoal">
+            <p v-for="line in profile.description.split('\n\n')" :key="line">{{ line }}</p>
+          </div>
           <div
             v-if="profile.availability"
-            class="mt-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[2px] text-emerald-600"
+            class="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[2px] text-emerald-600"
           >
             <span class="relative flex h-2.5 w-2.5" aria-hidden="true">
               <span
@@ -26,9 +29,6 @@
               <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
             </span>
             {{ profile.availability.label }}
-          </div>
-          <div class="mt-6 space-y-3 text-base text-charcoal">
-            <p v-for="line in profile.description.split('\n\n')" :key="line">{{ line }}</p>
           </div>
           <div class="mt-6 flex flex-wrap gap-4 text-sm font-semibold uppercase tracking-[2px]">
             <a
