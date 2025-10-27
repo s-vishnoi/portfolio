@@ -12,7 +12,7 @@
       how various urban indicators grow with city population. These relationships have enormous potential in not 
       only filling the gaps in our understanding of present but also preparing us for future resource needs. 
     </p>
-    <h2 class="text-1.5xl font-bold mt-2">U.S. Arrest Data</h2>
+    <h2 class="text-1.5xl font-bold mt-2">Fixing Historical U.S. Arrest Data</h2>
     <p>
       Arrest data collected from law agencies acorss the U.S. is heavily missing due to a voluntary reporting program (Uniform Crime Reporting, FBI).
       Current criminology research often ignores this missingness, leading to biased conclusions.
