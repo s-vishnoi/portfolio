@@ -106,24 +106,41 @@
 
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 border border-smoke/30 bg-cream p-4">
           <span
-            v-for="(quote, index) in nuTestimonials"
+            v-for="(quote, index) in displayedTestimonials"
             :key="index"
             class="testimonial-tile"
           >
             “{{ quote }}”
           </span>
         </div>
+        <button
+          v-if="nuTestimonials.length > initialTestimonialCount"
+          @click="toggleTestimonials"
+          class="w-full border border-smoke/30 bg-cream px-4 py-2 text-xs font-semibold uppercase tracking-[2px] text-ink transition-transform duration-200 hover:-translate-y-0.5"
+          :aria-expanded="showAllTestimonials"
+        >
+          {{ showAllTestimonials ? 'Collapse reviews' : 'Expand reviews' }}
+        </button>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { nuTestimonials } from '../data/nuTestimonials.js'
 import { consults } from '../data/nuConsults.js'
 
 const currentView = ref('consultant')
+
+const initialTestimonialCount = 3
+const showAllTestimonials = ref(false)
+const displayedTestimonials = computed(() =>
+  showAllTestimonials.value ? nuTestimonials : nuTestimonials.slice(0, initialTestimonialCount)
+)
+const toggleTestimonials = () => {
+  showAllTestimonials.value = !showAllTestimonials.value
+}
 </script>
 
 <style scoped>
