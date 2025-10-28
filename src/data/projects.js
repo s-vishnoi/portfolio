@@ -1,7 +1,7 @@
 export const projects = [
   {
     title: "Chicago Bikeability Map",
-    description: "A community map on biking safety & infrastructure in Chicago",
+    description: "A community map on biking safety infrastructure in Chicago",
     image: "/images/projects/biking.png",
     link: "https://chicago-bike-dashboard.onrender.com",
     external: true
