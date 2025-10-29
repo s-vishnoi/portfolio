@@ -16,12 +16,12 @@ export const skills = [
     icon: "🛠️",
     title: "Machine Learning",
     description: "I train explainable models, use domain insight to ensure accountability, and deliver results through reproducible, production-ready pipelines.",
-    tags: ["scikit-learn", "XGBoost", "Transformers (LLaMA)", "SHAP", "Git", "Docker", "Render", "Vercel", "APIs", "Web Scraping"]
+    tags: ["scikit-learn", "XGBoost", "Transformers", "Git", "Docker", "Render", "Vercel", "APIs"]
   },
   {
     icon: "🔗",
     title: "Collaboration",
     description: "I work globally across institutions and disciplines, translating ideas between technical and non-technical teams. I prioritize clarity, shared values, and trust to keep projects on track.",
-    tags: ["Interdisciplinary Teams", "Stakeholder Communication", "Scientific Writing", "Research Leadership", "Collaboration"]
+    tags: ["Interdisciplinary Teams", "Stakeholder Communication", "Scientific Writing", "Research Leadership"]
   }
 ]
