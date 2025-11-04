@@ -1,20 +1,20 @@
 export const projects = [
   {
     title: "Chicago Bikeability Map",
-    description: "A community map on biking safety infrastructure in Chicago",
+    description: "A community map to investigate biking safety across Chicago",
     image: "/images/projects/biking.png",
     link: "https://chicago-bike-dashboard.onrender.com",
     external: true
   },
   {
-    title: "Urban Scaling Laws",
-    description: "Modeling US city trends using scaling laws from physics",
+    title: "City Scaling Laws",
+    description: "A physics perspective to understand how cities grow and function",
     image: "/images/projects/urban-scaling.jpg",
     link: "/urban-scaling"
   },
   {
-    title: "Global Researcher Demographics",
-    description: "Leveraging publication records to measure global research equality",
+    title: "Global Research Equality",
+    description: "A novel measure of research equality using publication data",
     image: "/images/projects/demography-map.png",
     link: "/demographics"
   }

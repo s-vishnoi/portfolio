@@ -13,8 +13,8 @@
       ground truth data informing global equality remains missing.  
     </p>
     <p>
-      We leverage 45M+ research records to extract the career trajectories of 30M+ researchers (anonymized) across ~200 countries.
-      We define and measure country-level academic growth, migration networks, and demographic equality- providing a novel global outlook for policy.
+      We leverage 45M+ publication records to extract the career trajectories of 30M+ researchers (anonymized) across ~200 countries.
+      We define and measure population growth, migration networks, and demographic parity- providing a novel global outlook for policy.
       
     </p>
 

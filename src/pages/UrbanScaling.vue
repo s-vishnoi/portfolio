@@ -4,8 +4,8 @@
 
     <h1 class="text-3xl font-bold mt-4">City Scaling Laws</h1>
     <p>
-      Most cities grow, but they don't grow evenly. Larger cities often have disproportionate increases in crime,
-      income, and innovation.
+      Most cities grow, but they don't grow evenly. Larger cities exhibit disproportionate increases in
+      income, innovation, and crime.
     </p>
     <p>
       I study the dynamics of scaling laws — mathematical relationships that describe
