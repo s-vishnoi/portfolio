@@ -119,7 +119,7 @@
           class="w-full border border-smoke/30 bg-cream px-4 py-2 text-xs font-semibold uppercase tracking-[2px] text-ink transition-transform duration-200 hover:-translate-y-0.5"
           :aria-expanded="showAllTestimonials"
         >
-          {{ showAllTestimonials ? 'Collapse reviews' : 'Expand reviews' }}
+          {{ showAllTestimonials ? 'Collapse reviews' : 'All reviews ever' }}
         </button>
       </div>
     </div>

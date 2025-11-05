@@ -39,19 +39,19 @@ export const nuTestimonials = [
     "TA Vishnoi answered all of my questions and was very keen on helping me to succeed in the lab!",
     "They were great! They were always eager to help and always well prepared for the discussion section.",
     "He replied quickly and answered questions throughouly",
-   
+  
     "Very understanding and answered questions easily.",
     "Vishnoi was great and always able to answer any questions I had about the labs.",
     "Vishnoi is the BEST!! I wish all the best for their research endeavors and career aspirations!",
     "A very generous TA. I was able to complete labs with confidence because Vishnoi would give quality assistance.",
-
-    /*"super kind and willing to help out",
+    "super kind and willing to help out",
     "great guy and great at teaching, super patient and accurate",
     "Good at going over concepts",
+    
     "Knows ab the stuff",
     "he helped out",
     "They’re a nice person",
     "He was really nice and helpful.",
     "Very helpful when we were confused and had questions",
-    "They did a great job at teaching class content.",*/
+    "They did a great job at teaching class content.",
   ];
