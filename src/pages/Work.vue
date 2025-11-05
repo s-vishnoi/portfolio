@@ -41,7 +41,7 @@
           target="_blank"
           class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform"
         >
-          Request a Consult ↗
+          Request a Consult (NU) ↗
         </a>
       </div>
 
