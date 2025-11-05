@@ -73,7 +73,7 @@
         <div class="border border-smoke/30 bg-paper p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p class="text-sm text-charcoal">
-              <span class="font-semibold text-ink uppercase tracking-[1px]">Bayesian Inference</span> — Winter 2024 | Winter 2025.
+              <span class="font-semibold text-ink uppercase tracking-[1px]">Bayesian Inference</span> — Winter 2024 | Winter 2025
             </p>
             <p class="text-xs text-smoke uppercase tracking-[1px]">
               Intro to Bayesian regression, information metrics, and model comparison.
