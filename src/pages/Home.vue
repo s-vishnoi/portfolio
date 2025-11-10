@@ -83,7 +83,31 @@
           <h3 class="text-xl font-semibold uppercase tracking-tight mb-3">
             {{ project.title }}
           </h3>
-          <p class="text-sm text-smoke leading-relaxed">
+          <div
+            v-if="project.summary"
+            class="space-y-2 text-sm text-charcoal leading-relaxed"
+          >
+            <p>
+              <span class="font-semibold text-ink uppercase tracking-[1px] mr-2">Problem:</span>
+              {{ project.summary.problem }}
+            </p>
+            <p>
+              <span class="font-semibold text-ink uppercase tracking-[1px] mr-2">Method:</span>
+              {{ project.summary.method }}
+            </p>
+            <p>
+              <span class="font-semibold text-ink uppercase tracking-[1px] mr-2">Findings:</span>
+              {{ project.summary.findings }}
+            </p>
+            <p>
+              <span class="font-semibold text-ink uppercase tracking-[1px] mr-2">Impact:</span>
+              {{ project.summary.impact }}
+            </p>
+          </div>
+          <p
+            v-else-if="project.description"
+            class="text-sm text-smoke leading-relaxed"
+          >
             {{ project.description }}
           </p>
           <span class="mt-4 inline-block text-xs uppercase tracking-[2px]">Explore ↗</span>
