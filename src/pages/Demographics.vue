@@ -22,19 +22,19 @@
       <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem · Method · Findings · Impact</h2>
       <p class="text-sm text-charcoal leading-relaxed">
         <span class="font-semibold text-ink uppercase tracking-[1px]">Problem —</span>
-        Representation in science is usually told as isolated vignettes—one country’s tenure stats here, one grant program there—so ministries debate gender equality with anecdotes while the global pipeline quietly leaks talent.
+        Discussions about equity in science are usually staged through narrow lenses—one country’s tenure stats here, one grant program there—so policy makers chase symptoms instead of understanding the global pipeline that leaks talent at every transition.
       </p>
       <p class="text-sm text-charcoal leading-relaxed">
         <span class="font-semibold text-ink uppercase tracking-[1px]">Method —</span>
-        We stitched together 45M+ publication records, harmonized author identities for 30M anonymized researchers, and reconstructed mobility paths across ~200 countries, normalizing discipline labels, inferring institutional prestige, and generating time-aware parity indices that update with each bibliometric release.
+        Our team linked more than forty-five million publication records, harmonized identities for thirty million anonymized researchers, and reconstructed their career arcs across roughly two hundred countries, including inferred discipline tags, prestige flows, and mobility edges that refresh as soon as new bibliometric feeds arrive.
       </p>
       <p class="text-sm text-charcoal leading-relaxed">
         <span class="font-semibold text-ink uppercase tracking-[1px]">Findings —</span>
-        The resulting narrative is nuanced: gains for women plateau in the disciplines that attract the most funding, migration networks create chokepoints where prestige consolidates, and brain circulation within the Global South looks more reciprocal than the northbound flows policymakers usually cite.
+        The story that emerges is layered: women’s representation has stalled precisely in the disciplines that are expanding fastest, migration networks form choke points that trap prestige within a handful of nations, and South-to-South collaborations behave nothing like the northbound pipelines typically used to justify funding models.
       </p>
       <p class="text-sm text-charcoal leading-relaxed">
         <span class="font-semibold text-ink uppercase tracking-[1px]">Impact —</span>
-        Equipped with these baselines, multilateral funders are redesigning mobility grants and several ministries are piloting 2030 parity targets grounded in our indices; once the Science manuscript clears review, the cleaned datasets and code will ship publicly so others can audit, challenge, and extend the story.
+        With those baselines in hand, multilateral funders are redesigning mobility grants, ministries are piloting 2030 parity targets rooted in our parity indices, and—as soon as the Science manuscript passes review—the cleaned datasets plus reproducible code will ship publicly so anyone can extend or challenge the narrative.
       </p>
     </section>
 

@@ -14,19 +14,19 @@
         <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem · Method · Findings · Impact</h2>
         <p class="text-sm text-charcoal leading-relaxed">
           <span class="font-semibold text-ink uppercase tracking-[1px]">Problem —</span>
-          Conversations about safe streets in Chicago often begin with anecdotes because the facts are scattered across PDFs, FOIA’d spreadsheets, and neighborhood lore. The city’s South and West Sides shoulder the heaviest crash burdens, yet they rarely enter capital budgets with the urgency their data warrants, so this project starts by naming that gap and pulling residents, organizers, and planners into the same factual frame.
+          Chicago’s conversation about bike safety used to be a tug-of-war between anecdotes and hunches. Crash ledgers lived in FOIA folders, infrastructure plans hid in CAD drawings, and the neighborhoods absorbing the worst injuries—mostly on the South and West Sides—were left pleading for attention without a shared set of facts. This project begins by stitching those fragments into a single story so every meeting starts from reality, not rumor.
         </p>
         <p class="text-sm text-charcoal leading-relaxed">
           <span class="font-semibold text-ink uppercase tracking-[1px]">Method —</span>
-          I built a Plotly Dash pipeline that cleans twelve years of crash reports, geocodes every incident, and joins it with CDOT infrastructure inventories, Vision Zero corridors, and census exposure measures. Each night the system recalculates bikeability scores for all seventy-seven community areas and publishes the narrative through an interface that anyone—aldermanic staff, mutual-aid ride leaders, or parents planning safe routes—can explore without touching code.
+          I engineered a Plotly Dash pipeline that cleans twelve years of crash reports, geocodes the incidents block by block, and layers in CDOT infrastructure inventories, Vision Zero priorities, and census exposure metrics. The system reruns nightly, ranks all seventy-seven community areas, and surfaces camera-ready excerpts so aldermanic offices, mutual-aid collectives, or PTA organizers can explore the same dashboard and cite it verbatim in their briefs.
         </p>
         <p class="text-sm text-charcoal leading-relaxed">
           <span class="font-semibold text-ink uppercase tracking-[1px]">Findings —</span>
-          The rolling rankings reveal a tale of two Chicagos: lakefront corridors enjoy declining crash density even as ridership spikes, while arterials in Bronzeville, Austin, and Little Village keep absorbing the same injury clusters year after year. Seasonal filters show how tourism pushes danger north in summer while winter freight traffic shoves it south, letting us point to exact blocks where painted lanes coexist with the city’s worst crash severity.
+          The living dataset makes clear that Chicago operates at two speeds: lakefront corridors accumulate amenities faster than they accumulate crashes, while arterials in Bronzeville, Austin, and Little Village endure the opposite. Seasonal filters capture how tourism pulls danger north in the summer and freight traffic shifts it south in the winter, and corridor callouts flag the exact stretches where “paint-only protection” coincides with the city’s highest injury severity.
         </p>
         <p class="text-sm text-charcoal leading-relaxed">
           <span class="font-semibold text-ink uppercase tracking-[1px]">Impact —</span>
-          Those insights now anchor Vision Zero memos, power community teach-ins, and feed petitions that demand quick-build protection instead of distant promises. The public notes below keep the narrative grounded—neighbors log the close calls the data might miss, the dashboard offers receipts, and together they create a living record city agencies can no longer ignore.
+          Equipped with that narrative, community coalitions now walk into City Hall with evidence instead of pleas, Vision Zero memos cite the rankings to justify quick-build projects, and residents keep the story current through the Community Notes feed below. The map became less of a portfolio piece and more of a living record that officials, journalists, and neighbors use to keep promises from slipping.
         </p>
       </section>
 
