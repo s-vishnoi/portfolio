@@ -17,19 +17,19 @@
       <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem · Method · Findings · Impact</h2>
       <p class="text-sm text-charcoal leading-relaxed">
         <span class="font-semibold text-ink uppercase tracking-[1px]">Problem —</span>
-        For decades, the FBI’s Uniform Crime Reporting program has been voluntary, so the historical arrest record looks like Swiss cheese—whole years disappear for the very metros where policing outcomes are most contested. Any scaling-law analysis that ignores those holes simply models who filled out the paperwork, not how crime or enforcement truly scales with population.
+        The FBI’s Uniform Crime Reporting program is voluntary, so entire years vanish for hundreds of jurisdictions and scaling-law research ends up modeling paperwork reliability instead of policing reality. For cities pressing for equitable resources, that missingness is a policy failure hiding in plain sight.
       </p>
       <p class="text-sm text-charcoal leading-relaxed">
         <span class="font-semibold text-ink uppercase tracking-[1px]">Method —</span>
-        I built a hierarchical Bayesian framework that treats missingness as a feature, not an inconvenience. Population size, poverty shifts, and regional peer groups inform city-specific priors, while temporal random effects capture how reporting culture drifts. The result is a generative model that can infer absent arrest counts and, just as importantly, express the uncertainty around every fill.
+        I treat the gap itself as data: a hierarchical Bayesian scaling model links population size, poverty shifts, and regional clusters to build priors for every metro’s arrest counts. The framework borrows strength across time and peer cities, letting us infer missing entries while keeping every ounce of uncertainty visible.
       </p>
       <p class="text-sm text-charcoal leading-relaxed">
         <span class="font-semibold text-ink uppercase tracking-[1px]">Findings —</span>
-        Posterior estimates reveal a consistent pattern: fast-growing metros under-report precisely when their demographics change the fastest, and the naive “observed” scaling curves mislead researchers about where crime is actually falling or rising. The model also surfaces regional fingerprints—Great Lakes cities, for instance, share similar noise structures that vanish once we properly share information across them.
+        Posterior draws reveal systemic under-reporting among fast-growing metros and highlight how demographic pivots—suburban poverty spikes, for instance—warp raw arrest trends. Because each estimate carries a transparent band, criminologists can finally compare trajectories without pretending the dataset was ever whole.
       </p>
       <p class="text-sm text-charcoal leading-relaxed">
         <span class="font-semibold text-ink uppercase tracking-[1px]">Impact —</span>
-        These corrected arrest trajectories now underpin equity reviews for partner criminologists and inform how agencies stress-test future resource allocations. When the Nature Human Behavior manuscript clears review, the full codebase plus posterior summaries will be released so any city—or watchdog group—can audit the numbers they rely on to debate public safety.
+        The corrected arrest series now anchor justice-equity reviews and inform resource-allocation models for partner agencies, and once the Nature Human Behavior manuscript clears peer review the full code and posterior summaries will be released so cities can audit—and improve—the data that underpins their policies.
       </p>
     </section>
 
