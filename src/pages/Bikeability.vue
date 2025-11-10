@@ -11,45 +11,31 @@
       </section>
 
       <section class="border-4 border-ink bg-paper p-8 space-y-6">
-        <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem → Method → Findings → Impact</h2>
-        <div class="space-y-6">
-          <article class="border border-smoke/30 bg-cream p-5 space-y-3">
-            <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Problem</p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              Chicago residents and advocacy groups rarely share the same facts when they debate bikeability. Crash spreadsheets, street design drawings, and neighborhood risk data live in different silos, so the neighborhoods that need protection most often show up last in budget memos.
-            </p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              This project reframes the debate by telling a single story about where people get hurt, which corridors lack protection, and how stressors pile up across the South and West Sides.
-            </p>
-          </article>
-          <article class="border border-smoke/30 bg-cream p-5 space-y-3">
-            <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Method</p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              I built a Plotly Dash pipeline that ingests 12 years of crash records, cleans geospatial attributes, and stitches them to CDOT infrastructure inventories, Vision Zero priority corridors, and census-level exposure variables.
-            </p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              The app then ranks all 77 community areas nightly, so anyone—from aldermanic offices to mutual-aid ride leaders—can explore live crash density, infrastructure gaps, and proposed fixes without touching the codebase.
-            </p>
-          </article>
-          <article class="border border-smoke/30 bg-cream p-5 space-y-3">
-            <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Findings</p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              The dashboard exposes corridor-level crash clusters that repeat year after year, highlights seasonal surges along lakefront commuting routes, and pinpoints arterials where painted lanes coexist with the highest injury counts.
-            </p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              Those patterns help explain why injury risk in Bronzeville looks nothing like risk in Lincoln Square—even when the total number of miles biked is similar.
-            </p>
-          </article>
-          <article class="border border-smoke/30 bg-cream p-5 space-y-3">
-            <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Impact</p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              Community coalitions now cite these rankings when prioritizing quick-build interventions, and multiple aldermanic offices embedded the evidence packs into their Vision Zero funding pitches.
-            </p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              The public notes section below keeps the story alive—residents log dangerous spots, the dashboard provides receipts, and the city hears both at the same time.
-            </p>
-          </article>
-        </div>
+        <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem · Method · Findings · Impact</h2>
+        <article class="space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Problem</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            Conversations about safe streets in Chicago often begin with anecdotes because the facts are scattered across PDFs, FOIA’d spreadsheets, and neighborhood lore. The city’s South and West Sides carry the heaviest crash burdens, yet they rarely enter capital budgets with the urgency their data warrants. This project starts by naming that gap and pulling residents, organizers, and planners into the same factual frame.
+          </p>
+        </article>
+        <article class="space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Method</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            I built a Plotly Dash pipeline that cleans twelve years of crash reports, geocodes every incident, and joins it with CDOT infrastructure inventories, Vision Zero priority corridors, and census exposure measures. Every night the system recalculates bikeability scores for all seventy-seven community areas, then publishes the story through an interface that anyone—aldermanic staff, mutual-aid ride leaders, or parents planning safe routes—can explore without touching the code.
+          </p>
+        </article>
+        <article class="space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Findings</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            The ranking reveals a tale of two Chicagos: lakefront corridors enjoy declining crash density even when ridership spikes, while arterials in Bronzeville, Austin, and Little Village keep absorbing the same injury clusters year after year. Seasonal filters show how summer tourism pushes danger north, whereas winter freight traffic pushes it south, and we can finally point to exact blocks where painted lanes coexist with the city’s worst crash severity.
+          </p>
+        </article>
+        <article class="space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Impact</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            Those insights now anchor aldermanic Vision Zero memos, power community teach-ins, and feed petitions that demand quick-build protection instead of distant promises. The public notes below keep the narrative grounded—neighbors log the close calls the data might miss, the dashboard offers receipts, and together they create a living record city agencies can no longer ignore.
+          </p>
+        </article>
       </section>
 
       <section class="border-4 border-ink bg-paper">
