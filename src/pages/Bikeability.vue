@@ -10,24 +10,32 @@
         </p>
       </section>
 
-      <section class="space-y-4">
+      <section class="border-4 border-ink bg-paper p-8 space-y-6">
         <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem · Method · Findings · Impact</h2>
-        <p class="text-sm text-charcoal leading-relaxed">
-          <span class="font-semibold text-ink uppercase tracking-[1px]">Problem —</span>
-          Conversations about safe streets in Chicago often begin with anecdotes because the facts are scattered across PDFs, FOIA’d spreadsheets, and neighborhood lore. The city’s South and West Sides shoulder the heaviest crash burdens, yet they rarely enter capital budgets with the urgency their data warrants, so this project starts by naming that gap and pulling residents, organizers, and planners into the same factual frame.
-        </p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          <span class="font-semibold text-ink uppercase tracking-[1px]">Method —</span>
-          I built a Plotly Dash pipeline that cleans twelve years of crash reports, geocodes every incident, and joins it with CDOT infrastructure inventories, Vision Zero corridors, and census exposure measures. Each night the system recalculates bikeability scores for all seventy-seven community areas and publishes the narrative through an interface that anyone—aldermanic staff, mutual-aid ride leaders, or parents planning safe routes—can explore without touching code.
-        </p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          <span class="font-semibold text-ink uppercase tracking-[1px]">Findings —</span>
-          The rolling rankings reveal a tale of two Chicagos: lakefront corridors enjoy declining crash density even as ridership spikes, while arterials in Bronzeville, Austin, and Little Village keep absorbing the same injury clusters year after year. Seasonal filters show how tourism pushes danger north in summer while winter freight traffic shoves it south, letting us point to exact blocks where painted lanes coexist with the city’s worst crash severity.
-        </p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          <span class="font-semibold text-ink uppercase tracking-[1px]">Impact —</span>
-          Those insights now anchor Vision Zero memos, power community teach-ins, and feed petitions that demand quick-build protection instead of distant promises. The public notes below keep the narrative grounded—neighbors log the close calls the data might miss, the dashboard offers receipts, and together they create a living record city agencies can no longer ignore.
-        </p>
+        <article class="space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Problem</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            Conversations about safe streets in Chicago often begin with anecdotes because the facts are scattered across PDFs, FOIA’d spreadsheets, and neighborhood lore. The city’s South and West Sides carry the heaviest crash burdens, yet they rarely enter capital budgets with the urgency their data warrants. This project starts by naming that gap and pulling residents, organizers, and planners into the same factual frame.
+          </p>
+        </article>
+        <article class="space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Method</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            I built a Plotly Dash pipeline that cleans twelve years of crash reports, geocodes every incident, and joins it with CDOT infrastructure inventories, Vision Zero priority corridors, and census exposure measures. Every night the system recalculates bikeability scores for all seventy-seven community areas, then publishes the story through an interface that anyone—aldermanic staff, mutual-aid ride leaders, or parents planning safe routes—can explore without touching the code.
+          </p>
+        </article>
+        <article class="space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Findings</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            The ranking reveals a tale of two Chicagos: lakefront corridors enjoy declining crash density even when ridership spikes, while arterials in Bronzeville, Austin, and Little Village keep absorbing the same injury clusters year after year. Seasonal filters show how summer tourism pushes danger north, whereas winter freight traffic pushes it south, and we can finally point to exact blocks where painted lanes coexist with the city’s worst crash severity.
+          </p>
+        </article>
+        <article class="space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Impact</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            Those insights now anchor aldermanic Vision Zero memos, power community teach-ins, and feed petitions that demand quick-build protection instead of distant promises. The public notes below keep the narrative grounded—neighbors log the close calls the data might miss, the dashboard offers receipts, and together they create a living record city agencies can no longer ignore.
+          </p>
+        </article>
       </section>
 
       <section class="border-4 border-ink bg-paper">
