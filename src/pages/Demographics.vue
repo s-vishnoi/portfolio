@@ -18,31 +18,43 @@
       
     </p>
 
-    <section class="border-4 border-ink bg-paper p-6 space-y-4">
-      <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem → Impact</h2>
-      <div class="grid gap-4 md:grid-cols-2">
-        <article class="border border-smoke/30 bg-cream p-4 space-y-2">
+    <section class="border-4 border-ink bg-paper p-6 space-y-6">
+      <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem → Method → Findings → Impact</h2>
+      <div class="space-y-6">
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
           <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Problem</p>
           <p class="text-sm text-charcoal leading-relaxed">
-            Ministries and funders lack longitudinal, comparable evidence on who participates in science and where careers stall across borders.
+            Representation in science is usually studied through narrow slices—one country, one discipline, one career stage. That fragmentation leaves global ministries guessing about where the pipeline breaks down.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            We needed a single narrative that connects who enters, who migrates, and who stalls so policy makers can argue from evidence instead of anecdotes.
           </p>
         </article>
-        <article class="border border-smoke/30 bg-cream p-4 space-y-2">
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
           <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Method</p>
           <p class="text-sm text-charcoal leading-relaxed">
-            Linked 45M publication records to 30M anonymized researchers, reconstructing mobility paths, institutional prestige flows, and parity metrics across ~200 countries.
+            Our team linked 45M+ publication records to 30M anonymized researchers, reconstructed their institutional moves, and harmonized gender and discipline labels across ~200 countries.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            The pipeline produces migration graphs, prestige flow indices, and demographic parity scores that update as soon as new bibliometric feeds arrive.
           </p>
         </article>
-        <article class="border border-smoke/30 bg-cream p-4 space-y-2">
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
           <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Findings</p>
           <p class="text-sm text-charcoal leading-relaxed">
-            Detected stalled gains for women in several disciplines and highlighted migration choke points where prestige consolidates within a handful of nations.
+            We uncovered stalled gains for women in several fast-growing disciplines, identified choke points where prestige and funding concentrate, and mapped brain circulation loops among the Global South.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            These findings show that equality plateaus long before PhD graduation—and that mobility subsidies alone cannot fix the imbalance.
           </p>
         </article>
-        <article class="border border-smoke/30 bg-cream p-4 space-y-2">
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
           <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Impact</p>
           <p class="text-sm text-charcoal leading-relaxed">
-            Provides target-setting baselines that multilateral funders are using to design mobility grants and representation mandates for the next policy cycle.
+            The resulting baselines are now guiding multilateral funders as they design mobility grants, and several ministries are using our parity indices to set 2030 representation targets.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            Once the Science manuscript clears peer review, the cleaned datasets and code will ship publicly so others can stress-test and extend the story.
           </p>
         </article>
       </div>

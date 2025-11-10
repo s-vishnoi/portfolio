@@ -13,31 +13,43 @@
       only filling the gaps in our understanding of present but also preparing us for future resource needs. 
     </p>
 
-    <section class="border-4 border-ink bg-paper p-6 space-y-4">
-      <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem → Impact</h2>
-      <div class="grid gap-4 md:grid-cols-2">
-        <article class="border border-smoke/30 bg-cream p-4 space-y-2">
+    <section class="border-4 border-ink bg-paper p-6 space-y-6">
+      <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem → Method → Findings → Impact</h2>
+      <div class="space-y-6">
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
           <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Problem</p>
           <p class="text-sm text-charcoal leading-relaxed">
-            National arrest data is voluntary and chronically incomplete, making it impossible to evaluate policing equity across U.S. cities.
+            The Uniform Crime Reporting program is voluntary, so entire years of arrest data vanish for hundreds of cities. When we ignore that missingness, scaling-law research—and the policy it informs—defaults to the most compliant cities instead of the most vulnerable ones.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            My work treats the gap itself as data: understanding why large metros report differently than small ones becomes the first step toward any equitable benchmark.
           </p>
         </article>
-        <article class="border border-smoke/30 bg-cream p-4 space-y-2">
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
           <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Method</p>
           <p class="text-sm text-charcoal leading-relaxed">
-            Built a hierarchical Bayesian scaling model with city-specific priors that borrow strength across time, metro size, and region to impute missing arrests.
+            I developed a hierarchical Bayesian scaling model that couples city population, poverty changes, and regional trends to inform priors for every metro’s arrest counts.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            The model borrows strength across time and across peer metros, letting me infer missing entries while preserving uncertainty intervals that policymakers can interrogate.
           </p>
         </article>
-        <article class="border border-smoke/30 bg-cream p-4 space-y-2">
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
           <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Findings</p>
           <p class="text-sm text-charcoal leading-relaxed">
-            Uncovered systematic under-reporting tied to population size and demographic change while quantifying the full posterior uncertainty for every estimate.
+            The posterior draws reveal systemic under-reporting tied to city size, and expose how demographic pivots—like rapid suburban poverty growth—distort raw arrest trends.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            Because every estimate carries a transparent uncertainty band, researchers can finally compare metros without pretending the data is complete.
           </p>
         </article>
-        <article class="border border-smoke/30 bg-cream p-4 space-y-2">
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
           <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Impact</p>
           <p class="text-sm text-charcoal leading-relaxed">
-            Provides corrected arrest trajectories that partner criminologists and agencies now plug into federal equity reviews and resource-allocation models.
+            The corrected arrest trajectories now feed justice-equity reviews and resource-allocation models, helping partners simulate how enforcement or support programs scale with population.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            It also lays the groundwork for future releases: as soon as the Nature Human Behavior study clears peer review, the full code and posterior summaries will ship to the public.
           </p>
         </article>
       </div>
