@@ -18,32 +18,24 @@
       
     </p>
 
-    <section class="border-4 border-ink bg-paper p-6 space-y-6">
+    <section class="space-y-4">
       <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem · Method · Findings · Impact</h2>
-      <article class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Problem</p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          Representation in science is usually told as isolated vignettes—one country’s tenure stats here, one grant program there. That patchwork leaves ministries debating gender equality with anecdotes while the global pipeline leaks talent quietly.
-        </p>
-      </article>
-      <article class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Method</p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          We stitched together 45M+ publication records, harmonized author identities for 30M anonymized researchers, and reconstructed mobility paths across ~200 countries. Along the way we normalized discipline labels, inferred institutional prestige, and generated time-aware parity indices that update as new bibliometric feeds arrive.
-        </p>
-      </article>
-      <article class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Findings</p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          The narrative that emerges is nuanced: gains for women plateau in the very disciplines attracting the most funding; migration networks create chokepoints where prestige consolidates; and brain circulation within the Global South looks different—and more reciprocal—than the northbound flows policymakers typically cite.
-        </p>
-      </article>
-      <article class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Impact</p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          Armed with these baselines, multilateral funders are redesigning mobility grants, and several ministries are testing 2030 parity targets grounded in our indices rather than gut instinct. Once the Science manuscript clears review, the cleaned datasets and code will ship publicly so other teams can audit, challenge, and extend the story.
-        </p>
-      </article>
+      <p class="text-sm text-charcoal leading-relaxed">
+        <span class="font-semibold text-ink uppercase tracking-[1px]">Problem —</span>
+        Representation in science is usually told as isolated vignettes—one country’s tenure stats here, one grant program there—so ministries debate gender equality with anecdotes while the global pipeline quietly leaks talent.
+      </p>
+      <p class="text-sm text-charcoal leading-relaxed">
+        <span class="font-semibold text-ink uppercase tracking-[1px]">Method —</span>
+        We stitched together 45M+ publication records, harmonized author identities for 30M anonymized researchers, and reconstructed mobility paths across ~200 countries, normalizing discipline labels, inferring institutional prestige, and generating time-aware parity indices that update with each bibliometric release.
+      </p>
+      <p class="text-sm text-charcoal leading-relaxed">
+        <span class="font-semibold text-ink uppercase tracking-[1px]">Findings —</span>
+        The resulting narrative is nuanced: gains for women plateau in the disciplines that attract the most funding, migration networks create chokepoints where prestige consolidates, and brain circulation within the Global South looks more reciprocal than the northbound flows policymakers usually cite.
+      </p>
+      <p class="text-sm text-charcoal leading-relaxed">
+        <span class="font-semibold text-ink uppercase tracking-[1px]">Impact —</span>
+        Equipped with these baselines, multilateral funders are redesigning mobility grants and several ministries are piloting 2030 parity targets grounded in our indices; once the Science manuscript clears review, the cleaned datasets and code will ship publicly so others can audit, challenge, and extend the story.
+      </p>
     </section>
 
     <h2 class="text-1.5xl font-bold mt-2 mb-1">Publications</h2>
