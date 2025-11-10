@@ -10,43 +10,31 @@
         </p>
       </section>
 
-      <section class="border-4 border-ink bg-paper p-8 space-y-6">
-        <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem → Method → Findings → Impact</h2>
-        <div class="space-y-6">
-          <article class="border border-smoke/30 bg-cream p-5 space-y-3">
+      <section class="border-4 border-ink bg-paper p-8 space-y-4">
+        <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem → Impact</h2>
+        <div class="grid gap-4 md:grid-cols-2">
+          <article class="border border-smoke/30 bg-cream p-4 space-y-2">
             <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Problem</p>
             <p class="text-sm text-charcoal leading-relaxed">
-              Chicago residents and advocacy groups rarely share the same facts when they debate bikeability. Crash spreadsheets, street design drawings, and neighborhood risk data live in different silos, so the neighborhoods that need protection most often show up last in budget memos.
-            </p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              This project reframes the debate by telling a single story about where people get hurt, which corridors lack protection, and how stressors pile up across the South and West Sides.
+              Chicago residents lack an accessible fact base that combines crash reports, street design, and neighborhood stress to argue for safer biking.
             </p>
           </article>
-          <article class="border border-smoke/30 bg-cream p-5 space-y-3">
+          <article class="border border-smoke/30 bg-cream p-4 space-y-2">
             <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Method</p>
             <p class="text-sm text-charcoal leading-relaxed">
-              I built a Plotly Dash pipeline that ingests 12 years of crash records, cleans geospatial attributes, and stitches them to CDOT infrastructure inventories, Vision Zero priority corridors, and census-level exposure variables.
-            </p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              The app then ranks all 77 community areas nightly, so anyone—from aldermanic offices to mutual-aid ride leaders—can explore live crash density, infrastructure gaps, and proposed fixes without touching the codebase.
+              Built a Plotly Dash pipeline that cleans 12 years of crash records, joins CDOT infrastructure & Vision Zero layers, and continuously ranks the 77 community areas.
             </p>
           </article>
-          <article class="border border-smoke/30 bg-cream p-5 space-y-3">
+          <article class="border border-smoke/30 bg-cream p-4 space-y-2">
             <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Findings</p>
             <p class="text-sm text-charcoal leading-relaxed">
-              The dashboard exposes corridor-level crash clusters that repeat year after year, highlights seasonal surges along lakefront commuting routes, and pinpoints arterials where painted lanes coexist with the highest injury counts.
-            </p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              Those patterns help explain why injury risk in Bronzeville looks nothing like risk in Lincoln Square—even when the total number of miles biked is similar.
+              Surfaced corridor-level crash clusters, missing-protection segments, and seasonal risk patterns that explain why injury rates diverge between neighborhoods.
             </p>
           </article>
-          <article class="border border-smoke/30 bg-cream p-5 space-y-3">
+          <article class="border border-smoke/30 bg-cream p-4 space-y-2">
             <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Impact</p>
             <p class="text-sm text-charcoal leading-relaxed">
-              Community coalitions now cite these rankings when prioritizing quick-build interventions, and multiple aldermanic offices embedded the evidence packs into their Vision Zero funding pitches.
-            </p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              The public notes section below keeps the story alive—residents log dangerous spots, the dashboard provides receipts, and the city hears both at the same time.
+              Equips aldermanic offices and community coalitions with evidence packs they now cite when prioritizing Vision Zero funding and quick-build interventions.
             </p>
           </article>
         </div>
