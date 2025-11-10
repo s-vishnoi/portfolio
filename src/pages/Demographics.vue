@@ -19,31 +19,45 @@
     </p>
 
     <section class="border-4 border-ink bg-paper p-6 space-y-6">
-      <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem · Method · Findings · Impact</h2>
-      <article class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Problem</p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          Representation in science is usually told as isolated vignettes—one country’s tenure stats here, one grant program there. That patchwork leaves ministries debating gender equality with anecdotes while the global pipeline leaks talent quietly.
-        </p>
-      </article>
-      <article class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Method</p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          We stitched together 45M+ publication records, harmonized author identities for 30M anonymized researchers, and reconstructed mobility paths across ~200 countries. Along the way we normalized discipline labels, inferred institutional prestige, and generated time-aware parity indices that update as new bibliometric feeds arrive.
-        </p>
-      </article>
-      <article class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Findings</p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          The narrative that emerges is nuanced: gains for women plateau in the very disciplines attracting the most funding; migration networks create chokepoints where prestige consolidates; and brain circulation within the Global South looks different—and more reciprocal—than the northbound flows policymakers typically cite.
-        </p>
-      </article>
-      <article class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Impact</p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          Armed with these baselines, multilateral funders are redesigning mobility grants, and several ministries are testing 2030 parity targets grounded in our indices rather than gut instinct. Once the Science manuscript clears review, the cleaned datasets and code will ship publicly so other teams can audit, challenge, and extend the story.
-        </p>
-      </article>
+      <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem → Method → Findings → Impact</h2>
+      <div class="space-y-6">
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Problem</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            Representation in science is usually studied through narrow slices—one country, one discipline, one career stage. That fragmentation leaves global ministries guessing about where the pipeline breaks down.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            We needed a single narrative that connects who enters, who migrates, and who stalls so policy makers can argue from evidence instead of anecdotes.
+          </p>
+        </article>
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Method</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            Our team linked 45M+ publication records to 30M anonymized researchers, reconstructed their institutional moves, and harmonized gender and discipline labels across ~200 countries.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            The pipeline produces migration graphs, prestige flow indices, and demographic parity scores that update as soon as new bibliometric feeds arrive.
+          </p>
+        </article>
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Findings</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            We uncovered stalled gains for women in several fast-growing disciplines, identified choke points where prestige and funding concentrate, and mapped brain circulation loops among the Global South.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            These findings show that equality plateaus long before PhD graduation—and that mobility subsidies alone cannot fix the imbalance.
+          </p>
+        </article>
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Impact</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            The resulting baselines are now guiding multilateral funders as they design mobility grants, and several ministries are using our parity indices to set 2030 representation targets.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            Once the Science manuscript clears peer review, the cleaned datasets and code will ship publicly so others can stress-test and extend the story.
+          </p>
+        </article>
+      </div>
     </section>
 
     <h2 class="text-1.5xl font-bold mt-2 mb-1">Publications</h2>

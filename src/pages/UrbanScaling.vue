@@ -14,31 +14,45 @@
     </p>
 
     <section class="border-4 border-ink bg-paper p-6 space-y-6">
-      <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem · Method · Findings · Impact</h2>
-      <article class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Problem</p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          The FBI’s Uniform Crime Reporting program is voluntary, so entire years vanish for hundreds of jurisdictions. Scaling-law research that relies on those figures ends up modeling the reliability of paperwork—not the reality of policing. For cities fighting for equitable resources, that missingness is a policy failure hiding in plain sight.
-        </p>
-      </article>
-      <article class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Method</p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          I treat the gap itself as data. A hierarchical Bayesian scaling model links population size, poverty shifts, and regional clusters to build priors for every metro’s arrest counts. The framework borrows strength across time and similar cities, letting us infer missing entries while keeping uncertainty explicit.
-        </p>
-      </article>
-      <article class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Findings</p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          Posterior draws reveal systemic under-reporting among fast-growing metros and highlight how demographic pivots—suburban poverty spikes, for instance—warp raw arrest trends. Because every estimate carries a transparent uncertainty band, criminologists can finally compare trajectories without pretending the dataset was ever whole.
-        </p>
-      </article>
-      <article class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Impact</p>
-        <p class="text-sm text-charcoal leading-relaxed">
-          Those corrected arrest series now anchor justice-equity reviews and inform resource-allocation models for partner agencies. Once the Nature Human Behavior manuscript clears peer review, the full code and posterior summaries will be released publicly so cities can audit—and improve—the data that underpins their policies.
-        </p>
-      </article>
+      <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem → Method → Findings → Impact</h2>
+      <div class="space-y-6">
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Problem</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            The Uniform Crime Reporting program is voluntary, so entire years of arrest data vanish for hundreds of cities. When we ignore that missingness, scaling-law research—and the policy it informs—defaults to the most compliant cities instead of the most vulnerable ones.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            My work treats the gap itself as data: understanding why large metros report differently than small ones becomes the first step toward any equitable benchmark.
+          </p>
+        </article>
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Method</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            I developed a hierarchical Bayesian scaling model that couples city population, poverty changes, and regional trends to inform priors for every metro’s arrest counts.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            The model borrows strength across time and across peer metros, letting me infer missing entries while preserving uncertainty intervals that policymakers can interrogate.
+          </p>
+        </article>
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Findings</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            The posterior draws reveal systemic under-reporting tied to city size, and expose how demographic pivots—like rapid suburban poverty growth—distort raw arrest trends.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            Because every estimate carries a transparent uncertainty band, researchers can finally compare metros without pretending the data is complete.
+          </p>
+        </article>
+        <article class="border border-smoke/30 bg-cream p-5 space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Impact</p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            The corrected arrest trajectories now feed justice-equity reviews and resource-allocation models, helping partners simulate how enforcement or support programs scale with population.
+          </p>
+          <p class="text-sm text-charcoal leading-relaxed">
+            It also lays the groundwork for future releases: as soon as the Nature Human Behavior study clears peer review, the full code and posterior summaries will ship to the public.
+          </p>
+        </article>
+      </div>
     </section>
 
     <h2 class="text-1.5xl font-bold mt-2">Fixing Historical U.S. Arrest Data</h2>
