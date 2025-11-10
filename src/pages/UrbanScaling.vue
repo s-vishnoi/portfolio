@@ -12,37 +12,6 @@
       how various urban indicators grow with city population. These relationships have enormous potential in not 
       only filling the gaps in our understanding of present but also preparing us for future resource needs. 
     </p>
-
-    <section class="border-4 border-ink bg-paper p-6 space-y-4">
-      <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem → Impact</h2>
-      <div class="grid gap-4 md:grid-cols-2">
-        <article class="border border-smoke/30 bg-cream p-4 space-y-2">
-          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Problem</p>
-          <p class="text-sm text-charcoal leading-relaxed">
-            National arrest data is voluntary and chronically incomplete, making it impossible to evaluate policing equity across U.S. cities.
-          </p>
-        </article>
-        <article class="border border-smoke/30 bg-cream p-4 space-y-2">
-          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Method</p>
-          <p class="text-sm text-charcoal leading-relaxed">
-            Built a hierarchical Bayesian scaling model with city-specific priors that borrow strength across time, metro size, and region to impute missing arrests.
-          </p>
-        </article>
-        <article class="border border-smoke/30 bg-cream p-4 space-y-2">
-          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Findings</p>
-          <p class="text-sm text-charcoal leading-relaxed">
-            Uncovered systematic under-reporting tied to population size and demographic change while quantifying the full posterior uncertainty for every estimate.
-          </p>
-        </article>
-        <article class="border border-smoke/30 bg-cream p-4 space-y-2">
-          <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Impact</p>
-          <p class="text-sm text-charcoal leading-relaxed">
-            Provides corrected arrest trajectories that partner criminologists and agencies now plug into federal equity reviews and resource-allocation models.
-          </p>
-        </article>
-      </div>
-    </section>
-
     <h2 class="text-1.5xl font-bold mt-2">Fixing Historical U.S. Arrest Data</h2>
     <p>
       Arrest data collected from law agencies acorss the U.S. is heavily missing due to a voluntary reporting program (Uniform Crime Reporting, FBI).

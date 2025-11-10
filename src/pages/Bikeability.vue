@@ -10,36 +10,6 @@
         </p>
       </section>
 
-      <section class="border-4 border-ink bg-paper p-8 space-y-4">
-        <h2 class="text-xl font-semibold uppercase tracking-[3px]">Problem → Impact</h2>
-        <div class="grid gap-4 md:grid-cols-2">
-          <article class="border border-smoke/30 bg-cream p-4 space-y-2">
-            <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Problem</p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              Chicago residents lack an accessible fact base that combines crash reports, street design, and neighborhood stress to argue for safer biking.
-            </p>
-          </article>
-          <article class="border border-smoke/30 bg-cream p-4 space-y-2">
-            <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Method</p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              Built a Plotly Dash pipeline that cleans 12 years of crash records, joins CDOT infrastructure & Vision Zero layers, and continuously ranks the 77 community areas.
-            </p>
-          </article>
-          <article class="border border-smoke/30 bg-cream p-4 space-y-2">
-            <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Findings</p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              Surfaced corridor-level crash clusters, missing-protection segments, and seasonal risk patterns that explain why injury rates diverge between neighborhoods.
-            </p>
-          </article>
-          <article class="border border-smoke/30 bg-cream p-4 space-y-2">
-            <p class="text-xs font-semibold uppercase tracking-[2px] text-smoke">Impact</p>
-            <p class="text-sm text-charcoal leading-relaxed">
-              Equips aldermanic offices and community coalitions with evidence packs they now cite when prioritizing Vision Zero funding and quick-build interventions.
-            </p>
-          </article>
-        </div>
-      </section>
-
       <section class="border-4 border-ink bg-paper">
         <div class="border-b-4 border-ink px-6 py-3 text-xs uppercase tracking-[2px] text-smoke">
           Interactive dashboard
