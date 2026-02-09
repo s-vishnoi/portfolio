@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-cream text-ink">
-    <header class="border-b-4 border-ink">
+    <header class="border-b border-ink">
       <div class="max-w-5xl mx-auto px-6 py-8">
         <nav class="flex flex-wrap justify-center gap-6 text-sm uppercase tracking-[2px]">
           <router-link
@@ -37,7 +37,7 @@
       </transition>
     </main>
 
-    <footer class="border-t-4 border-ink mt-16">
+    <footer class="border-t border-ink mt-16">
       <div class="max-w-5xl mx-auto px-6 py-8 text-sm uppercase tracking-[2px] text-smoke">
         © {{ new Date().getFullYear() }}
       </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-cream text-ink">
     <main class="max-w-5xl mx-auto px-6 py-12 space-y-12">
-      <section class="border-4 border-ink bg-paper p-8 space-y-4">
+      <section class="border border-ink bg-paper p-8 space-y-4">
         <h1 class="text-3xl font-bold uppercase tracking-[4px]">Chicago Bikeability Map</h1>
         <p class="text-charcoal leading-relaxed">
           This interactive map ranks bikeability across Chicago communities based on infrastructure.
@@ -10,8 +10,8 @@
         </p>
       </section>
 
-      <section class="border-4 border-ink bg-paper">
-        <div class="border-b-4 border-ink px-6 py-3 text-xs uppercase tracking-[2px] text-smoke">
+      <section class="border border-ink bg-paper">
+        <div class="border-b border-ink px-6 py-3 text-xs uppercase tracking-[2px] text-smoke">
           Interactive dashboard
         </div>
         <div class="w-full">
@@ -21,12 +21,12 @@
             style="border: none;"
           ></iframe>
         </div>
-        <div class="border-t-4 border-ink px-6 py-3 text-xs uppercase tracking-[2px] text-smoke">
+        <div class="border-t border-ink px-6 py-3 text-xs uppercase tracking-[2px] text-smoke">
           Built with Plotly Dash · Hosted on Render
         </div>
       </section>
 
-      <section class="border-4 border-ink bg-paper p-8 space-y-6">
+      <section class="border border-ink bg-paper p-8 space-y-6">
         <h2 class="text-xl font-semibold uppercase tracking-[3px]">Community Notes</h2>
         <form
           @submit.prevent="submitForm"

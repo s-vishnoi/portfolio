@@ -1,7 +1,7 @@
 <template>
   <main class="max-w-4xl mx-auto px-6 py-12 space-y-16">
     <!-- Profile -->
-    <section id="about" class="border-4 border-ink bg-paper p-8">
+    <section id="about" class="border border-ink bg-paper p-8">
       <div class="flex flex-col md:flex-row gap-8 items-start">
         <img
           src="/images/samvardhan.png"
@@ -65,7 +65,7 @@
     </section>
 
     <!-- Projects -->
-    <section id="projects" class="border-4 border-ink bg-paper p-8">
+    <section id="projects" class="border border-ink bg-paper p-8">
       <h2 class="text-2xl font-bold uppercase tracking-[4px] mb-8">Projects</h2>
       <div class="grid gap-6 md:grid-cols-2">
         <component
@@ -92,7 +92,7 @@
     </section>
 
     <!-- Roles -->
-    <section id="roles" class="border-4 border-ink bg-paper p-8">
+    <section id="roles" class="border border-ink bg-paper p-8">
       <h2 class="text-2xl font-bold uppercase tracking-[4px] mb-8">Active Roles</h2>
       <div class="grid gap-4">
         <a
@@ -120,7 +120,7 @@
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="border-4 border-ink bg-paper p-8">
+    <section id="skills" class="border border-ink bg-paper p-8">
       <h2 class="text-2xl font-bold uppercase tracking-[4px] mb-8">Skills</h2>
       <div class="grid gap-4 md:grid-cols-2">
         <div
@@ -180,7 +180,7 @@
     </section>
 
     <!-- Achievements -->
-    <section id="achievements" class="border-4 border-ink bg-paper p-8">
+    <section id="achievements" class="border border-ink bg-paper p-8">
       <h2 class="text-2xl font-bold uppercase tracking-[4px] mb-8">Achievements</h2>
       <div class="grid gap-4 md:grid-cols-2">
         <div class="border border-smoke/30 bg-paper p-4 flex items-start gap-3">
