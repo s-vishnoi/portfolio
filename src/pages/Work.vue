@@ -33,6 +33,9 @@
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-0" />
         NU Research Computing & Data Services
       </h2>
+      <p class="text-sm text-smoke uppercase tracking-[1px]">
+        Advanced research computing support for data-intensive and computational workflows across campus.
+      </p>
 
       <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <h3 class="text-base font-semibold uppercase tracking-[2px] text-ink">Lead Consultations</h3>
