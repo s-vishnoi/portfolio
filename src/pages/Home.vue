@@ -36,28 +36,88 @@
               target="_blank"
               class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 hover:-translate-y-0.5 transition-transform"
             >
-              Email ↗
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-5 w-5"
+                aria-hidden="true"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-10 6L2 7" />
+              </svg>
+              <span class="sr-only">Email</span>
             </a>
             <a
               href="https://www.linkedin.com/in/samvardhan-vishnoi/"
               target="_blank"
               class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 hover:-translate-y-0.5 transition-transform"
             >
-              LinkedIn ↗
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-5 w-5"
+                aria-hidden="true"
+              >
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+              <span class="sr-only">LinkedIn</span>
             </a>
             <a
               href="https://github.com/s-vishnoi"
               target="_blank"
               class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 hover:-translate-y-0.5 transition-transform"
             >
-              GitHub ↗
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-5 w-5"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 22v-4a4 4 0 0 0-1-3.5c3 0 6-2 6-5.5a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.3 1.3a11.5 11.5 0 0 0-6 0C6 2.3 5 2.6 5 2.6a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 3.6 9c0 3.5 3 5.5 6 5.5A4 4 0 0 0 9 18v4"
+                />
+                <path d="M9 18c-4.5 2-5-2-7-2" />
+              </svg>
+              <span class="sr-only">GitHub</span>
             </a>
             <a
               href="https://www.instagram.com/vishhnnoi/"
               target="_blank"
               class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 hover:-translate-y-0.5 transition-transform"
             >
-              Instagram ↗
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-5 w-5"
+                aria-hidden="true"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
+              </svg>
+              <span class="sr-only">Instagram</span>
             </a>
           </div>
         </div>
