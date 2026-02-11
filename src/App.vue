@@ -13,7 +13,7 @@
             to="/work"
             class="border-b-2 border-transparent pb-1 transition-colors hover:border-ink"
           >
-            Work
+            Teaching
           </router-link>
           <router-link
             to="/blog"

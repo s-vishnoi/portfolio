@@ -17,18 +17,6 @@
           </p>
           <div class="mt-6 space-y-3 text-base text-charcoal">
             <p v-for="line in profile.description.split('\n\n')" :key="line">{{ line }}</p>
-            <div
-              v-if="profile.availability"
-              class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[2px] text-emerald-600"
-            >
-              <span class="relative flex h-2.5 w-2.5" aria-hidden="true">
-                <span
-                  class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"
-                ></span>
-                <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
-              </span>
-              {{ profile.availability.label }}
-            </div>
           </div>
           <div class="mt-6 flex flex-wrap gap-4 text-sm font-semibold uppercase tracking-[2px]">
             <a
@@ -136,7 +124,15 @@
           aria-controls="roles-panel"
         >
           <span class="text-lg font-semibold uppercase tracking-[1px]">Active Roles</span>
-          <span class="text-xs uppercase tracking-[2px] text-smoke" aria-hidden="true">↗</span>
+          <span class="inline-flex items-center gap-3">
+            <span class="relative flex h-2.5 w-2.5" aria-hidden="true">
+              <span
+                class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"
+              ></span>
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+            </span>
+            <span class="text-xs uppercase tracking-[2px] text-smoke" aria-hidden="true">↗</span>
+          </span>
         </button>
         <button
           type="button"

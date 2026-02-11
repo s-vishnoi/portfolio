@@ -21,7 +21,7 @@
             : 'text-smoke hover:-translate-y-0.5'
         ]"
       >
-        Teaching
+        TA
       </button>
     </div>
 
@@ -41,8 +41,7 @@
           target="_blank"
           class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform"
         >
-          <span class="sr-only">Request a Consult (NU)</span>
-          <span aria-hidden="true">↗</span>
+          Request a Consult (NU) ↗
         </a>
       </div>
 
@@ -85,8 +84,7 @@
             target="_blank"
             class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform whitespace-nowrap"
           >
-            <span class="sr-only">Open-source code</span>
-            <span aria-hidden="true">↗</span>
+            Open-source code ↗
           </a>
         </div>
       </div>

@@ -14,8 +14,7 @@
         rel="noreferrer"
         class="px-4 py-2 border border-black text-sm"
       >
-        <span class="sr-only">See Map</span>
-        <span aria-hidden="true">↗</span>
+        See Map ↗
       </a>
       <a
         :href="githubProfile"
@@ -23,8 +22,7 @@
         rel="noreferrer"
         class="px-4 py-2 border border-black text-sm"
       >
-        <span class="sr-only">GitHub</span>
-        <span aria-hidden="true">↗</span>
+        GitHub ↗
       </a>
     </div>
 
