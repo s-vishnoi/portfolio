@@ -62,146 +62,224 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="border border-ink bg-paper p-8">
-      <h2 class="text-2xl font-bold uppercase tracking-[4px] mb-8">Projects</h2>
-      <div class="grid gap-6 md:grid-cols-2">
-        <component
-          v-for="project in projects"
-          :key="project.title"
-          :is="project.external ? 'a' : RouterLink"
-          v-bind="projectAttrs(project)"
-          class="block border border-smoke/30 bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline outline-none"
+      <div class="mt-10 grid gap-4 md:grid-cols-2">
+        <button
+          type="button"
+          class="border border-smoke/30 bg-paper p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          @click="toggleSection('projects')"
+          :aria-expanded="sectionToggles.projects"
+          aria-controls="projects-panel"
         >
-          <img
-            :src="project.image"
-            :alt="project.title"
-            class="w-full h-48 object-cover border border-smoke/30 mb-4"
-          />
-          <h3 class="text-xl font-semibold uppercase tracking-tight mb-3">
-            {{ project.title }}
-          </h3>
-          <p class="text-sm text-smoke leading-relaxed">
-            {{ project.description }}
-          </p>
-          <span class="mt-4 inline-block text-xs uppercase tracking-[2px]">Explore ↗</span>
-        </component>
-      </div>
-    </section>
-
-    <!-- Roles -->
-    <section id="roles" class="border border-ink bg-paper p-8">
-      <h2 class="text-2xl font-bold uppercase tracking-[4px] mb-8">Active Roles</h2>
-      <div class="grid gap-4">
-        <a
-          v-for="role in roles"
-          :key="role.title"
-          :href="role.link"
-          target="_blank"
-          class="border border-smoke/30 bg-paper p-6 flex flex-col md:flex-row gap-4 items-start transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          <span class="text-lg font-semibold uppercase tracking-[1px]">Projects</span>
+          <span class="text-xs uppercase tracking-[2px] text-smoke">Explore ↗</span>
+        </button>
+        <button
+          type="button"
+          class="border border-smoke/30 bg-paper p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          @click="toggleSection('roles')"
+          :aria-expanded="sectionToggles.roles"
+          aria-controls="roles-panel"
         >
-          <img :src="role.logo" class="h-12 border border-smoke/30 bg-cream p-0" />
-          <div>
-            <h3 class="text-lg font-semibold uppercase tracking-[1px]">
-              {{ role.title }}
-            </h3>
-            <p class="text-sm text-smoke">
-              {{ role.institution }}
-            </p>
-            <p class="text-xs text-smoke mt-1 uppercase tracking-[2px]">
-              {{ role.duration }}
-            </p>
-            <p class="text-sm text-charcoal mt-3" v-html="role.description"></p>
-          </div>
-        </a>
+          <span class="text-lg font-semibold uppercase tracking-[1px]">Active Roles</span>
+          <span class="text-xs uppercase tracking-[2px] text-smoke">Explore ↗</span>
+        </button>
+        <button
+          type="button"
+          class="border border-smoke/30 bg-paper p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          @click="toggleSection('skills')"
+          :aria-expanded="sectionToggles.skills"
+          aria-controls="skills-panel"
+        >
+          <span class="text-lg font-semibold uppercase tracking-[1px]">Skills</span>
+          <span class="text-xs uppercase tracking-[2px] text-smoke">Explore ↗</span>
+        </button>
+        <button
+          type="button"
+          class="border border-smoke/30 bg-paper p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          @click="toggleSection('achievements')"
+          :aria-expanded="sectionToggles.achievements"
+          aria-controls="achievements-panel"
+        >
+          <span class="text-lg font-semibold uppercase tracking-[1px]">Achievements</span>
+          <span class="text-xs uppercase tracking-[2px] text-smoke">Explore ↗</span>
+        </button>
       </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="border border-ink bg-paper p-8">
-      <h2 class="text-2xl font-bold uppercase tracking-[4px] mb-8">Skills</h2>
-      <div class="grid gap-4 md:grid-cols-2">
+      <transition
+        name="collapse"
+        @enter="onEnter"
+        @after-enter="onAfterEnter"
+        @leave="onLeave"
+      >
         <div
-          v-for="(skill, index) in skills"
-          :key="index"
-          class="border border-smoke/30 bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline group"
-          @mouseenter="hoverToggles[index] = true"
-          @mouseleave="hoverToggles[index] = false"
+          v-show="sectionToggles.projects"
+          id="projects-panel"
+          class="overflow-hidden mt-6"
         >
-          <button
-            class="w-full flex justify-between items-center text-left text-lg font-semibold uppercase tracking-[1px]"
-            @click="toggleSkill(index)"
-            :aria-expanded="skillToggles[index] || hoverToggles[index]"
-          >
-            <span class="transition group-hover:text-smoke">
-              {{ skill.icon }} {{ skill.title }}
-            </span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="lucide lucide-chevron-down w-4 h-4 transition-transform duration-300 group-hover:text-smoke"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-              :class="{ 'rotate-180': skillToggles[index] || hoverToggles[index] }"
-            >
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </button>
-          <transition
-            name="collapse"
-            @enter="onEnter"
-            @after-enter="onAfterEnter"
-            @leave="onLeave"
-          >
-            <div
-              v-show="skillToggles[index] || hoverToggles[index]"
-              ref="collapsibles"
-              class="overflow-hidden mt-3"
-            >
-              <p class="text-sm text-charcoal mb-3">
-                {{ skill.description }}
-              </p>
-              <div class="flex flex-wrap gap-2 text-xs">
-                <span
-                  v-for="tag in skill.tags"
-                  :key="tag"
-                  class="inline-block border border-smoke/20 bg-cream px-2 py-1 uppercase tracking-[1px]"
+          <div class="border border-smoke/30 bg-paper p-6">
+            <h2 class="text-xl font-bold uppercase tracking-[4px] mb-6">Projects</h2>
+            <div class="grid gap-6 md:grid-cols-2">
+              <component
+                v-for="project in projects"
+                :key="project.title"
+                :is="project.external ? 'a' : RouterLink"
+                v-bind="projectAttrs(project)"
+                class="block border border-smoke/30 bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline outline-none"
+              >
+                <img
+                  :src="project.image"
+                  :alt="project.title"
+                  class="w-full h-48 object-cover border border-smoke/30 mb-4"
+                />
+                <h3 class="text-xl font-semibold uppercase tracking-tight mb-3">
+                  {{ project.title }}
+                </h3>
+                <p class="text-sm text-smoke leading-relaxed">
+                  {{ project.description }}
+                </p>
+                <span class="mt-4 inline-block text-xs uppercase tracking-[2px]">Explore ↗</span>
+              </component>
+            </div>
+          </div>
+        </div>
+      </transition>
+      <transition
+        name="collapse"
+        @enter="onEnter"
+        @after-enter="onAfterEnter"
+        @leave="onLeave"
+      >
+        <div v-show="sectionToggles.roles" id="roles-panel" class="overflow-hidden mt-6">
+          <div class="border border-smoke/30 bg-paper p-6">
+            <h2 class="text-xl font-bold uppercase tracking-[4px] mb-6">Active Roles</h2>
+            <div class="grid gap-4">
+              <a
+                v-for="role in roles"
+                :key="role.title"
+                :href="role.link"
+                target="_blank"
+                class="border border-smoke/30 bg-paper p-6 flex flex-col md:flex-row gap-4 items-start transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+              >
+                <img :src="role.logo" class="h-12 border border-smoke/30 bg-cream p-0" />
+                <div>
+                  <h3 class="text-lg font-semibold uppercase tracking-[1px]">
+                    {{ role.title }}
+                  </h3>
+                  <p class="text-sm text-smoke">
+                    {{ role.institution }}
+                  </p>
+                  <p class="text-xs text-smoke mt-1 uppercase tracking-[2px]">
+                    {{ role.duration }}
+                  </p>
+                  <p class="text-sm text-charcoal mt-3" v-html="role.description"></p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </transition>
+      <transition
+        name="collapse"
+        @enter="onEnter"
+        @after-enter="onAfterEnter"
+        @leave="onLeave"
+      >
+        <div v-show="sectionToggles.skills" id="skills-panel" class="overflow-hidden mt-6">
+          <div class="border border-smoke/30 bg-paper p-6">
+            <h2 class="text-xl font-bold uppercase tracking-[4px] mb-6">Skills</h2>
+            <div class="grid gap-4 md:grid-cols-2">
+              <div
+                v-for="(skill, index) in skills"
+                :key="index"
+                class="border border-smoke/30 bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline group"
+                @mouseenter="hoverToggles[index] = true"
+                @mouseleave="hoverToggles[index] = false"
+              >
+                <button
+                  class="w-full flex justify-between items-center text-left text-lg font-semibold uppercase tracking-[1px]"
+                  @click="toggleSkill(index)"
+                  :aria-expanded="skillToggles[index] || hoverToggles[index]"
                 >
-                  {{ tag }}
-                </span>
+                  <span class="transition group-hover:text-smoke">
+                    {{ skill.icon }} {{ skill.title }}
+                  </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="lucide lucide-chevron-down w-4 h-4 transition-transform duration-300 group-hover:text-smoke"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    :class="{ 'rotate-180': skillToggles[index] || hoverToggles[index] }"
+                  >
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </button>
+                <transition
+                  name="collapse"
+                  @enter="onEnter"
+                  @after-enter="onAfterEnter"
+                  @leave="onLeave"
+                >
+                  <div
+                    v-show="skillToggles[index] || hoverToggles[index]"
+                    ref="collapsibles"
+                    class="overflow-hidden mt-3"
+                  >
+                    <p class="text-sm text-charcoal mb-3">
+                      {{ skill.description }}
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                      <span
+                        v-for="tag in skill.tags"
+                        :key="tag"
+                        class="inline-block border border-smoke/20 bg-cream px-2 py-1 uppercase tracking-[1px]"
+                      >
+                        {{ tag }}
+                      </span>
+                    </div>
+                  </div>
+                </transition>
               </div>
             </div>
-          </transition>
-        </div>
-      </div>
-    </section>
-
-    <!-- Achievements -->
-    <section id="achievements" class="border border-ink bg-paper p-8">
-      <h2 class="text-2xl font-bold uppercase tracking-[4px] mb-8">Achievements</h2>
-      <div class="grid gap-4 md:grid-cols-2">
-        <div class="border border-smoke/30 bg-paper p-4 flex items-start gap-3">
-          <span class="text-2xl">🥇</span>
-          <div>
-            <h3 class="font-semibold uppercase tracking-[1px] text-ink">Murray Green Medal</h3>
-            <p class="text-sm text-smoke">
-              Top graduate in Physics — <span class="text-smoke">2020</span>
-            </p>
           </div>
         </div>
-        <div class="border border-smoke/30 bg-paper p-4 flex items-start gap-3">
-          <span class="text-2xl">🏛️</span>
-          <div>
-            <h3 class="font-semibold uppercase tracking-[1px] text-ink">Presidential Scholarship</h3>
-            <p class="text-sm text-smoke">
-              Full academic scholarship — <span class="text-smoke">2016</span>
-            </p>
+      </transition>
+      <transition
+        name="collapse"
+        @enter="onEnter"
+        @after-enter="onAfterEnter"
+        @leave="onLeave"
+      >
+        <div
+          v-show="sectionToggles.achievements"
+          id="achievements-panel"
+          class="overflow-hidden mt-6"
+        >
+          <div class="border border-smoke/30 bg-paper p-6">
+            <h2 class="text-xl font-bold uppercase tracking-[4px] mb-6">Achievements</h2>
+            <div class="grid gap-4 md:grid-cols-2">
+              <div class="border border-smoke/30 bg-paper p-4 flex items-start gap-3">
+                <span class="text-2xl">🥇</span>
+                <div>
+                  <h3 class="font-semibold uppercase tracking-[1px] text-ink">Murray Green Medal</h3>
+                  <p class="text-sm text-smoke">
+                    Top graduate in Physics — <span class="text-smoke">2020</span>
+                  </p>
+                </div>
+              </div>
+              <div class="border border-smoke/30 bg-paper p-4 flex items-start gap-3">
+                <span class="text-2xl">🏛️</span>
+                <div>
+                  <h3 class="font-semibold uppercase tracking-[1px] text-ink">Presidential Scholarship</h3>
+                  <p class="text-sm text-smoke">
+                    Full academic scholarship — <span class="text-smoke">2016</span>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </transition>
     </section>
   </main>
 </template>
@@ -213,6 +291,17 @@ import { profile } from '../data/profile'
 import { roles } from '../data/roles'
 import { projects } from '../data/projects'
 import { skills } from '../data/skills'
+
+const sectionToggles = ref({
+  projects: false,
+  roles: false,
+  skills: false,
+  achievements: false
+})
+
+const toggleSection = (key) => {
+  sectionToggles.value[key] = !sectionToggles.value[key]
+}
 
 const skillToggles = ref(skills.map(() => false))
 const hoverToggles = ref(skills.map(() => false))
