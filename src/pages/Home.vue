@@ -50,6 +50,7 @@
                 <rect x="2" y="4" width="20" height="16" rx="2" />
                 <path d="m22 7-10 6L2 7" />
               </svg>
+              <span aria-hidden="true">↗</span>
               <span class="sr-only">Email</span>
             </a>
             <a
@@ -72,6 +73,7 @@
                 <rect x="2" y="9" width="4" height="12" />
                 <circle cx="4" cy="4" r="2" />
               </svg>
+              <span aria-hidden="true">↗</span>
               <span class="sr-only">LinkedIn</span>
             </a>
             <a
@@ -95,6 +97,7 @@
                 />
                 <path d="M9 18c-4.5 2-5-2-7-2" />
               </svg>
+              <span aria-hidden="true">↗</span>
               <span class="sr-only">GitHub</span>
             </a>
             <a
@@ -117,6 +120,7 @@
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                 <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
               </svg>
+              <span aria-hidden="true">↗</span>
               <span class="sr-only">Instagram</span>
             </a>
           </div>
@@ -132,7 +136,7 @@
           aria-controls="roles-panel"
         >
           <span class="text-lg font-semibold uppercase tracking-[1px]">Active Roles</span>
-          <span class="text-xs uppercase tracking-[2px] text-smoke">Explore ↗</span>
+          <span class="text-xs uppercase tracking-[2px] text-smoke" aria-hidden="true">↗</span>
         </button>
         <button
           type="button"
@@ -143,7 +147,7 @@
           aria-controls="projects-panel"
         >
           <span class="text-lg font-semibold uppercase tracking-[1px]">Projects</span>
-          <span class="text-xs uppercase tracking-[2px] text-smoke">Explore ↗</span>
+          <span class="text-xs uppercase tracking-[2px] text-smoke" aria-hidden="true">↗</span>
         </button>
         <button
           type="button"
@@ -154,7 +158,7 @@
           aria-controls="skills-panel"
         >
           <span class="text-lg font-semibold uppercase tracking-[1px]">Skills</span>
-          <span class="text-xs uppercase tracking-[2px] text-smoke">Explore ↗</span>
+          <span class="text-xs uppercase tracking-[2px] text-smoke" aria-hidden="true">↗</span>
         </button>
         <button
           type="button"
@@ -165,7 +169,7 @@
           aria-controls="achievements-panel"
         >
           <span class="text-lg font-semibold uppercase tracking-[1px]">Achievements</span>
-          <span class="text-xs uppercase tracking-[2px] text-smoke">Explore ↗</span>
+          <span class="text-xs uppercase tracking-[2px] text-smoke" aria-hidden="true">↗</span>
         </button>
       </div>
       <transition
@@ -231,7 +235,8 @@
                 <p class="text-sm text-smoke leading-relaxed">
                   {{ project.description }}
                 </p>
-                <span class="mt-4 inline-block text-xs uppercase tracking-[2px]">Explore ↗</span>
+                <span class="sr-only">Explore</span>
+                <span class="mt-4 inline-block text-xs uppercase tracking-[2px]" aria-hidden="true">↗</span>
               </component>
             </div>
           </div>
