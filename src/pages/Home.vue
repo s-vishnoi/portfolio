@@ -66,18 +66,9 @@
         <button
           type="button"
           class="border border-smoke/30 bg-paper p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
-          @click="toggleSection('projects')"
-          :aria-expanded="sectionToggles.projects"
-          aria-controls="projects-panel"
-        >
-          <span class="text-lg font-semibold uppercase tracking-[1px]">Projects</span>
-          <span class="text-xs uppercase tracking-[2px] text-smoke">Explore ↗</span>
-        </button>
-        <button
-          type="button"
-          class="border border-smoke/30 bg-paper p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          :class="{ 'border-ink bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('roles') }"
           @click="toggleSection('roles')"
-          :aria-expanded="sectionToggles.roles"
+          :aria-expanded="isOpen('roles')"
           aria-controls="roles-panel"
         >
           <span class="text-lg font-semibold uppercase tracking-[1px]">Active Roles</span>
@@ -86,8 +77,20 @@
         <button
           type="button"
           class="border border-smoke/30 bg-paper p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          :class="{ 'border-ink bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('projects') }"
+          @click="toggleSection('projects')"
+          :aria-expanded="isOpen('projects')"
+          aria-controls="projects-panel"
+        >
+          <span class="text-lg font-semibold uppercase tracking-[1px]">Projects</span>
+          <span class="text-xs uppercase tracking-[2px] text-smoke">Explore ↗</span>
+        </button>
+        <button
+          type="button"
+          class="border border-smoke/30 bg-paper p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          :class="{ 'border-ink bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('skills') }"
           @click="toggleSection('skills')"
-          :aria-expanded="sectionToggles.skills"
+          :aria-expanded="isOpen('skills')"
           aria-controls="skills-panel"
         >
           <span class="text-lg font-semibold uppercase tracking-[1px]">Skills</span>
@@ -96,8 +99,9 @@
         <button
           type="button"
           class="border border-smoke/30 bg-paper p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          :class="{ 'border-ink bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('achievements') }"
           @click="toggleSection('achievements')"
-          :aria-expanded="sectionToggles.achievements"
+          :aria-expanded="isOpen('achievements')"
           aria-controls="achievements-panel"
         >
           <span class="text-lg font-semibold uppercase tracking-[1px]">Achievements</span>
@@ -110,45 +114,7 @@
         @after-enter="onAfterEnter"
         @leave="onLeave"
       >
-        <div
-          v-show="sectionToggles.projects"
-          id="projects-panel"
-          class="overflow-hidden mt-6"
-        >
-          <div class="border border-smoke/30 bg-paper p-6">
-            <h2 class="text-xl font-bold uppercase tracking-[4px] mb-6">Projects</h2>
-            <div class="grid gap-6 md:grid-cols-2">
-              <component
-                v-for="project in projects"
-                :key="project.title"
-                :is="project.external ? 'a' : RouterLink"
-                v-bind="projectAttrs(project)"
-                class="block border border-smoke/30 bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline outline-none"
-              >
-                <img
-                  :src="project.image"
-                  :alt="project.title"
-                  class="w-full h-48 object-cover border border-smoke/30 mb-4"
-                />
-                <h3 class="text-xl font-semibold uppercase tracking-tight mb-3">
-                  {{ project.title }}
-                </h3>
-                <p class="text-sm text-smoke leading-relaxed">
-                  {{ project.description }}
-                </p>
-                <span class="mt-4 inline-block text-xs uppercase tracking-[2px]">Explore ↗</span>
-              </component>
-            </div>
-          </div>
-        </div>
-      </transition>
-      <transition
-        name="collapse"
-        @enter="onEnter"
-        @after-enter="onAfterEnter"
-        @leave="onLeave"
-      >
-        <div v-show="sectionToggles.roles" id="roles-panel" class="overflow-hidden mt-6">
+        <div v-show="isOpen('roles')" id="roles-panel" class="overflow-hidden mt-6">
           <div class="border border-smoke/30 bg-paper p-6">
             <h2 class="text-xl font-bold uppercase tracking-[4px] mb-6">Active Roles</h2>
             <div class="grid gap-4">
@@ -183,7 +149,41 @@
         @after-enter="onAfterEnter"
         @leave="onLeave"
       >
-        <div v-show="sectionToggles.skills" id="skills-panel" class="overflow-hidden mt-6">
+        <div v-show="isOpen('projects')" id="projects-panel" class="overflow-hidden mt-6">
+          <div class="border border-smoke/30 bg-paper p-6">
+            <h2 class="text-xl font-bold uppercase tracking-[4px] mb-6">Projects</h2>
+            <div class="grid gap-6 md:grid-cols-2">
+              <component
+                v-for="project in projects"
+                :key="project.title"
+                :is="project.external ? 'a' : RouterLink"
+                v-bind="projectAttrs(project)"
+                class="block border border-smoke/30 bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline outline-none"
+              >
+                <img
+                  :src="project.image"
+                  :alt="project.title"
+                  class="w-full h-48 object-cover border border-smoke/30 mb-4"
+                />
+                <h3 class="text-xl font-semibold uppercase tracking-tight mb-3">
+                  {{ project.title }}
+                </h3>
+                <p class="text-sm text-smoke leading-relaxed">
+                  {{ project.description }}
+                </p>
+                <span class="mt-4 inline-block text-xs uppercase tracking-[2px]">Explore ↗</span>
+              </component>
+            </div>
+          </div>
+        </div>
+      </transition>
+      <transition
+        name="collapse"
+        @enter="onEnter"
+        @after-enter="onAfterEnter"
+        @leave="onLeave"
+      >
+        <div v-show="isOpen('skills')" id="skills-panel" class="overflow-hidden mt-6">
           <div class="border border-smoke/30 bg-paper p-6">
             <h2 class="text-xl font-bold uppercase tracking-[4px] mb-6">Skills</h2>
             <div class="grid gap-4 md:grid-cols-2">
@@ -250,11 +250,7 @@
         @after-enter="onAfterEnter"
         @leave="onLeave"
       >
-        <div
-          v-show="sectionToggles.achievements"
-          id="achievements-panel"
-          class="overflow-hidden mt-6"
-        >
+        <div v-show="isOpen('achievements')" id="achievements-panel" class="overflow-hidden mt-6">
           <div class="border border-smoke/30 bg-paper p-6">
             <h2 class="text-xl font-bold uppercase tracking-[4px] mb-6">Achievements</h2>
             <div class="grid gap-4 md:grid-cols-2">
@@ -292,15 +288,12 @@ import { roles } from '../data/roles'
 import { projects } from '../data/projects'
 import { skills } from '../data/skills'
 
-const sectionToggles = ref({
-  projects: false,
-  roles: false,
-  skills: false,
-  achievements: false
-})
+const activeSection = ref(null)
+
+const isOpen = (key) => activeSection.value === key
 
 const toggleSection = (key) => {
-  sectionToggles.value[key] = !sectionToggles.value[key]
+  activeSection.value = activeSection.value === key ? null : key
 }
 
 const skillToggles = ref(skills.map(() => false))
