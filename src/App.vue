@@ -19,7 +19,7 @@
             to="/blog"
             class="border-b-2 border-transparent pb-1 transition-colors hover:border-ink"
           >
-            Blog
+            Writing
           </router-link>
           <router-link
             to="/contact"
