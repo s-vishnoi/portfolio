@@ -1,7 +1,7 @@
 <template>
   <main class="max-w-4xl mx-auto px-6 py-12 space-y-16">
     <!-- Profile -->
-    <section id="about" class="border border-ink bg-paper p-8">
+    <section id="about" class="border border-ink bg-[#e7dcc8] p-8">
       <div class="flex flex-col md:flex-row gap-8 items-start">
         <img
           src="/images/samvardhan.png"
