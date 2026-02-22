@@ -1,12 +1,12 @@
 <template>
-  <main class="max-w-3xl mx-auto p-6 space-y-6">
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-6">
     <!--  <img src="/images/projects/demography-map.jpg" alt="Demography Visualization" class="w-full rounded shadow" />
     <figcaption class="text-sm text-gray-500 mt-1">
       Visualizing researcher migration and publication networks across 95M+ papers.
     </figcaption> 
     -->
 
-    <h1 class="text-3xl font-bold mt-4">Gobal Research Equality</h1>
+    <h1 class="text-2xl sm:text-3xl font-bold mt-2 sm:mt-4">Gobal Research Equality</h1>
     <p>
       While representation in academia has been studied extensively from isolated lenses
       i.e. seniority, productivity, mobility etc., comprehensive  

@@ -1,8 +1,8 @@
 <template>
-  <main class="max-w-3xl mx-auto p-6 space-y-6">
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-6">
     
 
-    <h1 class="text-3xl font-bold mt-4">City Scaling Laws</h1>
+    <h1 class="text-2xl sm:text-3xl font-bold mt-2 sm:mt-4">City Scaling Laws</h1>
     <p>
       Most cities grow, but they don't grow evenly. Larger cities exhibit disproportionate increases in
       income, innovation, and crime.

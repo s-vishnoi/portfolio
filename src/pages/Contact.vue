@@ -1,6 +1,6 @@
 <template>
-    <section class="max-w-3xl mx-auto p-6 space-y-6">
-      <h1 class="text-3xl font-bold uppercase tracking-[3px]">Contact</h1>
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-6">
+      <h1 class="text-2xl sm:text-3xl font-bold uppercase tracking-[2px] sm:tracking-[3px]">Contact</h1>
       <p class="text-smoke">
         Feel free to reach out with questions, ideas, or to schedule a quick call.
       </p>
@@ -38,7 +38,7 @@
   
         <button
           type="submit"
-          class="inline-flex items-center gap-2 border border-ink bg-cream px-4 py-2 uppercase tracking-[2px] transition-transform hover:-translate-y-1"
+          class="inline-flex items-center gap-2 border border-ink bg-cream px-4 py-2 uppercase tracking-[1px] sm:tracking-[2px] transition-transform hover:-translate-y-1"
         >
           Send ↗
         </button>

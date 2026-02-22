@@ -1,7 +1,7 @@
 <template>
-  <main class="max-w-4xl mx-auto px-6 py-12 space-y-16">
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-10 sm:space-y-16">
     <!-- Profile -->
-    <section id="about" class="border border-ink bg-[#e7dcc8] p-8">
+    <section id="about" class="border border-ink bg-[#e7dcc8] p-5 sm:p-8">
       <div class="flex flex-col md:flex-row gap-8 items-start">
         <img
           src="/images/samvardhan.png"
@@ -9,10 +9,10 @@
           class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full border border-smoke/40"
         />
         <div>
-          <h1 class="text-4xl font-bold tracking-tight uppercase">
+          <h1 class="text-3xl sm:text-4xl font-bold tracking-tight uppercase">
             {{ profile.name }}
           </h1>
-          <p class="mt-2 text-sm uppercase tracking-[3px] text-smoke">
+          <p class="mt-2 text-xs sm:text-sm uppercase tracking-[2px] sm:tracking-[3px] text-smoke">
             {{ profile.title }}
           </p>
           <div class="mt-6 space-y-3 text-base text-charcoal">
@@ -114,10 +114,10 @@
           </div>
         </div>
       </div>
-      <div class="mt-10 grid gap-4 md:grid-cols-2">
+      <div class="mt-8 sm:mt-10 grid gap-3 sm:gap-4 md:grid-cols-2">
         <button
           type="button"
-          class="border border-smoke/30 bg-paper p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          class="border border-smoke/30 bg-paper p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
           :class="{ 'border-ink bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('roles') }"
           @click="toggleSection('roles')"
           :aria-expanded="isOpen('roles')"
@@ -136,7 +136,7 @@
         </button>
         <button
           type="button"
-          class="border border-smoke/30 bg-paper p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          class="border border-smoke/30 bg-paper p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
           :class="{ 'border-ink bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('projects') }"
           @click="toggleSection('projects')"
           :aria-expanded="isOpen('projects')"
@@ -147,7 +147,7 @@
         </button>
         <button
           type="button"
-          class="border border-smoke/30 bg-paper p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          class="border border-smoke/30 bg-paper p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
           :class="{ 'border-ink bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('skills') }"
           @click="toggleSection('skills')"
           :aria-expanded="isOpen('skills')"
@@ -158,7 +158,7 @@
         </button>
         <button
           type="button"
-          class="border border-smoke/30 bg-paper p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          class="border border-smoke/30 bg-paper p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
           :class="{ 'border-ink bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('achievements') }"
           @click="toggleSection('achievements')"
           :aria-expanded="isOpen('achievements')"
@@ -175,15 +175,15 @@
         @leave="onLeave"
       >
         <div v-show="isOpen('roles')" id="roles-panel" class="overflow-hidden mt-6">
-          <div class="border border-smoke/30 bg-paper p-6">
-            <h2 class="text-xl font-bold uppercase tracking-[4px] mb-6">Active Roles</h2>
+          <div class="border border-smoke/30 bg-paper p-4 sm:p-6">
+            <h2 class="text-lg sm:text-xl font-bold uppercase tracking-[2px] sm:tracking-[4px] mb-4 sm:mb-6">Active Roles</h2>
             <div class="grid gap-4">
               <a
                 v-for="role in roles"
                 :key="role.title"
                 :href="role.link"
                 target="_blank"
-                class="border border-smoke/30 bg-paper p-6 flex flex-col md:flex-row gap-4 items-start transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+                class="border border-smoke/30 bg-paper p-4 sm:p-6 flex flex-col md:flex-row gap-4 items-start transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
               >
                 <img :src="role.logo" class="h-12 border border-smoke/30 bg-cream p-0" />
                 <div>
@@ -210,22 +210,22 @@
         @leave="onLeave"
       >
         <div v-show="isOpen('projects')" id="projects-panel" class="overflow-hidden mt-6">
-          <div class="border border-smoke/30 bg-paper p-6">
-            <h2 class="text-xl font-bold uppercase tracking-[4px] mb-6">Projects</h2>
+          <div class="border border-smoke/30 bg-paper p-4 sm:p-6">
+            <h2 class="text-lg sm:text-xl font-bold uppercase tracking-[2px] sm:tracking-[4px] mb-4 sm:mb-6">Projects</h2>
             <div class="grid gap-6 md:grid-cols-2">
               <component
                 v-for="project in projects"
                 :key="project.title"
                 :is="project.external ? 'a' : RouterLink"
                 v-bind="projectAttrs(project)"
-                class="block border border-smoke/30 bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline outline-none"
+                class="block border border-smoke/30 bg-paper p-4 sm:p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline outline-none"
               >
                 <img
                   :src="project.image"
                   :alt="project.title"
-                  class="w-full h-48 object-cover border border-smoke/30 mb-4"
+                  class="w-full h-40 sm:h-48 object-cover border border-smoke/30 mb-4"
                 />
-                <h3 class="text-xl font-semibold uppercase tracking-tight mb-3">
+                <h3 class="text-lg sm:text-xl font-semibold uppercase tracking-tight mb-3">
                   {{ project.title }}
                 </h3>
                 <p class="text-sm text-smoke leading-relaxed">
@@ -245,18 +245,18 @@
         @leave="onLeave"
       >
         <div v-show="isOpen('skills')" id="skills-panel" class="overflow-hidden mt-6">
-          <div class="border border-smoke/30 bg-paper p-6">
-            <h2 class="text-xl font-bold uppercase tracking-[4px] mb-6">Skills</h2>
+          <div class="border border-smoke/30 bg-paper p-4 sm:p-6">
+            <h2 class="text-lg sm:text-xl font-bold uppercase tracking-[2px] sm:tracking-[4px] mb-4 sm:mb-6">Skills</h2>
             <div class="grid gap-4 md:grid-cols-2">
               <div
                 v-for="(skill, index) in skills"
                 :key="index"
-                class="border border-smoke/30 bg-paper p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline group"
+                class="border border-smoke/30 bg-paper p-4 sm:p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline group"
                 @mouseenter="hoverToggles[index] = true"
                 @mouseleave="hoverToggles[index] = false"
               >
                 <button
-                  class="w-full flex justify-between items-center text-left text-lg font-semibold uppercase tracking-[1px]"
+                  class="w-full flex justify-between items-center text-left text-base sm:text-lg font-semibold uppercase tracking-[1px]"
                   @click="toggleSkill(index)"
                   :aria-expanded="skillToggles[index] || hoverToggles[index]"
                 >
@@ -312,8 +312,8 @@
         @leave="onLeave"
       >
         <div v-show="isOpen('achievements')" id="achievements-panel" class="overflow-hidden mt-6">
-          <div class="border border-smoke/30 bg-paper p-6">
-            <h2 class="text-xl font-bold uppercase tracking-[4px] mb-6">Achievements</h2>
+          <div class="border border-smoke/30 bg-paper p-4 sm:p-6">
+            <h2 class="text-lg sm:text-xl font-bold uppercase tracking-[2px] sm:tracking-[4px] mb-4 sm:mb-6">Achievements</h2>
             <div class="grid gap-4 md:grid-cols-2">
               <div class="border border-smoke/30 bg-paper p-4 flex items-start gap-3">
                 <span class="text-2xl">🥇</span>

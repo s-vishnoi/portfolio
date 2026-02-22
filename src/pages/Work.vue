@@ -1,10 +1,10 @@
 <template>
-  <section class="max-w-4xl mx-auto px-6 py-12 space-y-12">
-    <div class="flex flex-wrap gap-4">
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8 sm:space-y-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
       <button
         @click="currentView = 'consultant'"
         :class="[
-          'w-60 px-4 py-3 border border-smoke/40 uppercase tracking-[2px] transition-transform duration-200 bg-cream',
+          'w-full px-4 py-3 border border-smoke/40 uppercase tracking-[1px] sm:tracking-[2px] transition-transform duration-200 bg-cream',
           currentView === 'consultant'
             ? '-translate-x-1 -translate-y-1 shadow-outline text-ink'
             : 'text-smoke hover:-translate-y-0.5'
@@ -15,7 +15,7 @@
       <button
         @click="currentView = 'ta'"
         :class="[
-          'w-60 px-4 py-3 border border-smoke/40 uppercase tracking-[2px] transition-transform duration-200 bg-cream',
+          'w-full px-4 py-3 border border-smoke/40 uppercase tracking-[1px] sm:tracking-[2px] transition-transform duration-200 bg-cream',
           currentView === 'ta'
             ? '-translate-x-1 -translate-y-1 shadow-outline text-ink'
             : 'text-smoke hover:-translate-y-0.5'
@@ -27,22 +27,22 @@
 
     <div
       v-if="currentView === 'consultant'"
-      class="border border-ink bg-paper p-6 space-y-10"
+      class="border border-ink bg-paper p-4 sm:p-6 space-y-6 sm:space-y-10"
     >
-      <h2 class="text-lg font-semibold uppercase tracking-[2px] flex flex-wrap items-center gap-3">
+      <h2 class="text-base sm:text-lg font-semibold uppercase tracking-[1px] sm:tracking-[2px] flex flex-wrap items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-0" />
         NU Research Computing & Data Services
       </h2>
-      <p class="text-sm text-smoke uppercase tracking-[1px]">
+      <p class="text-xs sm:text-sm text-smoke uppercase tracking-[1px]">
         Advanced research computing support for data-intensive and computational workflows across campus.
       </p>
 
       <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <h3 class="text-base font-semibold uppercase tracking-[2px] text-ink">Lead Consultations</h3>
+        <h3 class="text-sm sm:text-base font-semibold uppercase tracking-[1px] sm:tracking-[2px] text-ink">Lead Consultations</h3>
         <a
           href="https://www.it.northwestern.edu/departments/it-services-support/teaching/learning.html"
           target="_blank"
-          class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform"
+          class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform text-xs sm:text-sm"
         >
           Request a Consult (NU) ↗
         </a>
@@ -71,7 +71,7 @@
 
       <div>
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-2">
-          <h3 class="text-base font-semibold uppercase tracking-[2px] text-ink">Workshops</h3>
+          <h3 class="text-sm sm:text-base font-semibold uppercase tracking-[1px] sm:tracking-[2px] text-ink">Workshops</h3>
         </div>
         <div class="border border-smoke/30 bg-paper p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -85,7 +85,7 @@
           <a
             href="https://github.com/s-vishnoi/Bayesian_Regression/blob/main/stan_workshop.ipynb"
             target="_blank"
-            class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform whitespace-nowrap"
+            class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform text-xs sm:text-sm"
           >
             Open-source code ↗
           </a>
@@ -95,14 +95,14 @@
 
     <div
       v-else
-      class="border border-ink bg-paper p-6 space-y-8"
+      class="border border-ink bg-paper p-4 sm:p-6 space-y-6 sm:space-y-8"
     >
-      <h2 class="text-lg font-semibold uppercase tracking-[2px] flex flex-wrap items-center gap-3">
+      <h2 class="text-base sm:text-lg font-semibold uppercase tracking-[1px] sm:tracking-[2px] flex flex-wrap items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-0" />
         NU Department of Physics &amp; Astronomy
       </h2>
 
-      <div class="border border-smoke/30 bg-paper p-6 space-y-4">
+      <div class="border border-smoke/30 bg-paper p-4 sm:p-6 space-y-4">
         <ul class="list-disc list-inside text-sm text-charcoal leading-relaxed">
           <li>General Physics — 2021 Fall | 2022 Winter, Spring | 2023 Fall, Winter | 2025 Winter</li>
         </ul>

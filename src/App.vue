@@ -1,8 +1,8 @@
 <template>
   <div class="min-h-screen bg-cream text-ink">
     <header class="border-b border-ink bg-cream">
-      <div class="max-w-5xl mx-auto px-6 py-8">
-        <nav class="flex flex-wrap justify-center gap-6 text-sm uppercase tracking-[2px]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-5 sm:py-8">
+        <nav class="flex flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-6 text-xs sm:text-sm uppercase tracking-[1px] sm:tracking-[2px]">
           <router-link
             to="/"
             class="border-b-2 border-transparent pb-1 transition-colors hover:border-ink"
@@ -37,8 +37,8 @@
       </transition>
     </main>
 
-    <footer class="border-t border-ink mt-16 bg-cream">
-      <div class="max-w-5xl mx-auto px-6 py-8 text-sm uppercase tracking-[2px] text-smoke">
+    <footer class="border-t border-ink mt-12 sm:mt-16 bg-cream">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 text-xs sm:text-sm uppercase tracking-[1px] sm:tracking-[2px] text-smoke">
         © {{ new Date().getFullYear() }}
       </div>
     </footer>
