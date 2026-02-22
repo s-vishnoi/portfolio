@@ -20,7 +20,7 @@
         </p>
       
     <img src="/images/projects/urban-scaling.jpg" alt="Missing Arrest Data" class="w-full rounded shadow" />
-    <figcaption class="text-sm text-gray-500 mt-1">
+    <figcaption class="text-sm text-charcoal mt-1">
     </figcaption>
     <p>
       I leverage scaling laws to inform corrected arrest rates as well as uncertainty for 300 U.S. cities. 

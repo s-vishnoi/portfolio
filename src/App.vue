@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-screen bg-[#e7dcc8] text-ink">
-    <header class="border-b border-ink bg-[#e7dcc8]">
+  <div class="min-h-screen bg-cream text-ink">
+    <header class="border-b border-ink bg-cream">
       <div class="max-w-5xl mx-auto px-6 py-8">
         <nav class="flex flex-wrap justify-center gap-6 text-sm uppercase tracking-[2px]">
           <router-link
@@ -31,13 +31,13 @@
       </div>
     </header>
 
-    <main class="bg-[#2b2b2b]">
+    <main class="bg-cream">
       <transition name="slide" mode="out-in">
         <router-view />
       </transition>
     </main>
 
-    <footer class="border-t border-ink mt-16 bg-[#e7dcc8]">
+    <footer class="border-t border-ink mt-16 bg-cream">
       <div class="max-w-5xl mx-auto px-6 py-8 text-sm uppercase tracking-[2px] text-smoke">
         © {{ new Date().getFullYear() }}
       </div>

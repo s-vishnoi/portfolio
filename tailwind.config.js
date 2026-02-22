@@ -5,8 +5,8 @@ module.exports = {
       colors: {
         cream: "#f5f5f5",
         ink: "#1a1a1a",
-        smoke: "#666666",
-        charcoal: "#444444",
+        smoke: "#4f4f4f",
+        charcoal: "#2f2f2f",
         paper: "#ffffff"
       },
       fontFamily: {
