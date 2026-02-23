@@ -169,9 +169,17 @@
               <article
                 v-for="(role, index) in roles"
                 :key="role.title"
-                class="border border-smoke/25 bg-paper p-4 sm:p-5"
-                :class="{ 'border-ink bg-cream/40': openRoleIndex === index }"
+                class="border border-smoke/25 bg-paper p-4 sm:p-5 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline group"
+                :class="{ 'border-ink bg-cream/40': roleToggles[index] || roleHoverToggles[index] }"
+                @mouseenter="roleHoverToggles[index] = true"
+                @mouseleave="roleHoverToggles[index] = false"
               >
+                <button
+                  type="button"
+                  class="w-full text-left"
+                  @click="toggleRole(index)"
+                  :aria-expanded="roleToggles[index] || roleHoverToggles[index]"
+                >
                 <div class="flex items-start gap-4">
                   <img :src="role.logo" class="h-11 border border-smoke/20 bg-cream p-0 mt-0.5" :alt="role.institution" />
                   <div class="flex-1 min-w-0">
@@ -181,27 +189,24 @@
                     <p class="text-xs sm:text-sm text-smoke mt-1">
                       {{ role.institution }}
                     </p>
+                    <p class="text-xs text-smoke mt-1 uppercase tracking-[1.5px]">
+                      {{ role.location }} · {{ role.duration }}
+                      <span v-if="role.place"> · {{ role.place }}</span>
+                    </p>
                   </div>
-                  <button
-                    type="button"
-                    class="inline-flex items-center gap-2 border border-smoke/35 bg-cream px-3 py-2 text-[11px] sm:text-xs uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform shrink-0"
-                    @click="toggleRole(index)"
-                    :aria-expanded="openRoleIndex === index"
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4 text-smoke transition-transform duration-300 shrink-0 mt-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    :class="{ 'rotate-180': roleToggles[index] || roleHoverToggles[index] }"
                   >
-                    {{ openRoleIndex === index ? 'Hide details' : 'View details' }}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="w-3.5 h-3.5 text-smoke transition-transform duration-300"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      :class="{ 'rotate-180': openRoleIndex === index }"
-                    >
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </button>
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
                 </div>
+                </button>
 
                 <transition
                   name="collapse"
@@ -209,12 +214,8 @@
                   @after-enter="onAfterEnter"
                   @leave="onLeave"
                 >
-                  <div v-show="openRoleIndex === index" class="overflow-hidden mt-4 md:ml-16">
+                  <div v-show="roleToggles[index] || roleHoverToggles[index]" class="overflow-hidden mt-4 md:ml-16">
                     <div class="border-t border-smoke/20 pt-4 space-y-4">
-                      <p class="text-xs text-smoke uppercase tracking-[1.5px]">
-                        {{ role.location }} · {{ role.duration }}
-                        <span v-if="role.place"> · {{ role.place }}</span>
-                      </p>
                       <p class="text-sm text-charcoal leading-relaxed">{{ role.summary }}</p>
                       <p class="text-sm text-charcoal leading-relaxed">{{ role.details }}</p>
                       <component
@@ -350,10 +351,11 @@ const toggleSection = (key) => {
   activeSection.value = activeSection.value === key ? null : key
 }
 
-const openRoleIndex = ref(0)
+const roleToggles = ref(roles.map(() => false))
+const roleHoverToggles = ref(roles.map(() => false))
 
 const toggleRole = (index) => {
-  openRoleIndex.value = openRoleIndex.value === index ? -1 : index
+  roleToggles.value[index] = !roleToggles.value[index]
 }
 
 const skillToggles = ref(skills.map(() => false))
