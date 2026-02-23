@@ -114,7 +114,7 @@
           </div>
         </div>
       </div>
-      <div class="mt-8 sm:mt-10 grid gap-3 sm:gap-4 md:grid-cols-2">
+      <div class="mt-8 sm:mt-10 grid gap-3 sm:gap-4 md:grid-cols-3">
         <button
           type="button"
           class="border border-smoke/30 bg-paper p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
@@ -123,7 +123,7 @@
           :aria-expanded="isOpen('roles')"
           aria-controls="roles-panel"
         >
-          <span class="text-lg font-semibold uppercase tracking-[1px]">Active Roles</span>
+          <span class="text-lg font-semibold uppercase tracking-[1px]">Roles</span>
           <span class="inline-flex items-center gap-3">
             <span class="relative flex h-2.5 w-2.5" aria-hidden="true">
               <span
@@ -133,17 +133,6 @@
             </span>
             <span class="text-xs uppercase tracking-[2px] text-smoke" aria-hidden="true">↗</span>
           </span>
-        </button>
-        <button
-          type="button"
-          class="border border-smoke/30 bg-paper p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
-          :class="{ 'border-ink bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('projects') }"
-          @click="toggleSection('projects')"
-          :aria-expanded="isOpen('projects')"
-          aria-controls="projects-panel"
-        >
-          <span class="text-lg font-semibold uppercase tracking-[1px]">Projects</span>
-          <span class="text-xs uppercase tracking-[2px] text-smoke" aria-hidden="true">↗</span>
         </button>
         <button
           type="button"
@@ -176,64 +165,71 @@
       >
         <div v-show="isOpen('roles')" id="roles-panel" class="overflow-hidden mt-6">
           <div class="border border-smoke/30 bg-paper p-4 sm:p-6">
-            <h2 class="text-lg sm:text-xl font-bold uppercase tracking-[2px] sm:tracking-[4px] mb-4 sm:mb-6">Active Roles</h2>
+            <h2 class="text-lg sm:text-xl font-bold uppercase tracking-[2px] sm:tracking-[4px] mb-2">Roles</h2>
+            <p class="text-xs sm:text-sm uppercase tracking-[1px] text-smoke mb-4 sm:mb-6">
+              Current roles with attached flagship work and outcomes.
+            </p>
             <div class="grid gap-4">
-              <a
-                v-for="role in roles"
+              <article
+                v-for="(role, index) in roles"
                 :key="role.title"
-                :href="role.link"
-                target="_blank"
-                class="border border-smoke/30 bg-paper p-4 sm:p-6 flex flex-col md:flex-row gap-4 items-start transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+                class="border border-smoke/30 bg-paper p-4 sm:p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
               >
-                <img :src="role.logo" class="h-12 border border-smoke/30 bg-cream p-0" />
-                <div>
-                  <h3 class="text-lg font-semibold uppercase tracking-[1px]">
-                    {{ role.title }}
-                  </h3>
-                  <p class="text-sm text-smoke">
-                    {{ role.institution }}
-                  </p>
-                  <p class="text-xs text-smoke mt-1 uppercase tracking-[2px]">
-                    {{ role.duration }}
-                  </p>
-                  <p class="text-sm text-charcoal mt-3" v-html="role.description"></p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </transition>
-      <transition
-        name="collapse"
-        @enter="onEnter"
-        @after-enter="onAfterEnter"
-        @leave="onLeave"
-      >
-        <div v-show="isOpen('projects')" id="projects-panel" class="overflow-hidden mt-6">
-          <div class="border border-smoke/30 bg-paper p-4 sm:p-6">
-            <h2 class="text-lg sm:text-xl font-bold uppercase tracking-[2px] sm:tracking-[4px] mb-4 sm:mb-6">Projects</h2>
-            <div class="grid gap-6 md:grid-cols-2">
-              <component
-                v-for="project in projects"
-                :key="project.title"
-                :is="project.external ? 'a' : RouterLink"
-                v-bind="projectAttrs(project)"
-                class="block border border-smoke/30 bg-paper p-4 sm:p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline outline-none"
-              >
-                <img
-                  :src="project.image"
-                  :alt="project.title"
-                  class="w-full h-40 sm:h-48 object-cover border border-smoke/30 mb-4"
-                />
-                <h3 class="text-lg sm:text-xl font-semibold uppercase tracking-tight mb-3">
-                  {{ project.title }}
-                </h3>
-                <p class="text-sm text-smoke leading-relaxed">
-                  {{ project.description }}
-                </p>
-                <span class="sr-only">Explore</span>
-                <span class="mt-4 inline-block text-xs uppercase tracking-[2px]" aria-hidden="true">↗</span>
-              </component>
+                <button
+                  type="button"
+                  class="w-full flex flex-col md:flex-row md:items-start gap-4 text-left"
+                  @click="toggleRole(index)"
+                  :aria-expanded="openRoleIndex === index"
+                >
+                  <img :src="role.logo" class="h-12 border border-smoke/30 bg-cream p-0" :alt="role.institution" />
+                  <div class="flex-1">
+                    <div class="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 class="text-lg font-semibold uppercase tracking-[1px]">
+                          {{ role.title }}
+                        </h3>
+                        <p class="text-sm text-smoke">
+                          {{ role.institution }}
+                        </p>
+                        <p class="text-xs text-smoke mt-1 uppercase tracking-[2px]">
+                          {{ role.location }} · {{ role.duration }}
+                        </p>
+                        <p class="text-sm text-charcoal mt-3">{{ role.summary }}</p>
+                      </div>
+                      <span class="text-xs uppercase tracking-[2px] text-smoke mt-1">
+                        {{ openRoleIndex === index ? 'Close' : 'Expand' }}
+                      </span>
+                    </div>
+                  </div>
+                </button>
+
+                <transition
+                  name="collapse"
+                  @enter="onEnter"
+                  @after-enter="onAfterEnter"
+                  @leave="onLeave"
+                >
+                  <div v-show="openRoleIndex === index" class="overflow-hidden mt-4 md:ml-16">
+                    <div class="border border-smoke/20 bg-cream p-4 space-y-4">
+                      <p class="text-sm text-charcoal leading-relaxed">{{ role.details }}</p>
+                      <div>
+                        <p class="text-xs uppercase tracking-[2px] text-smoke mb-2">Flagship Work</p>
+                        <a
+                          :href="role.link"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          class="inline-flex items-center gap-2 border border-smoke/30 px-3 py-2 text-xs uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform"
+                        >
+                          {{ role.focus }} ↗
+                        </a>
+                      </div>
+                      <ul class="list-disc list-inside text-sm text-charcoal space-y-1 leading-relaxed">
+                        <li v-for="outcome in role.outcomes" :key="outcome">{{ outcome }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </transition>
+              </article>
             </div>
           </div>
         </div>
@@ -343,10 +339,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
 import { profile } from '../data/profile'
 import { roles } from '../data/roles'
-import { projects } from '../data/projects'
 import { skills } from '../data/skills'
 
 const activeSection = ref(null)
@@ -355,6 +349,12 @@ const isOpen = (key) => activeSection.value === key
 
 const toggleSection = (key) => {
   activeSection.value = activeSection.value === key ? null : key
+}
+
+const openRoleIndex = ref(0)
+
+const toggleRole = (index) => {
+  openRoleIndex.value = openRoleIndex.value === index ? -1 : index
 }
 
 const skillToggles = ref(skills.map(() => false))
@@ -377,11 +377,6 @@ const onLeave = (el) => {
   el.style.maxHeight = el.scrollHeight + 'px'
   setTimeout(() => (el.style.maxHeight = '0px'), 0)
 }
-
-const projectAttrs = (project) =>
-  project.external
-    ? { href: project.link, target: '_blank', rel: 'noreferrer noopener' }
-    : { to: project.link }
 </script>
 
 <style scoped>
