@@ -173,40 +173,26 @@
               >
                 <button
                   type="button"
-                  class="w-full flex flex-col md:flex-row md:items-start gap-4 text-left group"
+                  class="w-full flex items-center gap-4 text-left group"
                   @click="toggleRole(index)"
                   :aria-expanded="openRoleIndex === index"
                 >
                   <img :src="role.logo" class="h-11 border border-smoke/20 bg-cream p-0" :alt="role.institution" />
-                  <div class="flex-1">
-                    <div class="flex items-start justify-between gap-4">
-                      <div>
-                        <h3 class="text-lg font-semibold uppercase tracking-[1px]">
-                          {{ role.title }}
-                        </h3>
-                        <p class="text-sm text-smoke mt-0.5">
-                          {{ role.institution }}
-                        </p>
-                        <p class="text-xs text-smoke mt-1 uppercase tracking-[2px]">
-                          {{ role.location }} · {{ role.duration }}
-                        </p>
-                        <p v-if="role.place" class="text-xs text-smoke mt-1 uppercase tracking-[2px]">
-                          {{ role.place }}
-                        </p>
-                        <p class="text-sm text-charcoal mt-2 leading-relaxed">{{ role.summary }}</p>
-                      </div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-4 h-4 text-smoke transition-transform duration-300 mt-1"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        :class="{ 'rotate-180': openRoleIndex === index }"
-                      >
-                        <path d="M6 9l6 6 6-6" />
-                      </svg>
-                    </div>
+                  <div class="flex-1 flex items-center justify-between gap-4 min-w-0">
+                    <p class="text-sm sm:text-base font-semibold uppercase tracking-[1px] text-ink truncate">
+                      {{ role.title }} - {{ role.institution }}
+                    </p>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-4 h-4 text-smoke transition-transform duration-300 shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      :class="{ 'rotate-180': openRoleIndex === index }"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
                   </div>
                 </button>
 
@@ -218,6 +204,11 @@
                 >
                   <div v-show="openRoleIndex === index" class="overflow-hidden mt-3 md:ml-16">
                     <div class="pt-2 space-y-4">
+                      <p class="text-xs text-smoke uppercase tracking-[2px]">
+                        {{ role.location }} · {{ role.duration }}
+                        <span v-if="role.place"> · {{ role.place }}</span>
+                      </p>
+                      <p class="text-sm text-charcoal leading-relaxed">{{ role.summary }}</p>
                       <p class="text-sm text-charcoal leading-relaxed">{{ role.details }}</p>
                       <component
                         :is="role.internal ? RouterLink : 'a'"
