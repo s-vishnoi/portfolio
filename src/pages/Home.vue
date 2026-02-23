@@ -165,10 +165,6 @@
       >
         <div v-show="isOpen('roles')" id="roles-panel" class="overflow-hidden mt-6">
           <div class="border border-smoke/30 bg-paper p-4 sm:p-6">
-            <h2 class="text-lg sm:text-xl font-bold uppercase tracking-[2px] sm:tracking-[4px] mb-2">Roles</h2>
-            <p class="text-xs sm:text-sm uppercase tracking-[1px] text-smoke mb-4 sm:mb-6">
-              Current roles with attached flagship work and outcomes.
-            </p>
             <div class="grid gap-4">
               <article
                 v-for="(role, index) in roles"
@@ -194,6 +190,9 @@
                         <p class="text-xs text-smoke mt-1 uppercase tracking-[2px]">
                           {{ role.location }} · {{ role.duration }}
                         </p>
+                        <p v-if="role.place" class="text-xs text-smoke mt-1 uppercase tracking-[2px]">
+                          {{ role.place }}
+                        </p>
                         <p class="text-sm text-charcoal mt-3">{{ role.summary }}</p>
                       </div>
                       <span class="text-xs uppercase tracking-[2px] text-smoke mt-1">
@@ -214,18 +213,14 @@
                       <p class="text-sm text-charcoal leading-relaxed">{{ role.details }}</p>
                       <div>
                         <p class="text-xs uppercase tracking-[2px] text-smoke mb-2">Flagship Work</p>
-                        <a
-                          :href="role.link"
-                          target="_blank"
-                          rel="noreferrer noopener"
+                        <component
+                          :is="role.internal ? RouterLink : 'a'"
+                          v-bind="roleLinkAttrs(role)"
                           class="inline-flex items-center gap-2 border border-smoke/30 px-3 py-2 text-xs uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform"
                         >
                           {{ role.focus }} ↗
-                        </a>
+                        </component>
                       </div>
-                      <ul class="list-disc list-inside text-sm text-charcoal space-y-1 leading-relaxed">
-                        <li v-for="outcome in role.outcomes" :key="outcome">{{ outcome }}</li>
-                      </ul>
                     </div>
                   </div>
                 </transition>
@@ -339,6 +334,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import { profile } from '../data/profile'
 import { roles } from '../data/roles'
 import { skills } from '../data/skills'
@@ -377,6 +373,11 @@ const onLeave = (el) => {
   el.style.maxHeight = el.scrollHeight + 'px'
   setTimeout(() => (el.style.maxHeight = '0px'), 0)
 }
+
+const roleLinkAttrs = (role) =>
+  role.internal
+    ? { to: role.link }
+    : { href: role.link, target: '_blank', rel: 'noreferrer noopener' }
 </script>
 
 <style scoped>

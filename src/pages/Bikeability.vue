@@ -1,5 +1,18 @@
 <template>
   <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-6">
+    <div class="flex items-center gap-3">
+      <button
+        type="button"
+        @click="goBack"
+        class="px-4 py-2 border border-black text-sm"
+      >
+        ← Back
+      </button>
+      <RouterLink to="/" class="px-4 py-2 border border-black text-sm">
+        Home
+      </RouterLink>
+    </div>
+
     <h1 class="text-2xl sm:text-3xl font-bold mt-2 sm:mt-4">Chicago Bikeability Map</h1>
     <p>
       I bike across Chicago a lot, mostly on a fixed gear, and I wanted a clearer, public picture
@@ -54,7 +67,20 @@
 </template>
 
 <script setup lang="ts">
+import { RouterLink, useRouter } from 'vue-router';
+
 const mapUrl = 'https://chicago-bike-dashboard.onrender.com';
 const githubRepo = 'https://github.com/s-vishnoi/chicago-bikeability-map';
 const githubProfile = 'https://github.com/s-vishnoi';
+
+const router = useRouter();
+
+const goBack = () => {
+  if (window.history.length > 1) {
+    router.back();
+    return;
+  }
+
+  router.push('/');
+};
 </script>

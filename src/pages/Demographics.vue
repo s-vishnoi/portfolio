@@ -1,5 +1,18 @@
 <template>
   <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-6">
+    <div class="flex items-center gap-3">
+      <button
+        type="button"
+        @click="goBack"
+        class="px-4 py-2 border border-black text-sm"
+      >
+        ← Back
+      </button>
+      <RouterLink to="/" class="px-4 py-2 border border-black text-sm">
+        Home
+      </RouterLink>
+    </div>
+
     <!--  <img src="/images/projects/demography-map.jpg" alt="Demography Visualization" class="w-full rounded shadow" />
     <figcaption class="text-sm text-gray-500 mt-1">
       Visualizing researcher migration and publication networks across 95M+ papers.
@@ -30,3 +43,18 @@
     </p>
   </main>
 </template>
+
+<script setup>
+import { RouterLink, useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const goBack = () => {
+  if (window.history.length > 1) {
+    router.back()
+    return
+  }
+
+  router.push('/')
+}
+</script>
