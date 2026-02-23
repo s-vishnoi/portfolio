@@ -164,27 +164,27 @@
         @leave="onLeave"
       >
         <div v-show="isOpen('roles')" id="roles-panel" class="overflow-hidden mt-6">
-          <div class="border border-smoke/30 bg-paper p-4 sm:p-6">
-            <div class="grid gap-4">
+          <div class="bg-paper px-2 sm:px-4">
+            <div class="divide-y divide-smoke/20 border-y border-smoke/20">
               <article
                 v-for="(role, index) in roles"
                 :key="role.title"
-                class="border border-smoke/30 bg-paper p-4 sm:p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+                class="py-5 sm:py-6"
               >
                 <button
                   type="button"
-                  class="w-full flex flex-col md:flex-row md:items-start gap-4 text-left"
+                  class="w-full flex flex-col md:flex-row md:items-start gap-4 text-left group"
                   @click="toggleRole(index)"
                   :aria-expanded="openRoleIndex === index"
                 >
-                  <img :src="role.logo" class="h-12 border border-smoke/30 bg-cream p-0" :alt="role.institution" />
+                  <img :src="role.logo" class="h-11 border border-smoke/20 bg-cream p-0" :alt="role.institution" />
                   <div class="flex-1">
-                    <div class="flex items-start justify-between gap-3">
+                    <div class="flex items-start justify-between gap-4">
                       <div>
                         <h3 class="text-lg font-semibold uppercase tracking-[1px]">
                           {{ role.title }}
                         </h3>
-                        <p class="text-sm text-smoke">
+                        <p class="text-sm text-smoke mt-0.5">
                           {{ role.institution }}
                         </p>
                         <p class="text-xs text-smoke mt-1 uppercase tracking-[2px]">
@@ -193,11 +193,19 @@
                         <p v-if="role.place" class="text-xs text-smoke mt-1 uppercase tracking-[2px]">
                           {{ role.place }}
                         </p>
-                        <p class="text-sm text-charcoal mt-3">{{ role.summary }}</p>
+                        <p class="text-sm text-charcoal mt-2 leading-relaxed">{{ role.summary }}</p>
                       </div>
-                      <span class="text-xs uppercase tracking-[2px] text-smoke mt-1">
-                        {{ openRoleIndex === index ? 'Close' : 'Expand' }}
-                      </span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4 text-smoke transition-transform duration-300 mt-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        :class="{ 'rotate-180': openRoleIndex === index }"
+                      >
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
                     </div>
                   </div>
                 </button>
@@ -208,19 +216,16 @@
                   @after-enter="onAfterEnter"
                   @leave="onLeave"
                 >
-                  <div v-show="openRoleIndex === index" class="overflow-hidden mt-4 md:ml-16">
-                    <div class="border border-smoke/20 bg-cream p-4 space-y-4">
+                  <div v-show="openRoleIndex === index" class="overflow-hidden mt-3 md:ml-16">
+                    <div class="pt-2 space-y-4">
                       <p class="text-sm text-charcoal leading-relaxed">{{ role.details }}</p>
-                      <div>
-                        <p class="text-xs uppercase tracking-[2px] text-smoke mb-2">Flagship Work</p>
-                        <component
-                          :is="role.internal ? RouterLink : 'a'"
-                          v-bind="roleLinkAttrs(role)"
-                          class="inline-flex items-center gap-2 border border-smoke/30 px-3 py-2 text-xs uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform"
-                        >
-                          {{ role.focus }} ↗
-                        </component>
-                      </div>
+                      <component
+                        :is="role.internal ? RouterLink : 'a'"
+                        v-bind="roleLinkAttrs(role)"
+                        class="inline-flex items-center gap-2 border border-smoke/40 bg-cream px-4 py-2 text-xs uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform"
+                      >
+                        {{ role.focus }} ↗
+                      </component>
                     </div>
                   </div>
                 </transition>
