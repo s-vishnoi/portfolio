@@ -164,27 +164,34 @@
         @leave="onLeave"
       >
         <div v-show="isOpen('roles')" id="roles-panel" class="overflow-hidden mt-6">
-          <div class="bg-paper px-2 sm:px-4">
-            <div class="divide-y divide-smoke/20 border-y border-smoke/20">
+          <div class="bg-paper">
+            <div class="space-y-3">
               <article
                 v-for="(role, index) in roles"
                 :key="role.title"
-                class="py-5 sm:py-6"
+                class="border border-smoke/25 bg-paper p-4 sm:p-5"
+                :class="{ 'border-ink bg-cream/40': openRoleIndex === index }"
               >
-                <button
-                  type="button"
-                  class="w-full flex items-center gap-4 text-left group"
-                  @click="toggleRole(index)"
-                  :aria-expanded="openRoleIndex === index"
-                >
-                  <img :src="role.logo" class="h-11 border border-smoke/20 bg-cream p-0" :alt="role.institution" />
-                  <div class="flex-1 flex items-center justify-between gap-4 min-w-0">
-                    <p class="text-sm sm:text-base font-semibold uppercase tracking-[1px] text-ink truncate">
-                      {{ role.title }} - {{ role.institution }}
+                <div class="flex items-start gap-4">
+                  <img :src="role.logo" class="h-11 border border-smoke/20 bg-cream p-0 mt-0.5" :alt="role.institution" />
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm sm:text-base font-semibold uppercase tracking-[1px] text-ink leading-tight">
+                      {{ role.title }}
                     </p>
+                    <p class="text-xs sm:text-sm text-smoke mt-1">
+                      {{ role.institution }}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    class="inline-flex items-center gap-2 border border-smoke/35 bg-cream px-3 py-2 text-[11px] sm:text-xs uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform shrink-0"
+                    @click="toggleRole(index)"
+                    :aria-expanded="openRoleIndex === index"
+                  >
+                    {{ openRoleIndex === index ? 'Hide details' : 'View details' }}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="w-4 h-4 text-smoke transition-transform duration-300 shrink-0"
+                      class="w-3.5 h-3.5 text-smoke transition-transform duration-300"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -193,8 +200,8 @@
                     >
                       <path d="M6 9l6 6 6-6" />
                     </svg>
-                  </div>
-                </button>
+                  </button>
+                </div>
 
                 <transition
                   name="collapse"
@@ -202,9 +209,9 @@
                   @after-enter="onAfterEnter"
                   @leave="onLeave"
                 >
-                  <div v-show="openRoleIndex === index" class="overflow-hidden mt-3 md:ml-16">
-                    <div class="pt-2 space-y-4">
-                      <p class="text-xs text-smoke uppercase tracking-[2px]">
+                  <div v-show="openRoleIndex === index" class="overflow-hidden mt-4 md:ml-16">
+                    <div class="border-t border-smoke/20 pt-4 space-y-4">
+                      <p class="text-xs text-smoke uppercase tracking-[1.5px]">
                         {{ role.location }} · {{ role.duration }}
                         <span v-if="role.place"> · {{ role.place }}</span>
                       </p>
