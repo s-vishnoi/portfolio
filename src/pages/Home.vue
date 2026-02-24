@@ -165,12 +165,12 @@
       >
         <div v-show="isOpen('roles')" id="roles-panel" class="overflow-hidden mt-6">
           <div class="bg-paper">
-            <div class="space-y-3">
+            <div class="divide-y divide-smoke/20 border-y border-smoke/20">
               <article
                 v-for="(role, index) in roles"
                 :key="role.title"
-                class="border border-smoke/25 bg-paper p-4 sm:p-5 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline group"
-                :class="{ 'border-ink bg-cream/40': roleToggles[index] || roleHoverToggles[index] }"
+                class="bg-paper p-4 sm:p-5 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline group"
+                :class="{ 'bg-cream/40': roleToggles[index] || roleHoverToggles[index] }"
                 @mouseenter="roleHoverToggles[index] = true"
                 @mouseleave="roleHoverToggles[index] = false"
               >
