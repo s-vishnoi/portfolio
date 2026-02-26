@@ -4,11 +4,11 @@
       <button
         type="button"
         @click="goBack"
-        class="px-4 py-2 border border-black text-sm"
+        class="px-4 py-2 border border-smoke/40 text-sm"
       >
         ← Back
       </button>
-      <RouterLink to="/" class="px-4 py-2 border border-black text-sm">
+      <RouterLink to="/" class="px-4 py-2 border border-smoke/40 text-sm">
         Home
       </RouterLink>
     </div>
@@ -25,7 +25,7 @@
         :href="mapUrl"
         target="_blank"
         rel="noreferrer"
-        class="px-4 py-2 border border-black text-sm"
+        class="px-4 py-2 border border-smoke/40 text-sm"
       >
         See Map ↗
       </a>
@@ -33,7 +33,7 @@
         :href="githubProfile"
         target="_blank"
         rel="noreferrer"
-        class="px-4 py-2 border border-black text-sm"
+        class="px-4 py-2 border border-smoke/40 text-sm"
       >
         GitHub ↗
       </a>

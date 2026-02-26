@@ -1,7 +1,7 @@
 <template>
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-10 sm:space-y-16">
     <!-- Profile -->
-    <section id="about" class="border border-ink bg-[#e7dcc8] p-5 sm:p-8">
+    <section id="about" class="border border-smoke/40 bg-[#e7dcc8] p-5 sm:p-8">
       <div class="flex flex-col md:flex-row gap-8 items-start">
         <img
           src="/images/samvardhan.png"
@@ -118,7 +118,7 @@
         <button
           type="button"
           class="border border-smoke/30 bg-paper p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
-          :class="{ 'border-ink bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('roles') }"
+          :class="{ 'border-smoke/40 bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('roles') }"
           @click="toggleSection('roles')"
           :aria-expanded="isOpen('roles')"
           aria-controls="roles-panel"
@@ -137,7 +137,7 @@
         <button
           type="button"
           class="border border-smoke/30 bg-paper p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
-          :class="{ 'border-ink bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('skills') }"
+          :class="{ 'border-smoke/40 bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('skills') }"
           @click="toggleSection('skills')"
           :aria-expanded="isOpen('skills')"
           aria-controls="skills-panel"
@@ -148,7 +148,7 @@
         <button
           type="button"
           class="border border-smoke/30 bg-paper p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
-          :class="{ 'border-ink bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('achievements') }"
+          :class="{ 'border-smoke/40 bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('achievements') }"
           @click="toggleSection('achievements')"
           :aria-expanded="isOpen('achievements')"
           aria-controls="achievements-panel"

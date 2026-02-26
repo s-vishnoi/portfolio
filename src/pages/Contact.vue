@@ -38,7 +38,7 @@
   
         <button
           type="submit"
-          class="inline-flex items-center gap-2 border border-ink bg-cream px-4 py-2 uppercase tracking-[1px] sm:tracking-[2px] transition-transform hover:-translate-y-1"
+          class="inline-flex items-center gap-2 border border-smoke/40 bg-cream px-4 py-2 uppercase tracking-[1px] sm:tracking-[2px] transition-transform hover:-translate-y-1"
         >
           Send ↗
         </button>
