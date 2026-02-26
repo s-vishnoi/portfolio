@@ -29,7 +29,7 @@
       v-if="currentView === 'consultant'"
       class="border border-smoke/40 bg-[#e7dcc8] p-4 sm:p-6 space-y-6 sm:space-y-10"
     >
-      <h2 class="text-base sm:text-lg font-semibold uppercase tracking-[1px] sm:tracking-[2px] flex flex-wrap items-center gap-3">
+      <h2 class="text-lg sm:text-xl font-semibold uppercase tracking-[1px] sm:tracking-[2px] flex flex-wrap items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-0" />
         NU Research Computing & Data Services
       </h2>
@@ -97,7 +97,7 @@
       v-else
       class="border border-smoke/40 bg-[#e7dcc8] p-4 sm:p-6 space-y-6 sm:space-y-8"
     >
-      <h2 class="text-base sm:text-lg font-semibold uppercase tracking-[1px] sm:tracking-[2px] flex flex-wrap items-center gap-3">
+      <h2 class="text-lg sm:text-xl font-semibold uppercase tracking-[1px] sm:tracking-[2px] flex flex-wrap items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-0" />
         NU Department of Physics &amp; Astronomy
       </h2>

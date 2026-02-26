@@ -40,7 +40,7 @@
         </a>
       </div>
 
-      <h2 class="text-1.5xl font-bold mt-2">Data Sources</h2>
+      <h2 class="text-lg sm:text-xl font-semibold mt-2">Data Sources</h2>
       <ul class="list-disc pl-6">
         <li>CRASH DATA — Chicago Open Data Portal</li>
         <li>COMMUNITY DATA — U.S. Census</li>
@@ -48,7 +48,7 @@
         <li>ROAD LENGTH — Derived from Census geometries</li>
       </ul>
 
-      <h2 class="text-1.5xl font-bold mt-2">Technical Summary</h2>
+      <h2 class="text-lg sm:text-xl font-semibold mt-2">Technical Summary</h2>
       <p>
         The map is built with Plotly Dash and a Python data pipeline (Pandas, GeoPandas, Shapely),
         then containerized with Docker for deployment. If you want the full technical breakdown,

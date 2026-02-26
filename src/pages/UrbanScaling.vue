@@ -24,7 +24,7 @@
       how various urban indicators grow with city population. These relationships have enormous potential in not 
       only filling the gaps in our understanding of present but also preparing us for future resource needs. 
     </p>
-    <h2 class="text-1.5xl font-bold mt-2">Fixing Historical U.S. Arrest Data</h2>
+    <h2 class="text-lg sm:text-xl font-semibold mt-2">Fixing Historical U.S. Arrest Data</h2>
     <p>
       Arrest data collected from law agencies acorss the U.S. is heavily missing due to a voluntary reporting program (Uniform Crime Reporting, FBI).
       Current criminology research often ignores this missingness, leading to biased conclusions.
@@ -39,13 +39,13 @@
       Bayesian methods allow modeling for time and regional variations heirarchically while maintaining transparency, delivering state-of-the-art estimates.
     </p>
 
-    <h2 class="text-1.5xl font-bold mt-2">Publications</h2>
+    <h2 class="text-lg sm:text-xl font-semibold mt-2">Publications</h2>
     <p class="italic">
       Changes in poverty and ethnic diversity predict the murder rate of US metropolitan statistical areas over a 60-year period <br>
       <span class="not-italic">(Second author, 2025, <em>Nature Human Behavior</em> — in review)</span>
     </p>
 
-    <h2 class="text-1.5xl font-bold mt-2">Code</h2>
+    <h2 class="text-lg sm:text-xl font-semibold mt-2">Code</h2>
     <p>
       The open-source data and code repository will be made available after publication.
     </p>
