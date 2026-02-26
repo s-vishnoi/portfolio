@@ -15,7 +15,7 @@
       <div class="aspect-[8.5/11] w-full">
         <iframe
           src="/resume.pdf"
-          class="w-full h-full border border-smoke/30 bg-paper"
+          class="w-full h-full border border-smoke/30 bg-[#e7dcc8]"
           type="application/pdf"
           title="Embedded Resume PDF"
         ></iframe>

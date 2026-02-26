@@ -13,7 +13,7 @@
               v-model="form.name"
               type="text"
               required
-              class="w-full border border-smoke/30 bg-paper px-4 py-3 focus:outline-none focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline transition-transform"
+              class="w-full border border-smoke/30 bg-[#e7dcc8] px-4 py-3 focus:outline-none focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline transition-transform"
             />
           </div>
     
@@ -23,7 +23,7 @@
               v-model="form.email"
               type="email"
               required
-              class="w-full border border-smoke/30 bg-paper px-4 py-3 focus:outline-none focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline transition-transform"
+              class="w-full border border-smoke/30 bg-[#e7dcc8] px-4 py-3 focus:outline-none focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline transition-transform"
             />
           </div>
     
@@ -33,7 +33,7 @@
               v-model="form.message"
               required
               rows="5"
-              class="w-full border border-smoke/30 bg-paper px-4 py-3 focus:outline-none focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline transition-transform"
+              class="w-full border border-smoke/30 bg-[#e7dcc8] px-4 py-3 focus:outline-none focus:-translate-x-1 focus:-translate-y-1 focus:shadow-outline transition-transform"
             ></textarea>
           </div>
     

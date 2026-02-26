@@ -56,7 +56,7 @@
         >
           <div class="flip-card">
             <div class="flip-card-inner">
-              <div class="flip-card-front border border-smoke/30 bg-paper flex items-center justify-center text-center">
+              <div class="flip-card-front border border-smoke/30 bg-[#e7dcc8] flex items-center justify-center text-center">
                 <h3 class="text-sm font-semibold uppercase tracking-[1px] text-ink">
                   {{ consult.topic }}
                 </h3>
@@ -73,7 +73,7 @@
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-2">
           <h3 class="text-sm sm:text-base font-semibold uppercase tracking-[1px] sm:tracking-[2px] text-ink">Workshops</h3>
         </div>
-        <div class="border border-smoke/30 bg-paper p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div class="border border-smoke/30 bg-[#e7dcc8] p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p class="text-sm text-charcoal">
               <span class="font-semibold text-ink uppercase tracking-[1px]">Bayesian Inference</span> — Winter 2024 | Winter 2025
@@ -102,7 +102,7 @@
         NU Department of Physics &amp; Astronomy
       </h2>
 
-      <div class="border border-smoke/30 bg-paper p-4 sm:p-6 space-y-4">
+      <div class="border border-smoke/30 bg-[#e7dcc8] p-4 sm:p-6 space-y-4">
         <ul class="list-disc list-inside text-sm text-charcoal leading-relaxed">
           <li>General Physics — 2021 Fall | 2022 Winter, Spring | 2023 Fall, Winter | 2025 Winter</li>
         </ul>
@@ -152,7 +152,7 @@ const toggleTestimonials = () => {
 }
 
 .testimonial-tile {
-  @apply italic text-sm text-charcoal px-3 py-2 border border-smoke/30 bg-paper transition-transform duration-300;
+  @apply italic text-sm text-charcoal px-3 py-2 border border-smoke/30 bg-[#e7dcc8] transition-transform duration-300;
 }
 
 .testimonial-tile:hover {

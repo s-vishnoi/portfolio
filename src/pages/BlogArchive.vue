@@ -7,7 +7,7 @@
           :key="post.link"
           :href="post.link"
           target="_blank"
-          class="block border border-smoke/30 bg-paper p-4 sm:p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          class="block border border-smoke/30 bg-[#e7dcc8] p-4 sm:p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
         >
           <div class="flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-4 mb-2">
             <div class="flex items-start sm:items-center gap-2">
