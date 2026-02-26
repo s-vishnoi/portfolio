@@ -14,7 +14,7 @@ module.exports = {
         heading: ['"Courier New"', "Courier", "monospace"]
       },
       boxShadow: {
-        outline: "8px 8px 0 rgba(26, 26, 26, 1)"
+        outline: "6px 6px 0 rgba(79, 79, 79, 0.45)"
       },
       borderWidth: {
         3: "3px",

@@ -29,13 +29,15 @@
       v-if="currentView === 'consultant'"
       class="border border-smoke/40 bg-[#e7dcc8] p-4 sm:p-6 space-y-6 sm:space-y-10"
     >
-      <h2 class="text-lg sm:text-xl font-semibold uppercase tracking-[1px] sm:tracking-[2px] flex flex-wrap items-center gap-3">
-        <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-0" />
-        NU Research Computing & Data Services
-      </h2>
-      <p class="text-xs sm:text-sm text-smoke uppercase tracking-[1px]">
-        Advanced research computing support for data-intensive and computational workflows across campus.
-      </p>
+      <div class="space-y-1">
+        <h2 class="text-lg sm:text-xl font-semibold uppercase tracking-[1px] sm:tracking-[2px] flex flex-wrap items-center gap-3">
+          <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-0" />
+          NU Research Computing & Data Services
+        </h2>
+        <p class="text-xs sm:text-sm text-smoke uppercase tracking-[1px]">
+          Advanced research computing support for data-intensive and computational workflows across campus.
+        </p>
+      </div>
 
       <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <h3 class="text-sm sm:text-base font-semibold uppercase tracking-[1px] sm:tracking-[2px] text-ink">Lead Consultations</h3>
@@ -48,7 +50,7 @@
         </a>
       </div>
 
-      <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-cream/40 p-1.5">
+      <div class="grid gap-1.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-cream/40 p-1.5">
         <div
           v-for="(consult, index) in consults"
           :key="index"
@@ -107,11 +109,11 @@
           <li>General Physics — 2021 Fall | 2022 Winter, Spring | 2023 Fall, Winter | 2025 Winter</li>
         </ul>
 
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 border border-smoke/30 bg-cream/40 p-4">
+        <div class="grid grid-cols-1 gap-1.5 sm:grid-cols-2 md:grid-cols-3 border border-smoke/30 bg-cream/40 p-1.5">
           <span
             v-for="(quote, index) in displayedTestimonials"
             :key="index"
-            class="testimonial-tile"
+            :class="['testimonial-tile', testimonialTileClass(index)]"
           >
             “{{ quote }}”
           </span>
@@ -144,6 +146,17 @@ const displayedTestimonials = computed(() =>
 const toggleTestimonials = () => {
   showAllTestimonials.value = !showAllTestimonials.value
 }
+
+const testimonialPastels = [
+  'bg-[#f6ddd2]',
+  'bg-[#d8eadf]',
+  'bg-[#d9e5f5]',
+  'bg-[#f4e7cc]',
+  'bg-[#e6dcf6]',
+  'bg-[#f7dfe9]'
+]
+
+const testimonialTileClass = (index) => testimonialPastels[index % testimonialPastels.length]
 </script>
 
 <style scoped>
@@ -152,7 +165,7 @@ const toggleTestimonials = () => {
 }
 
 .testimonial-tile {
-  @apply italic text-sm text-charcoal px-3 py-2 bg-[#e7dcc8] transition-transform duration-300;
+  @apply italic text-sm text-charcoal px-3 py-2 transition-transform duration-300;
 }
 
 .testimonial-tile:hover {
