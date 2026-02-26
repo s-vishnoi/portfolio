@@ -27,7 +27,7 @@
 
     <div
       v-if="currentView === 'consultant'"
-      class="border border-ink bg-paper p-4 sm:p-6 space-y-6 sm:space-y-10"
+      class="border border-ink bg-cream p-4 sm:p-6 space-y-6 sm:space-y-10"
     >
       <h2 class="text-base sm:text-lg font-semibold uppercase tracking-[1px] sm:tracking-[2px] flex flex-wrap items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-0" />
@@ -95,7 +95,7 @@
 
     <div
       v-else
-      class="border border-ink bg-paper p-4 sm:p-6 space-y-6 sm:space-y-8"
+      class="border border-ink bg-cream p-4 sm:p-6 space-y-6 sm:space-y-8"
     >
       <h2 class="text-base sm:text-lg font-semibold uppercase tracking-[1px] sm:tracking-[2px] flex flex-wrap items-center gap-3">
         <img src="/logos/NU_PA_logo.svg" alt="NU logo" class="h-8 border border-smoke/30 bg-cream p-0" />

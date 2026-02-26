@@ -165,7 +165,7 @@
       >
         <div v-show="isOpen('roles')" id="roles-panel" class="overflow-hidden mt-6">
           <div class="bg-paper">
-            <div class="divide-y divide-smoke/20 border-y border-smoke/20">
+            <div class="space-y-1.5 bg-cream/40 p-1.5">
               <article
                 v-for="(role, index) in roles"
                 :key="role.title"
