@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
     <section class="border border-smoke/40 bg-[#e7dcc8] p-5 sm:p-8">
-      <ul class="grid gap-6">
+      <ul class="grid gap-6 bg-cream/40 p-1.5">
         <a
           v-for="post in blogPosts"
           :key="post.link"

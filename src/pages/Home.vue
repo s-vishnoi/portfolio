@@ -242,7 +242,7 @@
         <div v-show="isOpen('skills')" id="skills-panel" class="overflow-hidden mt-6">
           <div class="border border-smoke/30 bg-[#e7dcc8] p-4 sm:p-6">
             <h2 class="text-lg sm:text-xl font-bold uppercase tracking-[2px] sm:tracking-[4px] mb-4 sm:mb-6">Skills</h2>
-            <div class="grid gap-4 md:grid-cols-2">
+            <div class="grid gap-4 md:grid-cols-2 bg-cream/40 p-1.5">
               <div
                 v-for="(skill, index) in skills"
                 :key="index"
@@ -309,7 +309,7 @@
         <div v-show="isOpen('achievements')" id="achievements-panel" class="overflow-hidden mt-6">
           <div class="border border-smoke/30 bg-[#e7dcc8] p-4 sm:p-6">
             <h2 class="text-lg sm:text-xl font-bold uppercase tracking-[2px] sm:tracking-[4px] mb-4 sm:mb-6">Achievements</h2>
-            <div class="grid gap-4 md:grid-cols-2">
+            <div class="grid gap-4 md:grid-cols-2 bg-cream/40 p-1.5">
               <div class="bg-[#e7dcc8] p-4 flex items-start gap-3 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline">
                 <span class="text-2xl">🥇</span>
                 <div>

@@ -48,7 +48,7 @@
         </a>
       </div>
 
-      <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-cream/40 p-1.5">
         <div
           v-for="(consult, index) in consults"
           :key="index"
@@ -107,7 +107,7 @@
           <li>General Physics — 2021 Fall | 2022 Winter, Spring | 2023 Fall, Winter | 2025 Winter</li>
         </ul>
 
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 border border-smoke/30 bg-cream p-4">
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 border border-smoke/30 bg-cream/40 p-4">
           <span
             v-for="(quote, index) in displayedTestimonials"
             :key="index"
