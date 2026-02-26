@@ -25,7 +25,7 @@ export const roles = [
     focus: "Global Research Equality",
     internal: true,
     link: "/demographics",
-    place: "Rostock, Mecklenburg-Western Pomerania",
+    place: "Rostock, Germany",
     logo: "/logos/max_planck_logo.jpeg",
     orgLink: "https://www.demogr.mpg.de/en"
   },
