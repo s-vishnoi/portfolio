@@ -22,7 +22,7 @@
             <a
               href="mailto:svishnoi@u.northwestern.edu"
               target="_blank"
-              class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 hover:-translate-y-0.5 transition-transform"
+              class="inline-flex items-center gap-2 border border-smoke/40 bg-[#dfd2bc] px-4 py-2 hover:-translate-y-0.5 transition-transform"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,7 @@
             <a
               href="https://www.linkedin.com/in/samvardhan-vishnoi/"
               target="_blank"
-              class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 hover:-translate-y-0.5 transition-transform"
+              class="inline-flex items-center gap-2 border border-smoke/40 bg-[#dfd2bc] px-4 py-2 hover:-translate-y-0.5 transition-transform"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@
             <a
               href="https://github.com/s-vishnoi"
               target="_blank"
-              class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 hover:-translate-y-0.5 transition-transform"
+              class="inline-flex items-center gap-2 border border-smoke/40 bg-[#dfd2bc] px-4 py-2 hover:-translate-y-0.5 transition-transform"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +91,7 @@
             <a
               href="https://www.instagram.com/vishhnnoi/"
               target="_blank"
-              class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 hover:-translate-y-0.5 transition-transform"
+              class="inline-flex items-center gap-2 border border-smoke/40 bg-[#dfd2bc] px-4 py-2 hover:-translate-y-0.5 transition-transform"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -117,8 +117,8 @@
       <div class="mt-8 sm:mt-10 grid gap-3 sm:gap-4 md:grid-cols-3">
         <button
           type="button"
-          class="border border-smoke/30 bg-paper p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
-          :class="{ 'border-smoke/40 bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('roles') }"
+          class="border border-smoke/30 bg-[#dfd2bc] p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          :class="{ 'border-smoke/40 bg-[#d8c7ad] shadow-outline -translate-x-1 -translate-y-1': isOpen('roles') }"
           @click="toggleSection('roles')"
           :aria-expanded="isOpen('roles')"
           aria-controls="roles-panel"
@@ -136,8 +136,8 @@
         </button>
         <button
           type="button"
-          class="border border-smoke/30 bg-paper p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
-          :class="{ 'border-smoke/40 bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('skills') }"
+          class="border border-smoke/30 bg-[#dfd2bc] p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          :class="{ 'border-smoke/40 bg-[#d8c7ad] shadow-outline -translate-x-1 -translate-y-1': isOpen('skills') }"
           @click="toggleSection('skills')"
           :aria-expanded="isOpen('skills')"
           aria-controls="skills-panel"
@@ -147,8 +147,8 @@
         </button>
         <button
           type="button"
-          class="border border-smoke/30 bg-paper p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
-          :class="{ 'border-smoke/40 bg-cream shadow-outline -translate-x-1 -translate-y-1': isOpen('achievements') }"
+          class="border border-smoke/30 bg-[#dfd2bc] p-4 sm:p-6 flex items-center justify-between transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+          :class="{ 'border-smoke/40 bg-[#d8c7ad] shadow-outline -translate-x-1 -translate-y-1': isOpen('achievements') }"
           @click="toggleSection('achievements')"
           :aria-expanded="isOpen('achievements')"
           aria-controls="achievements-panel"
@@ -221,7 +221,7 @@
                       <component
                         :is="role.internal ? RouterLink : 'a'"
                         v-bind="roleLinkAttrs(role)"
-                        class="inline-flex items-center gap-2 border border-smoke/40 bg-cream px-4 py-2 text-xs uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform"
+                        class="inline-flex items-center gap-2 border border-smoke/40 bg-[#dfd2bc] px-4 py-2 text-xs uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform"
                       >
                         {{ role.focus }} ↗
                       </component>

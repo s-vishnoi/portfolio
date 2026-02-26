@@ -5,11 +5,11 @@
         <button
           type="button"
           @click="goBack"
-          class="px-4 py-2 border border-smoke/40 text-sm uppercase tracking-[1px]"
+          class="px-4 py-2 border border-smoke/40 bg-[#dfd2bc] text-sm uppercase tracking-[1px]"
         >
           ← Back
         </button>
-        <RouterLink to="/" class="px-4 py-2 border border-smoke/40 text-sm uppercase tracking-[1px]">
+        <RouterLink to="/" class="px-4 py-2 border border-smoke/40 bg-[#dfd2bc] text-sm uppercase tracking-[1px]">
           Home
         </RouterLink>
       </div>

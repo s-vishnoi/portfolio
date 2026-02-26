@@ -4,7 +4,7 @@
       <button
         @click="currentView = 'consultant'"
         :class="[
-          'w-full px-4 py-3 border border-smoke/40 uppercase tracking-[1px] sm:tracking-[2px] transition-transform duration-200 bg-cream',
+          'w-full px-4 py-3 border border-smoke/40 uppercase tracking-[1px] sm:tracking-[2px] transition-transform duration-200 bg-[#dfd2bc]',
           currentView === 'consultant'
             ? '-translate-x-1 -translate-y-1 shadow-outline text-ink'
             : 'text-smoke hover:-translate-y-0.5'
@@ -15,7 +15,7 @@
       <button
         @click="currentView = 'ta'"
         :class="[
-          'w-full px-4 py-3 border border-smoke/40 uppercase tracking-[1px] sm:tracking-[2px] transition-transform duration-200 bg-cream',
+          'w-full px-4 py-3 border border-smoke/40 uppercase tracking-[1px] sm:tracking-[2px] transition-transform duration-200 bg-[#dfd2bc]',
           currentView === 'ta'
             ? '-translate-x-1 -translate-y-1 shadow-outline text-ink'
             : 'text-smoke hover:-translate-y-0.5'
@@ -42,7 +42,7 @@
         <a
           href="https://www.it.northwestern.edu/departments/it-services-support/teaching/learning.html"
           target="_blank"
-          class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform text-xs sm:text-sm"
+          class="inline-flex items-center gap-2 border border-smoke/40 bg-[#dfd2bc] px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform text-xs sm:text-sm"
         >
           Request a Consult (NU) ↗
         </a>
@@ -85,7 +85,7 @@
           <a
             href="https://github.com/s-vishnoi/Bayesian_Regression/blob/main/stan_workshop.ipynb"
             target="_blank"
-            class="inline-flex items-center gap-2 border border-smoke/40 px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform text-xs sm:text-sm"
+            class="inline-flex items-center gap-2 border border-smoke/40 bg-[#dfd2bc] px-4 py-2 uppercase tracking-[1px] hover:-translate-y-0.5 transition-transform text-xs sm:text-sm"
           >
             Open-source code ↗
           </a>
@@ -119,7 +119,7 @@
         <button
           v-if="nuTestimonials.length > initialTestimonialCount"
           @click="toggleTestimonials"
-          class="w-full border border-smoke/30 bg-cream px-4 py-2 text-xs font-semibold uppercase tracking-[2px] text-ink transition-transform duration-200 hover:-translate-y-0.5"
+          class="w-full border border-smoke/30 bg-[#dfd2bc] px-4 py-2 text-xs font-semibold uppercase tracking-[2px] text-ink transition-transform duration-200 hover:-translate-y-0.5"
           :aria-expanded="showAllTestimonials"
         >
           {{ showAllTestimonials ? 'Collapse reviews' : 'All reviews ever' }}

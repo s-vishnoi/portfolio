@@ -4,7 +4,7 @@
       <a
         href="/resume.pdf"
         download
-        class="inline-flex items-center gap-2 border border-smoke/40 bg-cream px-4 py-2 uppercase tracking-[1px] sm:tracking-[2px] transition-transform hover:-translate-y-0.5"
+        class="inline-flex items-center gap-2 border border-smoke/40 bg-[#dfd2bc] px-4 py-2 uppercase tracking-[1px] sm:tracking-[2px] transition-transform hover:-translate-y-0.5"
         aria-label="Download Resume PDF"
       >
         Download PDF ↗
