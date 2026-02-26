@@ -246,7 +246,7 @@
               <div
                 v-for="(skill, index) in skills"
                 :key="index"
-                class="border border-smoke/30 bg-[#e7dcc8] p-4 sm:p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline group"
+                class="bg-[#e7dcc8] p-4 sm:p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline group"
                 @mouseenter="hoverToggles[index] = true"
                 @mouseleave="hoverToggles[index] = false"
               >
@@ -310,7 +310,7 @@
           <div class="border border-smoke/30 bg-[#e7dcc8] p-4 sm:p-6">
             <h2 class="text-lg sm:text-xl font-bold uppercase tracking-[2px] sm:tracking-[4px] mb-4 sm:mb-6">Achievements</h2>
             <div class="grid gap-4 md:grid-cols-2">
-              <div class="border border-smoke/30 bg-[#e7dcc8] p-4 flex items-start gap-3">
+              <div class="bg-[#e7dcc8] p-4 flex items-start gap-3 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline">
                 <span class="text-2xl">🥇</span>
                 <div>
                   <h3 class="font-semibold uppercase tracking-[1px] text-ink">Murray Green Medal</h3>
@@ -319,7 +319,7 @@
                   </p>
                 </div>
               </div>
-              <div class="border border-smoke/30 bg-[#e7dcc8] p-4 flex items-start gap-3">
+              <div class="bg-[#e7dcc8] p-4 flex items-start gap-3 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline">
                 <span class="text-2xl">🏛️</span>
                 <div>
                   <h3 class="font-semibold uppercase tracking-[1px] text-ink">Presidential Scholarship</h3>
