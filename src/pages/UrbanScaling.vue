@@ -1,17 +1,18 @@
 <template>
-  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-6">
-    <div class="flex items-center gap-3">
-      <button
-        type="button"
-        @click="goBack"
-        class="px-4 py-2 border border-smoke/40 text-sm"
-      >
-        ← Back
-      </button>
-      <RouterLink to="/" class="px-4 py-2 border border-smoke/40 text-sm">
-        Home
-      </RouterLink>
-    </div>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+    <section class="border border-smoke/40 bg-[#e7dcc8] p-5 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <button
+          type="button"
+          @click="goBack"
+          class="px-4 py-2 border border-smoke/40 text-sm uppercase tracking-[1px]"
+        >
+          ← Back
+        </button>
+        <RouterLink to="/" class="px-4 py-2 border border-smoke/40 text-sm uppercase tracking-[1px]">
+          Home
+        </RouterLink>
+      </div>
 
     <h1 class="text-2xl sm:text-3xl font-bold mt-2 sm:mt-4">City Scaling Laws</h1>
     <p>
@@ -50,6 +51,7 @@
     </p>
 
     
+    </section>
   </main>
 </template>
 

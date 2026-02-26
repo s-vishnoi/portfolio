@@ -1,35 +1,37 @@
 <template>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-    <ul class="grid gap-6">
-      <a
-        v-for="post in blogPosts"
-        :key="post.link"
-        :href="post.link"
-        target="_blank"
-        class="block border border-smoke/30 bg-paper p-4 sm:p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
-      >
-        <div class="flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-4 mb-2">
-          <div class="flex items-start sm:items-center gap-2">
-            <img
-              v-if="post.logo"
-              :src="post.logo"
-              alt="Publisher Logo"
-              class="h-6 w-auto object-contain border border-smoke/30 bg-cream p-0"
-            />
-            <h3 class="text-base sm:text-lg font-semibold text-ink">
-              {{ post.title }}
-            </h3>
+    <section class="border border-smoke/40 bg-[#e7dcc8] p-5 sm:p-8">
+      <ul class="grid gap-6">
+        <a
+          v-for="post in blogPosts"
+          :key="post.link"
+          :href="post.link"
+          target="_blank"
+          class="block border border-smoke/30 bg-paper p-4 sm:p-6 transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-outline"
+        >
+          <div class="flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-4 mb-2">
+            <div class="flex items-start sm:items-center gap-2">
+              <img
+                v-if="post.logo"
+                :src="post.logo"
+                alt="Publisher Logo"
+                class="h-6 w-auto object-contain border border-smoke/30 bg-cream p-0"
+              />
+              <h3 class="text-base sm:text-lg font-semibold text-ink">
+                {{ post.title }}
+              </h3>
+            </div>
+            <div class="flex items-center gap-1 text-xs uppercase tracking-[1px] text-smoke">
+              <i class="fas fa-sign-language"></i> {{ post.claps }}
+            </div>
           </div>
-          <div class="flex items-center gap-1 text-xs uppercase tracking-[1px] text-smoke">
-            <i class="fas fa-sign-language"></i> {{ post.claps }}
-          </div>
-        </div>
-        <p class="text-sm text-charcoal italic mb-2">
-          {{ post.subtitle || 'No description available.' }}
-        </p>
-        <p class="text-xs text-smoke uppercase tracking-[1px]">{{ post.date }}</p>
-      </a>
-    </ul>
+          <p class="text-sm text-charcoal italic mb-2">
+            {{ post.subtitle || 'No description available.' }}
+          </p>
+          <p class="text-xs text-smoke uppercase tracking-[1px]">{{ post.date }}</p>
+        </a>
+      </ul>
+    </section>
   </div>
 </template>
 

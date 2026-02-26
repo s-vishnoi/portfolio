@@ -1,17 +1,18 @@
 <template>
-  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-6">
-    <div class="flex items-center gap-3">
-      <button
-        type="button"
-        @click="goBack"
-        class="px-4 py-2 border border-smoke/40 text-sm"
-      >
-        ← Back
-      </button>
-      <RouterLink to="/" class="px-4 py-2 border border-smoke/40 text-sm">
-        Home
-      </RouterLink>
-    </div>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+    <section class="border border-smoke/40 bg-[#e7dcc8] p-5 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <button
+          type="button"
+          @click="goBack"
+          class="px-4 py-2 border border-smoke/40 text-sm uppercase tracking-[1px]"
+        >
+          ← Back
+        </button>
+        <RouterLink to="/" class="px-4 py-2 border border-smoke/40 text-sm uppercase tracking-[1px]">
+          Home
+        </RouterLink>
+      </div>
 
     <!--  <img src="/images/projects/demography-map.jpg" alt="Demography Visualization" class="w-full rounded shadow" />
     <figcaption class="text-sm text-gray-500 mt-1">
@@ -41,6 +42,7 @@
     <p>
       The open-source data and code repository will be made available after publication.
     </p>
+    </section>
   </main>
 </template>
 
