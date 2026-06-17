@@ -1,0 +1,97 @@
+/* loader.css */
+
+/* 1. The Full Screen Overlay */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 100000;
+    /* Highest Priority */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 2. Hidden State (When page is loaded) */
+#preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* 3. Content Container (Die + Sparkle) */
+.preloader-content {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 4. The Die (Rolling GIF) */
+.preloader-die {
+    width: 100px;
+    height: 100px;
+    background: url('../images/dice_rolling.gif') no-repeat center center;
+    background-size: contain;
+    /* No animation needed, GIF is animated */
+    /* Remove invert, GIF is white on black */
+    filter: none;
+}
+
+/* 5. The Sparkle Orbit */
+.preloader-sparkle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    background: url('../images/sparkle.gif') no-repeat center center;
+    background-size: contain;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+    mix-blend-mode: screen;
+    animation: pulseLoader 1.5s infinite ease-in-out;
+}
+
+/* Animations */
+@keyframes spinLoader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulseLoader {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* 6. Page Transition Fade Out */
+body {
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+body.fade-out {
+    opacity: 0;
+}

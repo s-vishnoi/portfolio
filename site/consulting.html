@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
+    <title>Research Consults &amp; Bayesian Data Workshop | Samvardhan Vishnoi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --c1: #99DC1B;
+            --c2: #FE4164;
+            --c3: #6F00FF;
+            --c4: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            overscroll-behavior: none;
+        }
+
+        body {
+            background-color: #000;
+            color: #dfff00;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            height: auto;
+            margin: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior: none;
+            position: relative;
+            cursor: none;
+            transition: opacity 0.5s ease;
+            opacity: 1;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+
+        #cursor-img {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            width: 88px;
+            height: 88px;
+            background: url('images/sparkle.gif') no-repeat center center;
+            background-size: contain;
+            mix-blend-mode: screen;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            html,
+            html *,
+            body,
+            body * {
+                cursor: none !important;
+            }
+        }
+
+        @media (hover: none), (pointer: coarse) {
+            body {
+                cursor: auto;
+            }
+
+            #cursor-img {
+                display: none;
+            }
+        }
+
+        #gradient-frame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+            pointer-events: none;
+            border: 3px solid transparent;
+            border-image: linear-gradient(to bottom right, var(--c1), var(--c2), var(--c3)) 1;
+        }
+
+        .nav-container {
+            position: fixed;
+            top: 72px;
+            left: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            align-items: flex-start;
+            z-index: 9000;
+            pointer-events: auto;
+        }
+
+        .text-btn {
+            background: transparent;
+            border: none;
+            color: #dfff00;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.74rem;
+            font-weight: 900;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transform: scaleX(1.18);
+            transform-origin: left center;
+            transition: all 0.2s ease;
+        }
+
+        .text-btn:hover {
+            color: #dfff00;
+            letter-spacing: 4px;
+        }
+
+        .project-back-btn {
+            position: relative;
+            align-self: flex-start;
+            width: auto;
+            margin: 0.2rem 0 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.72);
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.6rem, 4.4vw, 5rem);
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: 0;
+            cursor: pointer;
+            z-index: 40;
+            display: block;
+        }
+
+        .project-back-btn:hover {
+            color: #dfff00;
+        }
+
+        #consults-container {
+            width: min(1120px, calc(100vw - 72px));
+            margin: 7.4rem auto 7rem;
+            position: relative;
+            z-index: 20;
+            pointer-events: auto;
+        }
+
+        .consult-hero {
+            max-width: 720px;
+            padding-bottom: 0;
+        }
+
+        .role-hero {
+            max-width: 920px;
+            margin-bottom: 3.4rem;
+            padding-bottom: 1.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .eyebrow,
+        .section-label {
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            line-height: 1.35;
+            text-transform: uppercase;
+            color: #99dc1b;
+        }
+
+        .eyebrow {
+            margin-bottom: 0.6rem;
+        }
+
+        .page-title {
+            max-width: 760px;
+            margin: 0;
+            color: #fff;
+            font-size: clamp(0.97rem, 2.47vw, 2.12rem);
+            font-weight: 900;
+            line-height: 0.98;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .role-title {
+            max-width: 920px;
+            margin: 0;
+            color: #fff;
+            font-size: clamp(1.18rem, 3.04vw, 2.74rem);
+            font-weight: 900;
+            line-height: 0.94;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .role-org {
+            display: block;
+            max-width: 920px;
+            margin-top: 0.85rem;
+            color: #fe4164;
+            font-size: clamp(0.92rem, 1.6vw, 1.35rem);
+            font-weight: 700;
+            line-height: 1.35;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .hero-line {
+            max-width: 58ch;
+            margin: 0.9rem 0 0;
+            color: rgba(255, 255, 255, 0.62);
+            font-size: clamp(0.82rem, 1.15vw, 0.96rem);
+            font-weight: 600;
+            line-height: 1.55;
+            letter-spacing: 0.01em;
+        }
+
+        .hero-line strong {
+            color: #dfff00;
+            font-weight: 700;
+        }
+
+        .impact-list {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            margin: 2rem 0 2.4rem;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        .impact-item {
+            min-height: 88px;
+            padding: 1rem;
+            background: #050505;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .impact-number {
+            display: block;
+            font-size: clamp(1.55rem, 2.8vw, 2.35rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: 0.03em;
+            color: #dfff00;
+        }
+
+        .impact-number.is-counting {
+            color: #dfff00;
+        }
+
+        .impact-label {
+            display: block;
+            margin-top: 0.7rem;
+            font-size: 0.62rem;
+            font-weight: 600;
+            line-height: 1.45;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.58);
+        }
+
+        .success-number {
+            color: #99dc1b;
+        }
+
+        .section-block {
+            margin-top: 2.2rem;
+        }
+
+        .section-head {
+            margin-bottom: 1rem;
+        }
+
+        .consult-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.72rem;
+        }
+
+        .consult-card {
+            min-height: 132px;
+            background: transparent;
+            perspective: 900px;
+        }
+
+        .card-title {
+            margin: 0;
+            color: #fff;
+            font-size: clamp(0.62rem, 0.84vw, 0.78rem);
+            font-weight: 500;
+            line-height: 1.22;
+            letter-spacing: 0.045em;
+            text-transform: uppercase;
+        }
+
+        .consult-card:hover .card-title,
+        .consult-card:focus-within .card-title {
+            color: #dfff00;
+        }
+
+        .consult-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .consult-link:hover {
+            color: #dfff00;
+        }
+
+        .card-flip {
+            position: relative;
+            width: 100%;
+            min-height: 132px;
+            transform-style: preserve-3d;
+            transition:
+                transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+                filter 0.3s ease;
+        }
+
+        .consult-card:hover .card-flip,
+        .consult-card:focus-within .card-flip {
+            transform: rotateY(180deg);
+        }
+
+        .consult-card:hover,
+        .consult-card:focus-within {
+            z-index: 2;
+        }
+
+        .card-face {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1rem;
+            backface-visibility: hidden;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 5px;
+            background: #1a1a1a;
+            box-shadow:
+                inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+                0 0 0 0 rgba(255, 255, 255, 0);
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .card-face::after {
+            content: "";
+            position: absolute;
+            right: 0.85rem;
+            bottom: 0.85rem;
+            width: 18px;
+            height: 18px;
+            border-right: 1px solid #fe4164;
+            border-bottom: 1px solid #fe4164;
+            opacity: 0.7;
+        }
+
+        .card-front::before {
+            content: "";
+            position: absolute;
+            inset: 0.55rem;
+            border: 1px dashed rgba(255, 255, 255, 0.16);
+            border-radius: 3px;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .consult-card:hover .card-face,
+        .consult-card:focus-within .card-face {
+            border-color: rgba(255, 255, 255, 0.52);
+            box-shadow:
+                inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+                0 10px 24px rgba(0, 0, 0, 0.32);
+        }
+
+        .consult-card:hover .card-front::before,
+        .consult-card:focus-within .card-front::before {
+            opacity: 1;
+        }
+
+        .card-back {
+            justify-content: center;
+            transform: rotateY(180deg);
+            border-style: dashed;
+            background: #1a1a1a;
+        }
+
+        .card-impact {
+            max-width: 24ch;
+            color: #fff;
+            font-size: 0.86rem;
+            font-weight: 400;
+            line-height: 1.35;
+            letter-spacing: 0.02em;
+        }
+
+        .workshop-block {
+            margin-top: 4rem;
+            padding-top: 2.4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .workshop-title {
+            font-size: clamp(0.97rem, 2.47vw, 2.12rem);
+        }
+
+        .workshop-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 1.6rem;
+            padding: 1rem;
+            border: 1px solid rgba(223, 255, 0, 0.42);
+            background: rgba(223, 255, 0, 0.12);
+            color: #fff;
+            text-decoration: none;
+            transition:
+                border-color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .workshop-card:hover,
+        .workshop-card:focus-visible {
+            border-color: #dfff00;
+            background: rgba(223, 255, 0, 0.18);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .workshop-card:hover .card-title,
+        .workshop-card:focus-visible .card-title {
+            color: #dfff00;
+        }
+
+        .workshop-card .card-title {
+            color: #dfff00;
+        }
+
+        .workshop-card .card-impact {
+            display: block;
+            margin-top: 0.45rem;
+            max-width: 42ch;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .workshop-kind {
+            color: #dfff00;
+        }
+
+        .workshop-kind::after {
+            content: " ->";
+        }
+
+        .workshop-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 0.55rem 1rem;
+        }
+
+        @media (hover: none), (pointer: coarse) {
+            .consult-card {
+                padding: 1rem;
+            }
+
+            .card-flip {
+                min-height: 0;
+                transform: none !important;
+            }
+
+            .card-face {
+                position: static;
+                padding: 0;
+                backface-visibility: visible;
+            }
+
+            .card-back {
+                justify-content: flex-start;
+                margin-top: 0.75rem;
+                transform: none;
+            }
+
+            .card-face::after {
+                display: none;
+            }
+        }
+
+        .workshop-date {
+            font-size: 0.68rem;
+            font-weight: 700;
+            line-height: 1.35;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.58);
+            white-space: nowrap;
+        }
+
+        .die-container {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 48px;
+            height: 48px;
+            z-index: 10000;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: levitate 3s infinite ease-in-out;
+            perspective: 400px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            mix-blend-mode: normal;
+        }
+
+        .die-container:hover {
+            animation-play-state: paused;
+            transform: scale(1.08);
+        }
+
+        .cube {
+            width: 36px;
+            height: 36px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(-18px) rotateX(-20deg) rotateY(25deg);
+            transition: transform 1.6s cubic-bezier(0.2, 0.8, 0.25, 1.1);
+        }
+
+        .cube__face {
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(1px);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 6px;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.25), 0 0 3px rgba(255, 255, 255, 0.15);
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .cube__face--1 { transform: rotateY(0deg) translateZ(18px); }
+        .cube__face--2 { transform: rotateY(90deg) translateZ(18px); }
+        .cube__face--3 { transform: rotateY(180deg) translateZ(18px); }
+        .cube__face--4 { transform: rotateY(-90deg) translateZ(18px); }
+        .cube__face--5 { transform: rotateX(90deg) translateZ(18px); }
+        .cube__face--6 { transform: rotateX(-90deg) translateZ(18px); }
+
+        .cube__face--1 .dot { top: 15px; left: 15px; }
+        .cube__face--2 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--2 .dot:nth-child(2) { top: 24px; left: 24px; }
+        .cube__face--3 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--3 .dot:nth-child(2) { top: 15px; left: 15px; }
+        .cube__face--3 .dot:nth-child(3) { top: 24px; left: 24px; }
+        .cube__face--4 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--4 .dot:nth-child(2) { top: 6px; left: 24px; }
+        .cube__face--4 .dot:nth-child(3) { top: 24px; left: 6px; }
+        .cube__face--4 .dot:nth-child(4) { top: 24px; left: 24px; }
+        .cube__face--5 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--5 .dot:nth-child(2) { top: 6px; left: 24px; }
+        .cube__face--5 .dot:nth-child(3) { top: 15px; left: 15px; }
+        .cube__face--5 .dot:nth-child(4) { top: 24px; left: 6px; }
+        .cube__face--5 .dot:nth-child(5) { top: 24px; left: 24px; }
+        .cube__face--6 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--6 .dot:nth-child(2) { top: 15px; left: 6px; }
+        .cube__face--6 .dot:nth-child(3) { top: 24px; left: 6px; }
+        .cube__face--6 .dot:nth-child(4) { top: 6px; left: 24px; }
+        .cube__face--6 .dot:nth-child(5) { top: 15px; left: 24px; }
+        .cube__face--6 .dot:nth-child(6) { top: 24px; left: 24px; }
+
+        @keyframes levitate {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0); }
+        }
+
+        .result-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            font-weight: bold;
+            color: #dfff00;
+            display: none;
+            z-index: 60;
+            pointer-events: none;
+        }
+
+        @media screen and (max-width: 1080px) {
+            .impact-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .consult-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-container {
+                position: absolute;
+                top: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+                flex-direction: row;
+                gap: 1.2rem;
+                justify-content: center;
+                width: 100vw;
+                align-items: center;
+            }
+
+            .text-btn {
+                font-size: 0.95rem;
+                letter-spacing: 1px;
+                transform: none;
+            }
+
+            .project-back-btn {
+                font-size: 2.4rem;
+                line-height: 0.85;
+            }
+
+            #consults-container {
+                margin: 9rem auto 6rem;
+                width: calc(100vw - 32px);
+            }
+
+            .page-title {
+                font-size: 0.88rem;
+            }
+
+            .role-hero {
+                margin-bottom: 2.6rem;
+            }
+
+            .role-title {
+                font-size: 1.1rem;
+            }
+
+            .role-org {
+                font-size: 0.82rem;
+            }
+
+            .impact-list,
+            .consult-grid,
+            .section-head {
+                grid-template-columns: 1fr;
+            }
+
+            .workshop-card {
+                grid-template-columns: 1fr;
+            }
+
+            .workshop-meta {
+                justify-content: flex-start;
+            }
+
+            .impact-item {
+                min-height: 82px;
+            }
+
+            .consult-card {
+                min-height: 112px;
+            }
+
+            .die-container {
+                position: fixed !important;
+                top: auto !important;
+                bottom: 20px !important;
+                right: 20px !important;
+                transform: none !important;
+                width: 48px !important;
+                height: 48px !important;
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body data-page="consulting">
+    <div id="gradient-frame"></div>
+    <div id="cursor-img"></div>
+
+    <nav class="nav-container home-only">
+        <a href="index.html" id="btn-main-home" class="text-btn" data-index="5">home</a>
+        <button class="project-back-btn" id="project-back-btn" type="button" aria-label="Back to about">&lt;</button>
+    </nav>
+
+    <div class="die-container" id="die-trigger">
+        <div class="cube" id="cube">
+            <div class="cube__face cube__face--1"><div class="dot"></div></div>
+            <div class="cube__face cube__face--2"><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--3"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--4"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--5"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--6"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="result-overlay" id="die-result"></div>
+    </div>
+
+    <main id="consults-container">
+        <header class="role-hero" aria-label="Consulting role">
+            <h1 class="role-title">Core Consultant</h1>
+            <span class="role-org">Northwestern Research Computing and Data Services</span>
+        </header>
+
+        <header class="consult-hero">
+            <h2 class="page-title">Consults</h2>
+            <p class="hero-line">Research problems translated into reproducible, stakeholder-ready workflows.</p>
+        </header>
+
+        <section class="impact-list" aria-label="Consulting impact summary">
+            <span class="impact-item">
+                <span class="impact-number" data-count="28">28</span>
+                <span class="impact-label">Consults</span>
+            </span>
+            <span class="impact-item">
+                <span class="impact-number" data-count="2" data-suffix=" weeks">2 weeks</span>
+                <span class="impact-label">Avg. Turnover</span>
+            </span>
+            <span class="impact-item">
+                <span class="impact-number" data-count="1" data-prefix="~" data-suffix=" day">~1 day</span>
+                <span class="impact-label">Response</span>
+            </span>
+            <span class="impact-item">
+                <span class="impact-number success-number" data-count="93" data-suffix="%">93%</span>
+                <span class="impact-label">Success Rate</span>
+            </span>
+        </section>
+
+        <section class="section-block" aria-labelledby="consult-section-selected">
+            <div class="section-head">
+                <span class="section-label" id="consult-section-selected">Selected Private Consultations</span>
+            </div>
+            <div class="consult-grid">
+                <article class="consult-card" tabindex="0">
+                    <div class="card-flip">
+                        <div class="card-face card-front">
+                            <h2 class="card-title">Legal Records API Workflow</h2>
+                        </div>
+                        <div class="card-face card-back">
+                            <span class="card-impact">I built a repeatable pull for messy court records.</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="consult-card" tabindex="0">
+                    <div class="card-flip">
+                        <div class="card-face card-front">
+                            <h2 class="card-title">Chicago Ward Mental Health Map</h2>
+                        </div>
+                        <div class="card-face card-back">
+                            <span class="card-impact">I turned ward-level 911 data into a clear map.</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="consult-card" tabindex="0">
+                    <div class="card-flip">
+                        <div class="card-face card-front">
+                            <h2 class="card-title">Clinical Image Registration</h2>
+                        </div>
+                        <div class="card-face card-back">
+                            <span class="card-impact">I helped compare medical images with a cleaner workflow.</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="consult-card" tabindex="0">
+                    <div class="card-flip">
+                        <div class="card-face card-front">
+                            <h2 class="card-title">Portcode Sequence Matching</h2>
+                        </div>
+                        <div class="card-face card-back">
+                            <span class="card-impact">I matched broken experimental logs back to usable records.</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="consult-card" tabindex="0">
+                    <div class="card-flip">
+                        <div class="card-face card-front">
+                            <h2 class="card-title">PDF Context Extraction</h2>
+                        </div>
+                        <div class="card-face card-back">
+                            <span class="card-impact">I used document context to make PDF rows reviewable.</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="consult-card" tabindex="0">
+                    <div class="card-flip">
+                        <div class="card-face card-front">
+                            <h2 class="card-title">Website Text Scraper</h2>
+                        </div>
+                        <div class="card-face card-back">
+                            <span class="card-impact">I scraped hard-to-reach web text into analysis files.</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="consult-card" tabindex="0">
+                    <div class="card-flip">
+                        <div class="card-face card-front">
+                            <h2 class="card-title">Article Sentiment Analysis</h2>
+                        </div>
+                        <div class="card-face card-back">
+                            <span class="card-impact">I explored article tone with sentiment, PCA, and plots.</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="consult-card" tabindex="0">
+                    <div class="card-flip">
+                        <div class="card-face card-front">
+                            <h2 class="card-title">BMI Percentile Pipeline</h2>
+                        </div>
+                        <div class="card-face card-back">
+                            <span class="card-impact">I converted CDC references into usable percentile outputs.</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="workshop-block" aria-labelledby="workshops-title">
+            <header class="consult-hero">
+                <h2 class="page-title workshop-title" id="workshops-title">Workshops</h2>
+                <p class="hero-line">End-to-end public workshops designed and delivered to research faculty across Northwestern.</p>
+            </header>
+            <a class="workshop-card" href="https://github.com/nuitrcs/bayesian_inference_stan/blob/main/stan_workshop.ipynb" target="_blank" rel="noreferrer noopener">
+                <div class="workshop-copy">
+                    <h2 class="card-title">Bayesian Data Workshop</h2>
+                    <span class="card-impact">Northwestern IT's first Bayesian statistics workshop.</span>
+                </div>
+                <div class="workshop-meta" aria-label="Workshop link details">
+                    <span class="workshop-date workshop-kind">Public Jupyter notebook</span>
+                    <span class="workshop-date">Dec 2024 · 30 attended</span>
+                    <span class="workshop-date">Dec 2025 · 23 attended</span>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <script src="js/site-nav.js"></script>
+    <script src="js/cursor.js"></script>
+    <script>
+        const projectBackBtn = document.getElementById('project-back-btn');
+
+        if (projectBackBtn) {
+            projectBackBtn.addEventListener('click', () => {
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    let y = 0;
+                    try {
+                        y = Number(sessionStorage.getItem('aboutReturnY')) || 0;
+                    } catch {
+                        y = 0;
+                    }
+                    window.location.href = `index.html?return=about&y=${encodeURIComponent(y)}`;
+                }, 500);
+            });
+        }
+
+        const countNumbers = document.querySelectorAll('[data-count]');
+
+        if (countNumbers.length) {
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const formatCount = (element, value) => {
+                const prefix = element.dataset.prefix || '';
+                const suffix = element.dataset.suffix || '';
+                element.textContent = `${prefix}${Math.round(value)}${suffix}`;
+            };
+
+            countNumbers.forEach((element) => {
+                const target = Number(element.dataset.count);
+
+                if (!Number.isFinite(target) || reduceMotion) {
+                    formatCount(element, target);
+                    return;
+                }
+
+                element.classList.add('is-counting');
+                formatCount(element, 0);
+
+                const duration = 2200 + target * 8;
+                const start = performance.now();
+
+                const tick = (now) => {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+
+                    formatCount(element, target * eased);
+
+                    if (progress < 1) {
+                        requestAnimationFrame(tick);
+                    } else {
+                        element.classList.remove('is-counting');
+                    }
+                };
+
+                requestAnimationFrame(tick);
+            });
+        }
+    </script>
+</body>
+
+</html>

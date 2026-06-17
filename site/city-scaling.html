@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
+    <title>The Scale-Free Dynamics of U.S. Cities | Samvardhan Vishnoi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/project-detail.css">
+</head>
+
+<body data-page="city">
+    <div id="cursor-img"></div>
+
+    <nav class="nav-container home-only">
+        <a href="index.html" id="btn-main-home" class="text-btn" data-index="5">home</a>
+        <button class="project-back-btn" id="project-back-btn" type="button" aria-label="Back to about">&lt;</button>
+    </nav>
+
+    <div class="die-container" id="die-trigger">
+        <div class="cube" id="cube">
+            <div class="cube__face cube__face--1"><div class="dot"></div></div>
+            <div class="cube__face cube__face--2"><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--3"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--4"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--5"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--6"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+    </div>
+
+    <div id="bg-gif-wrapper">
+        <video id="city-scaling-bg" class="active" src="videos/city-scaling-bg.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+        <div class="bg-overlay"></div>
+        <div class="film-grain"></div>
+
+        <div id="animation-container" class="align-left">
+            <h1 class="project-title align-left">THE SCALE-FREE DYNAMICS OF U.S. CITIES</h1>
+            <div id="detail-header">
+                <span class="detail-subtitle">In Collaboration</span>
+                <span class="detail-collaboration">Northwestern University</span>
+            </div>
+        </div>
+
+        <div id="detail-desc-container" class="align-left">
+            <div id="detail-desc">
+                <span class="detail-project-description">Scaling laws reveal a quiet geometry beneath urban life: as cities grow, patterns emerge in innovation, infrastructure, inequality, and violence.</span>
+                <span class="detail-project-description">This project uses ideas from physics and complex systems to study how U.S. cities change with population size, and how deviations from expected scaling relationships expose the histories and structures that make each city.</span>
+                <span class="detail-subtitle">Publications</span>
+                <span class="detail-publication-list">
+                    <span class="detail-publication-item">
+                        <span class="detail-publication-title">Changes in poverty and ethnic diversity explain 60 year of US Murder Rate</span>
+                        <span class="detail-authors">Vishnoi<span class="detail-author-marker">2</span></span>
+                        <span class="detail-status">2026</span>
+                    </span>
+                    <span class="detail-publication-item">
+                        <span class="detail-publication-title">A Bayesian Heirarchical scaling model for estimating U.S. Arrest data</span>
+                        <span class="detail-authors">Vishnoi<span class="detail-author-marker">1</span></span>
+                        <span class="detail-status">2026</span>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const projectBackBtn = document.getElementById('project-back-btn');
+        const cityScalingBg = document.getElementById('city-scaling-bg');
+
+        function returnToAboutTarget() {
+            let y = 0;
+            try {
+                y = Number(sessionStorage.getItem('aboutReturnY')) || 0;
+            } catch {
+                y = 0;
+            }
+            return `index.html?return=about&y=${encodeURIComponent(y)}`;
+        }
+
+        function keepCityScalingLooping() {
+            if (!cityScalingBg || typeof cityScalingBg.play !== 'function') return;
+            cityScalingBg.muted = true;
+            cityScalingBg.loop = true;
+            cityScalingBg.play().catch(() => {});
+        }
+
+        projectBackBtn.addEventListener('click', () => {
+            window.location.href = returnToAboutTarget();
+        });
+
+        window.addEventListener('DOMContentLoaded', keepCityScalingLooping);
+    </script>
+    <script src="js/site-nav.js"></script>
+    <script src="js/cursor.js"></script>
+</body>
+
+</html>

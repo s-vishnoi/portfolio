@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
+    <title>Writings | Samvardhan Vishnoi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --c1: #99DC1B;
+            --c2: #FE4164;
+            --c3: #6F00FF;
+            --c4: #FFFFFF;
+        }
+
+        html {
+            overscroll-behavior: none;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            height: auto;
+            margin: 0;
+            overflow-x: hidden;
+            overscroll-behavior: none;
+            overflow-y: auto;
+            position: relative;
+            cursor: none;
+            transition: opacity 0.5s ease;
+            opacity: 1;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+
+        #cursor-img {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            width: 88px;
+            height: 88px;
+            background: url('images/sparkle.gif') no-repeat center center;
+            background-size: contain;
+            mix-blend-mode: screen;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            html,
+            html *,
+            body,
+            body * {
+                cursor: none !important;
+            }
+        }        @media (hover: none), (pointer: coarse) {
+            body {
+                cursor: auto;
+            }
+            #cursor-img {
+                display: none;
+            }
+        }
+
+        /* GRADIENT BORDER FRAME */
+        #gradient-frame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+            pointer-events: none;
+            border: 3px solid transparent;
+            border-image: linear-gradient(to bottom right, var(--c1), var(--c2), var(--c3)) 1;
+            box-sizing: border-box;
+        }
+
+        /* Left Vertical Navigation */
+        .nav-container {
+            position: fixed;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            align-items: flex-start;
+            z-index: 9000;
+            pointer-events: auto;
+        }
+
+        .nav-container.home-only {
+            top: 72px;
+            left: 40px;
+            right: auto;
+            transform: none;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+
+        .text-btn {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            cursor: pointer;
+            text-transform: lowercase;
+            letter-spacing: 2px;
+            transition: all 0.2s ease;
+            position: relative;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+            animation: cycleColors 2.4s infinite linear;
+        }
+
+        .home-only .text-btn {
+            font-size: 1.74rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #dfff00;
+            transform: scaleX(1.18);
+            transform-origin: left center;
+            animation: none;
+            text-shadow: none;
+        }
+
+        .home-only .text-btn:hover {
+            color: #fff;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px #dfff00;
+        }
+
+        .text-btn.active-page {
+            color: #dfff00 !important;
+            text-shadow: 0 0 20px #dfff00 !important;
+            animation: none !important;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                linear-gradient(180deg, rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.68));
+        }
+
+        .film-grain {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.07;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes cycleColors {
+            0% {
+                color: var(--c1);
+            }
+
+            25% {
+                color: var(--c2);
+            }
+
+            50% {
+                color: var(--c3);
+            }
+
+            75% {
+                color: var(--c4);
+            }
+
+            100% {
+                color: var(--c1);
+            }
+        }
+
+        /* WRITINGS LIST CONTAINER & TYPOGRAPHY MATCHING SITE */
+        #writings-container {
+            width: min(800px, 90vw);
+            margin: 6rem auto;
+            position: relative;
+            z-index: 20;
+            padding-bottom: 6rem;
+            pointer-events: auto;
+        }
+
+        .writings-list {
+            display: flex;
+            flex-direction: column;
+            gap: 3.5rem;
+        }
+
+        .writing-item {
+            text-align: left;
+            position: relative;
+            padding-bottom: 2rem;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.18);
+        }
+
+        .writing-item:last-child {
+            border-bottom: none;
+        }
+
+        .article-meta {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--c1);
+            display: block;
+            margin-bottom: 0.6rem;
+            text-shadow: 0 0 8px rgba(153, 220, 27, 0.3);
+            animation: cycleColors 2.4s infinite linear;
+        }
+
+        .article-date {
+            color: rgba(255, 255, 255, 0.45);
+            text-shadow: none !important;
+        }
+
+        .article-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.15rem, 2vw, 1.45rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 0 0 0.35rem;
+            line-height: 1.4;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.75);
+        }
+
+        .article-title a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .article-title a:hover {
+            color: #dfff00;
+            text-shadow: 0 0 12px rgba(223, 255, 0, 0.65);
+            padding-left: 6px;
+        }
+
+        .article-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.96rem;
+            line-height: 1.75;
+            color: rgba(255, 255, 255, 0.76);
+            margin: 0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+        }
+
+        .article-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem 0.9rem;
+            margin-top: 0.9rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            line-height: 1.35;
+            letter-spacing: 0.08em;
+            color: rgba(255, 255, 255, 0.62);
+        }
+
+        .article-stat {
+            color: rgba(255, 255, 255, 0.45);
+            text-shadow: none;
+        }
+
+        .claps-count {
+            color: #e0e0e0 !important;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 12px rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .claps-count .stat-icon {
+            color: #e0e0e0 !important;
+            filter: none !important;
+            opacity: 1 !important;
+        }
+
+        .stat-icon {
+            color: rgba(255, 255, 255, 0.48);
+            margin-right: 0.28rem;
+            filter: grayscale(100%);
+            opacity: 0.6;
+        }
+
+        /* 3D Die Styles - Smaller, Transparenter, nested under menus */
+        .die-container {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 48px;
+            height: 48px;
+            z-index: 10000;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: levitate 3s infinite ease-in-out;
+            perspective: 400px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            mix-blend-mode: normal;
+        }
+
+        .die-container:hover {
+            animation-play-state: paused;
+            transform: scale(1.08);
+        }
+
+        .cube {
+            width: 36px;
+            height: 36px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(-18px) rotateX(-20deg) rotateY(25deg);
+            transition: transform 1.6s cubic-bezier(0.2, 0.8, 0.25, 1.1);
+        }
+
+        .cube__face {
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(1px);
+            border-radius: 6px;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.25), 0 0 3px rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Face 1 */
+        .cube__face--1 { transform: rotateY(0deg) translateZ(18px); }
+        .cube__face--1 .dot { top: 15px; left: 15px; }
+
+        /* Face 2 */
+        .cube__face--2 { transform: rotateY(90deg) translateZ(18px); }
+        .cube__face--2 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--2 .dot:nth-child(2) { top: 24px; left: 24px; }
+
+        /* Face 3 */
+        .cube__face--3 { transform: rotateY(180deg) translateZ(18px); }
+        .cube__face--3 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--3 .dot:nth-child(2) { top: 15px; left: 15px; }
+        .cube__face--3 .dot:nth-child(3) { top: 24px; left: 24px; }
+
+        /* Face 4 */
+        .cube__face--4 { transform: rotateY(-90deg) translateZ(18px); }
+        .cube__face--4 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--4 .dot:nth-child(2) { top: 6px; left: 24px; }
+        .cube__face--4 .dot:nth-child(3) { top: 24px; left: 6px; }
+        .cube__face--4 .dot:nth-child(4) { top: 24px; left: 24px; }
+
+        /* Face 5 */
+        .cube__face--5 { transform: rotateX(90deg) translateZ(18px); }
+        .cube__face--5 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--5 .dot:nth-child(2) { top: 6px; left: 24px; }
+        .cube__face--5 .dot:nth-child(3) { top: 15px; left: 15px; }
+        .cube__face--5 .dot:nth-child(4) { top: 24px; left: 6px; }
+        .cube__face--5 .dot:nth-child(5) { top: 24px; left: 24px; }
+
+        /* Face 6 */
+        .cube__face--6 { transform: rotateX(-90deg) translateZ(18px); }
+        .cube__face--6 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--6 .dot:nth-child(2) { top: 15px; left: 6px; }
+        .cube__face--6 .dot:nth-child(3) { top: 24px; left: 6px; }
+        .cube__face--6 .dot:nth-child(4) { top: 6px; left: 24px; }
+        .cube__face--6 .dot:nth-child(5) { top: 15px; left: 24px; }
+        .cube__face--6 .dot:nth-child(6) { top: 24px; left: 24px; }
+
+        @keyframes levitate {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .result-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            font-weight: bold;
+            color: #dfff00;
+            text-shadow: 0 0 20px #000;
+            display: none;
+            z-index: 60;
+            pointer-events: none;
+            font-family: 'Mrs Saint Delafield', cursive;
+        }
+
+        .project-back-btn {
+            position: relative;
+            align-self: flex-start;
+            width: auto;
+            margin: 0.2rem 0 0 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.72);
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.6rem, 4.4vw, 5rem);
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: 0;
+            text-shadow: 0 0 14px rgba(223, 255, 0, 0.48), 0 0 28px rgba(255, 255, 255, 0.26);
+            cursor: pointer;
+            z-index: 40;
+            display: block;
+        }
+
+        .project-back-btn:hover {
+            color: #dfff00;
+        }
+
+        /* RESPONSIVE STYLING FOR MOBILE VIEWPORT */
+        @media screen and (max-width: 768px) {
+            .nav-container {
+                position: absolute;
+                top: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+                flex-direction: row;
+                gap: 1.2rem;
+                justify-content: center;
+                width: 100vw;
+            }
+
+            .text-btn {
+                font-size: 0.95rem;
+                letter-spacing: 1px;
+            }
+
+            #writings-container {
+                margin: 8rem auto 6rem;
+                padding-bottom: 6rem;
+                width: calc(100vw - 32px);
+            }
+
+
+
+            .writings-list {
+                gap: 2.5rem;
+            }
+
+            .article-title {
+                font-size: 1.1rem;
+            }
+
+            .article-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .die-container {
+                position: fixed !important;
+                top: auto !important;
+                bottom: 20px !important;
+                right: 20px !important;
+                transform: none !important;
+                width: 48px !important;
+                height: 48px !important;
+                margin-top: 0 !important;
+                animation: none !important;
+            }
+            .die-container:hover {
+                transform: scale(1.05) !important;
+            }
+            .cube {
+                width: 36px !important;
+                height: 36px !important;
+                transform: translateZ(-18px) rotateX(-20deg) rotateY(25deg) !important;
+            }
+            .cube__face {
+                width: 36px !important;
+                height: 36px !important;
+                border-radius: 6px !important;
+            }
+            .cube__face--1 { transform: rotateY(0deg) translateZ(18px) !important; }
+            .cube__face--2 { transform: rotateY(90deg) translateZ(18px) !important; }
+            .cube__face--3 { transform: rotateY(180deg) translateZ(18px) !important; }
+            .cube__face--4 { transform: rotateY(-90deg) translateZ(18px) !important; }
+            .cube__face--5 { transform: rotateX(90deg) translateZ(18px) !important; }
+            .cube__face--6 { transform: rotateX(-90deg) translateZ(18px) !important; }
+            .dot {
+                width: 6px !important;
+                height: 6px !important;
+            }
+            /* Mobile Dot Positions */
+            .cube__face--1 .dot { top: 15px !important; left: 15px !important; }
+            .cube__face--2 .dot:nth-child(1) { top: 6px !important; left: 6px !important; }
+            .cube__face--2 .dot:nth-child(2) { top: 24px !important; left: 24px !important; }
+            .cube__face--3 .dot:nth-child(1) { top: 6px !important; left: 6px !important; }
+            .cube__face--3 .dot:nth-child(2) { top: 15px !important; left: 15px !important; }
+            .cube__face--3 .dot:nth-child(3) { top: 24px !important; left: 24px !important; }
+            .cube__face--4 .dot:nth-child(1) { top: 6px !important; left: 6px !important; }
+            .cube__face--4 .dot:nth-child(2) { top: 6px !important; left: 24px !important; }
+            .cube__face--4 .dot:nth-child(3) { top: 24px !important; left: 6px !important; }
+            .cube__face--4 .dot:nth-child(4) { top: 24px !important; left: 24px !important; }
+            .cube__face--5 .dot:nth-child(1) { top: 6px !important; left: 6px !important; }
+            .cube__face--5 .dot:nth-child(2) { top: 6px !important; left: 24px !important; }
+            .cube__face--5 .dot:nth-child(3) { top: 15px !important; left: 15px !important; }
+            .cube__face--5 .dot:nth-child(4) { top: 24px !important; left: 6px !important; }
+            .cube__face--5 .dot:nth-child(5) { top: 24px !important; left: 24px !important; }
+            .cube__face--6 .dot:nth-child(1) { top: 6px !important; left: 6px !important; }
+            .cube__face--6 .dot:nth-child(2) { top: 15px !important; left: 6px !important; }
+            .cube__face--6 .dot:nth-child(3) { top: 24px !important; left: 6px !important; }
+            .cube__face--6 .dot:nth-child(4) { top: 6px !important; left: 24px !important; }
+            .cube__face--6 .dot:nth-child(5) { top: 15px !important; left: 24px !important; }
+            .cube__face--6 .dot:nth-child(6) { top: 24px !important; left: 24px !important; }
+        }
+    </style>
+</head>
+
+<body data-page="writings">
+    <!-- Background Frame -->
+    <div id="gradient-frame"></div>
+    <div class="bg-overlay"></div>
+    <div class="film-grain"></div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor-img"></div>
+
+    <!-- Left Navigation -->
+    <nav class="nav-container home-only">
+        <a href="index.html" id="btn-main-home" class="text-btn" data-index="5">home</a>
+        <button class="project-back-btn" id="project-back-btn" type="button" aria-label="Back to about">&lt;</button>
+    </nav>
+
+    <!-- Rolling Die -->
+    <div class="die-container" id="die-trigger">
+        <div class="cube" id="cube">
+            <div class="cube__face cube__face--1"><div class="dot"></div></div>
+            <div class="cube__face cube__face--2"><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--3"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--4"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--5"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--6"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+        <div class="result-overlay" id="die-result"></div>
+    </div>
+
+    <!-- Writings List -->
+    <div id="writings-container">
+
+
+        <div class="writings-list">
+            <article class="writing-item">
+                <span class="article-meta">Medium</span>
+                <h2 class="article-title"><a href="https://medium.com/@s-vishnoi/bayesian-kelly-betting-2305bdc5d41e" target="_blank" rel="noreferrer noopener">A Bayesian guide to winning bets</a></h2>
+                <p class="article-subtitle">How to leverage your edge, and grow your wealth</p>
+                <div class="article-stats" aria-label="Article stats">
+                    <span class="article-date">May 14, 2026</span>
+                </div>
+            </article>
+
+            <article class="writing-item">
+                <span class="article-meta">Data Science Collective</span>
+                <h2 class="article-title"><a href="https://medium.com/data-science-collective/riding-upstream-the-windy-city-113a6a8415a9" target="_blank" rel="noreferrer noopener">Riding upstream the Windy City</a></h2>
+                <p class="article-subtitle">Is Chicago really among the worst cities for biking? An honest look at data reveals when and where.</p>
+                <div class="article-stats" aria-label="Article stats">
+                    <span class="article-date">Aug 7, 2025</span>
+                    <span class="article-stat" aria-label="132 reads"><span class="stat-icon" aria-hidden="true">👁</span>132</span>
+                </div>
+            </article>
+
+            <article class="writing-item">
+                <span class="article-meta">Towards Data Science</span>
+                <h2 class="article-title"><a href="https://medium.com/data-science/bayesian-linear-regression-a-complete-beginners-guide-3a49bb252fdc" target="_blank" rel="noreferrer noopener">Bayesian Linear Regression: A Complete Beginner's Guide</a></h2>
+                <p class="article-subtitle">A workflow and code walkthrough for building a Bayesian regression model in STAN</p>
+                <div class="article-stats" aria-label="Article stats">
+                    <span class="article-date">Sep 14, 2024</span>
+                    <span class="article-stat" aria-label="6K reads"><span class="stat-icon" aria-hidden="true">👁</span>6K</span>
+                    <span class="article-stat claps-count" aria-label="356 claps"><span class="stat-icon" aria-hidden="true">✦</span>356</span>
+                </div>
+            </article>
+
+            <article class="writing-item">
+                <span class="article-meta">Towards Data Science</span>
+                <h2 class="article-title"><a href="https://medium.com/data-science/a-practical-guide-to-becoming-a-bayesian-data-scientist-i-c4f7a1844825" target="_blank" rel="noreferrer noopener">Bayesian Data Science: The What, Why, and How</a></h2>
+                <p class="article-subtitle">Choosing between frequentist and Bayesian approaches is the great debate of the last century, with a recent surge in Bayesian adoption in the sciences.</p>
+                <div class="article-stats" aria-label="Article stats">
+                    <span class="article-date">Apr 17, 2024</span>
+                    <span class="article-stat" aria-label="2.9K reads"><span class="stat-icon" aria-hidden="true">👁</span>2.9K</span>
+                    <span class="article-stat claps-count" aria-label="514 claps"><span class="stat-icon" aria-hidden="true">✦</span>514</span>
+                </div>
+            </article>
+
+            <article class="writing-item">
+                <span class="article-meta">Medium</span>
+                <h2 class="article-title"><a href="https://medium.com/@s-vishnoi" target="_blank" rel="noreferrer noopener">Spatio-Temporal Data Visualization: My Top 3 techniques by experience</a></h2>
+                <p class="article-subtitle">Collapse multi-region time-series into clear, insightful visuals</p>
+                <div class="article-stats" aria-label="Article stats">
+                    <span class="article-date">Oct 8, 2023</span>
+                    <span class="article-stat" aria-label="1.3K reads"><span class="stat-icon" aria-hidden="true">👁</span>1.3K</span>
+                    <span class="article-stat claps-count" aria-label="153 claps"><span class="stat-icon" aria-hidden="true">✦</span>153</span>
+                </div>
+            </article>
+
+            <article class="writing-item">
+                <span class="article-meta">Medium</span>
+                <h2 class="article-title"><a href="https://medium.com/@s-vishnoi" target="_blank" rel="noreferrer noopener">Map Data Visualization: How to Plot Cities (CBSA) on a map using Cartopy</a></h2>
+                <p class="article-subtitle">How to derive and visualize city-level trends from geographical data</p>
+                <div class="article-stats" aria-label="Article stats">
+                    <span class="article-date">Oct 4, 2022</span>
+                    <span class="article-stat" aria-label="311 reads"><span class="stat-icon" aria-hidden="true">👁</span>311</span>
+                    <span class="article-stat claps-count" aria-label="93 claps"><span class="stat-icon" aria-hidden="true">✦</span>93</span>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script src="js/site-nav.js"></script>
+    <script src="js/cursor.js"></script>
+    <script>
+        const projectBackBtn = document.getElementById('project-back-btn');
+        if (projectBackBtn) {
+            projectBackBtn.addEventListener('click', () => {
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    let y = 0;
+                    try {
+                        y = Number(sessionStorage.getItem('aboutReturnY')) || 0;
+                    } catch {
+                        y = 0;
+                    }
+                    window.location.href = `index.html?return=about&y=${encodeURIComponent(y)}`;
+                }, 500);
+            });
+        }
+    </script>
+</body>
+
+</html>

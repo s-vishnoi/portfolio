@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
+    <title>Biking in Chicago | Samvardhan Vishnoi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --c1: #99DC1B;
+            --c2: #FE4164;
+            --c3: #6F00FF;
+            --c4: #FFFFFF;
+        }
+
+        html {
+            overscroll-behavior: none;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            height: auto;
+            margin: 0;
+            overflow-x: hidden;
+            overscroll-behavior: none;
+            overflow-y: auto;
+            position: relative;
+            cursor: none;
+            transition: opacity 0.5s ease;
+            opacity: 1;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+        #cursor-img {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            width: 88px;
+            height: 88px;
+            background: url('images/sparkle.gif') no-repeat center center;
+            background-size: contain;
+            mix-blend-mode: screen;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            html,
+            html *,
+            body,
+            body * {
+                cursor: none !important;
+            }
+        }
+        @media (hover: none), (pointer: coarse) {
+            body {
+                cursor: auto;
+            }
+
+            #cursor-img {
+                display: none;
+            }
+        }
+
+        /* Left Vertical Navigation */
+        .nav-container {
+            position: fixed;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            align-items: flex-start;
+            z-index: 9000;
+            pointer-events: auto;
+        }
+
+        .nav-container.home-only {
+            top: 72px;
+            left: 40px;
+            right: auto;
+            transform: none;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+
+        .text-btn {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            cursor: pointer;
+            text-transform: lowercase;
+            letter-spacing: 2px;
+            transition: all 0.2s ease;
+            position: relative;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+            animation: cycleColors 2.4s infinite linear;
+        }
+
+        .home-only .text-btn {
+            font-size: 1.74rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #dfff00;
+            transform: scaleX(1.18);
+            transform-origin: left center;
+            animation: none;
+            text-shadow: none;
+        }
+
+        .home-only .text-btn:hover {
+            color: #fff;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px #dfff00;
+        }
+
+        .text-btn.active-page {
+            color: #dfff00 !important;
+            text-shadow: 0 0 20px #dfff00 !important;
+            animation: none !important;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                linear-gradient(180deg, rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.68));
+        }
+
+        #bg-gif-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 150vh;
+            z-index: 1;
+            /* Allow clicks to pass through to the buttons inside */
+            pointer-events: auto;
+        }
+
+        #bg-gif {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+
+            opacity: 0.86;
+            transform: translate(-50%, -50%) scale(1.08);
+            filter: saturate(1.35) contrast(1.16) brightness(1.03) blur(0px) hue-rotate(0deg);
+            transition: opacity 1s ease, transform 1s ease, filter 1s ease;
+        }
+
+        #bg-gif.detail-mode {
+            opacity: 0.38;
+            transform: translate(-50%, -50%) scale(1.12);
+            filter: saturate(0.85) contrast(1.25) brightness(0.94) blur(4px) hue-rotate(0deg);
+            transition: all 1s ease;
+        }
+
+        .film-grain {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.07;
+            mix-blend-mode: overlay;
+        }
+
+        /* Unified Animation Buttons */
+        #animation-container {
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            min-height: 46vh;
+            padding: 18vh 8vw 5vh 8vw;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            pointer-events: auto;
+            z-index: 10;
+        }
+
+        .biking-title {
+            width: min(980px, 82vw);
+            max-width: 82vw;
+            margin: 0;
+            color: #d6aa36;
+            font-size: clamp(1.8rem, 3.75vw, 4.1rem);
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            line-height: 0.82;
+            text-align: right;
+            text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95), 0 0 20px rgba(214, 170, 54, 0.42);
+            transform: scaleX(1.08);
+            transform-origin: right center;
+            animation: cycleColors 2.4s infinite linear;
+        }
+
+        .anim-btn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90vw;
+            background: transparent;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            text-align: center;
+            outline: none;
+        }
+
+        /* INTRO STATES (Slide up logic) */
+        .anim-btn.intro-waiting {
+            top: 60%;
+            font-size: clamp(1.8rem, 4vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #dfff00;
+            text-shadow: 0 0 20px rgba(223, 255, 0, 0.5);
+            opacity: 0;
+            pointer-events: none;
+            margin-top: -2rem;
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .anim-btn.intro-active {
+            top: 50%;
+            font-size: clamp(1.8rem, 4vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #dfff00;
+            text-shadow: 0 0 20px rgba(223, 255, 0, 0.5);
+            opacity: 1;
+            pointer-events: none;
+            margin-top: -2rem;
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .anim-btn.intro-done {
+            top: 40%;
+            font-size: clamp(1.8rem, 4vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #dfff00;
+            text-shadow: 0 0 20px rgba(223, 255, 0, 0.5);
+            opacity: 0;
+            pointer-events: none;
+            margin-top: -2rem;
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* LIST STATE (Arriving into list positions) */
+        .anim-btn.list-state {
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #ffffff;
+            text-shadow: 0 0 15px currentColor;
+            opacity: 1;
+            pointer-events: auto;
+            margin-top: 0;
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .anim-btn.list-state:hover {
+            opacity: 0.8;
+            transform: translateX(-50%) scale(1.05);
+            letter-spacing: 0.2em;
+        }
+
+        .anim-btn.list-item.list-state {
+            animation: cycleColors 2.4s infinite linear;
+        }
+
+        .anim-btn.list-item:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .anim-btn.list-item:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        @keyframes cycleColors {
+            0% {
+                color: var(--c1);
+            }
+
+            25% {
+                color: var(--c2);
+            }
+
+            50% {
+                color: var(--c3);
+            }
+
+            75% {
+                color: var(--c4);
+            }
+
+            100% {
+                color: var(--c1);
+            }
+        }
+
+        /* Specific list positions */
+        #btn-0.list-state {
+            top: calc(50% - 4rem);
+        }
+
+        #btn-1.list-state {
+            top: 50%;
+        }
+
+        #btn-back.list-state {
+            top: calc(50% + 8rem);
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: none;
+            font-weight: 400;
+        }
+
+        #btn-back.list-state:hover {
+            color: #dfff00;
+        }
+
+        /* DETAIL STATE (Clicked item) */
+        .anim-btn.detail-state {
+            top: 30%;
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #dfff00;
+            text-shadow: 0 0 20px rgba(223, 255, 0, 0.5);
+            opacity: 1;
+            pointer-events: none;
+            margin-top: 0;
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            animation: none;
+            /* stop cycling */
+        }
+
+        /* HIDDEN STATE (Unclicked items) */
+        .anim-btn.hidden-state {
+            top: 50%;
+            opacity: 0;
+            pointer-events: none;
+            margin-top: 0;
+            transition: all 0.5s ease;
+        }
+
+
+
+        /* Detail View Description Box */
+        #detail-desc-container {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            width: min(860px, 76vw);
+            max-width: none;
+            margin: 1vh 8vw 34vh auto;
+            text-align: right;
+            opacity: 1;
+            pointer-events: auto;
+            transition: opacity 0.5s ease 0.3s;
+            z-index: 999999;
+        }
+
+        #detail-desc-container.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #detail-desc {
+            font-size: clamp(1.45rem, 2.2vw, 2rem);
+            line-height: 1.45;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            white-space: normal;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.75), 0 0 16px rgba(223, 255, 0, 0.22);
+        }
+
+        .detail-project-description {
+            display: block;
+            max-width: 48ch;
+            margin: 0 0 1.4rem auto;
+            font-size: clamp(1.45rem, 2.3vw, 2.1rem);
+            line-height: 1.38;
+            color: rgba(255, 255, 255, 0.84);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.75), 0 0 16px rgba(223, 255, 0, 0.28);
+        }
+
+        .project-back-btn {
+            position: relative;
+            align-self: flex-start;
+            width: auto;
+            margin: 0.2rem 0 0 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.72);
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.6rem, 4.4vw, 5rem);
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: 0;
+            text-shadow: 0 0 14px rgba(223, 255, 0, 0.48), 0 0 28px rgba(255, 255, 255, 0.26);
+            cursor: pointer;
+            z-index: 40;
+            display: block;
+        }
+
+        .project-back-btn:hover {
+            color: #dfff00;
+        }
+
+        .detail-actions {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+
+        #back-to-list {
+            margin-top: 1.8rem;
+        }
+
+        .back-btn {
+            color: #fff;
+            text-decoration: none;
+            font-size: clamp(1.25rem, 2vw, 2rem);
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.25s ease, text-shadow 0.25s ease;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            outline: none;
+        }
+
+        .back-btn:hover {
+            color: #dfff00;
+            text-shadow: 0 0 15px currentColor;
+        }
+
+        #play-project {
+            animation: cycleColors 2.4s infinite linear;
+            text-shadow: 0 0 15px currentColor;
+        }
+
+        .play-btn {
+            margin-right: 2rem;
+        }
+
+        button:focus,
+        a:focus {
+            outline: none;
+        }
+
+        #intro-cursor-splash {
+            position: fixed;
+            left: clamp(300px, 28vw, 440px);
+            top: 50%;
+            width: 200px;
+            height: 200px;
+            margin: 0;
+            pointer-events: none;
+            z-index: 999998;
+            opacity: 0.84;
+            transform: translate(-50%, -50%) scale(1);
+            filter:
+                drop-shadow(0 0 22px rgba(255, 192, 203, 0.44))
+                drop-shadow(0 0 28px rgba(124, 205, 239, 0.36));
+            display: block;
+        }
+
+        #intro-cursor-splash img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            animation: introCursorSpin 3.7s cubic-bezier(0.2, 0.95, 0.3, 1) forwards;
+        }
+
+        @keyframes introCursorSpin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(1080deg);
+            }
+        }
+
+        /* Dice Levitation Animation */
+        @keyframes levitate {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* 3D Die Styles - Smaller, Transparenter, nested under menus */
+        .die-container {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 48px;
+            height: 48px;
+            z-index: 10000;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: levitate 3s infinite ease-in-out;
+            perspective: 400px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            mix-blend-mode: normal;
+        }
+
+        .die-container:hover {
+            animation-play-state: paused;
+            transform: scale(1.08);
+        }
+
+        .cube {
+            width: 36px;
+            height: 36px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(-18px) rotateX(-20deg) rotateY(25deg);
+            transition: transform 1.6s cubic-bezier(0.2, 0.8, 0.25, 1.1);
+        }
+
+        .cube__face {
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(1px);
+            border-radius: 6px;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.25), 0 0 3px rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Face 1 */
+        .cube__face--1 { transform: rotateY(0deg) translateZ(18px); }
+        .cube__face--1 .dot { top: 15px; left: 15px; }
+
+        /* Face 2 */
+        .cube__face--2 { transform: rotateY(90deg) translateZ(18px); }
+        .cube__face--2 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--2 .dot:nth-child(2) { top: 24px; left: 24px; }
+
+        /* Face 3 */
+        .cube__face--3 { transform: rotateY(180deg) translateZ(18px); }
+        .cube__face--3 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--3 .dot:nth-child(2) { top: 15px; left: 15px; }
+        .cube__face--3 .dot:nth-child(3) { top: 24px; left: 24px; }
+
+        /* Face 4 */
+        .cube__face--4 { transform: rotateY(-90deg) translateZ(18px); }
+        .cube__face--4 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--4 .dot:nth-child(2) { top: 6px; left: 24px; }
+        .cube__face--4 .dot:nth-child(3) { top: 24px; left: 6px; }
+        .cube__face--4 .dot:nth-child(4) { top: 24px; left: 24px; }
+
+        /* Face 5 */
+        .cube__face--5 { transform: rotateX(90deg) translateZ(18px); }
+        .cube__face--5 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--5 .dot:nth-child(2) { top: 6px; left: 24px; }
+        .cube__face--5 .dot:nth-child(3) { top: 15px; left: 15px; }
+        .cube__face--5 .dot:nth-child(4) { top: 24px; left: 6px; }
+        .cube__face--5 .dot:nth-child(5) { top: 24px; left: 24px; }
+
+        /* Face 6 */
+        .cube__face--6 { transform: rotateX(-90deg) translateZ(18px); }
+        .cube__face--6 .dot:nth-child(1) { top: 6px; left: 6px; }
+        .cube__face--6 .dot:nth-child(2) { top: 15px; left: 6px; }
+        .cube__face--6 .dot:nth-child(3) { top: 24px; left: 6px; }
+        .cube__face--6 .dot:nth-child(4) { top: 6px; left: 24px; }
+        .cube__face--6 .dot:nth-child(5) { top: 15px; left: 24px; }
+        .cube__face--6 .dot:nth-child(6) { top: 24px; left: 24px; }
+
+        /* Responsive Override for mobile */
+        @media screen and (max-width: 768px) {
+            .die-container {
+                position: fixed !important;
+                top: auto !important;
+                bottom: 20px !important;
+                right: 20px !important;
+                transform: none !important;
+                width: 48px !important;
+                height: 48px !important;
+                margin-top: 0 !important;
+                animation: none !important;
+            }
+            .die-container:hover {
+                transform: scale(1.05) !important;
+            }
+            .cube {
+                width: 36px !important;
+                height: 36px !important;
+                transform: translateZ(-18px) rotateX(-20deg) rotateY(25deg) !important;
+            }
+            .cube__face {
+                width: 36px !important;
+                height: 36px !important;
+                border-radius: 6px !important;
+            }
+            .cube__face--1 { transform: rotateY(0deg) translateZ(18px) !important; }
+            .cube__face--2 { transform: rotateY(90deg) translateZ(18px) !important; }
+            .cube__face--3 { transform: rotateY(180deg) translateZ(18px) !important; }
+            .cube__face--4 { transform: rotateY(-90deg) translateZ(18px) !important; }
+            .cube__face--5 { transform: rotateX(90deg) translateZ(18px) !important; }
+            .cube__face--6 { transform: rotateX(-90deg) translateZ(18px) !important; }
+            .dot {
+                width: 6px !important;
+                height: 6px !important;
+            }
+            /* Mobile Dot Positions */
+            .cube__face--1 .dot { top: 15px !important; left: 15px !important; }
+            .cube__face--2 .dot:nth-child(1) { top: 6px !important; left: 6px !important; }
+            .cube__face--2 .dot:nth-child(2) { top: 24px !important; left: 24px !important; }
+            .cube__face--3 .dot:nth-child(1) { top: 6px !important; left: 6px !important; }
+            .cube__face--3 .dot:nth-child(2) { top: 15px !important; left: 15px !important; }
+            .cube__face--3 .dot:nth-child(3) { top: 24px !important; left: 24px !important; }
+            .cube__face--4 .dot:nth-child(1) { top: 6px !important; left: 6px !important; }
+            .cube__face--4 .dot:nth-child(2) { top: 6px !important; left: 24px !important; }
+            .cube__face--4 .dot:nth-child(3) { top: 24px !important; left: 6px !important; }
+            .cube__face--4 .dot:nth-child(4) { top: 24px !important; left: 24px !important; }
+            .cube__face--5 .dot:nth-child(1) { top: 6px !important; left: 6px !important; }
+            .cube__face--5 .dot:nth-child(2) { top: 6px !important; left: 24px !important; }
+            .cube__face--5 .dot:nth-child(3) { top: 15px !important; left: 15px !important; }
+            .cube__face--5 .dot:nth-child(4) { top: 24px !important; left: 6px !important; }
+            .cube__face--5 .dot:nth-child(5) { top: 24px !important; left: 24px !important; }
+            .cube__face--6 .dot:nth-child(1) { top: 6px !important; left: 6px !important; }
+            .cube__face--6 .dot:nth-child(2) { top: 15px !important; left: 6px !important; }
+            .cube__face--6 .dot:nth-child(3) { top: 24px !important; left: 6px !important; }
+            .cube__face--6 .dot:nth-child(4) { top: 6px !important; left: 24px !important; }
+            .cube__face--6 .dot:nth-child(5) { top: 15px !important; left: 24px !important; }
+            .cube__face--6 .dot:nth-child(6) { top: 24px !important; left: 24px !important; }
+
+            /* Mobile Stacked Layout to avoid text overlap on bicycle wheel */
+            #intro-cursor-splash {
+                left: clamp(300px, 28vw, 440px) !important;
+                top: 50% !important;
+                width: 200px !important;
+                height: 200px !important;
+                margin: 0 !important;
+                display: block !important;
+                transform: translate(-50%, -50%) scale(1) !important;
+            }
+            #detail-desc-container {
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+                width: 90vw !important;
+                max-width: 100% !important;
+                margin: 3vh 7vw 28vh auto !important;
+                text-align: right !important;
+            }
+            .detail-actions {
+                align-items: flex-end !important;
+                justify-content: flex-end !important;
+            }
+            .detail-project-description {
+                margin-left: auto !important;
+                margin-right: 0 !important;
+            }
+            #animation-container {
+                min-height: 38vh !important;
+                padding: 16vh 7vw 4vh 7vw !important;
+                align-items: center !important;
+                justify-content: flex-end !important;
+            }
+            .biking-title {
+                width: 88vw !important;
+                max-width: 88vw !important;
+                font-size: clamp(1.4rem, 7vw, 2.6rem) !important;
+                letter-spacing: 0.1em !important;
+                text-align: right !important;
+                transform: scaleX(1.02) !important;
+                transform-origin: right center !important;
+            }
+        }
+    </style>
+</head>
+
+
+<body data-page="passion">
+    <!-- Custom Cursor -->
+    <div id="cursor-img"></div>
+
+    <!-- Left Navigation -->
+    <nav class="nav-container home-only">
+        <a href="index.html" id="btn-main-home" class="text-btn" data-index="5">home</a>
+        <button class="project-back-btn" id="project-back-btn" type="button" aria-label="Back to about">&lt;</button>
+    </nav>
+
+    <!-- Rolling Die -->
+    <div class="die-container" id="die-trigger">
+        <div class="cube" id="cube">
+            <div class="cube__face cube__face--1"><div class="dot"></div></div>
+            <div class="cube__face cube__face--2"><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--3"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--4"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--5"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--6"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+    </div>
+
+    <div id="bg-gif-wrapper">
+        <img id="bg-gif" data-src="images/dice_fall.gif" alt="Passion Background">
+        <div class="bg-overlay"></div>
+        <div class="film-grain"></div>
+        <div id="animation-container">
+            <h1 class="biking-title">BIKING IN CHICAGO</h1>
+        </div>
+
+        <div id="intro-cursor-splash" aria-hidden="true">
+            <img src="images/bike_cursor.png" alt="" />
+        </div>
+
+        <div id="detail-desc-container">
+            <div id="detail-desc">
+                <span class="detail-project-description">Explore every bike crash, why it happened, and safety infrastructure available for biking across the city of Chicago.</span>
+                <span class="detail-project-description">I built this interactive, granular, data rich map because I wanted to give life to technical safety reports and make advocacy easier for people who actually bike our streets.</span>
+            </div>
+            <div class="detail-actions">
+                <button class="back-btn" id="play-project">SEE THE MAP</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const playProjectBtn = document.getElementById('play-project');
+        const projectBackBtn = document.getElementById('project-back-btn');
+        const mapLink = "https://s-vishnoi.github.io/chicago-bikeability-map/";
+
+        const bgGif = document.getElementById('bg-gif');
+        const params = new URLSearchParams(window.location.search);
+        const hasPortalEntry = params.has('cx') && params.has('cy');
+        const passionGifDelay = hasPortalEntry ? 1200 : 500;
+
+        if (bgGif?.dataset.src) {
+            setTimeout(() => {
+                bgGif.src = bgGif.dataset.src;
+            }, passionGifDelay);
+        }
+
+        if (bgGif) bgGif.classList.add('detail-mode');
+
+        playProjectBtn.addEventListener('click', () => {
+            window.open(mapLink, '_blank', 'noopener,noreferrer');
+        });
+
+        if (projectBackBtn) {
+            projectBackBtn.addEventListener('click', () => {
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 500);
+            });
+        }
+
+    </script>
+
+    <script src="js/site-nav.js"></script>
+    <script src="js/cursor.js"></script>
+</body>
+
+</html>
