@@ -1053,6 +1053,37 @@
             margin-bottom: 8px;
         }
 
+        .audio-player-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .audio-player-inner.is-fixed {
+            position: fixed;
+            bottom: clamp(24px, 4vh, 48px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(520px, 90vw);
+            background: rgba(10, 10, 15, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: clamp(12px, 1.8vh, 18px) clamp(16px, 2.5vw, 24px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 229, 255, 0.14);
+            z-index: 9999;
+        }
+
+        .audio-player-inner.is-fixed .synth-track-meta {
+            margin-top: 8px;
+            text-align: center;
+            font-size: 0.72rem;
+            max-width: 100%;
+        }
+
         .synth-play-btn {
             background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.25);
@@ -1547,13 +1578,15 @@
             </div>
 
             <div class="audio-player-container">
-                <audio id="synth-audio" src="THE_TIME.mp3"></audio>
-                <button class="synth-play-btn" id="synth-play-btn">
-                    <span class="play-icon">▶</span>
-                    <span class="btn-text">Vishnoi on SYNTH — THE TIME</span>
-                </button>
-                <div class="synth-track-meta">
-                    Truly Bald Records / Fundraiser <a href="https://trulybald.bandcamp.com/album/compilation-fundraiser-for-morris-home-philadelphia" target="_blank" rel="noopener noreferrer">compilation</a> for Morris Home Philadelphia for Trans Youth safety
+                <div class="audio-player-inner" id="audio-player-inner">
+                    <audio id="synth-audio" src="THE_TIME.mp3"></audio>
+                    <button class="synth-play-btn" id="synth-play-btn">
+                        <span class="play-icon">▶</span>
+                        <span class="btn-text">Vishnoi on SYNTH — THE TIME</span>
+                    </button>
+                    <div class="synth-track-meta">
+                        Truly Bald Records / Fundraiser <a href="https://trulybald.bandcamp.com/album/compilation-fundraiser-for-morris-home-philadelphia" target="_blank" rel="noopener noreferrer">compilation</a> for Morris Home Philadelphia for Trans Youth safety
+                    </div>
                 </div>
             </div>
         </div>
@@ -2648,6 +2681,7 @@
             const synthAudio = document.getElementById('synth-audio');
             const synthPlayBtn = document.getElementById('synth-play-btn');
             const playerContainer = document.querySelector('.audio-player-container');
+            const audioPlayerInner = document.getElementById('audio-player-inner');
             const synthPlayIcon = synthPlayBtn ? synthPlayBtn.querySelector('.play-icon') : null;
 
             const pauseSynth = () => {
@@ -2655,6 +2689,7 @@
                     synthAudio.pause();
                     if (synthPlayBtn) synthPlayBtn.classList.remove('is-playing');
                     if (synthPlayIcon) synthPlayIcon.textContent = '▶';
+                    if (audioPlayerInner) audioPlayerInner.classList.remove('is-fixed');
                 }
             };
 
@@ -2701,6 +2736,7 @@
                         synthAudio.play().then(() => {
                             synthPlayBtn.classList.add('is-playing');
                             if (synthPlayIcon) synthPlayIcon.textContent = '❚❚';
+                            if (audioPlayerInner) audioPlayerInner.classList.add('is-fixed');
                         }).catch(err => {
                             console.error('Audio play failed:', err);
                         });
@@ -2708,12 +2744,14 @@
                         synthAudio.pause();
                         synthPlayBtn.classList.remove('is-playing');
                         if (synthPlayIcon) synthPlayIcon.textContent = '▶';
+                        if (audioPlayerInner) audioPlayerInner.classList.remove('is-fixed');
                     }
                 });
 
                 synthAudio.addEventListener('ended', () => {
                     synthPlayBtn.classList.remove('is-playing');
                     if (synthPlayIcon) synthPlayIcon.textContent = '▶';
+                    if (audioPlayerInner) audioPlayerInner.classList.remove('is-fixed');
                 });
             }
         })();
