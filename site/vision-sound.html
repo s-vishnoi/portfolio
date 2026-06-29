@@ -1456,13 +1456,18 @@
 <body data-page="visionSound">
     <script>
         const reduceIntroMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        // If arriving via portal nav (cx/cy params), delay content reveal
+        // until after the 1.3s clip-path glow-circle animation completes.
+        const _vsParams = new URLSearchParams(window.location.search);
+        const _viaPortal = !reduceIntroMotion && _vsParams.get('cx') && _vsParams.get('cy');
+
         window.setTimeout(() => {
             document.body.classList.add('intro-text-ready');
-        }, reduceIntroMotion ? 100 : 800);
+        }, reduceIntroMotion ? 100 : (_viaPortal ? 1500 : 800));
 
         window.setTimeout(() => {
             document.body.classList.add('intro-ready');
-        }, reduceIntroMotion ? 100 : 1500);
+        }, reduceIntroMotion ? 100 : (_viaPortal ? 2100 : 1500));
     </script>
 
     <div id="gradient-frame"></div>
@@ -1651,7 +1656,7 @@
     </section>
 
     <nav class="nav-container home-only">
-        <a href="index.html" id="btn-main-home" class="text-btn" data-portal-link>home</a>
+        <a href="index.html" id="btn-main-home" class="text-btn" data-index="5">home</a>
     </nav>
 
     <script>
