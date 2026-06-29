@@ -650,14 +650,20 @@
             line-height: 1.65;
             letter-spacing: 0.055em;
             text-transform: none;
-            border-left: 1px solid rgba(223, 255, 0, 0.42);
+            border-left: 1px solid rgba(0, 229, 255, 0.42);
             padding-left: clamp(0.8rem, 1.5vw, 1.2rem);
         }
 
         .piece-note a {
             color: inherit;
-            text-decoration-color: rgba(223, 255, 0, 0.72);
+            text-decoration-color: rgba(0, 229, 255, 0.72);
             text-underline-offset: 0.18em;
+            transition: all 0.25s ease;
+        }
+
+        .piece-note a:hover {
+            color: #00e5ff;
+            text-decoration-color: #00e5ff;
         }
 
         .life-panel {
@@ -1483,8 +1489,7 @@
         <div class="piece-layout">
             <div class="piece-copy">
                 <div class="piece-label">Generative Art</div>
-                <h2 id="cellular-automata-title" class="piece-title">Touch Activated Self Evolving Interactive Cellular
-                    Automata</h2>
+                <h2 id="cellular-automata-title" class="piece-title">Touch-Guided Self-Evolving Cellular Automata Display</h2>
                 <figure class="piece-process-photo">
                     <img src="images/meCA.png" alt="Vishnoi working on the physical cellular automata LED grid.">
                 </figure>
@@ -1497,9 +1502,9 @@
                     <span>Running Cost: $445 USD</span>
                 </div>
                 <p class="piece-note">
-                    This art peice aims to bring John Conway’s seminal <a
+                    This art piece aims to bring John Conway’s seminal <a
                         href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank"
-                        rel="noopener noreferrer">Game of Life</a>- to LIFE. I treat physical touch as a capacitative
+                        rel="noopener noreferrer">Game of Life</a> to LIFE. I treat physical touch as a capacitative
                     source of life: a hand enters the field, a cell wakes, and the grid begins to compose itself based
                     on algorithmic rules.
                 </p>
