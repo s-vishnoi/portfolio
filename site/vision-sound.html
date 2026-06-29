@@ -805,6 +805,53 @@
                 0 0 30px rgba(255, 255, 255, 0.1);
         }
 
+        .body-panel .life-head {
+            border-bottom-color: rgba(153, 220, 27, 0.22);
+        }
+
+        .body-stage {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 12 / 7;
+            background: #030403;
+            overflow: hidden;
+        }
+
+        #postural-canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+
+        .body-action {
+            border: 0;
+            background: transparent;
+            color: #99dc1b;
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(0.62rem, 0.82vw, 0.78rem);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            cursor: none;
+            transition: color 0.22s ease, transform 0.22s ease, text-shadow 0.22s ease;
+        }
+
+        .body-action:hover,
+        .body-action.is-active {
+            color: #ffffff;
+            transform: translateY(-1px);
+            text-shadow: 0 0 12px rgba(153, 220, 27, 0.48);
+        }
+
+        .body-status {
+            color: #99dc1b;
+            text-shadow: 0 0 8px rgba(153, 220, 27, 0.3);
+        }
+
+        .body-controls strong {
+            color: #99dc1b;
+        }
+
         .quote-intermission {
             position: relative;
             z-index: 10;
@@ -1109,22 +1156,6 @@
             letter-spacing: 0.19em;
         }
 
-        .synth-play-btn.is-playing {
-            border-color: #00e5ff;
-            color: #00e5ff;
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.22);
-            animation: playPulse 2s infinite ease-in-out;
-        }
-
-        @keyframes playPulse {
-            0%, 100% {
-                box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
-            }
-            50% {
-                box-shadow: 0 0 30px rgba(0, 229, 255, 0.35);
-            }
-        }
-
         .synth-track-meta {
             margin-top: 14px;
             font-family: 'Courier Prime', monospace;
@@ -1160,8 +1191,8 @@
 
         .cone-stage {
             position: relative;
-            width: min(72svh, 80vw, 820px);
-            aspect-ratio: 3 / 4;
+            width: min(76svh, 82vw, 820px);
+            aspect-ratio: 2 / 3;
         }
 
         .cone-canvas {
@@ -1619,6 +1650,56 @@
                     <span><strong>Right Click</strong>: Erase cells.</span>
                 </div>
                 <p class="life-quote">A new premise for science: simple rules can create infinite complexity</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="piece-section" aria-labelledby="postural-noise-title">
+        <div class="piece-layout">
+            <div class="piece-copy">
+                <div class="piece-label">Collaborative Performance</div>
+                <h2 id="postural-noise-title" class="piece-title">Postural Noise <span class="piece-title-sub">with Angeliki</span></h2>
+                <div class="piece-meta">
+                    <span>2026</span>
+                    <span>Interactive Performance & Sound Installation</span>
+                </div>
+                <div class="piece-specs">
+                    <span>Body Motion / Sensor Input -> Sound Mapping</span>
+                    <span>Hands, Spine, Legs, Head -> Melody, Drone, Bass, Noise</span>
+                    <span>Direct Body Map or Cellular Automata Toggle</span>
+                </div>
+                <p class="piece-note">
+                    Postural Noise translates Angeliki's contortionist practice into a live acoustic signal. Wearable
+                    and gestural body data become a raw score: overextended angles, muscular tension, posture bends, and
+                    joint strain drive algorithmic sound, turning the body into a tactile data instrument.
+                </p>
+                <p class="piece-note">
+                    My role is to build the computational layer around her physical limits: a motion engine that reads
+                    anatomy as signal, routes it through synthesis systems, and lets bodily stress self-organize into a
+                    responsive soundscape.
+                </p>
+            </div>
+
+            <div class="life-panel body-panel">
+                <div class="life-head">
+                    <div class="life-heading">Drag joints, press keys 1-6, or let the body seed a cellular field.</div>
+                    <div>
+                        <button class="body-action" id="postural-random" type="button">Random</button>
+                        <button class="body-action" id="postural-ca" type="button" aria-pressed="true">CA</button>
+                    </div>
+                </div>
+                <div class="body-stage">
+                    <canvas id="postural-canvas" width="960" height="560"
+                        aria-label="Interactive postural noise body instrument canvas"></canvas>
+                </div>
+                <div class="life-status body-status" id="postural-status">Tension: 0.00 | CA Field: On</div>
+                <div class="life-controls body-controls" aria-label="Postural noise controls">
+                    <span><strong>Mouse</strong>: Drag head, hands, spine, knees, or feet.</span>
+                    <span><strong>1-6</strong>: Flex neck, legs, arms, or spine.</span>
+                    <span><strong>R</strong>: Reset the body instrument.</span>
+                    <span><strong>CA</strong>: Toggle cellular automata response field.</span>
+                </div>
+                <p class="life-quote">A body becomes an interface when strain is allowed to speak as signal.</p>
             </div>
         </div>
     </section>
@@ -2152,17 +2233,17 @@
                  const currentScale = easedScale * revealScale;
                  const event = p(0.5, 0.5);
 
-                 const top = scalePoint(p(0.5, 0.02), event, currentScale);
-                 const bottom = scalePoint(p(0.5, 0.98), event, currentScale);
-                 const topLeft = scalePoint(p(0.04, 0.04), event, currentScale);
-                 const topRight = scalePoint(p(0.96, 0.04), event, currentScale);
-                 const bottomLeft = scalePoint(p(0.05, 0.96), event, currentScale);
-                 const bottomRight = scalePoint(p(0.95, 0.96), event, currentScale);
+                 const top = scalePoint(p(0.5, 0.13), event, currentScale);
+                 const bottom = scalePoint(p(0.5, 0.87), event, currentScale);
+                 const topLeft = scalePoint(p(0.08, 0.17), event, currentScale);
+                 const topRight = scalePoint(p(0.92, 0.17), event, currentScale);
+                 const bottomLeft = scalePoint(p(0.09, 0.83), event, currentScale);
+                 const bottomRight = scalePoint(p(0.91, 0.83), event, currentScale);
 
-                 const topRx = width * 0.46 * currentScale;
-                 const topRy = height * 0.09 * currentScale;
-                 const bottomRx = width * 0.45 * currentScale;
-                 const bottomRy = height * 0.09 * currentScale;
+                 const topRx = width * 0.42 * currentScale;
+                 const topRy = height * 0.07 * currentScale;
+                 const bottomRx = width * 0.41 * currentScale;
+                 const bottomRy = height * 0.07 * currentScale;
 
                  const plane = [p(0.056, 0.468), p(0.573, 0.352), p(0.968, 0.531), p(0.401, 0.704)];
 
@@ -2292,7 +2373,7 @@
                 ctx.fill();
                 ctx.restore();
 
-                const topCapGradient = ctx.createRadialGradient(top[0], top[1] - height * 0.02 * easedScale, 0, top[0], top[1], width * 0.37 * easedScale);
+                const topCapGradient = ctx.createRadialGradient(top[0], top[1] - height * 0.018 * easedScale, 0, top[0], top[1], width * 0.31 * easedScale);
                 topCapGradient.addColorStop(0, `rgba(255, 255, 255, ${revealScale * easedScale})`);
                 topCapGradient.addColorStop(0.32, `rgba(97, 255, 239, ${revealScale * easedScale})`);
                 topCapGradient.addColorStop(0.66, `rgba(0, 168, 255, ${revealScale * easedScale})`);
@@ -2730,6 +2811,257 @@
             updateStatus();
             draw();
             requestAnimationFrame(loop);
+        })();
+
+        (() => {
+            const canvas = document.getElementById('postural-canvas');
+            const status = document.getElementById('postural-status');
+            const randomBtn = document.getElementById('postural-random');
+            const caBtn = document.getElementById('postural-ca');
+            if (!canvas || !status || !randomBtn || !caBtn) return;
+
+            const ctx = canvas.getContext('2d');
+            const base = {
+                head: [0.5, 0.18],
+                spine: [0.5, 0.43],
+                pelvis: [0.5, 0.62],
+                leftHand: [0.28, 0.43],
+                rightHand: [0.72, 0.43],
+                leftKnee: [0.39, 0.75],
+                rightKnee: [0.61, 0.75],
+                leftFoot: [0.33, 0.91],
+                rightFoot: [0.67, 0.91]
+            };
+            const joints = Object.fromEntries(Object.entries(base).map(([key, value]) => [key, [...value]]));
+            const links = [
+                ['head', 'spine'], ['spine', 'pelvis'],
+                ['spine', 'leftHand'], ['spine', 'rightHand'],
+                ['pelvis', 'leftKnee'], ['leftKnee', 'leftFoot'],
+                ['pelvis', 'rightKnee'], ['rightKnee', 'rightFoot']
+            ];
+            const keyMap = {
+                '1': ['head', 0, -0.09],
+                '2': ['leftKnee', -0.09, 0.06],
+                '3': ['rightKnee', 0.09, 0.06],
+                '4': ['leftHand', -0.12, -0.05],
+                '5': ['rightHand', 0.12, -0.05],
+                '6': ['spine', 0, -0.1]
+            };
+            const cols = 32;
+            const rows = 18;
+            let caEnabled = true;
+            let dragging = null;
+            let flexPulse = 0;
+            let field = Array.from({ length: rows }, () => Array(cols).fill(0));
+
+            const resetBody = () => {
+                Object.entries(base).forEach(([key, value]) => {
+                    joints[key][0] = value[0];
+                    joints[key][1] = value[1];
+                });
+                flexPulse = 0;
+            };
+
+            const tension = () => {
+                const total = Object.keys(joints).reduce((sum, key) => {
+                    const dx = joints[key][0] - base[key][0];
+                    const dy = joints[key][1] - base[key][1];
+                    return sum + Math.hypot(dx, dy);
+                }, 0);
+                return Math.min(1, total / 1.05);
+            };
+
+            const seedField = () => {
+                const t = tension();
+                Object.values(joints).forEach(([jx, jy]) => {
+                    const cx = Math.max(0, Math.min(cols - 1, Math.floor(jx * cols)));
+                    const cy = Math.max(0, Math.min(rows - 1, Math.floor(jy * rows)));
+                    field[cy][cx] = Math.min(1, field[cy][cx] + 0.7 + t * 0.3);
+                    for (let oy = -1; oy <= 1; oy += 1) {
+                        for (let ox = -1; ox <= 1; ox += 1) {
+                            const x = cx + ox;
+                            const y = cy + oy;
+                            if (x >= 0 && x < cols && y >= 0 && y < rows) {
+                                field[y][x] = Math.max(field[y][x], 0.12 + t * 0.22);
+                            }
+                        }
+                    }
+                });
+            };
+
+            const stepField = () => {
+                if (!caEnabled) {
+                    field = field.map(row => row.map(value => value * 0.9));
+                    return;
+                }
+                seedField();
+                const next = Array.from({ length: rows }, () => Array(cols).fill(0));
+                for (let y = 0; y < rows; y += 1) {
+                    for (let x = 0; x < cols; x += 1) {
+                        let neighbors = 0;
+                        for (let oy = -1; oy <= 1; oy += 1) {
+                            for (let ox = -1; ox <= 1; ox += 1) {
+                                if (ox === 0 && oy === 0) continue;
+                                const nx = (x + ox + cols) % cols;
+                                const ny = (y + oy + rows) % rows;
+                                if (field[ny][nx] > 0.42) neighbors += 1;
+                            }
+                        }
+                        const alive = field[y][x] > 0.42;
+                        const born = !alive && neighbors === 3;
+                        const survive = alive && (neighbors === 2 || neighbors === 3);
+                        next[y][x] = born || survive ? 0.92 : field[y][x] * 0.74;
+                    }
+                }
+                field = next;
+            };
+
+            const draw = () => {
+                const w = canvas.width;
+                const h = canvas.height;
+                ctx.fillStyle = '#030403';
+                ctx.fillRect(0, 0, w, h);
+
+                const cellW = w / cols;
+                const cellH = h / rows;
+                for (let y = 0; y < rows; y += 1) {
+                    for (let x = 0; x < cols; x += 1) {
+                        const value = field[y][x];
+                        if (value < 0.035) continue;
+                        ctx.fillStyle = `rgba(153, 220, 27, ${Math.min(0.48, value * 0.42)})`;
+                        ctx.fillRect(x * cellW, y * cellH, cellW - 1, cellH - 1);
+                    }
+                }
+
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.07)';
+                ctx.lineWidth = 1;
+                for (let x = 0; x <= cols; x += 1) {
+                    ctx.beginPath();
+                    ctx.moveTo(x * cellW + 0.5, 0);
+                    ctx.lineTo(x * cellW + 0.5, h);
+                    ctx.stroke();
+                }
+                for (let y = 0; y <= rows; y += 1) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y * cellH + 0.5);
+                    ctx.lineTo(w, y * cellH + 0.5);
+                    ctx.stroke();
+                }
+
+                const t = tension();
+                ctx.lineCap = 'round';
+                links.forEach(([a, b]) => {
+                    const start = joints[a];
+                    const end = joints[b];
+                    const gradient = ctx.createLinearGradient(start[0] * w, start[1] * h, end[0] * w, end[1] * h);
+                    gradient.addColorStop(0, `rgba(255, 255, 255, ${0.48 + t * 0.34})`);
+                    gradient.addColorStop(1, `rgba(153, 220, 27, ${0.42 + t * 0.42})`);
+                    ctx.strokeStyle = gradient;
+                    ctx.lineWidth = 5 + t * 9;
+                    ctx.shadowColor = 'rgba(153, 220, 27, 0.42)';
+                    ctx.shadowBlur = 8 + t * 20 + flexPulse * 18;
+                    ctx.beginPath();
+                    ctx.moveTo(start[0] * w, start[1] * h);
+                    ctx.lineTo(end[0] * w, end[1] * h);
+                    ctx.stroke();
+                });
+                ctx.shadowBlur = 0;
+
+                Object.entries(joints).forEach(([key, [x, y]]) => {
+                    const isActive = dragging === key;
+                    ctx.fillStyle = isActive ? '#ffffff' : '#99dc1b';
+                    ctx.shadowColor = isActive ? '#ffffff' : '#99dc1b';
+                    ctx.shadowBlur = isActive ? 20 : 11 + t * 12;
+                    ctx.beginPath();
+                    ctx.arc(x * w, y * h, isActive ? 12 : 8 + t * 4, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                ctx.shadowBlur = 0;
+
+                status.textContent = `Tension: ${t.toFixed(2)} | CA Field: ${caEnabled ? 'On' : 'Off'}`;
+                caBtn.classList.toggle('is-active', caEnabled);
+                caBtn.setAttribute('aria-pressed', String(caEnabled));
+                flexPulse *= 0.9;
+            };
+
+            const setJointFromEvent = (event) => {
+                if (!dragging) return;
+                const rect = canvas.getBoundingClientRect();
+                joints[dragging][0] = Math.max(0.06, Math.min(0.94, (event.clientX - rect.left) / rect.width));
+                joints[dragging][1] = Math.max(0.06, Math.min(0.94, (event.clientY - rect.top) / rect.height));
+                flexPulse = 1;
+                draw();
+            };
+
+            const nearestJoint = (event) => {
+                const rect = canvas.getBoundingClientRect();
+                const x = (event.clientX - rect.left) / rect.width;
+                const y = (event.clientY - rect.top) / rect.height;
+                let nearest = null;
+                let best = Infinity;
+                Object.entries(joints).forEach(([key, value]) => {
+                    const d = Math.hypot(value[0] - x, value[1] - y);
+                    if (d < best) {
+                        best = d;
+                        nearest = key;
+                    }
+                });
+                return best < 0.08 ? nearest : null;
+            };
+
+            canvas.addEventListener('pointerdown', (event) => {
+                dragging = nearestJoint(event);
+                if (!dragging) return;
+                canvas.setPointerCapture(event.pointerId);
+                setJointFromEvent(event);
+            });
+            canvas.addEventListener('pointermove', setJointFromEvent);
+            canvas.addEventListener('pointerup', (event) => {
+                if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+                dragging = null;
+                draw();
+            });
+            canvas.addEventListener('pointerleave', () => {
+                dragging = null;
+                draw();
+            });
+
+            randomBtn.addEventListener('click', () => {
+                Object.keys(joints).forEach((key) => {
+                    joints[key][0] = Math.max(0.08, Math.min(0.92, base[key][0] + (Math.random() - 0.5) * 0.32));
+                    joints[key][1] = Math.max(0.08, Math.min(0.92, base[key][1] + (Math.random() - 0.5) * 0.24));
+                });
+                flexPulse = 1;
+                draw();
+            });
+
+            caBtn.addEventListener('click', () => {
+                caEnabled = !caEnabled;
+                draw();
+            });
+
+            window.addEventListener('keydown', (event) => {
+                const key = event.key.toLowerCase();
+                if (keyMap[key]) {
+                    const [joint, dx, dy] = keyMap[key];
+                    joints[joint][0] = Math.max(0.06, Math.min(0.94, joints[joint][0] + dx * (event.shiftKey ? 1.8 : 1)));
+                    joints[joint][1] = Math.max(0.06, Math.min(0.94, joints[joint][1] + dy * (event.shiftKey ? 1.8 : 1)));
+                    flexPulse = 1;
+                    draw();
+                } else if (key === 'r') {
+                    resetBody();
+                    draw();
+                }
+            });
+
+            const loop = () => {
+                stepField();
+                draw();
+                requestAnimationFrame(loop);
+            };
+
+            resetBody();
+            loop();
         })();
     </script>
     <script>
