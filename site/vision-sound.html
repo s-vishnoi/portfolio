@@ -252,9 +252,9 @@
             transform: translateY(14px) scaleX(1.01);
             opacity: 0;
             filter: saturate(0.8);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+            transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
                 color 0.3s ease,
                 text-shadow 0.3s ease;
             will-change: opacity, filter, transform;
@@ -487,7 +487,7 @@
             width: max-content;
             transform: scale(0.9);
             opacity: 0;
-            transition: color 0.25s ease, opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition: color 0.25s ease, opacity 0.45s ease-out, transform 0.45s ease-out;
         }
 
         body.intro-ready .text-btn {
@@ -830,8 +830,8 @@
             text-transform: uppercase;
             opacity: 0;
             transform: translateY(24px);
-            transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
 
@@ -1031,8 +1031,8 @@
             opacity: 0;
             transform: translateY(32px) scale(0.985);
             transition:
-                opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+                opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .audio-player-container {
@@ -1187,8 +1187,8 @@
             opacity: 0;
             transform: translateY(10px);
             transition:
-                opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
                 color 0.4s ease;
         }
 
@@ -1510,18 +1510,18 @@
 <body data-page="visionSound">
     <script>
         const reduceIntroMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        // If arriving via portal nav (cx/cy params), delay content reveal
-        // until after the 1.3s clip-path glow-circle animation completes.
+        // If arriving via portal nav (cx/cy params), briefly delay content reveal
+        // so the clip-path glow-circle animation has room to register.
         const _vsParams = new URLSearchParams(window.location.search);
         const _viaPortal = !reduceIntroMotion && _vsParams.get('cx') && _vsParams.get('cy');
 
         window.setTimeout(() => {
             document.body.classList.add('intro-text-ready');
-        }, reduceIntroMotion ? 100 : (_viaPortal ? 1500 : 800));
+        }, reduceIntroMotion ? 100 : (_viaPortal ? 700 : 220));
 
         window.setTimeout(() => {
             document.body.classList.add('intro-ready');
-        }, reduceIntroMotion ? 100 : (_viaPortal ? 2100 : 1500));
+        }, reduceIntroMotion ? 100 : (_viaPortal ? 1050 : 520));
     </script>
 
     <div id="gradient-frame"></div>
@@ -2123,9 +2123,9 @@
 
                  const pulse = reduceMotion ? 0 : (Math.sin(time / 520) + 1) / 2;
 
-                 // Smoothly update revealScale (slow grow transition)
+                 // Smoothly update revealScale for a quick but still fluid grow transition.
                  const targetReveal = isRevealed ? 1 : 0;
-                 revealScale += (targetReveal - revealScale) * 0.018;
+                 revealScale += (targetReveal - revealScale) * 0.065;
 
                  // Smoothly update dotHoverScale
                  const targetDotScale = (isHoveringDot && !isRevealed) ? 1.48 : 1.0;

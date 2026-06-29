@@ -25,14 +25,14 @@
         /* Base Variables */
         :root {
             --bg-color: #000;
-            --accent-primary: #00e5ff;
-            /* Electric Cyan */
+            --accent-primary: #d6d06a;
+            /* Muted Yellow */
             --text-color: #ffffff;
             --particle-speed: 3.5;
 
             /* Palette Colors for Flashing */
-            --c1: #00E5FF;
-            /* Electric Cyan */
+            --c1: #d6d06a;
+            /* Muted Yellow */
             --c2: #FE4164;
             /* Neon Fuchsia */
             --c3: #6F00FF;
@@ -86,7 +86,7 @@
             filter: brightness(1.16);
             text-shadow:
                 0 0 12px currentColor,
-                0 0 26px rgba(0, 229, 255, 0.34);
+                0 0 26px rgba(214, 208, 106, 0.28);
         }
 
         /* About Background Container & Multi-layers */
@@ -229,12 +229,15 @@
             position: fixed;
             top: 40px;
             right: 40px;
+            max-width: min(820px, calc(100vw - 80px));
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(0.9rem, 1.26vw, 1.32rem);
+            font-size: clamp(1.18rem, 2.1vw, 2.35rem);
             font-weight: 800;
-            letter-spacing: 0.24em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
+            text-align: right;
             text-decoration: none;
+            line-height: 0.95;
             z-index: 9000;
             animation: cycleColors 3s infinite linear;
             pointer-events: auto;
@@ -510,7 +513,7 @@
 
         .contact-block.story-beat.is-active .contact-list .contact-row:nth-child(1) a {
             color: var(--c1);
-            text-shadow: 0 0 12px rgba(0, 229, 255, 0.45);
+            text-shadow: 0 0 12px rgba(214, 208, 106, 0.36);
         }
 
         .contact-block.story-beat.is-active .contact-list .contact-row:nth-child(2) a {
@@ -625,7 +628,7 @@
         .about-work-card.story-beat.is-active {
             opacity: 1;
             filter: none;
-            text-shadow: 0 0 18px rgba(0, 229, 255, 0.34);
+            text-shadow: 0 0 18px rgba(214, 208, 106, 0.28);
         }
 
         .about-text p:nth-of-type(4),
@@ -668,14 +671,14 @@
         .about-project-link {
             color: var(--accent-primary);
             text-decoration: none;
-            text-shadow: 0 0 16px rgba(0, 229, 255, 0.42);
+            text-shadow: 0 0 16px rgba(214, 208, 106, 0.34);
             font-weight: 900;
             transition: color 0.25s ease, text-shadow 0.25s ease;
         }
 
         .about-project-link:hover {
             color: #fff;
-            text-shadow: 0 0 10px var(--accent-primary), 0 0 22px rgba(0, 229, 255, 0.5);
+            text-shadow: 0 0 10px var(--accent-primary), 0 0 22px rgba(214, 208, 106, 0.4);
         }
 
         .about-work-card {
@@ -687,7 +690,7 @@
             min-height: clamp(132px, 16vw, 190px);
             margin-top: -19vh;
             padding: clamp(1.1rem, 2vw, 1.6rem) 0;
-            border-top: 2px solid rgba(0, 229, 255, 0.68);
+            border-top: 2px solid rgba(214, 208, 106, 0.58);
             overflow: hidden;
             color: #fff;
             font-family: 'Montserrat', sans-serif;
@@ -753,7 +756,7 @@
             color: var(--accent-primary);
             border-color: #fff;
             transform: translateY(-3px);
-            text-shadow: 0 0 16px rgba(0, 229, 255, 0.45);
+            text-shadow: 0 0 16px rgba(214, 208, 106, 0.36);
             filter: saturate(1.14) contrast(1.06);
         }
 
@@ -778,7 +781,7 @@
             text-transform: uppercase;
             color: var(--accent-primary);
             opacity: 0.92;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 16px rgba(0, 229, 255, 0.36);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 16px rgba(214, 208, 106, 0.3);
         }
 
         .about-work-date {
@@ -803,7 +806,7 @@
             letter-spacing: 0.06em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.76);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 12px rgba(0, 229, 255, 0.18);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 12px rgba(214, 208, 106, 0.16);
         }
 
         .about-work-meta {
@@ -847,7 +850,7 @@
 
         .bike-map-link-text {
             color: var(--accent-primary);
-            text-shadow: 0 0 14px rgba(0, 229, 255, 0.38);
+            text-shadow: 0 0 14px rgba(214, 208, 106, 0.3);
             animation: none;
         }
 
@@ -1083,6 +1086,20 @@
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
         }
 
+        body[data-active-group="city"] .home-only #btn-main-past-work,
+        body[data-active-group="equality"] .home-only #btn-main-past-work,
+        body[data-active-group="consulting"] .home-only #btn-main-consults,
+        body[data-active-group="accessibility"] .home-only #btn-main-writings,
+        body[data-active-group="contact"] .home-only #btn-main-contact {
+            color: #fff;
+            opacity: 1;
+            letter-spacing: 2px;
+            text-shadow:
+                0 0 8px rgba(214, 208, 106, 0.7),
+                0 0 18px rgba(214, 208, 106, 0.46),
+                0 0 30px rgba(255, 255, 255, 0.24);
+        }
+
         .nav-bike-map-link {
             display: inline-flex;
             align-items: center;
@@ -1118,7 +1135,7 @@
         .nav-bike-map-link:focus-visible {
             opacity: 1 !important;
             transform: scale(1.05) !important;
-            filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.5)) !important;
+            filter: drop-shadow(0 0 20px rgba(214, 208, 106, 0.38)) !important;
         }
 
         .nav-bike-text {
@@ -1175,7 +1192,7 @@
 
             0%,
             100% {
-                filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.42));
+                filter: drop-shadow(0 0 8px rgba(214, 208, 106, 0.34));
             }
 
             33% {
@@ -1442,7 +1459,7 @@
     <div id="cursor-img"></div>
 
     <!-- Vision & Sound Portal Link (Upper Right) -->
-    <a href="vision-sound.html" id="btn-vision-sound" class="vision-sound-btn" data-portal-link>vision and sound</a>
+    <a href="vision-sound.html" id="btn-vision-sound" class="vision-sound-btn" data-portal-link>vision and sound art</a>
 
     <div class="container">
         <div class="about-text">
