@@ -1,4 +1,7 @@
 (() => {
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
     const pages = {
         home: 'index.html',
         about: 'index.html',
@@ -6,7 +9,10 @@
         equality: 'scientific-equality.html',
         consulting: 'consulting.html',
         passion: 'passion.html',
-        writings: 'writings.html'
+        writings: 'writings.html',
+        projects: 'projects.html',
+        pastRoles: 'past-roles.html',
+        visionSound: 'vision-sound.html'
     };
 
     const aliases = {
@@ -17,7 +23,10 @@
         'scientific-equality.html': 'equality',
         'consulting.html': 'consulting',
         'passion.html': 'passion',
-        'writings.html': 'writings'
+        'writings.html': 'writings',
+        'projects.html': 'projects',
+        'past-roles.html': 'pastRoles',
+        'vision-sound.html': 'visionSound'
     };
 
     const navTargetsByIndex = {
@@ -35,10 +44,12 @@
         equality: 2,
         consulting: 5,
         passion: 3,
-        writings: 4
+        writings: 4,
+        pastRoles: 6,
+        visionSound: 1
     };
 
-    const portalTargets = new Set([pages.home, pages.about, pages.city, pages.equality, pages.consulting, pages.passion, pages.writings]);
+    const portalTargets = new Set([pages.home, pages.about, pages.city, pages.equality, pages.consulting, pages.passion, pages.writings, pages.pastRoles, pages.visionSound]);
     const randomPageKeys = ['about', 'city', 'equality', 'consulting', 'passion', 'writings'];
 
     const baseRotations = {
@@ -56,7 +67,9 @@
         equality: baseRotations[2],
         consulting: baseRotations[5],
         passion: baseRotations[3],
-        writings: baseRotations[4]
+        writings: baseRotations[4],
+        pastRoles: baseRotations[6],
+        visionSound: baseRotations[1]
     };
 
     let currentRotX = -20;
@@ -103,16 +116,23 @@
     const restoreAboutPosition = () => {
         if (pageFromPath() !== 'about') return;
         const params = new URLSearchParams(window.location.search);
-        let y = Number(params.get('y'));
-        if (!Number.isFinite(y)) {
-            try {
-                y = Number(sessionStorage.getItem('aboutReturnY'));
-            } catch {
-                y = 0;
+        const isReturning = params.get('return') === 'about';
+        
+        let y = 0;
+        if (isReturning) {
+            y = Number(params.get('y'));
+            if (!Number.isFinite(y)) {
+                try {
+                    y = Number(sessionStorage.getItem('aboutReturnY')) || 0;
+                } catch {
+                    y = 0;
+                }
             }
+        } else {
+            try {
+                sessionStorage.removeItem('aboutReturnY');
+            } catch {}
         }
-
-        if (!Number.isFinite(y)) y = 0;
 
         window.setTimeout(() => {
             window.scrollTo({ top: Math.max(y, 0), behavior: 'auto' });
@@ -155,7 +175,7 @@
     };
 
     const configureNavLinks = () => {
-        document.querySelectorAll('.text-btn').forEach((link) => {
+        document.querySelectorAll('.text-btn:not(#btn-main-contact):not([href^="#"])').forEach((link) => {
             const index = Number(link.dataset.index);
             const target = navTargetsByIndex[index] || canonicalTarget(link.getAttribute('href'));
             if (!target) return;

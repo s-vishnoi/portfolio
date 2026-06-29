@@ -13,3 +13,11 @@ site/archive/
 .ipynb_checkpoints/
 .env
 .env.*
+
+# Build, node, and metadata directories
+node_modules/
+.codex/
+
+# Backup and duplicate files to ignore
+V+A  PERF OFFIC/
+site/videos/THE TIME.mp3

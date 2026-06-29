@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
+    <title>All Work | Samvardhan Vishnoi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #000;
+            --accent-primary: #dfff00;
+            --c1: #99DC1B; /* Cyber Lime */
+            --c2: #FE4164; /* Neon Fuchsia */
+            --c3: #6F00FF; /* Electric Indigo */
+            --c4: #FFFFFF; /* White */
+        }
+
+        html {
+            overscroll-behavior: none;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            height: auto;
+            margin: 0;
+            overflow-x: hidden;
+            overscroll-behavior: none;
+            overflow-y: auto;
+            position: relative;
+            cursor: none;
+            transition: opacity 0.5s ease;
+            opacity: 1;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+
+        #cursor-img {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            width: 88px;
+            height: 88px;
+            background: url('images/sparkle.gif') no-repeat center center;
+            background-size: contain;
+            mix-blend-mode: screen;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            html,
+            html *,
+            body,
+            body * {
+                cursor: none !important;
+            }
+        }
+
+        @media (hover: none), (pointer: coarse) {
+            body {
+                cursor: auto;
+            }
+
+            #cursor-img {
+                display: none;
+            }
+        }
+
+        /* GRADIENT BORDER FRAME */
+        #gradient-frame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+            pointer-events: none;
+            border: 3px solid transparent;
+            border-image: linear-gradient(to bottom right, var(--c1), var(--c2), var(--c3)) 1;
+            box-sizing: border-box;
+        }
+
+        /* Left Vertical Navigation */
+        .nav-container {
+            position: fixed;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            align-items: flex-start;
+            z-index: 9000;
+            pointer-events: auto;
+        }
+
+        .nav-container.home-only {
+            top: 72px;
+            left: 40px;
+            right: auto;
+            transform: none;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+
+        .text-btn {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            cursor: pointer;
+            text-transform: lowercase;
+            letter-spacing: 2px;
+            transition: all 0.2s ease;
+            position: relative;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+            animation: cycleColors 2.4s infinite linear;
+        }
+
+        .home-only .text-btn {
+            font-size: 1.74rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #dfff00;
+            transform: scaleX(1.18);
+            transform-origin: left center;
+            animation: none;
+            text-shadow: none;
+        }
+
+        .home-only .text-btn:hover {
+            color: #fff;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px #dfff00;
+        }
+
+        .project-back-btn {
+            position: relative;
+            align-self: flex-start;
+            width: auto;
+            margin: 0.2rem 0 0 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.72);
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.6rem, 4.4vw, 5rem);
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: 0;
+            text-shadow: 0 0 14px rgba(223, 255, 0, 0.48), 0 0 28px rgba(255, 255, 255, 0.26);
+            cursor: pointer;
+            z-index: 40;
+        }
+
+        .project-back-btn:hover {
+            color: #dfff00;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.78));
+        }
+
+        .film-grain {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.08;
+            mix-blend-mode: overlay;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(1.08);
+            filter: blur(8px) brightness(0.24) saturate(0.8);
+            opacity: 0.32;
+            z-index: -2;
+        }
+
+        /* Container Layout */
+        #projects-container {
+            position: relative;
+            width: min(840px, calc(100vw - 20vw));
+            margin: 18vh auto 10vh;
+            padding-left: clamp(20px, 4vw, 60px);
+            z-index: 10;
+        }
+
+        .projects-header {
+            margin-bottom: 8vh;
+            text-align: left;
+        }
+
+        .projects-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.4rem, 4.8vw, 5.4rem);
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            width: max-content;
+            white-space: nowrap;
+            overflow: visible;
+            text-align: left;
+            margin: 0 0 1.2rem;
+            transform: scaleX(1.4);
+            transform-origin: left top;
+            animation: cycleColors 2.4s infinite linear;
+        }
+
+        .projects-tagline {
+            font-size: clamp(0.9rem, 1.3vw, 1.38rem);
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: lowercase;
+            color: rgba(255, 255, 255, 0.52);
+            margin-top: 10px;
+        }
+
+        /* List of Projects (matches homepage list row styles exactly, no boxes/frames) */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .about-work-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            min-height: clamp(132px, 16vw, 190px);
+            padding: clamp(1.1rem, 2vw, 1.6rem) 0;
+            border-top: 2px solid rgba(223, 255, 0, 0.68);
+            overflow: hidden;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            text-shadow: none;
+            transform: none;
+            transform-origin: left center;
+            transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease, filter 0.25s ease;
+        }
+
+        .about-work-card:last-child {
+            border-bottom: 2px solid rgba(223, 255, 0, 0.68);
+        }
+
+        .about-work-card:hover {
+            color: var(--accent-primary);
+            border-color: #fff;
+            transform: translateY(-3px);
+            text-shadow: 0 0 16px rgba(223, 255, 0, 0.45);
+            filter: saturate(1.14) contrast(1.06);
+        }
+
+        /* Theme-specific styles to match index beat highlights */
+        .cities-project { border-top-color: rgba(153, 220, 27, 0.68); }
+        .cities-project:hover {
+            color: var(--c1);
+            border-color: #fff;
+            text-shadow: 0 0 16px rgba(153, 220, 27, 0.45);
+        }
+
+        .equality-project { border-top-color: rgba(111, 0, 255, 0.68); }
+        .equality-project:hover {
+            color: var(--c3);
+            border-color: #fff;
+            text-shadow: 0 0 16px rgba(111, 0, 255, 0.45);
+        }
+
+        .bike-project {
+            border-top-color: rgba(254, 65, 100, 0.68);
+            border-bottom-color: rgba(254, 65, 100, 0.68) !important;
+        }
+        .bike-project:hover {
+            color: var(--c2);
+            border-color: #fff;
+            text-shadow: 0 0 16px rgba(254, 65, 100, 0.45);
+        }
+
+        .about-work-title {
+            display: block;
+            font-size: clamp(1.26rem, 2.18vw, 2.28rem);
+            line-height: 0.96;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .cities-project .about-work-title { animation: cycleColorsLime 2.8s infinite linear; }
+        .equality-project .about-work-title { animation: cycleColorsIndigo 2.8s infinite linear; }
+        .bike-project .about-work-title { animation: cycleColorsFuchsia 2.8s infinite linear; }
+
+        .about-work-collab-label {
+            display: block;
+            margin-top: 0.58rem;
+            margin-bottom: 0.28rem;
+            font-size: clamp(0.75rem, 0.95vw, 0.92rem);
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            opacity: 0.92;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 16px rgba(223, 255, 0, 0.36);
+        }
+
+        .about-work-date {
+            display: block;
+            margin-top: 0.22rem;
+            margin-bottom: 0.38rem;
+            font-size: clamp(0.72rem, 0.9vw, 0.85rem);
+            line-height: 1;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.45);
+            text-shadow: none;
+        }
+
+        .cities-project .about-work-collab-label {
+            color: var(--c1);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 16px rgba(153, 220, 27, 0.36);
+        }
+        .equality-project .about-work-collab-label {
+            color: var(--c3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 16px rgba(111, 0, 255, 0.36);
+        }
+        .bike-project .about-work-collab-label {
+            color: var(--c2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 16px rgba(254, 65, 100, 0.36);
+        }
+
+        .about-work-collab {
+            display: block;
+            margin-bottom: 0.15rem;
+            font-size: clamp(0.75rem, 0.95vw, 0.92rem);
+            line-height: 1.25;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.76);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 12px rgba(223, 255, 0, 0.18);
+        }
+
+        .about-work-meta {
+            display: block;
+            margin-top: 0.58rem;
+            font-size: clamp(0.72rem, 0.9vw, 0.9rem);
+            line-height: 1.35;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.68);
+        }
+
+        /* Rolling Die Placement */
+        .die-container {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            width: 36px;
+            height: 36px;
+            perspective: 1000px;
+            cursor: pointer;
+            z-index: 9000;
+            pointer-events: auto;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(-18px) rotateX(-20deg) rotateY(25deg);
+            transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.25, 1.1);
+        }
+
+        .cube__face {
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            border: 2px solid #ffffff;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-between;
+            justify-content: space-between;
+            padding: 5px;
+            box-sizing: border-box;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.15), inset 0 0 8px rgba(255, 255, 255, 0.1);
+        }
+
+        .cube__face--1 { transform: rotateY(0deg) translateZ(18px); }
+        .cube__face--2 { transform: rotateY(90deg) translateZ(18px); }
+        .cube__face--3 { transform: rotateY(180deg) translateZ(18px); }
+        .cube__face--4 { transform: rotateY(-90deg) translateZ(18px); }
+        .cube__face--5 { transform: rotateX(90deg) translateZ(18px); }
+        .cube__face--6 { transform: rotateX(-90deg) translateZ(18px); }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 4px #ffffff;
+        }
+
+        .cube__face--1 { justify-content: center; align-items: center; }
+        .cube__face--5 { justify-content: center; align-items: center; }
+
+        @keyframes levitate {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes cycleColors {
+            0% { color: var(--c1); }
+            25% { color: var(--c2); }
+            50% { color: var(--c3); }
+            75% { color: var(--c4); }
+            100% { color: var(--c1); }
+        }
+
+        @keyframes cycleColorsLime {
+            0%, 100% { color: var(--c1); }
+            50% { color: #fff; }
+        }
+        @keyframes cycleColorsIndigo {
+            0%, 100% { color: var(--c3); }
+            50% { color: #fff; }
+        }
+        @keyframes cycleColorsFuchsia {
+            0%, 100% { color: var(--c2); }
+            50% { color: #fff; }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            #projects-container {
+                width: calc(100vw - 32px);
+                margin-top: 100px;
+                padding-left: 0;
+            }
+
+            .nav-container {
+                position: relative !important;
+                top: 0 !important;
+                left: 0 !important;
+                transform: none !important;
+                width: 100% !important;
+                padding: 30px 16px 10px 16px !important;
+                display: flex !important;
+                justify-content: center !important;
+                flex-wrap: wrap !important;
+                align-items: center !important;
+                gap: 0.8rem !important;
+                box-sizing: border-box !important;
+            }
+
+            .project-back-btn {
+                display: none;
+            }
+
+            .die-container {
+                top: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Frame -->
+    <div id="gradient-frame"></div>
+    <div class="bg-overlay"></div>
+    <div class="film-grain"></div>
+    <img id="bg-image" src="images/megrid.jpeg" alt="">
+
+    <!-- Custom Cursor -->
+    <div id="cursor-img"></div>
+
+    <!-- Left Navigation -->
+    <nav class="nav-container home-only">
+        <a href="index.html" id="btn-main-home" class="text-btn" data-index="5">home</a>
+        <button class="project-back-btn" id="project-back-btn" type="button" aria-label="Back to about">&lt;</button>
+    </nav>
+
+    <!-- Rolling Die -->
+    <div class="die-container" id="die-trigger">
+        <div class="cube" id="cube">
+            <div class="cube__face cube__face--1"><div class="dot"></div></div>
+            <div class="cube__face cube__face--2"><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--3"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--4"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--5"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--6"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+    </div>
+
+    <!-- Projects Directory -->
+    <div id="projects-container">
+        <header class="projects-header">
+            <h1 class="projects-heading">ALL WORK</h1>
+            <p class="projects-tagline">computational models ✦ scaling laws ✦ civic data maps</p>
+        </header>
+
+        <div class="projects-list">
+            <!-- Project 1 -->
+            <a href="city-scaling.html" class="about-work-card cities-project" data-portal-link>
+                <span class="about-work-title">The Scale-Free Dynamics of U.S. Cities</span>
+                <span class="about-work-meta">URBAN DATA MODELING | 344 U.S. CITIES | MISSING FBI DATA</span>
+                <span class="about-work-collab-label">Ph.D. in Physics, Complexity</span>
+                <span class="about-work-collab">Northwestern University</span>
+                <span class="about-work-date">Jan 2022 - Present</span>
+            </a>
+
+            <!-- Project 2 -->
+            <a href="scientific-equality.html" class="about-work-card equality-project" data-portal-link>
+                <span class="about-work-title">A Global Measure of Scientific Equality</span>
+                <span class="about-work-meta">DEMOGRAPHIC FORECASTING | 47M Scraped Publications | 183 countries</span>
+                <span class="about-work-collab-label">Visiting Data Scientist</span>
+                <span class="about-work-collab">Max Planck Institute for Demographic Research, Germany</span>
+                <span class="about-work-date">Jun 2023 - Present</span>
+            </a>
+
+            <!-- Project 3 -->
+            <a href="passion.html" class="about-work-card bike-project" data-portal-link>
+                <span class="about-work-title">Chicago Bike Safety Map</span>
+                <span class="about-work-meta">CHICAGO DATA PORTAL | INTERACTIVE DATA MAP</span>
+                <span class="about-work-collab-label">Civic Safety Map</span>
+                <span class="about-work-collab">Civic Data Infrastructure</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="js/site-nav.js"></script>
+    <script src="js/cursor.js"></script>
+    <script>
+        const projectBackBtn = document.getElementById('project-back-btn');
+        if (projectBackBtn) {
+            projectBackBtn.addEventListener('click', () => {
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    let y = 0;
+                    try {
+                        y = Number(sessionStorage.getItem('aboutReturnY')) || 0;
+                    } catch {
+                        y = 0;
+                    }
+                    window.location.href = `index.html?return=about&y=${encodeURIComponent(y)}`;
+                }, 500);
+            });
+        }
+    </script>
+</body>
+
+</html>

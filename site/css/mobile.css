@@ -110,6 +110,7 @@
         max-width: none !important;
         align-self: auto !important;
         transform: none !important;
+        margin-top: 0 !important;
         margin-bottom: 0 !important;
     }
 
@@ -170,12 +171,12 @@
     }
 
     .about-work-collab-label {
-        font-size: 0.58rem !important;
+        font-size: 0.64rem !important;
         letter-spacing: 0.16em !important;
     }
 
     .about-work-collab {
-        font-size: 0.66rem !important;
+        font-size: 0.64rem !important;
         letter-spacing: 0.08em !important;
         line-height: 1.28 !important;
     }
@@ -191,62 +192,70 @@
         left: 0 !important;
         transform: none !important;
         width: 100% !important;
-        padding: 40px 0 30px 0 !important;
+        padding: 40px 16px 20px 16px !important;
+        display: flex !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        gap: 0.8rem !important;
+        box-sizing: border-box !important;
     }
 
     .text-btn {
         font-size: 1.1rem !important;
     }
 
-    .nav-bike-map-link {
-        position: absolute !important;
-        top: 58px !important;
-        right: 18px !important;
-        bottom: auto !important;
-        left: auto !important;
-        width: 104px !important;
-        max-width: 104px !important;
-        height: 104px !important;
-        text-align: center !important;
-        font-size: 0.76rem !important;
-        line-height: 0.9 !important;
-        transform: none !important;
-        transform-origin: right center !important;
+    .home-only .text-btn.nav-secondary {
+        font-size: 0.82rem !important;
         letter-spacing: 1px !important;
-        animation: none !important;
-        opacity: 0.7 !important;
-        filter: grayscale(35%) saturate(0.9) !important;
+        margin-left: 0 !important;
+    }
+
+    .nav-bike-map-link {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        align-self: center !important;
+        margin-right: 0 !important;
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+        position: relative !important;
+        top: 0 !important;
+        right: 0 !important;
+        width: auto !important;
+        height: auto !important;
+        opacity: 0.8 !important;
+        filter: none !important;
+        gap: 0.8rem !important;
     }
 
     .nav-bike-map-link:hover,
     .nav-bike-map-link:focus-visible {
-        top: 58px !important;
-        right: 18px !important;
-        bottom: auto !important;
-        width: 104px !important;
-        height: 104px !important;
-        letter-spacing: 1px !important;
-        transform: none !important;
-        animation: none !important;
-    }
-
-    .nav-bike-wheel {
-        width: 88px !important;
-        height: 88px !important;
-        filter: none;
+        opacity: 1 !important;
+        transform: scale(1.05) !important;
     }
 
     .nav-bike-text {
-        text-align: left !important;
-        width: 92% !important;
-        transform: translate(-50%, -50%) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
     }
 
-    .nav-bike-prefix,
     .bike-map-link-text {
-        font-style: normal !important;
-        transform: none !important;
-        transform-origin: left center !important;
+        font-size: 1.25rem !important;
+        transform: scaleX(1.1) !important;
+        letter-spacing: 1px !important;
+    }
+
+    .nav-bike-prefix {
+        font-size: 0.72rem !important;
+        letter-spacing: 2px !important;
+    }
+
+    .nav-bike-wheel {
+        width: 48px !important;
+        height: 48px !important;
     }
 
     /* ── 5. SIDEWAYS TITLES ── */

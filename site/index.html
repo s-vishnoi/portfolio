@@ -2,6 +2,14 @@
 <html lang="es">
 
 <head>
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        if (!window.location.search.includes('return=about')) {
+            window.scrollTo(0, 0);
+        }
+    </script>
     <meta name="google-site-verification" content="pFsiTdduBSGDXvgMKV5TpU9cyCfzx26ew2CLpg9ZSAE" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,8 +89,8 @@
                 0 0 26px rgba(223, 255, 0, 0.34);
         }
 
-        /* About Background */
-        #bg-image {
+        /* About Background Container & Multi-layers */
+        #bg-container {
             position: fixed;
             top: 50%;
             left: 50%;
@@ -92,13 +100,38 @@
             height: 120vh;
             z-index: -1;
             transform: translate(-51%, -51%) scale(1.82);
-            object-fit: cover;
-            opacity: 0.82;
-            filter: saturate(1.2) contrast(1.32) brightness(0.72);
             display: block;
             pointer-events: none;
             animation: aboutGridZoomOut 44s cubic-bezier(0.45, 0, 0.2, 1) infinite alternate;
             will-change: transform;
+        }
+
+        .bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            filter: saturate(1.2) contrast(1.32) brightness(0.72);
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: opacity;
+        }
+
+        .bg-layer[data-group="equality"] {
+            transform: scale(0.8);
+        }
+
+        /* Active Layer Opacity based on story-beat section */
+        body[data-active-group="default"] .bg-layer[data-group="default"],
+        body:not([data-active-group]) .bg-layer[data-group="default"],
+        body[data-active-group="city"] .bg-layer[data-group="city"],
+        body[data-active-group="equality"] .bg-layer[data-group="equality"],
+        body[data-active-group="consulting"] .bg-layer[data-group="consulting"],
+        body[data-active-group="accessibility"] .bg-layer[data-group="accessibility"],
+        body[data-active-group="contact"] .bg-layer[data-group="contact"] {
+            opacity: 0.82;
         }
 
         @keyframes aboutGridZoomOut {
@@ -120,9 +153,13 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            #bg-image {
+            #bg-container {
                 animation: none;
                 transform: translate(-50%, -50%) scale(1.18);
+            }
+
+            .bg-layer {
+                transition: none;
             }
         }
 
@@ -187,7 +224,38 @@
             transition: transform 0.1s ease-out;
         }
 
+        /* Vision & Sound Button (Upper Right where sparkle cursor sits) */
+        .vision-sound-btn {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.9rem, 1.26vw, 1.32rem);
+            font-weight: 800;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            text-decoration: none;
+            z-index: 9000;
+            animation: cycleColors 3s infinite linear;
+            pointer-events: auto;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, text-shadow 0.25s ease;
+        }
+
+        /* Show once intro is ready */
+        body.intro-ready .vision-sound-btn {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .vision-sound-btn:hover {
+            transform: scale(1.06) !important;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+        }
+
         @media (hover: hover) and (pointer: fine) {
+
             html,
             html *,
             body,
@@ -316,7 +384,7 @@
             z-index: 20;
             transform: scaleX(1.4);
             transform-origin: left top;
-            animation: 
+            animation:
                 nameReveal 1.15s cubic-bezier(0.2, 0.85, 0.25, 1) 0.65s both,
                 colorRapidFlash 5s infinite linear 1.0s;
         }
@@ -444,14 +512,17 @@
             color: var(--c1);
             text-shadow: 0 0 12px rgba(153, 220, 27, 0.45);
         }
+
         .contact-block.story-beat.is-active .contact-list .contact-row:nth-child(2) a {
             color: var(--c3);
             text-shadow: 0 0 12px rgba(111, 0, 255, 0.45);
         }
+
         .contact-block.story-beat.is-active .contact-list .contact-row:nth-child(3) a {
             color: var(--c4);
             text-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
         }
+
         .contact-block.story-beat.is-active .contact-list .contact-row:nth-child(4) a {
             color: var(--c2);
             text-shadow: 0 0 12px rgba(254, 65, 100, 0.45);
@@ -486,14 +557,14 @@
             animation: none;
         }
 
-        body:not(.returning-about):not(.intro-text-ready) .about-text > :not(.artist-name) {
+        body:not(.returning-about):not(.intro-text-ready) .about-text> :not(.artist-name) {
             opacity: 0 !important;
             filter: blur(3px);
             transform: translateY(18px);
             pointer-events: none;
         }
 
-        body:not(.returning-about) .about-text > :not(.artist-name) {
+        body:not(.returning-about) .about-text> :not(.artist-name) {
             transition:
                 opacity 1.9s ease,
                 filter 1.9s ease,
@@ -528,10 +599,10 @@
         .story-beat {
             opacity: 0.35;
             filter: blur(0.8px) saturate(0.8);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
-                        filter 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
-                        transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), 
-                        text-shadow 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                text-shadow 0.9s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, filter, transform;
         }
 
@@ -566,7 +637,11 @@
         }
 
         .about-text p:nth-of-type(2) {
-            margin-top: 16vh;
+            margin-top: 2vh;
+        }
+
+        .about-text p:nth-of-type(4) {
+            margin-top: -12vh;
         }
 
         .about-text p:nth-of-type(2),
@@ -694,9 +769,9 @@
 
         .about-work-collab-label {
             display: block;
-            margin-top: 0.78rem;
+            margin-top: 0.58rem;
             margin-bottom: 0.28rem;
-            font-size: clamp(0.62rem, 0.82vw, 0.78rem);
+            font-size: clamp(0.75rem, 0.95vw, 0.92rem);
             line-height: 1;
             font-weight: 800;
             letter-spacing: 0.24em;
@@ -706,16 +781,29 @@
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 16px rgba(223, 255, 0, 0.36);
         }
 
+        .about-work-date {
+            display: block;
+            margin-top: 0.22rem;
+            margin-bottom: 0.38rem;
+            font-size: clamp(0.72rem, 0.9vw, 0.85rem);
+            line-height: 1;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.45);
+            text-shadow: none;
+        }
+
         .about-work-collab {
             display: block;
-            margin-bottom: 0.38rem;
-            font-size: clamp(0.72rem, 0.92vw, 0.9rem);
+            margin-bottom: 0.15rem;
+            font-size: clamp(0.75rem, 0.95vw, 0.92rem);
             line-height: 1.25;
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.76);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 12px rgba(223, 255, 0, 0.18);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 12px rgba(223, 255, 0, 0.18);
         }
 
         .about-work-meta {
@@ -774,21 +862,44 @@
         }
 
         @keyframes fadeInCenter {
-            from { opacity: 0; transform: translate(-50%, -45%); }
-            to { opacity: 1; transform: translate(-50%, -50%); }
+            from {
+                opacity: 0;
+                transform: translate(-50%, -45%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
         }
 
         @keyframes fadeInScroll {
-            from { opacity: 0; transform: translateY(28px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes caretBlink {
-            0%, 49% { opacity: 1; }
-            50%, 100% { opacity: 0; }
+
+            0%,
+            49% {
+                opacity: 1;
+            }
+
+            50%,
+            100% {
+                opacity: 0;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             .story-beat,
             .about-text p.story-beat,
             .about-work-card.story-beat,
@@ -834,8 +945,18 @@
             left: 40px;
             right: auto;
             transform: none;
-            flex-direction: row;
-            align-items: center;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.65rem;
+        }
+
+        .nav-separator {
+            color: rgba(255, 255, 255, 0.16);
+            font-size: 0.82rem;
+            user-select: none;
+            pointer-events: none;
+            margin: 0 0.15rem;
         }
 
         .skills-marquee {
@@ -843,30 +964,41 @@
             top: 0;
             left: 0;
             width: 100%;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.7);
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            background: rgba(0, 0, 0, 0.08);
             z-index: 8000;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            pointer-events: none;
+            padding: 2px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            pointer-events: auto;
+            line-height: 1;
+            scrollbar-width: none;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .skills-marquee::-webkit-scrollbar {
+            display: none;
+        }
+
+        .skills-marquee:active,
+        .skills-marquee.active {
+            cursor: grabbing;
         }
 
         .skills-marquee-text {
             display: inline-block;
             white-space: nowrap;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 5px;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.38rem;
+            letter-spacing: 12px;
+            color: rgba(255, 255, 255, 0.45);
             text-transform: uppercase;
-            animation: skillsMarqueeScroll 40s linear infinite;
-        }
-
-        @keyframes skillsMarqueeScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            line-height: 1;
         }
 
         .text-btn {
@@ -885,10 +1017,14 @@
             position: relative;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
             text-decoration: none;
+        }
+
+        #btn-main-projects {
+            margin-left: 0 !important;
             animation: cycleColors 2.4s infinite linear;
         }
 
-        .home-only .text-btn {
+        .home-only .text-btn:not(.nav-secondary) {
             font-size: 1.74rem;
             font-weight: 900;
             letter-spacing: 2px;
@@ -900,105 +1036,137 @@
             text-shadow: none;
         }
 
-        .home-only .text-btn:not(.nav-bike-map-link):hover {
+        .home-only .text-btn:not(.nav-bike-map-link):not(.nav-secondary):hover {
             color: #fff;
             letter-spacing: 4px;
             text-shadow: 0 0 10px #dfff00;
         }
 
-        .nav-bike-map-link {
-            position: absolute;
-            top: 70px;
-            right: 30px;
-            bottom: auto;
-            z-index: 8900;
-            display: grid;
-            place-items: center;
-            font-size: clamp(0.94rem, 1.24vw, 1.32rem);
-            font-weight: 900;
-            line-height: 0.9;
-            width: clamp(118px, 11vw, 164px);
-            height: clamp(118px, 11vw, 164px);
-            text-align: center;
+        /* Secondary Navigation Links (Subtle, not occupying too much attention) */
+        .home-only .text-btn.nav-secondary {
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: rgba(255, 255, 255, 0.92);
+            color: rgba(255, 255, 255, 0.72);
             transform: none;
-            transform-origin: right center;
-            animation: none;
-            transition: all 0.4s ease;
-            text-shadow: none;
-            contain: layout paint;
-            opacity: 0.64;
-            filter: grayscale(45%) saturate(0.8);
+            opacity: 0.75;
+            margin-left: 14px;
+            transition: opacity 0.2s ease, color 0.2s ease, text-shadow 0.2s ease, letter-spacing 0.2s ease;
         }
 
-        .nav-bike-map-link:hover,
-        .nav-bike-map-link:focus-visible {
+        .home-only .text-btn.nav-secondary:hover {
             color: #fff;
-            letter-spacing: 1px !important;
-            opacity: 1 !important;
-            filter: grayscale(0%) saturate(1.2) drop-shadow(0 0 15px rgba(223, 255, 0, 0.4)) !important;
-            transform: scale(1.05) !important;
-            text-shadow: none;
+            opacity: 1;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Grayed-out links (MAPS & CONTACT) */
+        .home-only .text-btn.nav-grayed {
+            color: rgba(255, 255, 255, 0.35);
+            opacity: 0.42;
+        }
+
+        .home-only .text-btn.nav-grayed:hover {
+            color: rgba(255, 255, 255, 0.88);
+            opacity: 0.88;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+
+        .nav-bike-map-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4.5rem;
+            align-self: center;
+            margin: 10vh auto 8vh;
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                text-shadow 0.3s ease;
+            outline: none;
+            border: none;
+            background: transparent;
+            width: fit-content;
+        }
+
+        .nav-bike-map-link.story-beat {
+            opacity: 0.22;
+            filter: blur(1.2px) saturate(0.6);
+            transform: translateY(24px);
+        }
+
+        .nav-bike-map-link.story-beat.is-active {
+            opacity: 0.85;
+            filter: none;
+            transform: translateY(0);
         }
 
         .nav-bike-map-link:hover,
         .nav-bike-map-link:focus-visible {
-            animation: none !important;
+            opacity: 1 !important;
+            transform: scale(1.05) !important;
+            filter: drop-shadow(0 0 20px rgba(223, 255, 0, 0.5)) !important;
+        }
+
+        .nav-bike-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            pointer-events: none;
+            margin-top: -8px;
         }
 
         .nav-bike-prefix {
             display: block;
-            margin-bottom: 0.1rem;
-            font-size: 0.76em;
+            font-size: clamp(0.9rem, 1.3vw, 1.4rem);
             font-style: normal;
             text-transform: lowercase;
-            letter-spacing: 0.08em;
-            transform: none;
-            transform-origin: left center;
-        }
-
-        .nav-bike-text {
-            position: absolute;
-            inset: 50% auto auto 50%;
-            z-index: 2;
-            display: block;
-            width: 92%;
-            text-align: left;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            color: #fff;
-            text-shadow:
-                0 2px 0 rgba(0, 0, 0, 0.95),
-                0 0 5px rgba(0, 0, 0, 0.72);
-            animation: cycleColors 2.8s infinite linear;
+            letter-spacing: 4px;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 0.4rem;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .bike-map-link-text {
             display: block;
-            color: var(--accent-primary);
-            font-size: 1.14em;
+            font-size: clamp(2rem, 3.2vw, 3.8rem);
             font-style: normal;
-            line-height: 0.9;
-            transform: none;
-            transform-origin: left center;
+            font-weight: 900;
+            line-height: 1;
+            color: #dfff00;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transform: scaleX(1.15);
+            transform-origin: center center;
             animation: cycleColors 2.8s infinite linear 0.35s;
         }
 
+        .nav-bike-map-link:hover .bike-map-link-text {
+            color: #fff;
+            letter-spacing: 3px;
+            text-shadow: 0 0 12px #dfff00;
+        }
+
         .nav-bike-wheel {
-            width: 84%;
-            height: 84%;
+            width: clamp(110px, 9vw, 150px);
+            height: clamp(110px, 9vw, 150px);
             object-fit: contain;
             filter: none;
             transform: rotate(0deg);
             will-change: transform;
-            grid-area: 1 / 1;
             animation: bikeWheelColorPulse 2.8s infinite linear;
         }
 
         @keyframes bikeWheelColorPulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 filter: drop-shadow(0 0 8px rgba(153, 220, 27, 0.42));
             }
 
@@ -1012,8 +1180,7 @@
         }
 
         body:not(.returning-about) .skills-marquee,
-        body:not(.returning-about) .nav-container.home-only,
-        body:not(.returning-about) .nav-bike-map-link {
+        body:not(.returning-about) .nav-container.home-only {
             transition:
                 opacity 1.9s ease,
                 filter 1.9s ease,
@@ -1021,8 +1188,7 @@
         }
 
         body:not(.returning-about):not(.intro-ready) .skills-marquee,
-        body:not(.returning-about):not(.intro-ready) .nav-container.home-only,
-        body:not(.returning-about):not(.intro-ready) .nav-bike-map-link {
+        body:not(.returning-about):not(.intro-ready) .nav-container.home-only {
             opacity: 0 !important;
             filter: blur(4px) saturate(0.65) !important;
             pointer-events: none;
@@ -1075,18 +1241,6 @@
             opacity: 0.8;
             animation: lungBreathe 1.1s ease-in-out infinite !important;
             letter-spacing: 4px;
-        }
-
-        .text-btn.nav-bike-map-link,
-        .text-btn.nav-bike-map-link:hover,
-        .text-btn.nav-bike-map-link:focus-visible {
-            animation: none !important;
-            letter-spacing: 1px !important;
-            top: 70px !important;
-            right: 30px !important;
-            bottom: auto !important;
-            width: clamp(118px, 11vw, 164px) !important;
-            height: clamp(118px, 11vw, 164px) !important;
         }
 
         /* Flashing Animation */
@@ -1206,9 +1360,11 @@
             0% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-6px);
             }
+
             100% {
                 transform: translateY(0px);
             }
@@ -1223,7 +1379,6 @@
             pointer-events: none;
             z-index: 10;
         }
-
     </style>
     <link rel="stylesheet" href="css/mobile.css">
 </head>
@@ -1252,59 +1407,107 @@
     </script>
     <div class="skills-marquee" aria-hidden="true">
         <div class="skills-marquee-text">
-            PHYSICS &nbsp;&nbsp;✦&nbsp;&nbsp; COMPLEX SYSTEMS &nbsp;&nbsp;✦&nbsp;&nbsp; CITY DATA &nbsp;&nbsp;✦&nbsp;&nbsp; SOCIAL SYSTEMS MODELS &nbsp;&nbsp;✦&nbsp;&nbsp; EXPLAINABLE MODELS &nbsp;&nbsp;✦&nbsp;&nbsp; SCIENCE OF SCIENCE &nbsp;&nbsp;✦&nbsp;&nbsp; RESEARCH CONSULTING &nbsp;&nbsp;✦&nbsp;&nbsp; DATA SOURCING &nbsp;&nbsp;✦&nbsp;&nbsp; SAFETY EQUITY JUSTICE &nbsp;&nbsp;✦&nbsp;&nbsp; FIRST PRINCIPLES &nbsp;&nbsp;✦&nbsp;&nbsp;
-            PHYSICS &nbsp;&nbsp;✦&nbsp;&nbsp; COMPLEX SYSTEMS &nbsp;&nbsp;✦&nbsp;&nbsp; CITY DATA &nbsp;&nbsp;✦&nbsp;&nbsp; SOCIAL SYSTEMS MODELS &nbsp;&nbsp;✦&nbsp;&nbsp; EXPLAINABLE MODELS &nbsp;&nbsp;✦&nbsp;&nbsp; SCIENCE OF SCIENCE &nbsp;&nbsp;✦&nbsp;&nbsp; RESEARCH CONSULTING &nbsp;&nbsp;✦&nbsp;&nbsp; DATA SOURCING &nbsp;&nbsp;✦&nbsp;&nbsp; SAFETY EQUITY JUSTICE &nbsp;&nbsp;✦&nbsp;&nbsp; FIRST PRINCIPLES &nbsp;&nbsp;✦&nbsp;&nbsp;
+            LARGE DATA &nbsp;&nbsp;✦&nbsp;&nbsp; URBAN SCALING MODELS &nbsp;&nbsp;✦&nbsp;&nbsp; COMPLEXITY
+            &nbsp;&nbsp;✦&nbsp;&nbsp; INFERENCE &nbsp;&nbsp;✦&nbsp;&nbsp; BAYESIAN MODELING &nbsp;&nbsp;✦&nbsp;&nbsp;
+            MONTE-CARLO SIMULATIONS &nbsp;&nbsp;✦&nbsp;&nbsp; DATA VISUALIZATION &nbsp;&nbsp;✦&nbsp;&nbsp; PYTHON
+            &nbsp;&nbsp;✦&nbsp;&nbsp; PANDAS &nbsp;&nbsp;✦&nbsp;&nbsp; SCIKIT &nbsp;&nbsp;✦&nbsp;&nbsp; STAN
+            &nbsp;&nbsp;✦&nbsp;&nbsp;
         </div>
     </div>
 
     <!-- Background Image -->
     <div id="gradient-frame"></div>
-    <img id="bg-image" src="images/megrid.jpeg" alt="">
+    <div id="bg-container">
+        <video class="bg-layer" data-group="default" src="videos/background.mp4" autoplay muted loop playsinline
+            preload="auto"></video>
+        <video class="bg-layer" data-group="city" src="videos/city-scaling-bg.mp4" autoplay muted loop playsinline
+            preload="auto"></video>
+        <img class="bg-layer" data-group="equality" src="videos/world_map.gif" alt="">
+        <img class="bg-layer" data-group="consulting" src="images/data_work.gif" alt="">
+        <img class="bg-layer" data-group="accessibility" src="images/megrid.jpeg" alt="">
+        <img class="bg-layer" data-group="contact" src="images/megrid.jpeg" alt="">
+    </div>
     <div class="bg-overlay"></div>
     <div class="film-grain"></div>
 
     <!-- Custom Cursor -->
     <div id="cursor-img"></div>
 
+    <!-- Vision & Sound Portal Link (Upper Right) -->
+    <a href="vision-sound.html" id="btn-vision-sound" class="vision-sound-btn" data-portal-link>vision and sound</a>
+
     <div class="container">
         <div class="about-text">
             <h1 class="artist-name">VISHNOI.</h1>
-            <p class="story-beat">I investigate the phenomena that drive our lives, at the intersection of physics and social systems.</p>
-            <p class="story-beat">With over 8 years of research experience, I take open-ended questions and systematize their study through a first-principles lens.</p>
-            <p class="story-beat" data-story-group="city">I am currently building <a href="city-scaling.html" class="about-project-link" data-portal-link>social systems models</a> @ Northwestern University as a complexity physics Ph.D. candidate. I am interested in questions that harness city data to create safety, equity, and justice for all.</p>
-            <a href="city-scaling.html" class="about-work-card social-work story-beat" data-story-group="city" data-portal-link>
+            <p class="story-beat">I investigate the phenomena that drive our lives, at the intersection of physics and
+                social systems.</p>
+            <p class="story-beat">With over 8 years of research experience, I take open-ended questions and systematize
+                their study through a first-principles lens.</p>
+            <p class="story-beat" id="current-work-section" data-story-group="city">I am currently building <a
+                    href="city-scaling.html" class="about-project-link" data-portal-link>social systems models</a> @
+                Northwestern University as a
+                complexity physics Ph.D. candidate. I am interested in questions that harness city data to create
+                safety, equity, and justice for all.</p>
+            <a href="city-scaling.html" class="about-work-card social-work story-beat" data-story-group="city"
+                data-portal-link>
                 <span class="about-work-title">The Scale-Free Dynamics of U.S. Cities</span>
-                <span class="about-work-collab-label">In Collaboration</span>
+                <span class="about-work-meta">URBAN DATA MODELING | 344 U.S. CITIES | MISSING FBI DATA</span>
+                <span class="about-work-collab-label">Ph.D. in Physics, Complexity</span>
                 <span class="about-work-collab">Northwestern University</span>
-                <span class="about-work-meta">344 U.S. CITIES | FBI DATA</span>
+                <span class="about-work-date">Jan 2022 - Present</span>
             </a>
-            <p class="story-beat" data-story-group="equality">I also co-lead a global collaboration to study the <a href="scientific-equality.html" class="about-project-link" data-portal-link>science of science</a> @ Max Planck Institute. We are building a first of its kind global demographic map of academic growth, migration, and survival inequality.</p>
-            <a href="scientific-equality.html" class="about-work-card science-work story-beat" data-story-group="equality" data-portal-link>
+            <p class="story-beat" data-story-group="equality">I also co-lead a global collaboration to study the <a
+                    href="scientific-equality.html" class="about-project-link" data-portal-link>science of science</a> @
+                Max Planck Institute. We are building a first of its kind global demographic map of academic growth,
+                migration, and survival inequality.</p>
+            <a href="scientific-equality.html" class="about-work-card science-work story-beat"
+                data-story-group="equality" data-portal-link>
                 <span class="about-work-title">A Global Measure of Scientific Equality</span>
-                <span class="about-work-collab-label">In Collaboration</span>
+                <span class="about-work-meta">DEMOGRAPHIC FORECASTING | 47M Scraped Publications | 183 countries</span>
+                <span class="about-work-collab-label">Visiting Data Scientist</span>
                 <span class="about-work-collab">Max Planck Institute for Demographic Research, Germany</span>
-                <span class="about-work-meta">183 countries | 47M publications</span>
+                <span class="about-work-date">Jun 2023 - Present</span>
             </a>
-            <p class="story-beat" data-story-group="consulting"><span class="pink-lead">I love working with people</span>. As a core data science consultant @ Northwestern, I have enjoyed helping 10+ teams design sound empirical data studies and ship explainable "white-box" models.</p>
-            <a href="consulting.html" class="about-work-card consulting-work story-beat" data-story-group="consulting" data-portal-link>
+            <p class="story-beat" id="consulting-section" data-story-group="consulting"><span class="pink-lead">I love
+                    working with
+                    people</span>. As a core data science consultant @ Northwestern, I have enjoyed helping 10+ teams
+                design sound empirical data studies and ship explainable "white-box" models.</p>
+            <a href="consulting.html" class="about-work-card consulting-work story-beat" data-story-group="consulting"
+                data-portal-link>
                 <span class="about-work-title">See My Consult Work</span>
-                <span class="about-work-collab">Northwestern University Research Data Services</span>
                 <span class="about-work-meta">15 Research Consults | 2 Week Avg. Project Turnover</span>
+                <span class="about-work-collab-label">Core Consultant</span>
+                <span class="about-work-collab">Northwestern University Research Data Services</span>
+                <span class="about-work-date">Aug 2023 - Present</span>
             </a>
-            <p class="story-beat" data-story-group="accessibility"><span class="pink-lead-strong">I care about accessibility</span>. I believe in making technical ideas legible, useful, and reachable outside the small rooms where they are usually discussed.</p>
-            <a href="writings.html" class="about-work-card article-work-link story-beat" data-story-group="accessibility" data-portal-link>
+            <p class="story-beat" id="writings-section" data-story-group="accessibility"><span
+                    class="pink-lead-strong">I care about
+                    accessibility</span>. I believe in making technical ideas legible, useful, and reachable outside the
+                small rooms where they are usually discussed.</p>
+            <a href="writings.html" class="about-work-card article-work-link story-beat"
+                data-story-group="accessibility" data-portal-link>
                 <span class="about-work-title">Read My Writings</span>
                 <span class="about-work-meta">7 Publications | 253 Followers | 11k Reads</span>
             </a>
-            <div class="contact-block story-beat">
+            <a href="passion.html" class="nav-bike-map-link story-beat" data-story-group="accessibility">
+                <img src="images/pink_wheel.png" class="nav-bike-wheel" alt="">
+                <span class="nav-bike-text">
+                    <span class="nav-bike-prefix">civic safety</span>
+                    <span class="bike-map-link-text">CHICAGO BIKE MAP</span>
+                </span>
+                <img src="images/pink_wheel.png" class="nav-bike-wheel" alt="">
+            </a>
+            <div class="contact-block story-beat" id="contact-section" data-story-group="contact">
                 <p>Reach out for collaborations and contract work.</p>
+
                 <div class="contact-list" aria-label="Contact links">
                     <div class="contact-row">
                         <a href="mailto:svishnoi@u.northwestern.edu">EMAIL</a>
                         <span class="contact-handle">svishnoi@u.northwestern.edu</span>
                     </div>
                     <div class="contact-row">
-                        <a href="https://www.linkedin.com/in/samvardhan-vishnoi/" target="_blank" rel="noreferrer noopener">LINKEDIN</a>
+                        <a href="https://www.linkedin.com/in/samvardhan-vishnoi/" target="_blank"
+                            rel="noreferrer noopener">LINKEDIN</a>
                         <span class="contact-handle">samvardhan-vishnoi/</span>
                     </div>
                     <div class="contact-row">
@@ -1312,7 +1515,8 @@
                         <span class="contact-handle">@s-vishnoi</span>
                     </div>
                     <div class="contact-row">
-                        <a href="https://www.instagram.com/vishhnnoi/" target="_blank" rel="noreferrer noopener">INSTAGRAM</a>
+                        <a href="https://www.instagram.com/vishhnnoi/" target="_blank"
+                            rel="noreferrer noopener">INSTAGRAM</a>
                         <span class="contact-handle">@vishhnnoi</span>
                     </div>
                 </div>
@@ -1323,8 +1527,12 @@
     <!-- Left Navigation -->
     <nav class="nav-container home-only">
         <a href="index.html" id="btn-main-home" class="text-btn" data-index="5">home</a>
+        <a href="#current-work-section" id="btn-main-past-work" class="text-btn nav-secondary nav-grayed">current roles</a>
+        <a href="#consulting-section" id="btn-main-consults" class="text-btn nav-secondary nav-grayed">consults</a>
+        <a href="#writings-section" id="btn-main-writings" class="text-btn nav-secondary nav-grayed">writings</a>
+        <a href="#contact-section" id="btn-main-contact" class="text-btn nav-secondary nav-grayed">contact</a>
+        <a href="past-roles.html" id="btn-main-projects" class="text-btn nav-secondary">past roles</a>
     </nav>
-    <a href="passion.html" class="text-btn nav-bike-map-link"><span class="nav-bike-text"><span class="nav-bike-prefix">check out my</span><span class="bike-map-link-text">CHICAGO BIKE SAFETY MAP</span></span><img src="images/pink_wheel.png" class="nav-bike-wheel" alt=""></a>
 
     <script>
         // Click Effect (Neon)
@@ -1336,10 +1544,10 @@
     <script src="js/site-nav.js"></script>
     <script>
         (() => {
-            const wheel = document.querySelector('.nav-bike-wheel');
+            const wheels = document.querySelectorAll('.nav-bike-wheel');
             const bikeLink = document.querySelector('.nav-bike-map-link');
             const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            if (!wheel || !bikeLink || reduceMotion) return;
+            if (wheels.length === 0 || !bikeLink || reduceMotion) return;
 
             let hovering = false;
             let hoverStart = 0;
@@ -1359,7 +1567,7 @@
                 const easing = hovering ? 0.026 : 0.045;
                 speed += (target - speed) * easing;
                 angle = (angle + speed * delta) % 360;
-                wheel.style.transform = `rotate(${angle}deg)`;
+                wheels.forEach(w => w.style.transform = `rotate(${angle}deg)`);
 
                 if (hovering && !autoOpened && time - hoverStart > autoOpenDelay && speed > autoOpenSpeed) {
                     autoOpened = true;
@@ -1395,35 +1603,90 @@
             const beats = Array.from(document.querySelectorAll('.story-beat'));
             if (!beats.length) return;
 
+            let currentActiveBeat = null;
+            const threshold = 120; // Hysteresis threshold in pixels to prevent scroll jitter
+
             const activateNearestBeat = () => {
                 const viewportCenter = window.innerHeight / 2;
                 const scrollBottom = window.scrollY + window.innerHeight;
                 const pageBottom = document.documentElement.scrollHeight;
-                const nearBottom = pageBottom - scrollBottom <= Math.max(320, window.innerHeight * 0.32);
-                let nearest = beats[0];
-                let nearestDistance = Infinity;
+
+                // Hysteresis for bottom scroll detection
+                let nearBottom = false;
+                const bottomDist = pageBottom - scrollBottom;
+                const bottomThreshold = Math.max(320, window.innerHeight * 0.32);
+
+                if (currentActiveBeat === beats[beats.length - 1]) {
+                    nearBottom = bottomDist <= bottomThreshold + 50;
+                } else {
+                    nearBottom = bottomDist <= bottomThreshold;
+                }
+
+                let nearest = currentActiveBeat;
 
                 if (nearBottom) {
                     nearest = beats[beats.length - 1];
                 } else {
-                    beats.forEach((beat) => {
+                    const beatDistances = beats.map(beat => {
                         const rect = beat.getBoundingClientRect();
                         const beatCenter = rect.top + rect.height / 2;
-                        const distance = Math.abs(beatCenter - viewportCenter);
-
-                        if (distance < nearestDistance) {
-                            nearest = beat;
-                            nearestDistance = distance;
-                        }
+                        return {
+                            beat,
+                            distance: Math.abs(beatCenter - viewportCenter)
+                        };
                     });
+
+                    if (!currentActiveBeat) {
+                        let minDistance = Infinity;
+                        beatDistances.forEach(item => {
+                            if (item.distance < minDistance) {
+                                minDistance = item.distance;
+                                nearest = item.beat;
+                            }
+                        });
+                    } else {
+                        const currentActiveItem = beatDistances.find(item => item.beat === currentActiveBeat);
+                        const currentDistance = currentActiveItem ? currentActiveItem.distance : Infinity;
+
+                        let minDistance = currentDistance;
+                        let potentialNearest = currentActiveBeat;
+
+                        beatDistances.forEach(item => {
+                            // Only switch if the new beat is closer than current active by at least the threshold
+                            if (item.beat !== currentActiveBeat && item.distance < minDistance - threshold) {
+                                minDistance = item.distance;
+                                potentialNearest = item.beat;
+                            }
+                        });
+
+                        // Fallback check: if current active beat is scrolled completely away (>80% viewport height),
+                        // immediately select absolute closest beat to prevent getting stuck.
+                        if (currentDistance > window.innerHeight * 0.8) {
+                            let absoluteMinDist = Infinity;
+                            beatDistances.forEach(item => {
+                                if (item.distance < absoluteMinDist) {
+                                    absoluteMinDist = item.distance;
+                                    potentialNearest = item.beat;
+                                }
+                            });
+                        }
+
+                        nearest = potentialNearest;
+                    }
                 }
 
-                const activeGroup = nearest.dataset.storyGroup;
+                if (nearest && nearest !== currentActiveBeat) {
+                    currentActiveBeat = nearest;
+                    const activeGroup = nearest.dataset.storyGroup;
 
-                beats.forEach((beat) => {
-                    const inActiveGroup = activeGroup && beat.dataset.storyGroup === activeGroup;
-                    beat.classList.toggle('is-active', beat === nearest || inActiveGroup);
-                });
+                    beats.forEach((beat) => {
+                        const inActiveGroup = activeGroup && beat.dataset.storyGroup === activeGroup;
+                        beat.classList.toggle('is-active', beat === nearest || inActiveGroup);
+                    });
+
+                    // Update background layer based on current story beat group
+                    document.body.dataset.activeGroup = activeGroup || 'default';
+                }
             };
 
             let ticking = false;
@@ -1440,6 +1703,194 @@
             window.addEventListener('resize', requestActivation);
             window.addEventListener('load', requestActivation);
             requestActivation();
+        })();
+    </script>
+    <script>
+        (() => {
+            const hashLinks = document.querySelectorAll('.nav-container a[href^="#"]');
+            
+            const scrollToElementWithOffset = (el, multiplier = 0.35) => {
+                const elementY = window.scrollY + el.getBoundingClientRect().top;
+                const offset = window.innerHeight * multiplier; // dynamic viewport height offset
+                const targetY = Math.max(0, elementY - offset);
+                window.scrollTo({ top: targetY, behavior: 'smooth' });
+            };
+
+            hashLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const el = document.querySelector(targetId);
+                    if (el) {
+                        const multiplier = (targetId === '#current-work-section') ? 0.45 : 0.35;
+                        scrollToElementWithOffset(el, multiplier);
+                        if (window.history && window.history.pushState) {
+                            window.history.pushState(null, null, targetId);
+                        } else {
+                            window.location.hash = targetId;
+                        }
+                    }
+                });
+            });
+
+            if (window.location.hash) {
+                const targetId = window.location.hash;
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        const el = document.querySelector(targetId);
+                        if (el) {
+                            const multiplier = (targetId === '#current-work-section') ? 0.45 : 0.35;
+                            scrollToElementWithOffset(el, multiplier);
+                        }
+                    }, 200);
+                });
+            }
+        })();
+    </script>
+    <script>
+        (() => {
+            const marquee = document.querySelector('.skills-marquee');
+            const text = document.querySelector('.skills-marquee-text');
+            if (!marquee || !text) return;
+
+            // Store single copy HTML
+            const singleHTML = text.innerHTML;
+
+            // Measure original single copy width
+            const singleWidth = text.scrollWidth;
+
+            // Generate enough copies to overflow screen width and allow infinite scroll
+            const screenWidth = window.innerWidth;
+            const neededCopies = Math.max(6, Math.ceil(screenWidth / singleWidth) + 2);
+
+            let newHTML = '';
+            for (let i = 0; i < neededCopies; i++) {
+                newHTML += singleHTML;
+            }
+            text.innerHTML = newHTML;
+
+            // Start scroll centered at singleWidth copy to support scrolling left/right immediately
+            marquee.scrollLeft = singleWidth;
+            let currentScrollX = singleWidth;
+            let lastWrittenScrollLeft = singleWidth;
+
+            let isHovering = false;
+            let isDragging = false;
+            let autoScrollPaused = false;
+            let scrollTimeout = null;
+            const speed = 1.4; // px per frame
+            let requestID = null;
+
+            // True mathematical modulo wrapping range: [singleWidth, 2 * singleWidth)
+            const wrapScroll = (val) => {
+                return ((val - singleWidth) % singleWidth + singleWidth) % singleWidth + singleWidth;
+            };
+
+            const updateScroll = () => {
+                if (!autoScrollPaused && !isDragging) {
+                    currentScrollX += speed;
+                    currentScrollX = wrapScroll(currentScrollX);
+                    lastWrittenScrollLeft = Math.round(currentScrollX);
+                    marquee.scrollLeft = lastWrittenScrollLeft;
+                }
+                requestID = requestAnimationFrame(updateScroll);
+            };
+
+            requestID = requestAnimationFrame(updateScroll);
+
+            // Desktop Mouse Drag Handling
+            marquee.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                marquee.classList.add('active');
+                startX = e.pageX - marquee.offsetLeft;
+                scrollLeftStart = marquee.scrollLeft;
+                autoScrollPaused = true;
+            });
+
+            marquee.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - marquee.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                let targetScroll = scrollLeftStart - walk;
+
+                // Wrap scroll position to keep it in [singleWidth, 2 * singleWidth)
+                if (targetScroll < singleWidth) {
+                    scrollLeftStart += singleWidth;
+                    startX -= singleWidth / 1.5;
+                    targetScroll += singleWidth;
+                } else if (targetScroll >= 2 * singleWidth) {
+                    scrollLeftStart -= singleWidth;
+                    startX += singleWidth / 1.5;
+                    targetScroll -= singleWidth;
+                }
+
+                marquee.scrollLeft = targetScroll;
+                currentScrollX = targetScroll;
+            });
+
+            const stopDragging = () => {
+                if (!isDragging) return;
+                isDragging = false;
+                marquee.classList.remove('active');
+                // Resume autoscroll if not hovering and not in active momentum scroll
+                if (!isHovering && !scrollTimeout) {
+                    autoScrollPaused = false;
+                }
+            };
+
+            marquee.addEventListener('mouseup', stopDragging);
+            marquee.addEventListener('mouseleave', stopDragging);
+
+            // Hover state tracking
+            marquee.addEventListener('mouseenter', () => {
+                isHovering = true;
+                autoScrollPaused = true;
+            });
+
+            marquee.addEventListener('mouseleave', () => {
+                isHovering = false;
+                if (!isDragging && !scrollTimeout) {
+                    autoScrollPaused = false;
+                }
+            });
+
+            // Native Scroll tracking (handles trackpad wheel, scrollbars, touch flick momentum)
+            marquee.addEventListener('scroll', () => {
+                let currentScroll = marquee.scrollLeft;
+
+                // If it is our own autoscroll write (with fractional rounding tolerance), ignore it
+                if (Math.abs(currentScroll - lastWrittenScrollLeft) <= 1.5) {
+                    return;
+                }
+
+                // User-initiated scroll! Warp scrollLeft to range [singleWidth, 2 * singleWidth) if out of bounds
+                if (currentScroll < singleWidth || currentScroll >= 2 * singleWidth) {
+                    currentScroll = wrapScroll(currentScroll);
+                    marquee.scrollLeft = currentScroll;
+                }
+
+                currentScrollX = currentScroll;
+                autoScrollPaused = true;
+
+                // Debounce timeout to wait for user scroll momentum to stop completely
+                if (scrollTimeout) clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    scrollTimeout = null;
+                    if (!isHovering && !isDragging) {
+                        autoScrollPaused = false;
+                    }
+                }, 200);
+            });
+
+            // Touch / Mobile Swiping state tracking (native scroll is used on touch)
+            marquee.addEventListener('touchstart', () => {
+                isDragging = true;
+                autoScrollPaused = true;
+            }, { passive: true });
+
+            marquee.addEventListener('touchend', stopDragging);
+            marquee.addEventListener('touchcancel', stopDragging);
         })();
     </script>
 </body>

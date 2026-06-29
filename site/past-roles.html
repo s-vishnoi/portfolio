@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
+    <title>Past Roles | Samvardhan Vishnoi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #000;
+            --accent-primary: #dfff00;
+            --c1: #99DC1B; /* Cyber Lime */
+            --c2: #FE4164; /* Neon Fuchsia */
+            --c3: #6F00FF; /* Electric Indigo */
+            --c4: #FFFFFF; /* White */
+        }
+
+        html {
+            overscroll-behavior: none;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            height: auto;
+            margin: 0;
+            overflow-x: hidden;
+            overscroll-behavior: none;
+            overflow-y: auto;
+            position: relative;
+            cursor: none;
+            transition: opacity 0.5s ease;
+            opacity: 1;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+
+        #cursor-img {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            width: 88px;
+            height: 88px;
+            background: url('images/sparkle.gif') no-repeat center center;
+            background-size: contain;
+            mix-blend-mode: screen;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            html,
+            html *,
+            body,
+            body * {
+                cursor: none !important;
+            }
+        }
+
+        @media (hover: none), (pointer: coarse) {
+            body {
+                cursor: auto;
+            }
+
+            #cursor-img {
+                display: none;
+            }
+        }
+
+        /* GRADIENT BORDER FRAME */
+        #gradient-frame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+            pointer-events: none;
+            border: 3px solid transparent;
+            border-image: linear-gradient(to bottom right, var(--c1), var(--c2), var(--c3)) 1;
+            box-sizing: border-box;
+        }
+
+        /* Left Vertical Navigation */
+        .nav-container {
+            position: fixed;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            align-items: flex-start;
+            z-index: 9000;
+            pointer-events: auto;
+        }
+
+        .nav-container.home-only {
+            top: 72px;
+            left: 40px;
+            right: auto;
+            transform: none;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+
+        .text-btn {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            cursor: pointer;
+            text-transform: lowercase;
+            letter-spacing: 2px;
+            transition: all 0.2s ease;
+            position: relative;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+            animation: cycleColors 2.4s infinite linear;
+        }
+
+        .home-only .text-btn {
+            font-size: 1.74rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #dfff00;
+            transform: scaleX(1.18);
+            transform-origin: left center;
+            animation: none;
+            text-shadow: none;
+        }
+
+        .home-only .text-btn:hover {
+            color: #fff;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px #dfff00;
+        }
+
+        .project-back-btn {
+            position: relative;
+            align-self: flex-start;
+            width: auto;
+            margin: 0.2rem 0 0 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.72);
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.6rem, 4.4vw, 5rem);
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: 0;
+            text-shadow: 0 0 14px rgba(223, 255, 0, 0.48), 0 0 28px rgba(255, 255, 255, 0.26);
+            cursor: pointer;
+            z-index: 40;
+        }
+
+        .project-back-btn:hover {
+            color: #dfff00;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.78));
+        }
+
+        .film-grain {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.08;
+            mix-blend-mode: overlay;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(1.08);
+            filter: blur(8px) brightness(0.24) saturate(0.8);
+            opacity: 0.32;
+            z-index: -2;
+        }
+
+        /* Container Layout */
+        #projects-container {
+            position: relative;
+            width: min(840px, calc(100vw - 20vw));
+            margin: 18vh auto 10vh;
+            padding-left: clamp(20px, 4vw, 60px);
+            z-index: 10;
+        }
+
+        .projects-header {
+            margin-bottom: 4vh;
+            text-align: left;
+        }
+
+        .projects-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.3rem, 2.4vw, 2.4rem);
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            width: max-content;
+            white-space: nowrap;
+            overflow: visible;
+            text-align: left;
+            margin: 0;
+            transform: scaleX(1.4);
+            transform-origin: left top;
+            animation: cycleColors 2.4s infinite linear;
+        }
+
+        /* List of Projects (minimal clean styling, no color animation cycles since they are not clickable) */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .about-work-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            padding: clamp(0.8rem, 1.4vw, 1.1rem) 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: none;
+            cursor: default !important;
+            transition: color 0.25s ease, border-color 0.25s ease, text-shadow 0.25s ease;
+        }
+
+        .about-work-card:last-child {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+        }
+
+        .about-work-card:hover {
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+        }
+
+        .about-work-title {
+            display: block;
+            font-size: clamp(1.2rem, 2vw, 2rem);
+            line-height: 0.96;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .about-work-collab-label {
+            display: block;
+            margin-top: 0.48rem;
+            font-size: clamp(0.72rem, 0.9vw, 0.88rem);
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95);
+        }
+
+        .amsterdam-role .about-work-collab-label {
+            color: rgba(254, 65, 100, 0.82); /* Subtle Neon Fuchsia */
+        }
+        .princeton-role .about-work-collab-label {
+            color: rgba(111, 0, 255, 0.82); /* Subtle Electric Indigo */
+        }
+        .dome-role .about-work-collab-label {
+            color: rgba(153, 220, 27, 0.9); /* Cyber Lime */
+        }
+        .dome-role .about-work-collab-label {
+            color: rgba(153, 220, 27, 0.9); /* Cyber Lime */
+        }
+
+        .about-work-date {
+            display: block;
+            margin-top: 0.22rem;
+            font-size: clamp(0.72rem, 0.9vw, 0.85rem);
+            line-height: 1;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.45);
+            text-shadow: none;
+        }
+
+        .about-work-collab {
+            display: block;
+            margin-top: 0.48rem;
+            font-size: clamp(0.72rem, 0.9vw, 0.88rem);
+            line-height: 1.35;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        /* Rolling Die Placement */
+        .die-container {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            width: 36px;
+            height: 36px;
+            perspective: 1000px;
+            cursor: pointer;
+            z-index: 9000;
+            pointer-events: auto;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(-18px) rotateX(-20deg) rotateY(25deg);
+            transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.25, 1.1);
+        }
+
+        .cube__face {
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            border: 2px solid #ffffff;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-between;
+            justify-content: space-between;
+            padding: 5px;
+            box-sizing: border-box;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.15), inset 0 0 8px rgba(255, 255, 255, 0.1);
+        }
+
+        .cube__face--1 { transform: rotateY(0deg) translateZ(18px); }
+        .cube__face--2 { transform: rotateY(90deg) translateZ(18px); }
+        .cube__face--3 { transform: rotateY(180deg) translateZ(18px); }
+        .cube__face--4 { transform: rotateY(-90deg) translateZ(18px); }
+        .cube__face--5 { transform: rotateX(90deg) translateZ(18px); }
+        .cube__face--6 { transform: rotateX(-90deg) translateZ(18px); }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 4px #ffffff;
+        }
+
+        .cube__face--1 { justify-content: center; align-items: center; }
+        .cube__face--5 { justify-content: center; align-items: center; }
+
+        @keyframes levitate {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes cycleColors {
+            0% { color: var(--c1); }
+            25% { color: var(--c2); }
+            50% { color: var(--c3); }
+            75% { color: var(--c4); }
+            100% { color: var(--c1); }
+        }
+
+        .photos-collage {
+            display: contents;
+        }
+
+        .draggable-photo {
+            position: absolute;
+            z-index: 50;
+            width: clamp(190px, 17vw, 270px);
+            background: #111;
+            border: 8px solid #1a1a1a;
+            border-bottom: 32px solid #1a1a1a;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65), 0 0 15px rgba(255, 255, 255, 0.05);
+            cursor: grab;
+            user-select: none;
+            touch-action: none;
+            transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .draggable-photo:active {
+            cursor: grabbing;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 255, 255, 0.15);
+            z-index: 100;
+        }
+
+        .draggable-photo img {
+            width: 100%;
+            display: block;
+            filter: contrast(1.04) saturate(0.9) brightness(0.92);
+            pointer-events: none;
+        }
+
+        .photo-grain {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.18;
+            mix-blend-mode: overlay;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            #projects-container {
+                width: calc(100vw - 32px);
+                margin-top: 100px;
+                padding-left: 0;
+            }
+
+            .nav-container {
+                position: relative !important;
+                top: 0 !important;
+                left: 0 !important;
+                transform: none !important;
+                width: 100% !important;
+                padding: 30px 16px 10px 16px !important;
+                display: flex !important;
+                justify-content: center !important;
+                flex-wrap: wrap !important;
+                align-items: center !important;
+                gap: 0.8rem !important;
+                box-sizing: border-box !important;
+            }
+
+            .project-back-btn {
+                display: none;
+            }
+
+            .die-container {
+                top: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Frame -->
+    <div id="gradient-frame"></div>
+    <div class="bg-overlay"></div>
+    <div class="film-grain"></div>
+    <img id="bg-image" src="images/megrid.jpeg" alt="">
+
+    <!-- Custom Cursor -->
+    <div id="cursor-img"></div>
+
+    <!-- Left Navigation -->
+    <nav class="nav-container home-only">
+        <a href="index.html" id="btn-main-home" class="text-btn" data-index="5">home</a>
+        <button class="project-back-btn" id="project-back-btn" type="button" aria-label="Back to about">&lt;</button>
+    </nav>
+
+    <!-- Rolling Die -->
+    <div class="die-container" id="die-trigger">
+        <div class="cube" id="cube">
+            <div class="cube__face cube__face--1"><div class="dot"></div></div>
+            <div class="cube__face cube__face--2"><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--3"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--4"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--5"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="cube__face cube__face--6"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+    </div>
+
+    <!-- Past Roles Directory -->
+    <div id="projects-container">
+        <header class="projects-header">
+            <h1 class="projects-heading">PAST ROLES</h1>
+        </header>
+
+        <div class="projects-list">
+            <!-- Role 1 -->
+            <div class="about-work-card amsterdam-role">
+                <span class="about-work-title">University of Amsterdam</span>
+                <span class="about-work-collab-label">Summer Institute for Computational Social Science</span>
+                <span class="about-work-date">2024</span>
+                <span class="about-work-collab">Selected for the competitive SICSS Amsterdam cohort to apply advanced machine learning to computational social science.</span>
+            </div>
+
+            <!-- Role 2 -->
+            <div class="about-work-card princeton-role">
+                <span class="about-work-title">Princeton University</span>
+                <span class="about-work-collab-label">INTERSECT Bootcamp</span>
+                <span class="about-work-date">2023</span>
+                <span class="about-work-collab">Invited to Princeton's 7 day intensive bootcamp to master computing and software engineering practices for scientific research.</span>
+            </div>
+
+            <!-- Role 3 -->
+            <div class="about-work-card dome-role">
+                <span class="about-work-title">The DOME Philadelphia</span>
+                <span class="about-work-collab-label">Curator & Performer</span>
+                <span class="about-work-date">2023 - Present</span>
+                <span class="about-work-collab">Organizing, curating, and performing at local experimental audiovisual events. Fusing modular synthesis with custom TouchDesigner generative visual systems to build immersive spaces.</span>
+            </div>
+        </div>
+
+        <!-- Draggable Photos Collage -->
+        <div class="photos-collage">
+            <div class="draggable-photo" style="top: -20px; left: 102%; transform: rotate(-6deg); --rotation: -6deg;" data-rotation="-6">
+                <div class="photo-grain"></div>
+                <img src="images/dome1.png" alt="Curator & Performer at The DOME Philadelphia - Guitar performance">
+            </div>
+            <div class="draggable-photo" style="top: 260px; left: 106%; transform: rotate(5deg); --rotation: 5deg;" data-rotation="5">
+                <div class="photo-grain"></div>
+                <img src="images/dome2.png" alt="Curator & Performer at The DOME Philadelphia - Performance art mask">
+            </div>
+        </div>
+    </div>
+
+    <script src="js/site-nav.js"></script>
+    <script src="js/cursor.js"></script>
+    <script>
+        const projectBackBtn = document.getElementById('project-back-btn');
+        if (projectBackBtn) {
+            projectBackBtn.addEventListener('click', () => {
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    let y = 0;
+                    try {
+                        y = Number(sessionStorage.getItem('aboutReturnY')) || 0;
+                    } catch {
+                        y = 0;
+                    }
+                    window.location.href = `index.html?return=about&y=${encodeURIComponent(y)}`;
+                }, 500);
+            });
+        }
+
+        // Prevent clicking past roles cards from modifying page history or scrolling
+        document.querySelectorAll('.about-work-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+            });
+        });
+
+        // Draggable Photo Logic
+        document.querySelectorAll('.draggable-photo').forEach(photo => {
+            let active = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let xOffset = 0;
+            let yOffset = 0;
+            const rotation = Number(photo.dataset.rotation) || 0;
+
+            const dragStart = (e) => {
+                if (window.innerWidth <= 768) return;
+                if (e.target !== photo && !photo.contains(e.target)) return;
+                
+                if (e.type === "touchstart") {
+                    initialX = e.touches[0].clientX - xOffset;
+                    initialY = e.touches[0].clientY - yOffset;
+                } else {
+                    initialX = e.clientX - xOffset;
+                    initialY = e.clientY - yOffset;
+                }
+                
+                active = true;
+                photo.style.transition = 'none';
+                photo.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0) rotate(${rotation}deg) scale(1.04)`;
+            };
+
+            const dragEnd = () => {
+                if (!active) return;
+                initialX = currentX;
+                initialY = currentY;
+                active = false;
+                photo.style.transition = 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease, border-color 0.25s ease';
+                photo.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) rotate(${rotation}deg)`;
+            };
+
+            const drag = (e) => {
+                if (!active) return;
+                e.preventDefault();
+
+                if (e.type === "touchmove") {
+                    currentX = e.touches[0].clientX - initialX;
+                    currentY = e.touches[0].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                photo.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) rotate(${rotation}deg) scale(1.04)`;
+            };
+
+            photo.addEventListener("mousedown", dragStart);
+            photo.addEventListener("touchstart", dragStart, { passive: false });
+            
+            window.addEventListener("mouseup", dragEnd);
+            window.addEventListener("touchend", dragEnd);
+            
+            window.addEventListener("mousemove", drag, { passive: false });
+            window.addEventListener("touchmove", drag, { passive: false });
+        });
+    </script>
+</body>
+
+</html>

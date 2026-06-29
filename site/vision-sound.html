@@ -1,0 +1,2722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Vision and Sound | Vishnoi</title>
+    <meta name="description"
+        content="Portal to the art, music, and computational complexity works of Samvardhan Vishnoi.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Montserrat:wght@300;400;500;700;800;900&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --accent-primary: #fe4164;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            overflow-y: auto;
+            cursor: none;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        #bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bg-layer {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.35;
+            filter: hue-rotate(270deg) brightness(0.8) contrast(1.15);
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, transparent 20%, rgba(10, 10, 10, 0.72) 70%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .film-grain {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            width: 200%;
+            height: 200%;
+            background: transparent url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E') repeat;
+            opacity: 0.055;
+            pointer-events: none;
+            z-index: 3;
+            animation: grain 8s steps(10) infinite;
+        }
+
+        @keyframes grain {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            10% {
+                transform: translate(-5%, -10%);
+            }
+
+            20% {
+                transform: translate(-15%, 5%);
+            }
+
+            30% {
+                transform: translate(7%, -25%);
+            }
+
+            40% {
+                transform: translate(-5%, 25%);
+            }
+
+            50% {
+                transform: translate(-15%, 10%);
+            }
+
+            60% {
+                transform: translate(15%, 0%);
+            }
+
+            70% {
+                transform: translate(0%, 15%);
+            }
+
+            80% {
+                transform: translate(3%, 35%);
+            }
+
+            90% {
+                transform: translate(-10%, 10%);
+            }
+        }
+
+        #gradient-frame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.95);
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            min-height: 100svh;
+            z-index: 10;
+            padding: clamp(28px, 4.6vh, 52px) clamp(28px, 4vw, 72px) clamp(96px, 12.5vh, 132px) clamp(48px, 6.4vw, 118px);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .about-text {
+            width: 100%;
+            max-width: 1480px;
+            max-height: 100%;
+            margin-left: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: minmax(0, 1.22fr) minmax(0, 1.12fr) minmax(0, 0.9fr);
+            grid-template-rows: auto auto repeat(4, auto);
+            gap: clamp(0.3rem, 0.8vh, 0.6rem) clamp(1.55rem, 3.6vw, 4.8rem);
+            text-align: left;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.74rem, 0.98vw, 1.12rem);
+            line-height: 1.24;
+            font-weight: 900;
+            letter-spacing: 0.052em;
+            text-transform: uppercase;
+        }
+
+        .magazine-rail {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-bottom: clamp(0.28rem, 0.9vh, 0.62rem);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.34);
+            color: rgba(255, 255, 255, 0.66);
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(0.62rem, 0.84vw, 0.92rem);
+            font-weight: 600;
+            letter-spacing: 0.2em;
+        }
+
+        .artist-name {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+            align-items: end;
+            gap: clamp(0.45rem, 1.5vw, 1.5rem);
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(4.4rem, 9.8vw, 12rem);
+            font-weight: 900;
+            letter-spacing: 0.015em;
+            line-height: 0.72;
+            text-transform: uppercase;
+            margin: 0;
+            transform: scaleX(1.045);
+            transform-origin: left center;
+            animation: cycleColors 3s infinite linear;
+        }
+
+        .artist-name span {
+            display: block;
+            min-width: 0;
+        }
+
+        .artist-name .amp {
+            align-self: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.6rem, 4.2vw, 4.8rem);
+            font-weight: 300;
+            line-height: 1;
+            transform: translateY(-0.08em);
+        }
+
+        .story-deck {
+            grid-column: 1 / 3;
+            width: min(980px, 100%);
+            margin: 0 0 clamp(0.35rem, 1vh, 0.72rem);
+            color: rgba(255, 255, 255, 0.82);
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1rem, 1.55vw, 1.72rem);
+            font-weight: 300;
+            line-height: 1.05;
+            letter-spacing: 0.075em;
+            text-transform: uppercase;
+        }
+
+        @keyframes cycleColors {
+            0% {
+                color: #fe4164;
+            }
+
+            33% {
+                color: #6f00ff;
+            }
+
+            66% {
+                color: #00e5ff;
+            }
+
+            100% {
+                color: #fe4164;
+            }
+        }
+
+        .story-beat {
+            position: relative;
+            width: 100%;
+            margin: 0;
+            transform: translateY(14px) scaleX(1.01);
+            opacity: 0;
+            filter: saturate(0.8);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.3s ease,
+                text-shadow 0.3s ease;
+            will-change: opacity, filter, transform;
+            padding-top: clamp(0.4rem, 0.8vh, 0.6rem);
+            border-top: 1px solid rgba(255, 255, 255, 0.24);
+        }
+
+        .story-beat::after {
+            position: absolute;
+            right: clamp(-2.9rem, -2.3vw, -1.1rem);
+            top: clamp(1.2rem, 2.2vh, 2rem);
+            color: rgba(255, 255, 255, 0.64);
+            content: ">";
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.2rem, 2vw, 2.1rem);
+            font-weight: 300;
+            line-height: 1;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.24);
+            transform: rotate(28deg);
+            transform-origin: center;
+            pointer-events: none;
+        }
+
+        .story-beat:nth-of-type(3)::after {
+            content: none;
+        }
+
+        .story-beat:nth-of-type(4)::after {
+            content: none;
+        }
+
+        body.intro-text-ready .story-beat {
+            opacity: 0.74;
+            transform: translateY(0) scaleX(1.01);
+        }
+
+        /* Initial staggered entry delays only for entry animation transition */
+        body.intro-text-ready .story-beat:nth-of-type(1) {
+            transition-delay: 0.15s;
+        }
+
+        body.intro-text-ready .story-beat:nth-of-type(2) {
+            transition-delay: 2.15s;
+        }
+
+        body.intro-text-ready .story-beat:nth-of-type(3) {
+            transition-delay: 4.15s;
+        }
+
+        body.intro-text-ready .story-beat:nth-of-type(4) {
+            transition-delay: 6.15s;
+        }
+
+        .cycle-word {
+            display: inline;
+            transition: color 0.25s ease;
+        }
+
+        body.intro-ready .cycle-word {
+            animation: wordRedCycle var(--word-cycle-duration, 7.28s) infinite linear;
+            animation-delay: calc(var(--word-index) * 0.08s);
+        }
+
+        @keyframes wordRedCycle {
+            0% {
+                color: inherit;
+            }
+
+            1.5%,
+            4.5% {
+                color: #ff1f37 !important;
+            }
+
+            8.5%,
+            100% {
+                color: inherit;
+            }
+        }
+
+        /* Alternating layouts like Home section */
+        .about-text p:nth-of-type(odd) {
+            text-align: left;
+            transform-origin: left center;
+        }
+
+        .about-text p:nth-of-type(even) {
+            text-align: left;
+            transform-origin: right center;
+        }
+
+        .story-kicker {
+            display: block;
+            margin-bottom: clamp(0.42rem, 1vh, 0.72rem);
+            color: #fe4164;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            line-height: 0.86;
+        }
+
+        .story-num {
+            display: block;
+            margin-bottom: 0.16rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: clamp(0.62rem, 0.82vw, 0.9rem);
+            letter-spacing: 0.18em;
+        }
+
+        .story-title {
+            display: block;
+            font-size: clamp(1.4rem, 2.55vw, 3.15rem);
+            letter-spacing: 0.035em;
+        }
+
+        .about-text p {
+            font-size: clamp(0.95rem, 1.24vw, 1.42rem);
+            line-height: 1.14;
+        }
+
+        .about-text p:nth-of-type(1) {
+            grid-column: 1;
+            grid-row: 3;
+        }
+
+        .about-text p:nth-of-type(2) {
+            grid-column: 2;
+            grid-row: 4;
+            align-self: start;
+        }
+
+        .about-text p:nth-of-type(3) {
+            grid-column: 3;
+            grid-row: 5;
+            max-width: none;
+            align-self: start;
+            margin-bottom: clamp(1rem, 2.5vh, 1.8rem);
+        }
+
+        .about-text p:nth-of-type(4) {
+            grid-column: 2;
+            grid-row: 6;
+            align-self: start;
+        }
+
+        /* Active highlight for scroll story beats */
+        .story-beat.is-active {
+            opacity: 1 !important;
+            filter: none !important;
+            transform: translateY(0) scaleX(1.025) !important;
+            transition-delay: 0s !important;
+        }
+
+        .story-beat.intro-active {
+            opacity: 1 !important;
+            filter: none !important;
+            transform: translateY(0) scaleX(1.035) !important;
+            transition-delay: 0s !important;
+        }
+
+        .story-beat.intro-active .story-num,
+        .story-beat.intro-active .story-title {
+            /* Glow removed */
+        }
+
+        .story-beat:nth-of-type(1).is-active {
+            color: #fe4164;
+        }
+
+        .story-beat:nth-of-type(2).is-active {
+            color: #6f00ff;
+        }
+
+        .story-beat:nth-of-type(3).is-active {
+            color: #00e5ff;
+        }
+
+        .story-beat:nth-of-type(4).is-active {
+            color: #fe4164;
+        }
+
+        /* Hover colors for each story beat */
+        @media (hover: hover) and (pointer: fine) {
+            .story-beat:hover {
+                opacity: 1 !important;
+                filter: none !important;
+                transform: translateY(0) scaleX(1.025) !important;
+                transition-delay: 0s !important;
+                cursor: default;
+            }
+
+            .story-beat:nth-of-type(1):hover {
+                color: #fe4164;
+            }
+
+            .story-beat:nth-of-type(2):hover {
+                color: #6f00ff;
+            }
+
+            .story-beat:nth-of-type(3):hover {
+                color: #00e5ff;
+            }
+
+            .story-beat:nth-of-type(4):hover {
+                color: #fe4164;
+            }
+        }
+
+        .nav-container {
+            position: fixed;
+            bottom: clamp(40px, 6vh, 80px);
+            left: clamp(20px, 4vw, 60px);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 20;
+            pointer-events: auto;
+            text-align: left;
+        }
+
+        .text-btn {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.2rem, 1.8vw, 1.85rem);
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.38);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            width: max-content;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: color 0.25s ease, opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        body.intro-ready .text-btn {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .text-btn:hover {
+            color: #ffffff;
+            letter-spacing: 0.18em;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+
+        .text-btn.active-rainbow {
+            color: #ffffff;
+            animation: cycleColors 3s infinite linear;
+            margin-left: 0 !important;
+        }
+
+        #cursor-img {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            width: 88px;
+            height: 88px;
+            background: url('images/sparkle.gif') no-repeat center center;
+            background-size: contain;
+            mix-blend-mode: screen;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        body.life-cursor #cursor-img {
+            width: 34px;
+            height: 34px;
+            background: none;
+            mix-blend-mode: normal;
+            transform: translate(-50%, -50%);
+        }
+
+        body.life-cursor #cursor-img::before {
+            display: block;
+            color: #ffffff;
+            content: "☝";
+            font-size: 31px;
+            line-height: 1;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.66);
+            transform: translate(-1px, 9px) rotate(-28deg);
+            transform-origin: 50% 6%;
+        }
+
+        .piece-section {
+            position: relative;
+            z-index: 10;
+            min-height: 100svh;
+            padding: clamp(64px, 10vh, 120px) clamp(28px, 4vw, 72px) clamp(132px, 18vh, 190px) clamp(48px, 6.4vw, 118px);
+        }
+
+        .dome-section {
+            padding-bottom: clamp(260px, 35vh, 480px);
+        }
+
+        .piece-layout {
+            width: 100%;
+            max-width: 1480px;
+            display: grid;
+            grid-template-columns: minmax(280px, 0.72fr) minmax(360px, 1.28fr);
+            gap: clamp(2rem, 5.5vw, 6.5rem);
+            align-items: start;
+        }
+
+        .piece-copy {
+            display: grid;
+            gap: clamp(0.8rem, 2vh, 1.4rem);
+            text-transform: uppercase;
+        }
+
+        .piece-label {
+            width: max-content;
+            padding-bottom: 0.38rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.34);
+            color: rgba(255, 255, 255, 0.64);
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(0.62rem, 0.82vw, 0.88rem);
+            font-weight: 600;
+            letter-spacing: 0.2em;
+        }
+
+        .piece-title {
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.35rem, 2.55vw, 3.3rem);
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: 0.035em;
+            transform: scaleX(1.015);
+            transform-origin: left center;
+        }
+
+        .piece-title-sub {
+            font-size: 0.52em;
+            text-transform: lowercase;
+            color: rgba(255, 255, 255, 0.55);
+            font-weight: 300;
+            display: inline-block;
+            vertical-align: baseline;
+            margin-left: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .piece-process-photo {
+            width: min(310px, 72%);
+            margin: clamp(0.1rem, 0.5vh, 0.28rem) 0 0;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            background: rgba(0, 0, 0, 0.42);
+            box-shadow: 0 0 26px rgba(223, 255, 0, 0.12);
+        }
+
+        .piece-process-photo img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            object-position: 44% 52%;
+            filter: contrast(1.08) saturate(0.86) brightness(0.78);
+        }
+
+        .piece-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem 1rem;
+            color: rgba(255, 255, 255, 0.72);
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(0.68rem, 0.9vw, 0.96rem);
+            font-weight: 600;
+            letter-spacing: 0.16em;
+        }
+
+        .piece-meta span {
+            padding-top: 0.52rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.24);
+        }
+
+        .piece-specs {
+            display: grid;
+            gap: 0.28rem;
+            color: rgba(255, 255, 255, 0.56);
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(0.58rem, 0.76vw, 0.76rem);
+            line-height: 1.35;
+            letter-spacing: 0.09em;
+        }
+
+        .piece-note {
+            max-width: 640px;
+            color: rgba(255, 255, 255, 0.82);
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(0.68rem, 0.9vw, 0.92rem);
+            font-weight: 400;
+            line-height: 1.65;
+            letter-spacing: 0.055em;
+            text-transform: none;
+            border-left: 1px solid rgba(223, 255, 0, 0.42);
+            padding-left: clamp(0.8rem, 1.5vw, 1.2rem);
+        }
+
+        .piece-note a {
+            color: inherit;
+            text-decoration-color: rgba(223, 255, 0, 0.72);
+            text-underline-offset: 0.18em;
+        }
+
+        .life-panel {
+            position: relative;
+            width: 100%;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            box-shadow: none;
+            overflow: visible;
+        }
+
+        .life-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: clamp(0.8rem, 1.8vw, 1.25rem);
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        }
+
+        .life-heading {
+            color: rgba(255, 255, 255, 0.72);
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(0.62rem, 0.82vw, 0.84rem);
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        .life-button {
+            width: 2.2rem;
+            height: 2.2rem;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            color: #00e5ff;
+            padding: 0;
+            cursor: none;
+            position: relative;
+            transition: transform 0.25s ease;
+        }
+
+        .life-button::before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-top: 0.48rem solid transparent;
+            border-bottom: 0.48rem solid transparent;
+            border-left: 0.78rem solid currentColor;
+            content: "";
+            filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.42));
+            transform: translate(-38%, -50%);
+        }
+
+        .life-button.is-playing::before {
+            width: 0.72rem;
+            height: 1rem;
+            border: 0;
+            background:
+                linear-gradient(90deg, currentColor 0 34%, transparent 34% 66%, currentColor 66% 100%);
+            transform: translate(-50%, -50%);
+        }
+
+        .life-button:hover,
+        .life-button.is-playing {
+            color: #ffffff;
+            box-shadow: none;
+            transform: scale(1.08);
+        }
+
+        .life-stage {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 2 / 1;
+            background: #020202;
+            border: 0;
+            box-shadow: none;
+            overflow: hidden;
+        }
+
+        #life-canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            image-rendering: pixelated;
+            touch-action: none;
+        }
+
+        .life-status {
+            margin-top: 0.9rem;
+            color: #00e5ff;
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(0.62rem, 0.82vw, 0.82rem);
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
+        }
+
+        .life-controls {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.44rem 1rem;
+            margin-top: 1rem;
+            color: rgba(255, 255, 255, 0.62);
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(0.58rem, 0.76vw, 0.74rem);
+            line-height: 1.45;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .life-controls span {
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding-top: 0.42rem;
+        }
+
+        .life-controls strong {
+            color: #00e5ff;
+            font-weight: 400;
+        }
+
+        .life-quote {
+            margin-top: clamp(3rem, 7vw, 6rem);
+            padding-top: clamp(1.5rem, 3.2vw, 2.5rem);
+            border-top: 1px solid rgba(255, 255, 255, 0.28);
+            color: rgba(255, 255, 255, 0.72);
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(0.86rem, 1.24vw, 1.35rem);
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.35;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-shadow:
+                0 0 18px rgba(0, 229, 255, 0.16),
+                0 0 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .quote-intermission {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            box-sizing: border-box;
+            padding: clamp(120px, 20vh, 220px) clamp(28px, 6vw, 120px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: transparent;
+        }
+
+        .quote-intermission p {
+            max-width: 1220px;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.94);
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.53rem, 0.94vw, 1.18rem);
+            font-weight: 300;
+            line-height: 1.48;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .quote-intermission.is-visible p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .collage-container {
+            position: relative;
+            width: 100%;
+            height: clamp(560px, 65vh, 760px);
+            border: 1px dashed rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.01);
+            overflow: visible;
+        }
+
+        .draggable-photo {
+            position: absolute;
+            z-index: 50;
+            width: clamp(190px, 17vw, 270px);
+            cursor: default;
+            user-select: none;
+            touch-action: none;
+            transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .draggable-photo:has(video) {
+            cursor: pointer;
+        }
+
+        /* Active state transitions on media shadows */
+
+        .draggable-photo.photo-1 {
+            top: 35%;
+            left: -60%;
+        }
+
+        .draggable-photo.photo-2 {
+            top: 18%;
+            left: 79%;
+            z-index: 52;
+        }
+
+        .draggable-photo.photo-3 {
+            top: 2%;
+            left: -23%;
+        }
+
+        .draggable-photo.photo-4 {
+            top: 68%;
+            left: 47%;
+            z-index: 55;
+        }
+
+        .draggable-photo.photo-5 {
+            top: 60%;
+            left: -28%;
+        }
+
+        .draggable-photo.photo-6 {
+            top: 8%;
+            left: 49%;
+            z-index: 53;
+        }
+
+        .draggable-photo.photo-7 {
+            top: 38%;
+            left: 17%;
+            z-index: 51;
+        }
+
+        .draggable-photo img,
+        .draggable-photo video {
+            width: 100%;
+            display: block;
+            filter: contrast(1.04) saturate(0.9) brightness(0.92);
+            pointer-events: none;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65), 0 0 15px rgba(255, 255, 255, 0.05);
+            transition: box-shadow 0.25s ease;
+        }
+
+        .photo-grain {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.18;
+            mix-blend-mode: overlay;
+        }
+
+        .photo-label {
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(0.52rem, 0.68vw, 0.72rem);
+            color: rgba(255, 255, 255, 0.45);
+            background: transparent;
+            padding: 8px 0 0 0;
+            text-align: left;
+            text-transform: lowercase;
+            letter-spacing: 0.04em;
+            word-break: break-all;
+        }
+
+        .video-play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: clamp(42px, 3.8vw, 56px);
+            height: clamp(42px, 3.8vw, 56px);
+            background: rgba(10, 10, 10, 0.72);
+            border: 1.5px solid rgba(255, 255, 255, 0.65);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(0.76rem, 1vw, 1.15rem);
+            pointer-events: none; /* click goes through to wrapper */
+            z-index: 4;
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 1;
+            padding-left: 3px; /* optical center alignment for triangle */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Hover effect when parent photo is hovered */
+        .draggable-photo:hover .video-play-overlay {
+            background: rgba(10, 10, 10, 0.85);
+            border-color: #00e5ff;
+            color: #00e5ff;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+            transform: translate(-50%, -50%) scale(1.08);
+        }
+
+        /* When the video inside is playing, hide the overlay play button */
+        .draggable-photo.is-playing-video .video-play-overlay {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.8);
+            pointer-events: none;
+        }
+
+        .cone-intermission {
+            position: relative;
+            z-index: 10;
+            min-height: 100svh;
+            padding: clamp(46px, 7vh, 84px) clamp(20px, 4vw, 72px) clamp(82px, 12vh, 144px);
+            display: grid;
+            place-items: center;
+            isolation: isolate;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        .cone-intermission::before,
+        .cone-intermission::after {
+            position: absolute;
+            inset: 0;
+            content: "";
+            pointer-events: none;
+        }
+
+        .cone-intermission::before {
+            display: none;
+        }
+
+        .cone-intermission::after {
+            display: none;
+        }
+
+        @keyframes chapelField {
+            0% {
+                filter: hue-rotate(0deg) saturate(1.08);
+                transform: scale(1);
+            }
+
+            50% {
+                filter: hue-rotate(38deg) saturate(1.65);
+                transform: scale(1.04);
+            }
+
+            100% {
+                filter: hue-rotate(76deg) saturate(1.32);
+                transform: scale(1.02);
+            }
+        }
+
+        .cone-wrap {
+            position: relative;
+            width: min(980px, 100%);
+            min-height: min(760px, 78svh);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(32px) scale(0.985);
+            transition:
+                opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .audio-player-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 16px;
+            position: relative;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .audio-player-container::before {
+            content: "";
+            width: 1px;
+            height: 38px;
+            border-left: 1px dashed rgba(255, 255, 255, 0.22);
+            margin-bottom: 8px;
+        }
+
+        .synth-play-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(0.72rem, 1vw, 0.95rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            padding: clamp(8px, 1.2vh, 12px) clamp(16px, 2vw, 28px);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .synth-play-btn:hover {
+            border-color: #ffffff;
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.12);
+            letter-spacing: 0.19em;
+        }
+
+        .synth-play-btn.is-playing {
+            border-color: #00e5ff;
+            color: #00e5ff;
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.22);
+            animation: playPulse 2s infinite ease-in-out;
+        }
+
+        @keyframes playPulse {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(0, 229, 255, 0.35);
+            }
+        }
+
+        .synth-track-meta {
+            margin-top: 14px;
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(0.58rem, 0.76vw, 0.8rem);
+            color: rgba(255, 255, 255, 0.48);
+            text-align: center;
+            max-width: 520px;
+            line-height: 1.45;
+            letter-spacing: 0.04em;
+            text-transform: none;
+        }
+
+        .synth-track-meta a {
+            color: rgba(0, 229, 255, 0.82);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: rgba(0, 229, 255, 0.3);
+            transition: all 0.25s ease;
+        }
+
+        .synth-track-meta a:hover {
+            color: #00e5ff;
+            text-decoration-color: #00e5ff;
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.35);
+        }
+
+
+
+        .cone-intermission.is-visible .cone-wrap {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .cone-stage {
+            position: relative;
+            width: min(88svh, 88vw, 900px);
+            aspect-ratio: 1 / 1;
+        }
+
+        .cone-canvas {
+            position: absolute;
+            inset: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            filter:
+                drop-shadow(0 0 28px rgba(0, 229, 255, 0.16)) drop-shadow(0 0 46px rgba(151, 137, 255, 0.16));
+        }
+
+        .cone-label {
+            position: absolute;
+            z-index: 4;
+            color: rgba(255, 255, 255, 0.78);
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(0.62rem, 1.18vw, 0.94rem);
+            line-height: 1.18;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+            text-shadow: 0 0 12px currentColor;
+            opacity: 0;
+            transform: translateY(10px);
+            transition:
+                opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.4s ease;
+        }
+
+        .cone-intermission.is-visible .cone-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+
+            html,
+            body {
+                min-height: 100%;
+                overflow-y: auto;
+            }
+
+            .container {
+                height: 100svh;
+                padding: clamp(24px, 4.3vh, 38px) 18px clamp(84px, 13vh, 110px);
+                align-items: flex-start;
+            }
+
+            .about-text {
+                width: 100%;
+                max-width: none;
+                max-height: 100%;
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto auto auto;
+                gap: clamp(0.25rem, 0.6vh, 0.45rem);
+                padding: 0;
+                font-size: clamp(0.58rem, 2.72vw, 0.84rem);
+                line-height: 1.15;
+                letter-spacing: 0.03em;
+            }
+
+            .magazine-rail {
+                gap: 0.6rem;
+                padding-bottom: 0.34rem;
+                font-size: clamp(0.46rem, 2.4vw, 0.62rem);
+                letter-spacing: 0.12em;
+            }
+
+            .about-text p {
+                width: 100%;
+                max-width: none;
+                align-self: auto !important;
+                text-align: left !important;
+                grid-column: 1 !important;
+                grid-row: auto !important;
+                font-size: clamp(0.62rem, 2.75vw, 0.82rem);
+                line-height: 1.12;
+            }
+
+            .artist-name {
+                grid-template-columns: 1fr;
+                gap: 0.06em;
+                font-size: clamp(3rem, 20vw, 5.7rem);
+                line-height: 0.7;
+                margin-bottom: clamp(0.08rem, 0.5vh, 0.35rem);
+            }
+
+            .artist-name .amp {
+                display: none;
+            }
+
+            .story-deck {
+                grid-column: 1;
+                width: 100%;
+                margin-bottom: 0;
+                font-size: clamp(0.62rem, 3vw, 0.9rem);
+                line-height: 1.05;
+                letter-spacing: 0.045em;
+            }
+
+            .story-kicker {
+                margin-bottom: 0.24rem;
+                line-height: 0.88;
+            }
+
+            .story-num {
+                margin-bottom: 0.1rem;
+                font-size: clamp(0.42rem, 2vw, 0.58rem);
+                letter-spacing: 0.14em;
+            }
+
+            .story-title {
+                font-size: clamp(1rem, 5.4vw, 1.5rem);
+                letter-spacing: 0.025em;
+            }
+
+            .story-beat {
+                transform: translateY(10px) scaleX(1.01);
+                padding-top: 0.34rem;
+            }
+
+            .story-beat::after {
+                right: 0;
+                top: 0.38rem;
+                left: auto;
+                font-size: clamp(0.85rem, 4vw, 1.1rem);
+                transform: rotate(90deg);
+            }
+
+            .story-beat.is-active {
+                transform: translateY(0) scaleX(1.012);
+            }
+
+            .nav-container {
+                bottom: 24px;
+                left: 20px;
+                gap: 8px;
+            }
+
+            .text-btn {
+                font-size: clamp(0.68rem, 3.8vw, 0.96rem);
+                letter-spacing: 0.09em;
+            }
+
+            .piece-section {
+                min-height: auto;
+                padding: 28px 18px 110px;
+            }
+
+            .dome-section {
+                padding-bottom: clamp(180px, 25vh, 320px) !important;
+            }
+
+            .quote-intermission {
+                padding: clamp(70px, 12vh, 120px) 20px;
+            }
+
+            .quote-intermission p {
+                font-size: clamp(0.43rem, 2vw, 0.68rem);
+                line-height: 1.4;
+            }
+
+            .cone-intermission {
+                min-height: 92svh;
+                padding: 40px 18px 72px;
+            }
+
+            .cone-wrap {
+                min-height: 620px;
+            }
+
+            .cone-stage {
+                width: min(104vw, 650px);
+            }
+
+            .cone-label {
+                font-size: clamp(0.5rem, 2.35vw, 0.66rem);
+                letter-spacing: 0.08em;
+            }
+
+            .piece-layout {
+                grid-template-columns: 1fr;
+                gap: 1.3rem;
+            }
+
+            .piece-title {
+                font-size: clamp(1.28rem, 6.8vw, 2.45rem);
+                line-height: 0.98;
+            }
+
+            .piece-title-sub {
+                display: block;
+                margin-left: 0;
+                margin-top: 6px;
+                font-size: 0.56em;
+            }
+
+            .piece-process-photo {
+                width: min(240px, 68vw);
+            }
+
+            .piece-note {
+                font-size: clamp(0.62rem, 2.7vw, 0.82rem);
+                line-height: 1.5;
+            }
+
+            .collage-container {
+                height: auto;
+                border: none;
+                background: none;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+
+            .draggable-photo {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                width: 70vw !important;
+                max-width: 240px !important;
+                transform: none !important;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important;
+                cursor: default !important;
+            }
+
+            .life-head {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .life-stage {
+                aspect-ratio: 2 / 1;
+            }
+
+            .life-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cone-intermission::before {
+                animation: none;
+            }
+        }
+
+        @media (min-width: 769px) and (max-height: 680px) {
+            .container {
+                padding-top: clamp(22px, 4.5vh, 36px);
+                padding-bottom: clamp(84px, 12vh, 112px);
+            }
+
+            .about-text {
+                font-size: clamp(0.68rem, 0.9vw, 0.98rem);
+                line-height: 1.16;
+                gap: clamp(0.25rem, 0.6vh, 0.45rem) clamp(1.2rem, 3vw, 3.6rem);
+            }
+
+            .artist-name {
+                font-size: clamp(3.8rem, 8.7vw, 9.2rem);
+            }
+
+            .story-deck {
+                font-size: clamp(0.82rem, 1.12vw, 1.22rem);
+            }
+
+            .about-text p {
+                font-size: clamp(0.82rem, 1.08vw, 1.16rem);
+            }
+
+            .story-kicker {
+                margin-bottom: 0.34rem;
+            }
+
+            .story-title {
+                font-size: clamp(1.12rem, 2vw, 2.2rem);
+            }
+        }
+    </style>
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
+</head>
+
+<body data-page="visionSound">
+    <script>
+        const reduceIntroMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.setTimeout(() => {
+            document.body.classList.add('intro-text-ready');
+        }, reduceIntroMotion ? 100 : 800);
+
+        window.setTimeout(() => {
+            document.body.classList.add('intro-ready');
+        }, reduceIntroMotion ? 100 : 1500);
+    </script>
+
+    <div id="gradient-frame"></div>
+    <div id="bg-container">
+        <video class="bg-layer" src="videos/birds_track.mov" autoplay muted loop playsinline preload="auto"></video>
+    </div>
+    <div class="bg-overlay"></div>
+    <div class="film-grain"></div>
+
+    <div id="cursor-img"></div>
+
+    <div class="container">
+        <div class="about-text">
+            <div class="magazine-rail">
+                <span>Generative Studies</span>
+                <span>Local Rules / Emergent Form</span>
+            </div>
+            <h1 class="artist-name"><span>VISION</span><span class="amp">&amp;</span><span>SOUND</span></h1>
+            <p class="story-beat">
+                <span class="story-kicker"><span class="story-num">01</span><span
+                        class="story-title">Pattern</span></span>
+                How does a flock of birds swivel so gracefully around the modern city skyline?<br><br>
+                How do two flowers, on mountains across corners of the planet, grow to evolve similar geometries?
+            </p>
+
+            <p class="story-beat">
+                <span class="story-kicker"><span class="story-num">02</span><span class="story-title">Rule</span></span>
+                50 years ago, John Conway conceived a discrete grid model of computation where complex, emergent
+                behaviors arise from incredibly simple local rules.<br><br>
+                The mesmerizing diversity of the natural world, our biology, and our societies, can be interpreted
+                through finite local rules.
+            </p>
+
+            <p class="story-beat">
+                <span class="story-kicker"><span class="story-num">03</span><span
+                        class="story-title">Instrument</span></span>
+                I explore local interactions as a generative source of beauty in vision and sound.<br><br>
+                Can core sounds self-interact to generate a sonic landscape as graceful to the human ear, as a flock of
+                birds is to the human eye?
+            </p>
+
+            <p class="story-beat">
+                <span class="story-kicker"><span class="story-num">04</span><span
+                        class="story-title">Motivation</span></span>
+                While most generative artificial intelligence today relies on regurgitation and remixing of spoon-fed
+                data, I believe we can generate a beautiful landscape from capturing token concepts as simple rules and
+                letting them self-evolve.
+            </p>
+        </div>
+    </div>
+
+
+
+    <section class="piece-section" aria-labelledby="cellular-automata-title">
+        <div class="piece-layout">
+            <div class="piece-copy">
+                <div class="piece-label">Generative Art</div>
+                <h2 id="cellular-automata-title" class="piece-title">Touch Activated Self Evolving Interactive Cellular
+                    Automata</h2>
+                <figure class="piece-process-photo">
+                    <img src="images/meCA.png" alt="Vishnoi working on the physical cellular automata LED grid.">
+                </figure>
+                <div class="piece-meta">
+                    <span>2026</span>
+                    <span>Work In Progress</span>
+                </div>
+                <div class="piece-specs">
+                    <span>Estimated Time Input: 85 Physical Hours</span>
+                    <span>Running Cost: $445 USD</span>
+                </div>
+                <p class="piece-note">
+                    This art peice aims to bring John Conway’s seminal <a
+                        href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank"
+                        rel="noopener noreferrer">Game of Life</a>- to LIFE. I treat physical touch as a capacitative
+                    source of life: a hand enters the field, a cell wakes, and the grid begins to compose itself based
+                    on algorithmic rules.
+                </p>
+            </div>
+
+            <div class="life-panel">
+                <div class="life-head">
+                    <div class="life-heading">Simulate the Game of Life: create forms, see them evolve, sustain,
+                        replicate, or die.</div>
+                    <button class="life-button" id="life-toggle" type="button" aria-label="Play Game of Life"></button>
+                </div>
+                <div class="life-stage">
+                    <canvas id="life-canvas" width="960" height="480"
+                        aria-label="Playable Conway Game of Life canvas"></canvas>
+                </div>
+                <div class="life-status" id="life-status">Live Cells: 0</div>
+                <div class="life-controls" aria-label="Game controls">
+                    <span><strong>Space</strong>: Pause/Resume the simulation.</span>
+                    <span><strong>C</strong>: Clear the grid.</span>
+                    <span><strong>V</strong>: Toggle the Void Seed rule when grid has fewer than 3 cells.</span>
+                    <span><strong>Left Click</strong>: Draw/activate cells.</span>
+                    <span><strong>Right Click</strong>: Erase cells.</span>
+                </div>
+                <p class="life-quote">Infinite complexity can arise from simple & local interaction rules</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cone-intermission" aria-labelledby="light-cone-title">
+        <div class="cone-wrap">
+            <div class="cone-stage" aria-label="Diagrammatic light cone chapel intermission">
+                <!-- Light-cone geometry adapted from Wikimedia Commons "World_line.svg"
+                     https://commons.wikimedia.org/wiki/File:World_line.svg
+                     Licensed CC BY-SA 3.0 / GFDL. Labels, rendering, and styling adapted for this page. -->
+                <canvas id="light-cone-canvas" class="cone-canvas" role="img"
+                    aria-labelledby="light-cone-title light-cone-desc"></canvas>
+                <span id="light-cone-title" hidden>Light cone diagram</span>
+                <span id="light-cone-desc" hidden>A generated spacetime light cone diagram adapted from Wikimedia
+                    Commons World_line.svg, labeled time and space on the y and x axes, anything you can touch, all that you have touched, disconnected, and the speed limit of reality.</span>
+            </div>
+
+            <div class="audio-player-container">
+                <audio id="synth-audio" src="THE_TIME.mp3"></audio>
+                <button class="synth-play-btn" id="synth-play-btn">
+                    <span class="play-icon">▶</span>
+                    <span class="btn-text">Vishnoi on SYNTH — THE TIME</span>
+                </button>
+                <div class="synth-track-meta">
+                    Truly Bald Records / Fundraiser <a href="https://trulybald.bandcamp.com/album/compilation-fundraiser-for-morris-home-philadelphia" target="_blank" rel="noopener noreferrer">compilation</a> for Morris Home Philadelphia for Trans Youth safety
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="piece-section dome-section" aria-labelledby="dome-project-title">
+        <div class="piece-layout">
+            <div class="piece-copy">
+                <div class="piece-label">curation & performance</div>
+                <h2 id="dome-project-title" class="piece-title">Curator & Performer <span class="piece-title-sub">@ the dome, philadelphia</span></h2>
+                <div class="piece-meta">
+                    <span>2020</span>
+                    <span>archive</span>
+                </div>
+            </div>
+
+            <!-- Scattered Collage Area -->
+            <div class="collage-container">
+                <div class="draggable-photo photo-1" style="transform: translate3d(0px, 0px, 0px);" data-rotation="0">
+                    <div class="photo-grain"></div>
+                    <img src="videos/the%20dome/guitar.jpg" alt="guitar performance photo">
+                    <div class="photo-label">guitar.jpg</div>
+                </div>
+                <div class="draggable-photo photo-2" style="transform: translate3d(0px, 0px, 0px);" data-rotation="0">
+                    <div class="photo-grain"></div>
+                    <div class="video-play-overlay">▶</div>
+                    <video loop playsinline>
+                        <source src="videos/the%20dome/monkey.mp4" type="video/mp4">
+                        <source src="videos/the%20dome/monkey.MOV" type="video/quicktime">
+                    </video>
+                    <div class="photo-label">monkey.mov</div>
+                </div>
+                <div class="draggable-photo photo-3" style="transform: translate3d(0px, 0px, 0px);" data-rotation="0">
+                    <div class="photo-grain"></div>
+                    <img src="videos/the%20dome/sax.jpg" alt="sax performance photo">
+                    <div class="photo-label">sax.jpg</div>
+                </div>
+                <div class="draggable-photo photo-4" style="transform: translate3d(0px, 0px, 0px);" data-rotation="0">
+                    <div class="photo-grain"></div>
+                    <div class="video-play-overlay">▶</div>
+                    <video loop playsinline>
+                        <source src="videos/the%20dome/hmm.mp4" type="video/mp4">
+                        <source src="videos/the%20dome/hmm.MOV" type="video/quicktime">
+                    </video>
+                    <div class="photo-label">hmm.mov</div>
+                </div>
+                <div class="draggable-photo photo-5" style="transform: translate3d(0px, 0px, 0px);" data-rotation="0">
+                    <div class="photo-grain"></div>
+                    <img src="videos/the%20dome/ambience.JPG" alt="ambience photo">
+                    <div class="photo-label">ambience.jpg</div>
+                </div>
+                <div class="draggable-photo photo-6" style="transform: translate3d(0px, 0px, 0px);" data-rotation="0">
+                    <div class="photo-grain"></div>
+                    <img src="videos/the%20dome/costume.png" alt="costume photo">
+                    <div class="photo-label">costume.png</div>
+                </div>
+                <div class="draggable-photo photo-7" style="transform: translate3d(0px, 0px, 0px);" data-rotation="0">
+                    <div class="photo-grain"></div>
+                    <img src="videos/the%20dome/me.png" alt="me photo">
+                    <div class="photo-label">me.png</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <nav class="nav-container home-only">
+        <a href="index.html" id="btn-main-home" class="text-btn" data-portal-link>home</a>
+    </nav>
+
+    <script>
+        window.addEventListener('mousedown', () => document.body.classList.add('clicking'));
+        window.addEventListener('mouseup', () => document.body.classList.remove('clicking'));
+        // Wrap words of story beats in spans for cyclic red cycle animation
+        (() => {
+            const beats = document.querySelectorAll('.story-beat');
+            if (!beats.length) return;
+            let globalWordCount = 0;
+
+            const wrapWords = (node) => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const text = node.textContent;
+                    const words = text.split(/(\s+)/);
+                    const fragment = document.createDocumentFragment();
+                    words.forEach((w) => {
+                        if (w.trim() === '') {
+                            fragment.appendChild(document.createTextNode(w));
+                        } else {
+                            const span = document.createElement('span');
+                            span.className = 'cycle-word';
+                            span.textContent = w;
+                            span.style.setProperty('--word-index', globalWordCount++);
+                            fragment.appendChild(span);
+                        }
+                    });
+                    node.parentNode.replaceChild(fragment, node);
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    if (node.classList.contains('story-kicker')) return;
+                    const children = Array.from(node.childNodes);
+                    children.forEach(wrapWords);
+                }
+            };
+
+            beats.forEach((beat) => {
+                const children = Array.from(beat.childNodes);
+                children.forEach(wrapWords);
+            });
+
+            const duration = globalWordCount * 0.08;
+            document.documentElement.style.setProperty('--word-cycle-duration', `${duration}s`);
+        })();
+
+        // Keep the intro beats alive while the expanded page scrolls below.
+        (() => {
+            const beats = Array.from(document.querySelectorAll('.story-beat'));
+            if (!beats.length) return;
+            beats.forEach((beat, index) => {
+                window.setTimeout(() => {
+                    beats.forEach((item) => item.classList.remove('intro-active'));
+                    beat.classList.add('intro-active');
+                }, 1200 + index * 650);
+            });
+            window.setTimeout(() => {
+                beats.forEach((item) => item.classList.remove('intro-active'));
+                beats[beats.length - 1].classList.add('is-active');
+            }, 1200 + beats.length * 650 + 400);
+        })();
+
+        (() => {
+            const quoteSection = document.querySelector('.quote-intermission');
+            if (!quoteSection) return;
+            if (!('IntersectionObserver' in window)) {
+                quoteSection.classList.add('is-visible');
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    quoteSection.classList.toggle('is-visible', entry.isIntersecting);
+                });
+            }, { threshold: 0.22 });
+            observer.observe(quoteSection);
+        })();
+
+        (() => {
+            const intermission = document.querySelector('.cone-intermission');
+            if (!intermission) return;
+            if (!('IntersectionObserver' in window)) {
+                intermission.classList.add('is-visible');
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    intermission.classList.toggle('is-visible', entry.isIntersecting);
+                });
+            }, { threshold: 0.32 });
+            observer.observe(intermission);
+        })();
+
+        (() => {
+            const canvas = document.getElementById('light-cone-canvas');
+            if (!canvas) return;
+            canvas.style.cursor = 'default';
+
+            const ctx = canvas.getContext('2d');
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const getCycleColor = (time, alpha = 1) => {
+                const cycleProgress = (time / 3000) % 1;
+                let r, g, b;
+                if (cycleProgress < 0.333) {
+                    const t = cycleProgress / 0.333;
+                    r = 254 + (111 - 254) * t;
+                    g = 65 + (0 - 65) * t;
+                    b = 100 + (255 - 100) * t;
+                } else if (cycleProgress < 0.667) {
+                    const t = (cycleProgress - 0.333) / 0.334;
+                    r = 111 + (0 - 111) * t;
+                    g = 0 + (229 - 0) * t;
+                    b = 255 + (255 - 255) * t;
+                } else {
+                    const t = (cycleProgress - 0.667) / 0.333;
+                    r = 0 + (254 - 0) * t;
+                    g = 229 + (65 - 229) * t;
+                    b = 255 + (100 - 255) * t;
+                }
+                return `rgba(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)}, ${alpha})`;
+            };
+
+            const stars = [
+                [0.15, 0.51, 1.6], [0.21, 0.47, 1.1], [0.28, 0.57, 1.8],
+                [0.34, 0.43, 1.2], [0.41, 0.62, 1.3], [0.58, 0.48, 1.7],
+                [0.66, 0.54, 2.0], [0.78, 0.56, 1.3], [0.85, 0.61, 1.0],
+                [0.54, 0.70, 1.2], [0.47, 0.69, 1.0], [0.74, 0.47, 1.2],
+                [0.24, 0.63, 1.0], [0.62, 0.66, 1.0], [0.36, 0.52, 1.1],
+            ];
+            const starbursts = [[0.31, 0.58, 13], [0.73, 0.55, 16], [0.58, 0.67, 17], [0.48, 0.43, 10]];
+
+            let width = 0;
+            let height = 0;
+            let rafId = null;
+            let isRevealed = false;
+            let revealScale = 0;
+            let isHoveringDot = false;
+            let dotHoverScale = 1.0;
+            let mouseX = null;
+            let mouseY = null;
+            let clickParticles = [];
+            let blastGlow = 0;
+
+            const fitCanvas = () => {
+                const rect = canvas.getBoundingClientRect();
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                width = Math.max(1, rect.width);
+                height = Math.max(1, rect.height);
+                canvas.width = Math.round(width * dpr);
+                canvas.height = Math.round(height * dpr);
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            };
+
+            const p = (x, y) => [x * width, y * height];
+
+            const scalePoint = (pt, origin, scale) => [
+                origin[0] + (pt[0] - origin[0]) * scale,
+                origin[1] + (pt[1] - origin[1]) * scale
+            ];
+
+            const makeGradient = (x1, y1, x2, y2, stops) => {
+                const gradient = ctx.createLinearGradient(x1, y1, x2, y2);
+                stops.forEach(([offset, color]) => gradient.addColorStop(offset, color));
+                return gradient;
+            };
+
+            const pathPolygon = (points) => {
+                ctx.beginPath();
+                points.forEach(([x, y], index) => {
+                    if (index === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                });
+                ctx.closePath();
+            };
+
+            const drawEllipse = (cx, cy, rx, ry, fill, stroke, lineWidth = 1) => {
+                ctx.beginPath();
+                ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2);
+                if (fill) {
+                    ctx.fillStyle = fill;
+                    ctx.fill();
+                }
+                if (stroke) {
+                    ctx.strokeStyle = stroke;
+                    ctx.lineWidth = lineWidth;
+                    ctx.stroke();
+                }
+            };
+
+            const mixPoint = (a, b, t) => [
+                a[0] + (b[0] - a[0]) * t,
+                a[1] + (b[1] - a[1]) * t,
+            ];
+
+            const quadPoint = (quad, u, v) => {
+                const topEdge = mixPoint(quad[0], quad[1], u);
+                const bottomEdge = mixPoint(quad[3], quad[2], u);
+                const basePt = mixPoint(topEdge, bottomEdge, v);
+                
+                // Spacetime Gravity Warping around the mouse cursor
+                if (mouseX !== null && mouseY !== null) {
+                    const dx = mouseX - basePt[0];
+                    const dy = mouseY - basePt[1];
+                    const distance = Math.hypot(dx, dy);
+                    const influenceRadius = width * 0.18;
+                    if (distance < influenceRadius) {
+                        const strength = (1 - distance / influenceRadius) * 0.28;
+                        basePt[0] += dx * strength;
+                        basePt[1] += dy * strength;
+                    }
+                }
+                return basePt;
+            };
+
+            const drawPlaneMesh = (quad, columns = 12, rows = 8, time = 0) => {
+                ctx.save();
+                pathPolygon(quad);
+                ctx.clip();
+                ctx.strokeStyle = 'rgba(210, 242, 255, 0.28)';
+                ctx.lineWidth = Math.max(0.7, width * 0.0011);
+                
+                // Active scanning sweep line across the grid columns
+                const sweepProgress = (time / 3600) % 1;
+
+                for (let i = 0; i <= columns; i += 1) {
+                    const u = i / columns;
+                    const a = quadPoint(quad, u, 0);
+                    const b = quadPoint(quad, u, 1);
+                    ctx.beginPath();
+                    ctx.moveTo(a[0], a[1]);
+                    ctx.lineTo(b[0], b[1]);
+
+                    // Highlight columns near sweep
+                    const distToSweep = Math.abs(u - sweepProgress);
+                    if (distToSweep < 0.06) {
+                        ctx.strokeStyle = `rgba(0, 229, 255, ${0.8 * (1 - distToSweep / 0.06)})`;
+                        ctx.lineWidth = Math.max(1.2, width * 0.0018);
+                    } else {
+                        ctx.strokeStyle = 'rgba(210, 242, 255, 0.28)';
+                        ctx.lineWidth = Math.max(0.7, width * 0.0011);
+                    }
+                    ctx.stroke();
+                }
+                for (let j = 0; j <= rows; j += 1) {
+                    const v = j / rows;
+                    const a = quadPoint(quad, 0, v);
+                    const b = quadPoint(quad, 1, v);
+                    ctx.beginPath();
+                    ctx.moveTo(a[0], a[1]);
+                    ctx.lineTo(b[0], b[1]);
+                    ctx.strokeStyle = 'rgba(210, 242, 255, 0.28)';
+                    ctx.lineWidth = Math.max(0.7, width * 0.0011);
+                    ctx.stroke();
+                }
+                ctx.restore();
+            };
+
+            const drawConeMesh = (tip, rimCenter, rimRx, rimRy, ySign, color, time = 0) => {
+                ctx.save();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = Math.max(0.55, width * 0.0009);
+                ctx.shadowColor = color;
+                ctx.shadowBlur = width * 0.0025;
+
+                // Concentric circles ripple outward
+                const offset = (time / 1400) % 1;
+                for (let i = 0; i <= 8; i += 1) {
+                    const t = (i + offset) / 8;
+                    if (t > 1) continue;
+                    const cx = tip[0] + (rimCenter[0] - tip[0]) * t;
+                    const cy = tip[1] + (rimCenter[1] - tip[1]) * t;
+                    
+                    ctx.save();
+                    // Fade out smoothly towards the rim and fade in from the center
+                    ctx.globalAlpha = Math.sin(t * Math.PI);
+                    ctx.beginPath();
+                    ctx.ellipse(cx, cy, rimRx * t, rimRy * t, 0, 0, Math.PI * 2);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+
+                // Spoke lines and flowing photon pulses
+                const isPastCone = rimCenter[1] > tip[1];
+                for (let i = 0; i < 18; i += 1) {
+                    const angle = (Math.PI * 2 * i) / 18;
+                    const x = rimCenter[0] + Math.cos(angle) * rimRx;
+                    const y = rimCenter[1] + Math.sin(angle) * rimRy * ySign;
+                    ctx.beginPath();
+                    ctx.moveTo(tip[0], tip[1]);
+                    ctx.lineTo(x, y);
+                    ctx.stroke();
+
+                    // Draw a flowing photon along the line
+                    if (revealScale > 0.01) {
+                        const photonProgress = ((time / 2000) + (i / 18)) % 1;
+                        // Past cone: flow towards tip (present observer). Future cone: flow away from tip.
+                        const pT = isPastCone ? (1 - photonProgress) : photonProgress;
+                        const px = tip[0] + (x - tip[0]) * pT;
+                        const py = tip[1] + (y - tip[1]) * pT;
+                        ctx.save();
+                        ctx.fillStyle = isPastCone ? 'rgba(0, 229, 255, 0.95)' : 'rgba(254, 65, 100, 0.95)';
+                        ctx.shadowColor = ctx.fillStyle;
+                        ctx.shadowBlur = width * 0.01;
+                        ctx.beginPath();
+                        ctx.arc(px, py, Math.max(2, width * 0.0028), 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.restore();
+                    }
+                }
+                ctx.restore();
+            };
+
+            const drawLightEdge = (a, b, index, alpha = 1) => {
+                const edgeGradient = makeGradient(a[0], a[1], b[0], b[1], [
+                    [0, index === 0 ? `rgba(0, 229, 255, ${0.94 * alpha})` : `rgba(223, 255, 0, ${0.8 * alpha})`],
+                    [0.5, `rgba(255, 255, 255, ${0.92 * alpha})`],
+                    [1, index === 0 ? `rgba(223, 255, 0, ${0.8 * alpha})` : `rgba(254, 65, 100, ${0.86 * alpha})`],
+                ]);
+                ctx.strokeStyle = edgeGradient;
+                ctx.lineWidth = Math.max(1.2, width * 0.0018);
+                ctx.shadowColor = index === 0 ? `rgba(0, 229, 255, ${0.72 * alpha})` : `rgba(254, 65, 100, ${0.5 * alpha})`;
+                ctx.shadowBlur = width * 0.011;
+                ctx.beginPath();
+                ctx.moveTo(a[0], a[1]);
+                ctx.lineTo(b[0], b[1]);
+                ctx.stroke();
+                ctx.shadowBlur = 0;
+            };
+
+            const drawDashedArrow = (fromX, fromY, toX, toY, color) => {
+                ctx.save();
+                ctx.strokeStyle = color;
+                ctx.fillStyle = color;
+                ctx.lineWidth = Math.max(1, width * 0.001);
+                ctx.setLineDash([4, 4]);
+                ctx.beginPath();
+                ctx.moveTo(fromX, fromY);
+                ctx.lineTo(toX, toY);
+                ctx.stroke();
+
+                // Reset line dash for arrowhead
+                ctx.setLineDash([]);
+                const angle = Math.atan2(toY - fromY, toX - fromX);
+                const arrowSize = Math.max(5, width * 0.008);
+                ctx.beginPath();
+                ctx.moveTo(toX, toY);
+                ctx.lineTo(toX - arrowSize * Math.cos(angle - Math.PI / 6), toY - arrowSize * Math.sin(angle - Math.PI / 6));
+                ctx.lineTo(toX - arrowSize * Math.cos(angle + Math.PI / 6), toY - arrowSize * Math.sin(angle + Math.PI / 6));
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+            };
+
+            const drawArcText = (text, cx, cy, rx, ry, startAngle, endAngle, size, color = 'rgba(255,255,255,0.9)') => {
+                const chars = text.toUpperCase().split('');
+                if (!chars.length) return;
+                ctx.save();
+                ctx.fillStyle = color;
+                ctx.shadowColor = 'rgba(255,255,255,0.42)';
+                ctx.shadowBlur = size * 0.24;
+                ctx.font = `300 ${size}px Outfit, Arial, sans-serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                chars.forEach((char, index) => {
+                    const t = chars.length === 1 ? 0.5 : index / (chars.length - 1);
+                    const angle = startAngle + (endAngle - startAngle) * t;
+                    const x = cx + Math.cos(angle) * rx;
+                    const y = cy + Math.sin(angle) * ry;
+                    ctx.save();
+                    ctx.translate(x, y);
+                    ctx.rotate(angle - Math.PI / 2);
+                    ctx.fillText(char, 0, 0);
+                    ctx.restore();
+                });
+                ctx.restore();
+            };
+
+            const drawFlowText = (text, a, b, offset, size, color = 'rgba(255,255,255,0.7)') => {
+                const mid = mixPoint(a, b, 0.5);
+                const angle = Math.atan2(b[1] - a[1], b[0] - a[0]);
+                const normal = [Math.sin(angle), -Math.cos(angle)];
+                ctx.save();
+                ctx.translate(mid[0] + normal[0] * offset, mid[1] + normal[1] * offset);
+                ctx.rotate(angle + Math.PI);
+                ctx.transform(1, 0, -0.12, 0.72, 0, 0);
+                ctx.fillStyle = color;
+                ctx.shadowColor = color;
+                ctx.shadowBlur = size * 0.28;
+                ctx.font = `400 ${size}px Courier Prime, monospace`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(text.toUpperCase(), 0, 0);
+                ctx.restore();
+            };
+
+            const drawProjectedPlaneText = (text, x, y, angle, size) => {
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.fillStyle = 'rgba(254, 65, 100, 0.82)';
+                ctx.shadowColor = 'rgba(254, 65, 100, 0.62)';
+                ctx.shadowBlur = size * 0.35;
+                ctx.font = `400 ${size}px Courier Prime, monospace`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(text.toUpperCase(), 0, 0);
+                ctx.restore();
+            };
+
+             const draw = (time = 0) => {
+                 ctx.clearRect(0, 0, width, height);
+
+                 // Decay blastGlow smoothly
+                 blastGlow += (0 - blastGlow) * 0.04;
+
+                 const pulse = reduceMotion ? 0 : (Math.sin(time / 520) + 1) / 2;
+
+                 // Smoothly update revealScale (slow grow transition)
+                 const targetReveal = isRevealed ? 1 : 0;
+                 revealScale += (targetReveal - revealScale) * 0.018;
+
+                 // Smoothly update dotHoverScale
+                 const targetDotScale = (isHoveringDot && !isRevealed) ? 1.48 : 1.0;
+                 dotHoverScale += (targetDotScale - dotHoverScale) * 0.12;
+
+                 let easedScale = 1;
+                 if (!reduceMotion) {
+                     const rect = canvas.getBoundingClientRect();
+                     const viewportHeight = window.innerHeight;
+                     const startY = viewportHeight * 0.88;
+                     const endY = viewportHeight * 0.45;
+                     const range = startY - endY;
+                     const currentY = rect.top;
+                     const progress = Math.min(Math.max((startY - currentY) / range, 0), 1);
+                     const easeOutBack = (x) => {
+                         const c1 = 1.35;
+                         const c3 = c1 + 1;
+                         return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2);
+                     };
+                     easedScale = easeOutBack(progress);
+                 }
+
+                 // Cones physically grow based on scroll and click-reveal.
+                 const currentScale = easedScale * revealScale;
+                 const event = p(0.5, 0.5);
+
+                 const top = scalePoint(p(0.5, 0.02), event, currentScale);
+                 const bottom = scalePoint(p(0.5, 0.98), event, currentScale);
+                 const topLeft = scalePoint(p(0.04, 0.04), event, currentScale);
+                 const topRight = scalePoint(p(0.96, 0.04), event, currentScale);
+                 const bottomLeft = scalePoint(p(0.05, 0.96), event, currentScale);
+                 const bottomRight = scalePoint(p(0.95, 0.96), event, currentScale);
+
+                 const topRx = width * 0.46 * currentScale;
+                 const topRy = height * 0.09 * currentScale;
+                 const bottomRx = width * 0.45 * currentScale;
+                 const bottomRy = height * 0.09 * currentScale;
+
+                 const plane = [p(0.056, 0.468), p(0.573, 0.352), p(0.968, 0.531), p(0.401, 0.704)];
+
+                 // Draw background twinkling starfield
+                 ctx.save();
+                 stars.forEach((star, idx) => {
+                     const driftX = Math.sin(time / 2200 + idx) * 8;
+                     const driftY = Math.cos(time / 2600 + idx) * 8;
+                     const sx = star[0] * width + driftX;
+                     const sy = star[1] * height + driftY;
+                     const twinkle = 0.35 + 0.65 * Math.sin(time / 320 + idx * 2.5);
+                     const opacity = 0.22 * twinkle * easedScale * (1 - revealScale * 0.4);
+                     ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+                     ctx.beginPath();
+                     ctx.arc(sx, sy, star[2] * (0.85 + 0.15 * twinkle), 0, Math.PI * 2);
+                     ctx.fill();
+                 });
+
+                 // Draw glowing starburst flares
+                 starbursts.forEach((burst, idx) => {
+                     const driftX = Math.sin(time / 2200 + idx * 3) * 8;
+                     const driftY = Math.cos(time / 2600 + idx * 3) * 8;
+                     const bx = burst[0] * width + driftX;
+                     const by = burst[1] * height + driftY;
+                     const pulseFlare = 0.6 + 0.4 * Math.sin(time / 280 + idx * 3.3);
+                     const size = burst[2] * pulseFlare * easedScale * (1 - revealScale * 0.4);
+                     const opacity = 0.16 * pulseFlare * easedScale * (1 - revealScale * 0.4);
+                     ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+                     ctx.lineWidth = 0.8;
+                     ctx.beginPath();
+                     ctx.moveTo(bx - size, by);
+                     ctx.lineTo(bx + size, by);
+                     ctx.moveTo(bx, by - size);
+                     ctx.lineTo(bx, by + size);
+                     ctx.stroke();
+                 });
+                 ctx.restore();
+
+                const drawPresentPlane = () => {
+                    pathPolygon(plane);
+                    ctx.fillStyle = makeGradient(plane[0][0], plane[0][1], plane[2][0], plane[2][1], [
+                        [0, 'rgba(0, 39, 140, 0.94)'],
+                        [0.36, 'rgba(0, 114, 230, 0.94)'],
+                        [0.68, 'rgba(0, 206, 255, 0.88)'],
+                        [1, 'rgba(56, 32, 180, 0.94)'],
+                    ]);
+                    ctx.shadowColor = 'rgba(0, 102, 255, 0.5)';
+                    ctx.shadowBlur = width * 0.02 * (1 + blastGlow * 3.5);
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+
+                    drawPlaneMesh(plane, 14, 9, time);
+
+                    ctx.save();
+                    pathPolygon(plane);
+                    ctx.clip();
+                    drawProjectedPlaneText('Anything you cannot touch', width * 0.25, height * 0.515, -0.24, width * 0.018);
+                    drawProjectedPlaneText('Anything you cannot touch', width * 0.75, height * 0.515, 0.24, width * 0.018);
+                    ctx.restore();
+                };
+
+                // Draw click to reveal labels when unrevealed
+                if (revealScale < 0.99) {
+                    ctx.save();
+                    const hoverBonus = isHoveringDot ? 0.18 : 0;
+                    const textOpacity = (1 - revealScale) * (0.82 + hoverBonus) * easedScale;
+                    ctx.fillStyle = `rgba(255, 255, 255, ${textOpacity})`;
+                    ctx.shadowColor = isHoveringDot ? `rgba(0, 229, 255, ${textOpacity * 0.8})` : `rgba(255, 255, 255, ${textOpacity * 0.5})`;
+                    ctx.shadowBlur = width * (isHoveringDot ? 0.015 : 0.01) * easedScale;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+
+                    // "YOUR TIME."
+                    ctx.font = `700 ${width * 0.02 * easedScale}px Courier Prime, monospace`;
+                    ctx.fillText('YOUR TIME.', event[0], event[1] - 52 * easedScale);
+
+                    // "click the red dot to reveal your destiny."
+                    ctx.font = `${isHoveringDot ? '600' : '300'} italic ${width * 0.016 * easedScale}px Outfit, sans-serif`;
+                    ctx.fillText('click the red dot to reveal your destiny.', event[0], event[1] + 62 * easedScale);
+
+                    ctx.restore();
+
+                    // Draw pulsating sonar ripple rings around the red dot
+                    ctx.save();
+                    const speedMultiplier = isHoveringDot ? 1.8 : 1.0;
+                    for (let i = 0; i < 2; i++) {
+                        const progress = ((time / 1400) * speedMultiplier + i * 0.5) % 1;
+                        const rippleRadius = width * (0.015 + progress * 0.09) * dotHoverScale;
+                        const rippleOpacity = (1 - progress) * (1 - revealScale) * (isHoveringDot ? 1.0 : 0.8) * easedScale;
+                        ctx.strokeStyle = getCycleColor(time, rippleOpacity);
+                        ctx.lineWidth = Math.max(1, width * 0.002);
+                        ctx.shadowColor = getCycleColor(time, 0.8);
+                        ctx.shadowBlur = width * 0.01 * rippleOpacity;
+                        ctx.beginPath();
+                        ctx.arc(event[0], event[1], rippleRadius, 0, Math.PI * 2);
+                        ctx.stroke();
+                    }
+                    ctx.restore();
+                }
+
+                // Cone shapes and lines fade in based on revealScale
+                pathPolygon([event, bottomLeft, bottomRight]);
+                ctx.fillStyle = makeGradient(bottomLeft[0], bottomLeft[1], bottomRight[0], bottomRight[1], [
+                    [0, `rgba(55, 46, 126, ${0.62 * easedScale * revealScale})`],
+                    [0.45, `rgba(202, 205, 255, ${0.78 * easedScale * revealScale})`],
+                    [1, `rgba(30, 86, 150, ${0.62 * easedScale * revealScale})`],
+                ]);
+                ctx.fill();
+
+                pathPolygon([event, topLeft, topRight]);
+                ctx.fillStyle = makeGradient(topLeft[0], topLeft[1], topRight[0], topRight[1], [
+                    [0, `rgba(54, 90, 196, ${0.72 * easedScale * revealScale})`],
+                    [0.34, `rgba(97, 255, 239, ${0.52 * easedScale * revealScale})`],
+                    [0.52, `rgba(255, 255, 255, ${0.56 * easedScale * revealScale})`],
+                    [0.78, `rgba(255, 93, 80, ${0.38 * easedScale * revealScale})`],
+                    [1, `rgba(111, 0, 255, ${0.58 * easedScale * revealScale})`],
+                ]);
+                ctx.fill();
+
+                ctx.save();
+                ctx.globalCompositeOperation = 'screen';
+                ctx.fillStyle = makeGradient(event[0], top[1], event[0], event[1], [
+                    [0, `rgba(255, 255, 255, ${0.28 * easedScale * revealScale})`],
+                    [1, `rgba(255, 255, 255, ${0.02 * easedScale * revealScale})`],
+                ]);
+                pathPolygon([[event[0] - width * 0.028 * easedScale, event[1]], [event[0] + width * 0.028 * easedScale, event[1]], [event[0] + width * 0.012 * easedScale, top[1]], [event[0] - width * 0.012 * easedScale, top[1]]]);
+                ctx.fill();
+                ctx.restore();
+
+                const topCapGradient = ctx.createRadialGradient(top[0], top[1] - height * 0.02 * easedScale, 0, top[0], top[1], width * 0.37 * easedScale);
+                topCapGradient.addColorStop(0, `rgba(255, 255, 255, ${revealScale * easedScale})`);
+                topCapGradient.addColorStop(0.32, `rgba(97, 255, 239, ${revealScale * easedScale})`);
+                topCapGradient.addColorStop(0.66, `rgba(0, 168, 255, ${revealScale * easedScale})`);
+                topCapGradient.addColorStop(1, `rgba(0, 55, 255, ${revealScale * easedScale})`);
+                drawEllipse(top[0], top[1], topRx, topRy, topCapGradient, `rgba(225, 250, 255, ${0.42 * easedScale * revealScale})`, Math.max(1, width * 0.0014));
+
+                const bottomCapGradient = ctx.createRadialGradient(bottom[0], bottom[1], 0, bottom[0], bottom[1], width * 0.31 * easedScale);
+                bottomCapGradient.addColorStop(0, `rgba(255, 255, 255, ${0.78 * revealScale * easedScale})`);
+                bottomCapGradient.addColorStop(0.48, `rgba(183, 183, 255, ${0.74 * revealScale * easedScale})`);
+                bottomCapGradient.addColorStop(0.78, `rgba(254, 65, 100, ${0.26 * revealScale * easedScale})`);
+                bottomCapGradient.addColorStop(1, `rgba(40, 43, 94, ${0.86 * revealScale * easedScale})`);
+                drawEllipse(bottom[0], bottom[1], bottomRx, bottomRy, bottomCapGradient, `rgba(225, 250, 255, ${0.26 * easedScale * revealScale})`, Math.max(1, width * 0.0011));
+
+                drawConeMesh(event, bottom, bottomRx, bottomRy, 1, `rgba(220, 250, 255, ${0.28 * easedScale * revealScale})`, time);
+                drawLightEdge(event, bottomRight, 0, 0.62 * easedScale * revealScale);
+                drawLightEdge(event, bottomLeft, 1, 0.62 * easedScale * revealScale);
+
+                // Present Space Plane is always drawn
+                drawPresentPlane();
+
+                drawConeMesh(event, top, topRx, topRy, 1, `rgba(220, 250, 255, ${0.34 * easedScale * revealScale})`, time);
+
+                drawLightEdge(topLeft, event, 0, easedScale * revealScale);
+                drawLightEdge(topRight, event, 1, easedScale * revealScale);
+
+                // Speed limit of reality - drawn once, big
+                drawFlowText('The speed limit of reality', topLeft, event, -width * 0.046 * easedScale, width * 0.02 * easedScale, `rgba(177, 246, 255, ${0.82 * easedScale * revealScale})`);
+
+                // Future Cone Text - straight, big, legible at the end of the cone
+                ctx.save();
+                ctx.fillStyle = `rgba(254, 65, 100, ${0.9 * revealScale * easedScale})`;
+                ctx.font = `700 ${width * 0.021 * easedScale}px Courier Prime, monospace`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                const futureTextY = event[1] - (event[1] - top[1]) * 0.94;
+                ctx.fillText('Anything you can touch', event[0], futureTextY);
+                ctx.restore();
+
+                // Past Cone Text - straight, big, legible at the end of the cone
+                ctx.save();
+                ctx.fillStyle = `rgba(0, 229, 255, ${0.9 * revealScale * easedScale})`;
+                ctx.font = `700 ${width * 0.021 * easedScale}px Courier Prime, monospace`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                const pastTextY = event[1] + (bottom[1] - event[1]) * 0.94;
+                ctx.fillText('All that you have touched', event[0], pastTextY);
+                ctx.restore();
+
+                ctx.save();
+                ctx.shadowColor = getCycleColor(time, 0.9);
+                ctx.shadowBlur = width * (0.018 + pulse * 0.018) * easedScale * dotHoverScale * (1 + blastGlow * 14);
+                ctx.fillStyle = getCycleColor(time, 1);
+                ctx.beginPath();
+                const dotRadius = width * (0.014 + pulse * 0.004) * easedScale * dotHoverScale;
+                ctx.arc(event[0], event[1], dotRadius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+
+                // Draw the word "CLICK" inside/on top of the dot and a floating arrow above it
+                if (revealScale < 0.99) {
+                    // Floating arrow pointing down to the dot
+                    ctx.save();
+                    const arrowPulse = Math.sin(time / 180) * 6; // Bouncing motion
+                    const arrowY = event[1] - 32 * easedScale * dotHoverScale + arrowPulse;
+                    const arrowWidth = 9 * easedScale * dotHoverScale;
+                    const arrowHeight = 11 * easedScale * dotHoverScale;
+
+                    ctx.fillStyle = getCycleColor(time, 1 - revealScale);
+                    ctx.shadowColor = ctx.fillStyle;
+                    ctx.shadowBlur = 10 * easedScale * (1 + blastGlow * 8);
+
+                    ctx.beginPath();
+                    ctx.moveTo(event[0], arrowY + arrowHeight); // tip pointing down
+                    ctx.lineTo(event[0] - arrowWidth, arrowY); // left corner
+                    ctx.lineTo(event[0] + arrowWidth, arrowY); // right corner
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.restore();
+
+                    ctx.save();
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = `700 ${Math.max(8, width * 0.0085 * easedScale * dotHoverScale)}px 'Courier Prime', monospace`;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('CLICK', event[0], event[1]);
+                    ctx.restore();
+                }
+
+                // Draw Spacetime Axes (Time on Y-axis, Space on X-axis)
+                if (revealScale > 0.01) {
+                    const axisColor = `rgba(255, 255, 255, ${0.22 * revealScale * easedScale})`;
+                    const labelColor = `rgba(255, 255, 255, ${0.55 * revealScale * easedScale})`;
+                    
+                    // Y-Axis: TIME (from bottom to top)
+                    const yAxisFrom = scalePoint(p(0.5, 1.0), event, revealScale * easedScale);
+                    const yAxisTo = scalePoint(p(0.5, 0.04), event, revealScale * easedScale);
+                    drawDashedArrow(yAxisFrom[0], yAxisFrom[1], yAxisTo[0], yAxisTo[1], axisColor);
+                    
+                    // X-Axis: SPACE (aligned along the space plane's horizontal diagonal)
+                    const xAxisFrom = scalePoint(plane[0], event, revealScale * easedScale);
+                    const xAxisTo = scalePoint(plane[2], event, revealScale * easedScale);
+                    drawDashedArrow(xAxisFrom[0], xAxisFrom[1], xAxisTo[0], xAxisTo[1], axisColor);
+                    
+                    // Labels
+                    ctx.save();
+                    ctx.fillStyle = labelColor;
+                    ctx.font = `700 ${Math.max(10, width * 0.013 * easedScale * revealScale)}px Courier Prime, monospace`;
+                    
+                    // Time Label (near top arrow, moved upwards)
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+                    const timeLabelPos = scalePoint(p(0.5, 0.015), event, revealScale * easedScale);
+                    ctx.fillText('TIME', timeLabelPos[0], timeLabelPos[1]);
+                    
+                    // Space Label (near right arrow, aligned along plane slant, positioned to avoid clipping)
+                    ctx.textAlign = 'right';
+                    ctx.textBaseline = 'bottom';
+                    const spaceLabelPos = scalePoint(p(0.94, 0.515), event, revealScale * easedScale);
+                    ctx.fillText('SPACE', spaceLabelPos[0], spaceLabelPos[1]);
+                    
+                    ctx.restore();
+                }
+
+                ctx.save();
+                ctx.fillStyle = `rgba(255, 255, 255, ${0.9 * revealScale * easedScale})`;
+                ctx.shadowColor = `rgba(255, 255, 255, ${0.72 * revealScale * easedScale})`;
+                ctx.shadowBlur = width * 0.01 * easedScale;
+                ctx.font = `700 ${width * 0.015 * easedScale}px Courier Prime, monospace`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('You are here', event[0], event[1] + height * 0.047 * easedScale);
+                ctx.restore();
+
+                 // Draw expanding supernova blast shockwave ring
+                 if (blastGlow > 0.01) {
+                     ctx.save();
+                     const shockwaveRadius = width * 0.75 * (1 - blastGlow);
+                     const opacity = blastGlow * 0.85;
+                     ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+                     ctx.lineWidth = Math.max(1.5, width * 0.009 * blastGlow);
+                     ctx.shadowColor = '#ffffff';
+                     ctx.shadowBlur = width * 0.05 * blastGlow;
+                     ctx.beginPath();
+                     ctx.arc(event[0], event[1], shockwaveRadius, 0, Math.PI * 2);
+                     ctx.stroke();
+                     ctx.restore();
+                 }
+
+                // Draw and update click explosion particles
+                if (clickParticles.length > 0) {
+                    ctx.save();
+                    clickParticles.forEach((p) => {
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        p.vy += 0.045; // simulated gravity pull down
+                        p.alpha -= p.decay;
+                        
+                        if (p.alpha > 0) {
+                            ctx.fillStyle = p.color;
+                            ctx.globalAlpha = p.alpha;
+                            ctx.shadowColor = p.color;
+                            ctx.shadowBlur = width * 0.008 * p.alpha;
+                            ctx.beginPath();
+                            ctx.arc(p.x, p.y, Math.max(1.5, width * 0.0022), 0, Math.PI * 2);
+                            ctx.fill();
+                        }
+                    });
+                    clickParticles = clickParticles.filter(p => p.alpha > 0);
+                    ctx.restore();
+                }
+
+                if (!reduceMotion) rafId = window.requestAnimationFrame(draw);
+            };
+
+            fitCanvas();
+            draw();
+            window.addEventListener('resize', () => {
+                fitCanvas();
+                if (rafId) window.cancelAnimationFrame(rafId);
+                draw();
+            });
+
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                mouseX = e.clientX - rect.left;
+                mouseY = e.clientY - rect.top;
+
+                if (isRevealed) return;
+                const eventX = width * 0.5;
+                const eventY = height * 0.5;
+                const dist = Math.hypot(mouseX - eventX, mouseY - eventY);
+
+                const hoverRadius = Math.max(36, width * 0.04);
+                isHoveringDot = dist < hoverRadius;
+
+                canvas.style.cursor = isHoveringDot ? 'pointer' : 'default';
+            });
+
+            canvas.addEventListener('mouseleave', () => {
+                mouseX = null;
+                mouseY = null;
+                isHoveringDot = false;
+                canvas.style.cursor = 'default';
+            });
+
+            canvas.addEventListener('click', (e) => {
+                if (isRevealed) return;
+                isRevealed = true;
+                canvas.style.cursor = 'default';
+                isHoveringDot = false;
+
+                // Spike the blast glow!
+                blastGlow = 1.0;
+
+                // Spacetime release explosion sparks!
+                const eventX = width * 0.5;
+                const eventY = height * 0.5;
+                for (let i = 0; i < 36; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 3.5 + 2.0;
+                    clickParticles.push({
+                        x: eventX,
+                        y: eventY,
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed,
+                        alpha: 1.0,
+                        decay: Math.random() * 0.015 + 0.012,
+                        color: Math.random() < 0.5 ? '#00e5ff' : '#fe4164'
+                    });
+                }
+            });
+        })();
+
+        (() => {
+            const canvas = document.getElementById('life-canvas');
+            const toggle = document.getElementById('life-toggle');
+            const status = document.getElementById('life-status');
+            if (!canvas || !toggle || !status) return;
+
+            const ctx = canvas.getContext('2d');
+            const cols = 48;
+            const rows = 24;
+            const cellW = canvas.width / cols;
+            const cellH = canvas.height / rows;
+            const fps = 10;
+            let paused = true;
+            let voidSeedEnabled = true;
+            let drawing = false;
+            let drawValue = true;
+            let lastStep = 0;
+            let hoverCell = null;
+            let grid = Array.from({ length: rows }, () => Array(cols).fill(false));
+
+            const updateStatus = () => {
+                const liveCells = grid.flat().filter(Boolean).length;
+                status.textContent = `Live Cells: ${liveCells}`;
+                toggle.setAttribute('aria-label', paused ? 'Play Game of Life' : 'Pause Game of Life');
+                toggle.classList.toggle('is-playing', !paused);
+            };
+
+            const draw = () => {
+                ctx.fillStyle = '#020202';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.09)';
+                ctx.lineWidth = 1;
+                for (let x = 0; x <= cols; x += 1) {
+                    const px = Math.floor(x * cellW) + 0.5;
+                    ctx.beginPath();
+                    ctx.moveTo(px, 0);
+                    ctx.lineTo(px, canvas.height);
+                    ctx.stroke();
+                }
+                for (let y = 0; y <= rows; y += 1) {
+                    const py = Math.floor(y * cellH) + 0.5;
+                    ctx.beginPath();
+                    ctx.moveTo(0, py);
+                    ctx.lineTo(canvas.width, py);
+                    ctx.stroke();
+                }
+
+                for (let y = 0; y < rows; y += 1) {
+                    for (let x = 0; x < cols; x += 1) {
+                        if (!grid[y][x]) continue;
+                        ctx.fillStyle = '#ffffff';
+                        ctx.shadowColor = ctx.fillStyle;
+                        ctx.shadowBlur = 0;
+                        ctx.fillRect(
+                            Math.floor(x * cellW) + 1,
+                            Math.floor(y * cellH) + 1,
+                            Math.ceil(cellW) - 2,
+                            Math.ceil(cellH) - 2
+                        );
+                        ctx.shadowBlur = 0;
+                    }
+                }
+
+                if (hoverCell) {
+                    const { x, y } = hoverCell;
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.95)';
+                    ctx.lineWidth = 2;
+                    ctx.shadowColor = '#ffffff';
+                    ctx.shadowBlur = 16;
+                    ctx.strokeRect(
+                        Math.floor(x * cellW) + 2,
+                        Math.floor(y * cellH) + 2,
+                        Math.ceil(cellW) - 4,
+                        Math.ceil(cellH) - 4
+                    );
+                    if (!grid[y][x]) {
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.16)';
+                        ctx.fillRect(
+                            Math.floor(x * cellW) + 2,
+                            Math.floor(y * cellH) + 2,
+                            Math.ceil(cellW) - 4,
+                            Math.ceil(cellH) - 4
+                        );
+                    }
+                    ctx.shadowBlur = 0;
+                }
+            };
+
+            const liveCount = () => grid.flat().filter(Boolean).length;
+
+            const step = () => {
+                const next = Array.from({ length: rows }, () => Array(cols).fill(false));
+                const liveCells = liveCount();
+                for (let y = 0; y < rows; y += 1) {
+                    for (let x = 0; x < cols; x += 1) {
+                        let neighbors = 0;
+                        for (let dy = -1; dy <= 1; dy += 1) {
+                            for (let dx = -1; dx <= 1; dx += 1) {
+                                if (dx === 0 && dy === 0) continue;
+                                const nx = (x + dx + cols) % cols;
+                                const ny = (y + dy + rows) % rows;
+                                if (grid[ny][nx]) neighbors += 1;
+                            }
+                        }
+
+                        const born = neighbors === 3;
+                        const survive = grid[y][x] && (neighbors === 2 || neighbors === 3);
+                        const seedBirth = voidSeedEnabled && liveCells < 3 && !grid[y][x] && neighbors === 0 && Math.random() < 0.05;
+                        next[y][x] = born || survive || seedBirth;
+                    }
+                }
+                if (next.some((row) => row.some(Boolean))) {
+                    grid = next;
+                }
+            };
+
+            const setCellFromEvent = (event, value) => {
+                const rect = canvas.getBoundingClientRect();
+                const x = Math.floor(((event.clientX - rect.left) / rect.width) * cols);
+                const y = Math.floor(((event.clientY - rect.top) / rect.height) * rows);
+                if (x < 0 || x >= cols || y < 0 || y >= rows) return;
+                hoverCell = { x, y };
+                grid[y][x] = value;
+                updateStatus();
+                draw();
+            };
+
+            const setHoverFromEvent = (event) => {
+                const rect = canvas.getBoundingClientRect();
+                const x = Math.floor(((event.clientX - rect.left) / rect.width) * cols);
+                const y = Math.floor(((event.clientY - rect.top) / rect.height) * rows);
+                if (x < 0 || x >= cols || y < 0 || y >= rows) {
+                    hoverCell = null;
+                } else {
+                    hoverCell = { x, y };
+                }
+                draw();
+            };
+
+            canvas.addEventListener('contextmenu', (event) => event.preventDefault());
+            canvas.addEventListener('pointerenter', () => {
+                document.body.classList.add('life-cursor');
+            });
+            canvas.addEventListener('pointerdown', (event) => {
+                drawing = true;
+                drawValue = event.button !== 2;
+                canvas.setPointerCapture(event.pointerId);
+                setCellFromEvent(event, drawValue);
+            });
+            canvas.addEventListener('pointermove', (event) => {
+                if (drawing) {
+                    setCellFromEvent(event, drawValue);
+                } else {
+                    setHoverFromEvent(event);
+                }
+            });
+            canvas.addEventListener('pointerup', (event) => {
+                drawing = false;
+                if (canvas.hasPointerCapture(event.pointerId)) {
+                    canvas.releasePointerCapture(event.pointerId);
+                }
+            });
+            canvas.addEventListener('pointerleave', () => {
+                drawing = false;
+                hoverCell = null;
+                document.body.classList.remove('life-cursor');
+                draw();
+            });
+
+            toggle.addEventListener('click', () => {
+                paused = !paused;
+                updateStatus();
+            });
+
+            window.addEventListener('keydown', (event) => {
+                const key = event.key.toLowerCase();
+                if (key === ' ' && !event.repeat) {
+                    event.preventDefault();
+                    paused = !paused;
+                    updateStatus();
+                } else if (key === 'c') {
+                    grid = Array.from({ length: rows }, () => Array(cols).fill(false));
+                    updateStatus();
+                    draw();
+                } else if (key === 'v') {
+                    voidSeedEnabled = !voidSeedEnabled;
+                    updateStatus();
+                }
+            });
+
+            const loop = (time) => {
+                if (!paused && time - lastStep > 1000 / fps) {
+                    step();
+                    lastStep = time;
+                    updateStatus();
+                    draw();
+                }
+                requestAnimationFrame(loop);
+            };
+
+            updateStatus();
+            draw();
+            requestAnimationFrame(loop);
+        })();
+    </script>
+    <script>
+        // Photo Click to Play and Audio Sync Logic for The DOME collage
+        (() => {
+            const synthAudio = document.getElementById('synth-audio');
+            const synthPlayBtn = document.getElementById('synth-play-btn');
+            const playerContainer = document.querySelector('.audio-player-container');
+            const synthPlayIcon = synthPlayBtn ? synthPlayBtn.querySelector('.play-icon') : null;
+
+            const pauseSynth = () => {
+                if (synthAudio && !synthAudio.paused) {
+                    synthAudio.pause();
+                    if (synthPlayBtn) synthPlayBtn.classList.remove('is-playing');
+                    if (synthPlayIcon) synthPlayIcon.textContent = '▶';
+                }
+            };
+
+            const pauseAllVideosExcept = (currentVideo) => {
+                document.querySelectorAll('.draggable-photo video').forEach(v => {
+                    if (v !== currentVideo && !v.paused) {
+                        v.pause();
+                    }
+                });
+            };
+
+            document.querySelectorAll('.draggable-photo').forEach(photo => {
+                const video = photo.querySelector('video');
+                if (video) {
+                    // Click/Tap toggle playback
+                    photo.addEventListener('click', () => {
+                        if (video.paused) {
+                            pauseSynth();
+                            pauseAllVideosExcept(video);
+                            video.muted = false; // ensure audio is unmuted when played
+                            video.play().catch(err => console.log('Video play failed:', err));
+                        } else {
+                            video.pause();
+                        }
+                    });
+
+                    // Sync overlay display
+                    video.addEventListener('play', () => {
+                        photo.classList.add('is-playing-video');
+                    });
+                    video.addEventListener('pause', () => {
+                        photo.classList.remove('is-playing-video');
+                    });
+                }
+            });
+
+            // Play button logic for THE TIME
+            if (synthAudio && synthPlayBtn) {
+                synthPlayBtn.addEventListener('click', () => {
+                    if (synthAudio.paused) {
+                        // Pause all playing videos when synth track starts
+                        pauseAllVideosExcept(null);
+                        
+                        synthAudio.play().then(() => {
+                            synthPlayBtn.classList.add('is-playing');
+                            if (synthPlayIcon) synthPlayIcon.textContent = '❚❚';
+                        }).catch(err => {
+                            console.error('Audio play failed:', err);
+                        });
+                    } else {
+                        synthAudio.pause();
+                        synthPlayBtn.classList.remove('is-playing');
+                        if (synthPlayIcon) synthPlayIcon.textContent = '▶';
+                    }
+                });
+
+                synthAudio.addEventListener('ended', () => {
+                    synthPlayBtn.classList.remove('is-playing');
+                    if (synthPlayIcon) synthPlayIcon.textContent = '▶';
+                });
+            }
+        })();
+    </script>
+    <script src="js/cursor.js"></script>
+    <script src="js/site-nav.js"></script>
+</body>
+
+</html>

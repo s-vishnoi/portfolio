@@ -328,13 +328,20 @@ body.fade-out {
 .detail-subtitle {
     display: block;
     margin: 0.5rem 0 0.4rem;
-    font-size: clamp(0.68rem, 0.96vw, 0.88rem);
+    font-size: clamp(0.78rem, 1.06vw, 0.98rem);
     line-height: 1;
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: #dfff00;
     opacity: 0.95;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 5px rgba(0, 0, 0, 0.8), 0 0 16px rgba(223, 255, 0, 0.42);
+}
+
+.collab-date {
+    font-weight: 500;
+    opacity: 0.6;
+    color: #ffffff;
+    text-shadow: none;
 }
 
 .detail-collaboration {
