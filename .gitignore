@@ -21,3 +21,7 @@ node_modules/
 # Backup and duplicate files to ignore
 V+A  PERF OFFIC/
 site/videos/THE TIME.mp3
+
+# Media sources to ignore
+*.mov
+*.MOV
