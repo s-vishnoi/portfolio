@@ -1372,30 +1372,32 @@
             }
 
             .container {
-                height: 100svh;
-                padding: clamp(24px, 4.3vh, 38px) 18px clamp(84px, 13vh, 110px);
+                min-height: 100svh;
+                height: auto;
+                padding: clamp(30px, 6vh, 52px) 18px clamp(108px, 16vh, 150px);
                 align-items: flex-start;
             }
 
             .about-text {
                 width: 100%;
                 max-width: none;
-                max-height: 100%;
                 display: grid;
                 grid-template-columns: 1fr;
                 grid-template-rows: auto auto auto auto auto auto;
-                gap: clamp(0.25rem, 0.6vh, 0.45rem);
+                gap: clamp(1rem, 3.6vh, 1.8rem);
                 padding: 0;
-                font-size: clamp(0.58rem, 2.72vw, 0.84rem);
-                line-height: 1.15;
-                letter-spacing: 0.03em;
+                font-size: clamp(0.76rem, 3.2vw, 0.98rem);
+                line-height: 1.34;
+                letter-spacing: 0.025em;
             }
 
             .magazine-rail {
-                gap: 0.6rem;
-                padding-bottom: 0.34rem;
-                font-size: clamp(0.46rem, 2.4vw, 0.62rem);
-                letter-spacing: 0.12em;
+                flex-wrap: wrap;
+                gap: 0.45rem 0.7rem;
+                padding-bottom: 0.1rem;
+                font-size: clamp(0.5rem, 2.5vw, 0.66rem);
+                line-height: 1.25;
+                letter-spacing: 0.11em;
             }
 
             .about-text p {
@@ -1405,16 +1407,16 @@
                 text-align: left !important;
                 grid-column: 1 !important;
                 grid-row: auto !important;
-                font-size: clamp(0.62rem, 2.75vw, 0.82rem);
-                line-height: 1.12;
+                font-size: clamp(0.78rem, 3.35vw, 1rem);
+                line-height: 1.36;
             }
 
             .artist-name {
                 grid-template-columns: 1fr;
-                gap: 0.06em;
-                font-size: clamp(3rem, 20vw, 5.7rem);
-                line-height: 0.7;
-                margin-bottom: clamp(0.08rem, 0.5vh, 0.35rem);
+                gap: 0.1em;
+                font-size: clamp(3.1rem, 17.5vw, 5.35rem);
+                line-height: 0.82;
+                margin-bottom: clamp(0.4rem, 2vh, 1.1rem);
             }
 
             .artist-name .amp {
@@ -1425,30 +1427,31 @@
                 grid-column: 1;
                 width: 100%;
                 margin-bottom: 0;
-                font-size: clamp(0.62rem, 3vw, 0.9rem);
-                line-height: 1.05;
-                letter-spacing: 0.045em;
+                font-size: clamp(0.78rem, 3.45vw, 1rem);
+                line-height: 1.32;
+                letter-spacing: 0.035em;
             }
 
             .story-kicker {
-                margin-bottom: 0.24rem;
-                line-height: 0.88;
+                margin-bottom: 0.46rem;
+                line-height: 1.05;
             }
 
             .story-num {
-                margin-bottom: 0.1rem;
-                font-size: clamp(0.42rem, 2vw, 0.58rem);
+                margin-bottom: 0.28rem;
+                font-size: clamp(0.5rem, 2.25vw, 0.66rem);
                 letter-spacing: 0.14em;
             }
 
             .story-title {
-                font-size: clamp(1rem, 5.4vw, 1.5rem);
-                letter-spacing: 0.025em;
+                font-size: clamp(1.22rem, 6.1vw, 1.72rem);
+                line-height: 0.98;
+                letter-spacing: 0.02em;
             }
 
             .story-beat {
                 transform: translateY(10px) scaleX(1.01);
-                padding-top: 0.34rem;
+                padding-top: clamp(0.78rem, 2.3vh, 1.15rem);
             }
 
             .story-beat::after {
