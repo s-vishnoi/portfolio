@@ -1664,7 +1664,7 @@
                 <canvas id="light-cone-canvas" class="cone-canvas" role="img"
                     aria-labelledby="light-cone-title light-cone-desc"></canvas>
                 <span id="light-cone-title" hidden>Light cone diagram</span>
-                <span id="light-cone-desc" hidden>A generated spacetime light cone diagram adapted from Wikimedia
+                <span id="light-cone-desc" hidden>A spacetime light cone diagram adapted from Wikimedia
                     Commons World_line.svg, labeled time and space on the y and x axes, anything you can touch, all that
                     you have touched, disconnected, and the speed limit of reality.</span>
             </div>
@@ -2359,16 +2359,16 @@
                 drawEllipse(bottom[0], bottom[1], bottomRx, bottomRy, bottomCapGradient, `rgba(225, 250, 255, ${0.26 * easedScale * revealScale})`, Math.max(1, width * 0.0011));
 
                 drawConeMesh(event, bottom, bottomRx, bottomRy, 1, `rgba(220, 250, 255, ${0.28 * easedScale * revealScale})`, time);
-                drawLightEdge(event, bottomRight, 0, 0.62 * easedScale * revealScale);
-                drawLightEdge(event, bottomLeft, 1, 0.62 * easedScale * revealScale);
+                /*drawLightEdge(event, bottomRight, 0, 0.62 * easedScale * revealScale);
+                drawLightEdge(event, bottomLeft, 1, 0.62 * easedScale * revealScale);*/
 
                 // Present Space Plane is always drawn
                 drawPresentPlane();
 
                 drawConeMesh(event, top, topRx, topRy, 1, `rgba(220, 250, 255, ${0.34 * easedScale * revealScale})`, time);
 
-                drawLightEdge(topLeft, event, 0, easedScale * revealScale);
-                drawLightEdge(topRight, event, 1, easedScale * revealScale);
+                /*drawLightEdge(topLeft, event, 0, easedScale * revealScale);
+                drawLightEdge(topRight, event, 1, easedScale * revealScale);*/
 
                 // Speed limit of reality - drawn once, big
                 drawFlowText('The speed limit of reality', topLeft, event, -width * 0.046 * easedScale, width * 0.04 * easedScale, `rgba(177, 246, 255, ${0.82 * easedScale * revealScale})`);
