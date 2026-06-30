@@ -1025,8 +1025,8 @@
         .cone-intermission {
             position: relative;
             z-index: 10;
-            min-height: 100svh;
-            padding: clamp(46px, 7vh, 84px) clamp(20px, 4vw, 72px) clamp(82px, 12vh, 144px);
+            min-height: 142svh;
+            padding: clamp(46px, 7vh, 84px) clamp(20px, 4vw, 72px) clamp(110px, 16vh, 190px);
             display: grid;
             place-items: center;
             isolation: isolate;
@@ -1069,8 +1069,8 @@
 
         .cone-wrap {
             position: relative;
-            width: min(980px, 100%);
-            min-height: min(760px, 78svh);
+            width: min(150vw, 1680px);
+            min-height: min(1220px, 124svh);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1086,7 +1086,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 16px;
+            margin-top: clamp(64px, 10svh, 142px);
             position: relative;
             width: 100%;
             z-index: 10;
@@ -1095,9 +1095,9 @@
         .audio-player-container::before {
             content: "";
             width: 1px;
-            height: 38px;
-            border-left: 1px dashed rgba(255, 255, 255, 0.22);
-            margin-bottom: 8px;
+            height: clamp(46px, 7svh, 92px);
+            border-left: 1px dashed rgba(255, 255, 255, 0.2);
+            margin-bottom: 14px;
         }
 
         .audio-player-inner {
@@ -1168,8 +1168,8 @@
 
         .cone-stage {
             position: relative;
-            width: min(100vw, 1120px);
-            height: min(82svh, 860px);
+            width: min(150vw, 1680px);
+            height: min(123svh, 1290px);
         }
 
         .cone-canvas {
@@ -1344,19 +1344,19 @@
             }
 
             .cone-intermission {
-                min-height: 86svh;
-                padding: clamp(24px, 5svh, 42px) 14px clamp(56px, 9svh, 84px);
+                min-height: 126svh;
+                padding: clamp(24px, 5svh, 42px) 14px clamp(80px, 12svh, 120px);
             }
 
             .cone-wrap {
                 width: 100%;
-                min-height: min(620px, 78svh);
+                min-height: min(930px, 108svh);
                 justify-content: center;
             }
 
             .cone-stage {
-                width: min(100vw, 520px);
-                height: min(72svh, 620px);
+                width: min(150vw, 780px);
+                height: min(108svh, 930px);
             }
 
             .cone-label {
@@ -1365,12 +1365,12 @@
             }
 
             .audio-player-container {
-                margin-top: clamp(8px, 1.8svh, 14px);
+                margin-top: clamp(42px, 7svh, 78px);
             }
 
             .audio-player-container::before {
-                height: 20px;
-                margin-bottom: 6px;
+                height: 36px;
+                margin-bottom: 10px;
             }
 
             .audio-player-inner {
