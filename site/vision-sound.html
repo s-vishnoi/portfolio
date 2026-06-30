@@ -1187,7 +1187,7 @@
             z-index: 4;
             color: rgba(255, 255, 255, 0.78);
             font-family: 'Courier Prime', monospace;
-            font-size: clamp(0.78rem, 1.42vw, 1.16rem);
+            font-size: clamp(1.56rem, 2.84vw, 2.32rem);
             line-height: 1.18;
             letter-spacing: 0.11em;
             text-transform: uppercase;
@@ -1360,7 +1360,7 @@
             }
 
             .cone-label {
-                font-size: clamp(0.62rem, 2.85vw, 0.82rem);
+                font-size: clamp(1.24rem, 5.7vw, 1.64rem);
                 letter-spacing: 0.08em;
             }
 
@@ -2266,8 +2266,8 @@
 
                     pathPolygon(plane);
                     ctx.clip();
-                    drawProjectedPlaneText('Anything you cannot touch', originX + width * 0.25, originY + height * 0.502, -0.08, width * 0.018);
-                    drawProjectedPlaneText('Anything you cannot touch', originX + width * 0.75, originY + height * 0.502, 0.08, width * 0.018);
+                    drawProjectedPlaneText('Anything you cannot touch', originX + width * 0.25, originY + height * 0.502, -0.08, width * 0.036);
+                    drawProjectedPlaneText('Anything you cannot touch', originX + width * 0.75, originY + height * 0.502, 0.08, width * 0.036);
                     ctx.restore();
                 };
 
@@ -2283,11 +2283,11 @@
                     ctx.textBaseline = 'middle';
 
                     // "YOUR TIME."
-                    ctx.font = `700 ${width * 0.02 * easedScale}px Courier Prime, monospace`;
+                    ctx.font = `700 ${width * 0.04 * easedScale}px Courier Prime, monospace`;
                     ctx.fillText('YOUR TIME.', event[0], event[1] - 52 * easedScale);
 
                     // "click the red dot to reveal your destiny."
-                    ctx.font = `${isHoveringDot ? '600' : '300'} italic ${width * 0.016 * easedScale}px Outfit, sans-serif`;
+                    ctx.font = `${isHoveringDot ? '600' : '300'} italic ${width * 0.032 * easedScale}px Outfit, sans-serif`;
                     ctx.fillText('click the red dot to reveal your destiny.', event[0], event[1] + 62 * easedScale);
 
                     ctx.restore();
@@ -2366,12 +2366,12 @@
                 drawLightEdge(topRight, event, 1, easedScale * revealScale);
 
                 // Speed limit of reality - drawn once, big
-                drawFlowText('The speed limit of reality', topLeft, event, -width * 0.046 * easedScale, width * 0.02 * easedScale, `rgba(177, 246, 255, ${0.82 * easedScale * revealScale})`);
+                drawFlowText('The speed limit of reality', topLeft, event, -width * 0.046 * easedScale, width * 0.04 * easedScale, `rgba(177, 246, 255, ${0.82 * easedScale * revealScale})`);
 
                 // Future Cone Text - straight, big, legible at the end of the cone
                 ctx.save();
                 ctx.fillStyle = `rgba(254, 65, 100, ${0.9 * revealScale * easedScale})`;
-                ctx.font = `700 ${width * 0.021 * easedScale}px Courier Prime, monospace`;
+                ctx.font = `700 ${width * 0.042 * easedScale}px Courier Prime, monospace`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 const futureTextY = event[1] - (event[1] - top[1]) * 0.94;
@@ -2381,7 +2381,7 @@
                 // Past Cone Text - straight, big, legible at the end of the cone
                 ctx.save();
                 ctx.fillStyle = `rgba(0, 229, 255, ${0.9 * revealScale * easedScale})`;
-                ctx.font = `700 ${width * 0.021 * easedScale}px Courier Prime, monospace`;
+                ctx.font = `700 ${width * 0.042 * easedScale}px Courier Prime, monospace`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 const pastTextY = event[1] + (bottom[1] - event[1]) * 0.94;
@@ -2421,7 +2421,7 @@
 
                     ctx.save();
                     ctx.fillStyle = '#ffffff';
-                    ctx.font = `700 ${Math.max(8, width * 0.0085 * easedScale * dotHoverScale)}px 'Courier Prime', monospace`;
+                    ctx.font = `700 ${Math.max(8, width * 0.017 * easedScale * dotHoverScale)}px 'Courier Prime', monospace`;
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
                     ctx.fillText('CLICK', event[0], event[1]);
@@ -2448,7 +2448,7 @@
                     // Labels
                     ctx.save();
                     ctx.fillStyle = labelColor;
-                    ctx.font = `700 ${Math.max(10, width * 0.013 * easedScale * revealScale)}px Courier Prime, monospace`;
+                    ctx.font = `700 ${Math.max(10, width * 0.026 * easedScale * revealScale)}px Courier Prime, monospace`;
                     
                     // Time Label (near top arrow, moved upwards)
                     ctx.textAlign = 'center';
@@ -2470,7 +2470,7 @@
                 ctx.fillStyle = `rgba(255, 255, 255, ${0.9 * revealScale * easedScale})`;
                 ctx.shadowColor = `rgba(255, 255, 255, ${0.72 * revealScale * easedScale})`;
                 ctx.shadowBlur = width * 0.01 * easedScale;
-                ctx.font = `700 ${width * 0.015 * easedScale}px Courier Prime, monospace`;
+                ctx.font = `700 ${width * 0.03 * easedScale}px Courier Prime, monospace`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillText('You are here', event[0], event[1] + height * 0.047 * easedScale);
