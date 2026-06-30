@@ -293,19 +293,19 @@
 
         /* Initial staggered entry delays only for entry animation transition */
         body.intro-text-ready .story-beat:nth-of-type(1) {
-            transition-delay: 0.15s;
+            transition-delay: 0s;
         }
 
         body.intro-text-ready .story-beat:nth-of-type(2) {
-            transition-delay: 2.15s;
+            transition-delay: 1s;
         }
 
         body.intro-text-ready .story-beat:nth-of-type(3) {
-            transition-delay: 4.15s;
+            transition-delay: 2s;
         }
 
         body.intro-text-ready .story-beat:nth-of-type(4) {
-            transition-delay: 6.15s;
+            transition-delay: 3s;
         }
 
         .cycle-word {
@@ -805,51 +805,21 @@
                 0 0 30px rgba(255, 255, 255, 0.1);
         }
 
-        .body-panel .life-head {
-            border-bottom-color: rgba(153, 220, 27, 0.22);
-        }
-
-        .body-stage {
+        .body-inlay {
             position: relative;
             width: 100%;
-            aspect-ratio: 12 / 7;
-            background: #030403;
+            height: min(78svh, 760px);
+            min-height: 620px;
+            background: #040404;
             overflow: hidden;
         }
 
-        #postural-canvas {
+        .body-inlay iframe {
             display: block;
             width: 100%;
             height: 100%;
-            touch-action: none;
-        }
-
-        .body-action {
             border: 0;
-            background: transparent;
-            color: #99dc1b;
-            font-family: 'Courier Prime', monospace;
-            font-size: clamp(0.62rem, 0.82vw, 0.78rem);
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            cursor: none;
-            transition: color 0.22s ease, transform 0.22s ease, text-shadow 0.22s ease;
-        }
-
-        .body-action:hover,
-        .body-action.is-active {
-            color: #ffffff;
-            transform: translateY(-1px);
-            text-shadow: 0 0 12px rgba(153, 220, 27, 0.48);
-        }
-
-        .body-status {
-            color: #99dc1b;
-            text-shadow: 0 0 8px rgba(153, 220, 27, 0.3);
-        }
-
-        .body-controls strong {
-            color: #99dc1b;
+            background: #040404;
         }
 
         .quote-intermission {
@@ -1489,6 +1459,11 @@
             .life-controls {
                 grid-template-columns: 1fr;
             }
+
+            .body-inlay {
+                height: 720px;
+                min-height: 720px;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1658,7 +1633,7 @@
         <div class="piece-layout">
             <div class="piece-copy">
                 <div class="piece-label">Collaborative Performance</div>
-                <h2 id="postural-noise-title" class="piece-title">Postural Noise <span class="piece-title-sub">with Angeliki</span></h2>
+                <h2 id="postural-noise-title" class="piece-title">Deformation Noise <span class="piece-title-sub">with Angeliki</span></h2>
                 <div class="piece-meta">
                     <span>2026</span>
                     <span>Interactive Performance & Sound Installation</span>
@@ -1669,37 +1644,15 @@
                     <span>Direct Body Map or Cellular Automata Toggle</span>
                 </div>
                 <p class="piece-note">
-                    Postural Noise translates Angeliki's contortionist practice into a live acoustic signal. Wearable
-                    and gestural body data become a raw score: overextended angles, muscular tension, posture bends, and
-                    joint strain drive algorithmic sound, turning the body into a tactile data instrument.
-                </p>
-                <p class="piece-note">
-                    My role is to build the computational layer around her physical limits: a motion engine that reads
-                    anatomy as signal, routes it through synthesis systems, and lets bodily stress self-organize into a
-                    responsive soundscape.
+                    Deformation Noise translates Angeliki's contortionist practice into a live acoustic signal. I'm
+                    connecting her to neuromuscular sensors and converting her raw contortion stress into feed for a
+                    generative sound panel. Using automata principles and rule-based self-evolution, I want a sound
+                    synthesis pipeline that can self-organize into a responsive soundscape.
                 </p>
             </div>
 
-            <div class="life-panel body-panel">
-                <div class="life-head">
-                    <div class="life-heading">Drag joints, press keys 1-6, or let the body seed a cellular field.</div>
-                    <div>
-                        <button class="body-action" id="postural-random" type="button">Random</button>
-                        <button class="body-action" id="postural-ca" type="button" aria-pressed="true">CA</button>
-                    </div>
-                </div>
-                <div class="body-stage">
-                    <canvas id="postural-canvas" width="960" height="560"
-                        aria-label="Interactive postural noise body instrument canvas"></canvas>
-                </div>
-                <div class="life-status body-status" id="postural-status">Tension: 0.00 | CA Field: On</div>
-                <div class="life-controls body-controls" aria-label="Postural noise controls">
-                    <span><strong>Mouse</strong>: Drag head, hands, spine, knees, or feet.</span>
-                    <span><strong>1-6</strong>: Flex neck, legs, arms, or spine.</span>
-                    <span><strong>R</strong>: Reset the body instrument.</span>
-                    <span><strong>CA</strong>: Toggle cellular automata response field.</span>
-                </div>
-                <p class="life-quote">A body becomes an interface when strain is allowed to speak as signal.</p>
+            <div class="body-inlay">
+                <iframe src="body-added.html" title="Deformation Noise interactive body instrument" allow="autoplay"></iframe>
             </div>
         </div>
     </section>
@@ -2213,6 +2166,7 @@
                  dotHoverScale += (targetDotScale - dotHoverScale) * 0.12;
 
                  let easedScale = 1;
+                 let scrollReveal = 1;
                  if (!reduceMotion) {
                      const rect = canvas.getBoundingClientRect();
                      const viewportHeight = window.innerHeight;
@@ -2221,6 +2175,7 @@
                      const range = startY - endY;
                      const currentY = rect.top;
                      const progress = Math.min(Math.max((startY - currentY) / range, 0), 1);
+                     scrollReveal = progress;
                      const easeOutBack = (x) => {
                          const c1 = 1.35;
                          const c3 = c1 + 1;
@@ -2245,7 +2200,8 @@
                  const bottomRx = width * 0.41 * currentScale;
                  const bottomRy = height * 0.07 * currentScale;
 
-                 const plane = [p(0.056, 0.468), p(0.573, 0.352), p(0.968, 0.531), p(0.401, 0.704)];
+                 const plane = [p(0.07, 0.47), p(0.56, 0.415), p(0.94, 0.49), p(0.43, 0.56)];
+                 const planeFade = reduceMotion ? 1 : Math.min(Math.max((scrollReveal - 0.08) / 0.48, 0), 1);
 
                  // Draw background twinkling starfield
                  ctx.save();
@@ -2283,6 +2239,8 @@
                  ctx.restore();
 
                 const drawPresentPlane = () => {
+                    ctx.save();
+                    ctx.globalAlpha = planeFade;
                     pathPolygon(plane);
                     ctx.fillStyle = makeGradient(plane[0][0], plane[0][1], plane[2][0], plane[2][1], [
                         [0, 'rgba(0, 39, 140, 0.94)'],
@@ -2291,17 +2249,16 @@
                         [1, 'rgba(56, 32, 180, 0.94)'],
                     ]);
                     ctx.shadowColor = 'rgba(0, 102, 255, 0.5)';
-                    ctx.shadowBlur = width * 0.02 * (1 + blastGlow * 3.5);
+                    ctx.shadowBlur = width * 0.02 * planeFade * (1 + blastGlow * 3.5);
                     ctx.fill();
                     ctx.shadowBlur = 0;
 
                     drawPlaneMesh(plane, 14, 9, time);
 
-                    ctx.save();
                     pathPolygon(plane);
                     ctx.clip();
-                    drawProjectedPlaneText('Anything you cannot touch', width * 0.25, height * 0.515, -0.24, width * 0.018);
-                    drawProjectedPlaneText('Anything you cannot touch', width * 0.75, height * 0.515, 0.24, width * 0.018);
+                    drawProjectedPlaneText('Anything you cannot touch', width * 0.25, height * 0.502, -0.08, width * 0.018);
+                    drawProjectedPlaneText('Anything you cannot touch', width * 0.75, height * 0.502, 0.08, width * 0.018);
                     ctx.restore();
                 };
 
@@ -2466,6 +2423,8 @@
                 if (revealScale > 0.01) {
                     const axisColor = `rgba(255, 255, 255, ${0.22 * revealScale * easedScale})`;
                     const labelColor = `rgba(255, 255, 255, ${0.55 * revealScale * easedScale})`;
+                    const planeAxisColor = `rgba(255, 255, 255, ${0.22 * revealScale * easedScale * planeFade})`;
+                    const planeLabelColor = `rgba(255, 255, 255, ${0.55 * revealScale * easedScale * planeFade})`;
                     
                     // Y-Axis: TIME (from bottom to top)
                     const yAxisFrom = scalePoint(p(0.5, 1.0), event, revealScale * easedScale);
@@ -2475,7 +2434,7 @@
                     // X-Axis: SPACE (aligned along the space plane's horizontal diagonal)
                     const xAxisFrom = scalePoint(plane[0], event, revealScale * easedScale);
                     const xAxisTo = scalePoint(plane[2], event, revealScale * easedScale);
-                    drawDashedArrow(xAxisFrom[0], xAxisFrom[1], xAxisTo[0], xAxisTo[1], axisColor);
+                    drawDashedArrow(xAxisFrom[0], xAxisFrom[1], xAxisTo[0], xAxisTo[1], planeAxisColor);
                     
                     // Labels
                     ctx.save();
@@ -2491,7 +2450,8 @@
                     // Space Label (near right arrow, aligned along plane slant, positioned to avoid clipping)
                     ctx.textAlign = 'right';
                     ctx.textBaseline = 'bottom';
-                    const spaceLabelPos = scalePoint(p(0.94, 0.515), event, revealScale * easedScale);
+                    ctx.fillStyle = planeLabelColor;
+                    const spaceLabelPos = scalePoint(p(0.94, 0.502), event, revealScale * easedScale);
                     ctx.fillText('SPACE', spaceLabelPos[0], spaceLabelPos[1]);
                     
                     ctx.restore();
@@ -2811,257 +2771,6 @@
             updateStatus();
             draw();
             requestAnimationFrame(loop);
-        })();
-
-        (() => {
-            const canvas = document.getElementById('postural-canvas');
-            const status = document.getElementById('postural-status');
-            const randomBtn = document.getElementById('postural-random');
-            const caBtn = document.getElementById('postural-ca');
-            if (!canvas || !status || !randomBtn || !caBtn) return;
-
-            const ctx = canvas.getContext('2d');
-            const base = {
-                head: [0.5, 0.18],
-                spine: [0.5, 0.43],
-                pelvis: [0.5, 0.62],
-                leftHand: [0.28, 0.43],
-                rightHand: [0.72, 0.43],
-                leftKnee: [0.39, 0.75],
-                rightKnee: [0.61, 0.75],
-                leftFoot: [0.33, 0.91],
-                rightFoot: [0.67, 0.91]
-            };
-            const joints = Object.fromEntries(Object.entries(base).map(([key, value]) => [key, [...value]]));
-            const links = [
-                ['head', 'spine'], ['spine', 'pelvis'],
-                ['spine', 'leftHand'], ['spine', 'rightHand'],
-                ['pelvis', 'leftKnee'], ['leftKnee', 'leftFoot'],
-                ['pelvis', 'rightKnee'], ['rightKnee', 'rightFoot']
-            ];
-            const keyMap = {
-                '1': ['head', 0, -0.09],
-                '2': ['leftKnee', -0.09, 0.06],
-                '3': ['rightKnee', 0.09, 0.06],
-                '4': ['leftHand', -0.12, -0.05],
-                '5': ['rightHand', 0.12, -0.05],
-                '6': ['spine', 0, -0.1]
-            };
-            const cols = 32;
-            const rows = 18;
-            let caEnabled = true;
-            let dragging = null;
-            let flexPulse = 0;
-            let field = Array.from({ length: rows }, () => Array(cols).fill(0));
-
-            const resetBody = () => {
-                Object.entries(base).forEach(([key, value]) => {
-                    joints[key][0] = value[0];
-                    joints[key][1] = value[1];
-                });
-                flexPulse = 0;
-            };
-
-            const tension = () => {
-                const total = Object.keys(joints).reduce((sum, key) => {
-                    const dx = joints[key][0] - base[key][0];
-                    const dy = joints[key][1] - base[key][1];
-                    return sum + Math.hypot(dx, dy);
-                }, 0);
-                return Math.min(1, total / 1.05);
-            };
-
-            const seedField = () => {
-                const t = tension();
-                Object.values(joints).forEach(([jx, jy]) => {
-                    const cx = Math.max(0, Math.min(cols - 1, Math.floor(jx * cols)));
-                    const cy = Math.max(0, Math.min(rows - 1, Math.floor(jy * rows)));
-                    field[cy][cx] = Math.min(1, field[cy][cx] + 0.7 + t * 0.3);
-                    for (let oy = -1; oy <= 1; oy += 1) {
-                        for (let ox = -1; ox <= 1; ox += 1) {
-                            const x = cx + ox;
-                            const y = cy + oy;
-                            if (x >= 0 && x < cols && y >= 0 && y < rows) {
-                                field[y][x] = Math.max(field[y][x], 0.12 + t * 0.22);
-                            }
-                        }
-                    }
-                });
-            };
-
-            const stepField = () => {
-                if (!caEnabled) {
-                    field = field.map(row => row.map(value => value * 0.9));
-                    return;
-                }
-                seedField();
-                const next = Array.from({ length: rows }, () => Array(cols).fill(0));
-                for (let y = 0; y < rows; y += 1) {
-                    for (let x = 0; x < cols; x += 1) {
-                        let neighbors = 0;
-                        for (let oy = -1; oy <= 1; oy += 1) {
-                            for (let ox = -1; ox <= 1; ox += 1) {
-                                if (ox === 0 && oy === 0) continue;
-                                const nx = (x + ox + cols) % cols;
-                                const ny = (y + oy + rows) % rows;
-                                if (field[ny][nx] > 0.42) neighbors += 1;
-                            }
-                        }
-                        const alive = field[y][x] > 0.42;
-                        const born = !alive && neighbors === 3;
-                        const survive = alive && (neighbors === 2 || neighbors === 3);
-                        next[y][x] = born || survive ? 0.92 : field[y][x] * 0.74;
-                    }
-                }
-                field = next;
-            };
-
-            const draw = () => {
-                const w = canvas.width;
-                const h = canvas.height;
-                ctx.fillStyle = '#030403';
-                ctx.fillRect(0, 0, w, h);
-
-                const cellW = w / cols;
-                const cellH = h / rows;
-                for (let y = 0; y < rows; y += 1) {
-                    for (let x = 0; x < cols; x += 1) {
-                        const value = field[y][x];
-                        if (value < 0.035) continue;
-                        ctx.fillStyle = `rgba(153, 220, 27, ${Math.min(0.48, value * 0.42)})`;
-                        ctx.fillRect(x * cellW, y * cellH, cellW - 1, cellH - 1);
-                    }
-                }
-
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.07)';
-                ctx.lineWidth = 1;
-                for (let x = 0; x <= cols; x += 1) {
-                    ctx.beginPath();
-                    ctx.moveTo(x * cellW + 0.5, 0);
-                    ctx.lineTo(x * cellW + 0.5, h);
-                    ctx.stroke();
-                }
-                for (let y = 0; y <= rows; y += 1) {
-                    ctx.beginPath();
-                    ctx.moveTo(0, y * cellH + 0.5);
-                    ctx.lineTo(w, y * cellH + 0.5);
-                    ctx.stroke();
-                }
-
-                const t = tension();
-                ctx.lineCap = 'round';
-                links.forEach(([a, b]) => {
-                    const start = joints[a];
-                    const end = joints[b];
-                    const gradient = ctx.createLinearGradient(start[0] * w, start[1] * h, end[0] * w, end[1] * h);
-                    gradient.addColorStop(0, `rgba(255, 255, 255, ${0.48 + t * 0.34})`);
-                    gradient.addColorStop(1, `rgba(153, 220, 27, ${0.42 + t * 0.42})`);
-                    ctx.strokeStyle = gradient;
-                    ctx.lineWidth = 5 + t * 9;
-                    ctx.shadowColor = 'rgba(153, 220, 27, 0.42)';
-                    ctx.shadowBlur = 8 + t * 20 + flexPulse * 18;
-                    ctx.beginPath();
-                    ctx.moveTo(start[0] * w, start[1] * h);
-                    ctx.lineTo(end[0] * w, end[1] * h);
-                    ctx.stroke();
-                });
-                ctx.shadowBlur = 0;
-
-                Object.entries(joints).forEach(([key, [x, y]]) => {
-                    const isActive = dragging === key;
-                    ctx.fillStyle = isActive ? '#ffffff' : '#99dc1b';
-                    ctx.shadowColor = isActive ? '#ffffff' : '#99dc1b';
-                    ctx.shadowBlur = isActive ? 20 : 11 + t * 12;
-                    ctx.beginPath();
-                    ctx.arc(x * w, y * h, isActive ? 12 : 8 + t * 4, 0, Math.PI * 2);
-                    ctx.fill();
-                });
-                ctx.shadowBlur = 0;
-
-                status.textContent = `Tension: ${t.toFixed(2)} | CA Field: ${caEnabled ? 'On' : 'Off'}`;
-                caBtn.classList.toggle('is-active', caEnabled);
-                caBtn.setAttribute('aria-pressed', String(caEnabled));
-                flexPulse *= 0.9;
-            };
-
-            const setJointFromEvent = (event) => {
-                if (!dragging) return;
-                const rect = canvas.getBoundingClientRect();
-                joints[dragging][0] = Math.max(0.06, Math.min(0.94, (event.clientX - rect.left) / rect.width));
-                joints[dragging][1] = Math.max(0.06, Math.min(0.94, (event.clientY - rect.top) / rect.height));
-                flexPulse = 1;
-                draw();
-            };
-
-            const nearestJoint = (event) => {
-                const rect = canvas.getBoundingClientRect();
-                const x = (event.clientX - rect.left) / rect.width;
-                const y = (event.clientY - rect.top) / rect.height;
-                let nearest = null;
-                let best = Infinity;
-                Object.entries(joints).forEach(([key, value]) => {
-                    const d = Math.hypot(value[0] - x, value[1] - y);
-                    if (d < best) {
-                        best = d;
-                        nearest = key;
-                    }
-                });
-                return best < 0.08 ? nearest : null;
-            };
-
-            canvas.addEventListener('pointerdown', (event) => {
-                dragging = nearestJoint(event);
-                if (!dragging) return;
-                canvas.setPointerCapture(event.pointerId);
-                setJointFromEvent(event);
-            });
-            canvas.addEventListener('pointermove', setJointFromEvent);
-            canvas.addEventListener('pointerup', (event) => {
-                if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
-                dragging = null;
-                draw();
-            });
-            canvas.addEventListener('pointerleave', () => {
-                dragging = null;
-                draw();
-            });
-
-            randomBtn.addEventListener('click', () => {
-                Object.keys(joints).forEach((key) => {
-                    joints[key][0] = Math.max(0.08, Math.min(0.92, base[key][0] + (Math.random() - 0.5) * 0.32));
-                    joints[key][1] = Math.max(0.08, Math.min(0.92, base[key][1] + (Math.random() - 0.5) * 0.24));
-                });
-                flexPulse = 1;
-                draw();
-            });
-
-            caBtn.addEventListener('click', () => {
-                caEnabled = !caEnabled;
-                draw();
-            });
-
-            window.addEventListener('keydown', (event) => {
-                const key = event.key.toLowerCase();
-                if (keyMap[key]) {
-                    const [joint, dx, dy] = keyMap[key];
-                    joints[joint][0] = Math.max(0.06, Math.min(0.94, joints[joint][0] + dx * (event.shiftKey ? 1.8 : 1)));
-                    joints[joint][1] = Math.max(0.06, Math.min(0.94, joints[joint][1] + dy * (event.shiftKey ? 1.8 : 1)));
-                    flexPulse = 1;
-                    draw();
-                } else if (key === 'r') {
-                    resetBody();
-                    draw();
-                }
-            });
-
-            const loop = () => {
-                stepField();
-                draw();
-                requestAnimationFrame(loop);
-            };
-
-            resetBody();
-            loop();
         })();
     </script>
     <script>
