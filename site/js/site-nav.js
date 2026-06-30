@@ -191,6 +191,12 @@
 
             link.addEventListener('click', (event) => {
                 event.preventDefault();
+
+                if (link.id === 'btn-main-home') {
+                    window.location.href = pages.home;
+                    return;
+                }
+
                 link.classList.add('glitching');
 
                 setTimeout(() => {
@@ -257,37 +263,49 @@
         });
     };
 
-    const injectSiteMark = () => {
-        if (document.querySelector('.site-mark')) return;
+    const injectSiteFooter = () => {
+        document.querySelectorAll('.site-mark').forEach((mark) => mark.remove());
+
+        if (document.querySelector('.site-footer')) return;
 
         const style = document.createElement('style');
         style.textContent = `
-            .site-mark {
-                position: absolute;
-                left: 50vw;
-                transform: translateX(-50%);
-                bottom: max(10px, env(safe-area-inset-bottom));
-                z-index: 8500;
-                color: rgba(255, 255, 255, 0.24);
+            body.has-site-footer {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                min-height: 100vh;
+            }
+
+            .site-footer {
+                width: 100%;
+                box-sizing: border-box;
+                margin-top: auto;
+                padding: 24px clamp(20px, 5vw, 64px) max(18px, env(safe-area-inset-bottom));
+                position: relative;
+                z-index: 20;
+                color: rgba(255, 255, 255, 0.36);
                 font-family: 'Courier Prime', 'Courier New', monospace;
-                font-size: clamp(0.72rem, 1.25vw, 1.05rem);
+                font-size: 0.78rem;
                 font-weight: 700;
-                letter-spacing: 0.38em;
+                letter-spacing: 0.18em;
                 line-height: 1;
-                text-transform: uppercase;
+                text-align: center;
+                text-transform: lowercase;
                 pointer-events: none;
                 user-select: none;
                 white-space: nowrap;
             }
         `;
 
-        const mark = document.createElement('div');
-        mark.className = 'site-mark';
-        mark.setAttribute('aria-hidden', 'true');
-        mark.textContent = 'VISHNOI © 2026';
+        const footer = document.createElement('footer');
+        footer.className = 'site-footer';
+        footer.textContent = 'vishnoi@2026';
 
         document.head.appendChild(style);
-        document.body.appendChild(mark);
+        document.body.classList.add('has-site-footer');
+        document.body.appendChild(footer);
     };
 
     const animateIncomingPortalReveal = () => {
@@ -342,7 +360,7 @@
     };
 
     document.addEventListener('DOMContentLoaded', () => {
-        injectSiteMark();
+        injectSiteFooter();
         animateIncomingPortalReveal();
         restoreAboutPosition();
         configureNavLinks();
