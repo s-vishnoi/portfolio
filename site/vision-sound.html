@@ -470,7 +470,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            z-index: 20;
+            z-index: 60;
             pointer-events: auto;
             text-align: left;
         }
@@ -996,11 +996,13 @@
             align-items: center;
             justify-content: center;
             font-size: clamp(0.76rem, 1vw, 1.15rem);
-            pointer-events: none; /* click goes through to wrapper */
+            pointer-events: none;
+            /* click goes through to wrapper */
             z-index: 4;
             transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 1;
-            padding-left: 3px; /* optical center alignment for triangle */
+            padding-left: 3px;
+            /* optical center alignment for triangle */
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
 
@@ -1447,7 +1449,7 @@
                 width: 70vw !important;
                 max-width: 240px !important;
                 transform: none !important;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5) !important;
                 cursor: default !important;
             }
 
@@ -1564,8 +1566,8 @@
                 <span class="story-kicker"><span class="story-num">03</span><span
                         class="story-title">Motivation</span></span>
                 While most generative artificial intelligence today relies on regurgitation and remixing of spoon-fed
-                data, I believe we can generate a beautiful landscape from capturing token concepts as simple rules and
-                letting them self-evolve.
+                and stolen data, I believe we can generate a beautiful landscape from capturing token concepts as simple
+                rules and letting them self-evolve.
             </p>
 
             <p class="story-beat">
@@ -1582,7 +1584,8 @@
         <div class="piece-layout">
             <div class="piece-copy">
                 <div class="piece-label">Art Installation</div>
-                <h2 id="cellular-automata-title" class="piece-title">Touch-Guided Self-Evolving Cellular Automata Display</h2>
+                <h2 id="cellular-automata-title" class="piece-title">Touch-Guided Self-Evolving Cellular Automata
+                    Display</h2>
                 <figure class="piece-process-photo">
                     <img src="images/meCA.png" alt="Vishnoi working on the physical cellular automata LED grid.">
                 </figure>
@@ -1630,7 +1633,9 @@
         <div class="piece-layout">
             <div class="piece-copy">
                 <div class="piece-label">Interactive Performance & Sound Installation</div>
-                <h2 id="postural-noise-title" class="piece-title">Deformation Noise <span class="piece-title-sub">with <a href="https://angeliki.org" target="_blank" rel="noopener noreferrer">Angeliki</a></span></h2>
+                <h2 id="postural-noise-title" class="piece-title">Deformation Noise <span class="piece-title-sub">with
+                        <a href="https://angeliki.org" target="_blank" rel="noopener noreferrer">Angeliki</a></span>
+                </h2>
                 <div class="piece-meta">
                     <span>2026</span>
                 </div>
@@ -1644,7 +1649,8 @@
 
             <p class="piece-note">
                 <a class="project-external-link" href="https://deformativesignal.alexia-bryan-5.workers.dev"
-                    target="_blank" rel="noopener noreferrer" aria-label="See project, opens external site">See project</a>
+                    target="_blank" rel="noopener noreferrer" aria-label="See project, opens external site">See
+                    project</a>
             </p>
         </div>
     </section>
@@ -1659,7 +1665,8 @@
                     aria-labelledby="light-cone-title light-cone-desc"></canvas>
                 <span id="light-cone-title" hidden>Light cone diagram</span>
                 <span id="light-cone-desc" hidden>A generated spacetime light cone diagram adapted from Wikimedia
-                    Commons World_line.svg, labeled time and space on the y and x axes, anything you can touch, all that you have touched, disconnected, and the speed limit of reality.</span>
+                    Commons World_line.svg, labeled time and space on the y and x axes, anything you can touch, all that
+                    you have touched, disconnected, and the speed limit of reality.</span>
             </div>
 
             <div class="audio-player-container">
@@ -1670,7 +1677,10 @@
                         <span class="btn-text">Vishnoi on SYNTH — THE TIME</span>
                     </button>
                     <div class="synth-track-meta">
-                        Truly Bald Records / Fundraiser <a href="https://trulybald.bandcamp.com/album/compilation-fundraiser-for-morris-home-philadelphia" target="_blank" rel="noopener noreferrer">compilation</a> for Morris Home Philadelphia for Trans Youth safety
+                        Truly Bald Records / Fundraiser <a
+                            href="https://trulybald.bandcamp.com/album/compilation-fundraiser-for-morris-home-philadelphia"
+                            target="_blank" rel="noopener noreferrer">compilation</a> for Morris Home Philadelphia for
+                        Trans Youth safety
                     </div>
                 </div>
             </div>
@@ -1681,7 +1691,8 @@
         <div class="piece-layout">
             <div class="piece-copy">
                 <div class="piece-label">curation & performance</div>
-                <h2 id="dome-project-title" class="piece-title">Curator & Performer <span class="piece-title-sub">@ the dome, philadelphia</span></h2>
+                <h2 id="dome-project-title" class="piece-title">Curator & Performer <span class="piece-title-sub">@ the
+                        dome, philadelphia</span></h2>
                 <div class="piece-meta">
                     <span>2020</span>
                     <span>archive</span>
@@ -1941,7 +1952,7 @@
                 const topEdge = mixPoint(quad[0], quad[1], u);
                 const bottomEdge = mixPoint(quad[3], quad[2], u);
                 const basePt = mixPoint(topEdge, bottomEdge, v);
-                
+
                 // Spacetime Gravity Warping around the mouse cursor
                 if (mouseX !== null && mouseY !== null) {
                     const dx = mouseX - basePt[0];
@@ -1963,7 +1974,7 @@
                 ctx.clip();
                 ctx.strokeStyle = 'rgba(210, 242, 255, 0.28)';
                 ctx.lineWidth = Math.max(0.7, width * 0.0011);
-                
+
                 // Active scanning sweep line across the grid columns
                 const sweepProgress = (time / 3600) % 1;
 
@@ -2014,7 +2025,7 @@
                     if (t > 1) continue;
                     const cx = tip[0] + (rimCenter[0] - tip[0]) * t;
                     const cy = tip[1] + (rimCenter[1] - tip[1]) * t;
-                    
+
                     ctx.save();
                     // Fade out smoothly towards the rim and fade in from the center
                     ctx.globalAlpha = Math.sin(t * Math.PI);
@@ -2151,95 +2162,95 @@
                 ctx.restore();
             };
 
-             const draw = (time = 0) => {
-                 ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+            const draw = (time = 0) => {
+                ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-                 // Decay blastGlow smoothly
-                 blastGlow += (0 - blastGlow) * 0.04;
-                 blastAge = Math.min(blastAge + 0.024, 1);
+                // Decay blastGlow smoothly
+                blastGlow += (0 - blastGlow) * 0.04;
+                blastAge = Math.min(blastAge + 0.024, 1);
 
-                 const pulse = reduceMotion ? 0 : (Math.sin(time / 520) + 1) / 2;
+                const pulse = reduceMotion ? 0 : (Math.sin(time / 520) + 1) / 2;
 
-                 // Smoothly update revealScale for a quick but still fluid grow transition.
-                 const targetReveal = isRevealed ? 1 : 0;
-                 revealScale += (targetReveal - revealScale) * 0.065;
+                // Smoothly update revealScale for a quick but still fluid grow transition.
+                const targetReveal = isRevealed ? 1 : 0;
+                revealScale += (targetReveal - revealScale) * 0.065;
 
-                 // Smoothly update dotHoverScale
-                 const targetDotScale = (isHoveringDot && !isRevealed) ? 1.48 : 1.0;
-                 dotHoverScale += (targetDotScale - dotHoverScale) * 0.12;
+                // Smoothly update dotHoverScale
+                const targetDotScale = (isHoveringDot && !isRevealed) ? 1.48 : 1.0;
+                dotHoverScale += (targetDotScale - dotHoverScale) * 0.12;
 
-                 let easedScale = 1;
-                 let scrollReveal = 1;
-                 if (!reduceMotion) {
-                     const rect = canvas.getBoundingClientRect();
-                     const viewportHeight = window.innerHeight;
-                     const startY = viewportHeight * 0.88;
-                     const endY = viewportHeight * 0.45;
-                     const range = startY - endY;
-                     const currentY = rect.top;
-                     const progress = Math.min(Math.max((startY - currentY) / range, 0), 1);
-                     scrollReveal = progress;
-                     const easeOutBack = (x) => {
-                         const c1 = 1.35;
-                         const c3 = c1 + 1;
-                         return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2);
-                     };
-                     easedScale = easeOutBack(progress);
-                 }
+                let easedScale = 1;
+                let scrollReveal = 1;
+                if (!reduceMotion) {
+                    const rect = canvas.getBoundingClientRect();
+                    const viewportHeight = window.innerHeight;
+                    const startY = viewportHeight * 0.88;
+                    const endY = viewportHeight * 0.45;
+                    const range = startY - endY;
+                    const currentY = rect.top;
+                    const progress = Math.min(Math.max((startY - currentY) / range, 0), 1);
+                    scrollReveal = progress;
+                    const easeOutBack = (x) => {
+                        const c1 = 1.35;
+                        const c3 = c1 + 1;
+                        return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2);
+                    };
+                    easedScale = easeOutBack(progress);
+                }
 
-                 // Cones physically grow based on scroll and click-reveal.
-                 const currentScale = easedScale * revealScale;
-                 const event = p(0.5, 0.5);
+                // Cones physically grow based on scroll and click-reveal.
+                const currentScale = easedScale * revealScale;
+                const event = p(0.5, 0.5);
 
-                 const top = scalePoint(p(0.5, 0.13), event, currentScale);
-                 const bottom = scalePoint(p(0.5, 0.87), event, currentScale);
-                 const topLeft = scalePoint(p(0.08, 0.17), event, currentScale);
-                 const topRight = scalePoint(p(0.92, 0.17), event, currentScale);
-                 const bottomLeft = scalePoint(p(0.09, 0.83), event, currentScale);
-                 const bottomRight = scalePoint(p(0.91, 0.83), event, currentScale);
+                const top = scalePoint(p(0.5, 0.13), event, currentScale);
+                const bottom = scalePoint(p(0.5, 0.87), event, currentScale);
+                const topLeft = scalePoint(p(0.08, 0.17), event, currentScale);
+                const topRight = scalePoint(p(0.92, 0.17), event, currentScale);
+                const bottomLeft = scalePoint(p(0.09, 0.83), event, currentScale);
+                const bottomRight = scalePoint(p(0.91, 0.83), event, currentScale);
 
-                 const topRx = width * 0.42 * currentScale;
-                 const topRy = height * 0.07 * currentScale;
-                 const bottomRx = width * 0.41 * currentScale;
-                 const bottomRy = height * 0.07 * currentScale;
+                const topRx = width * 0.42 * currentScale;
+                const topRy = height * 0.07 * currentScale;
+                const bottomRx = width * 0.41 * currentScale;
+                const bottomRy = height * 0.07 * currentScale;
 
-                 const plane = [p(0.07, 0.47), event, p(0.94, 0.49), p(0.43, 0.56)];
-                 const planeFade = reduceMotion ? 1 : Math.min(Math.max((scrollReveal - 0.08) / 0.48, 0), 1);
+                const plane = [p(0.07, 0.47), event, p(0.94, 0.49), p(0.43, 0.56)];
+                const planeFade = reduceMotion ? 1 : Math.min(Math.max((scrollReveal - 0.08) / 0.48, 0), 1);
 
-                 // Draw background twinkling starfield
-                 ctx.save();
-                 stars.forEach((star, idx) => {
-                     const driftX = Math.sin(time / 2200 + idx) * 8;
-                     const driftY = Math.cos(time / 2600 + idx) * 8;
-                     const sx = originX + star[0] * width + driftX;
-                     const sy = originY + star[1] * height + driftY;
-                     const twinkle = 0.35 + 0.65 * Math.sin(time / 320 + idx * 2.5);
-                     const opacity = 0.22 * twinkle * easedScale * (1 - revealScale * 0.4);
-                     ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-                     ctx.beginPath();
-                     ctx.arc(sx, sy, star[2] * (0.85 + 0.15 * twinkle), 0, Math.PI * 2);
-                     ctx.fill();
-                 });
+                // Draw background twinkling starfield
+                ctx.save();
+                stars.forEach((star, idx) => {
+                    const driftX = Math.sin(time / 2200 + idx) * 8;
+                    const driftY = Math.cos(time / 2600 + idx) * 8;
+                    const sx = originX + star[0] * width + driftX;
+                    const sy = originY + star[1] * height + driftY;
+                    const twinkle = 0.35 + 0.65 * Math.sin(time / 320 + idx * 2.5);
+                    const opacity = 0.22 * twinkle * easedScale * (1 - revealScale * 0.4);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+                    ctx.beginPath();
+                    ctx.arc(sx, sy, star[2] * (0.85 + 0.15 * twinkle), 0, Math.PI * 2);
+                    ctx.fill();
+                });
 
-                 // Draw glowing starburst flares
-                 starbursts.forEach((burst, idx) => {
-                     const driftX = Math.sin(time / 2200 + idx * 3) * 8;
-                     const driftY = Math.cos(time / 2600 + idx * 3) * 8;
-                     const bx = originX + burst[0] * width + driftX;
-                     const by = originY + burst[1] * height + driftY;
-                     const pulseFlare = 0.6 + 0.4 * Math.sin(time / 280 + idx * 3.3);
-                     const size = burst[2] * pulseFlare * easedScale * (1 - revealScale * 0.4);
-                     const opacity = 0.16 * pulseFlare * easedScale * (1 - revealScale * 0.4);
-                     ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
-                     ctx.lineWidth = 0.8;
-                     ctx.beginPath();
-                     ctx.moveTo(bx - size, by);
-                     ctx.lineTo(bx + size, by);
-                     ctx.moveTo(bx, by - size);
-                     ctx.lineTo(bx, by + size);
-                     ctx.stroke();
-                 });
-                 ctx.restore();
+                // Draw glowing starburst flares
+                starbursts.forEach((burst, idx) => {
+                    const driftX = Math.sin(time / 2200 + idx * 3) * 8;
+                    const driftY = Math.cos(time / 2600 + idx * 3) * 8;
+                    const bx = originX + burst[0] * width + driftX;
+                    const by = originY + burst[1] * height + driftY;
+                    const pulseFlare = 0.6 + 0.4 * Math.sin(time / 280 + idx * 3.3);
+                    const size = burst[2] * pulseFlare * easedScale * (1 - revealScale * 0.4);
+                    const opacity = 0.16 * pulseFlare * easedScale * (1 - revealScale * 0.4);
+                    ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.beginPath();
+                    ctx.moveTo(bx - size, by);
+                    ctx.lineTo(bx + size, by);
+                    ctx.moveTo(bx, by - size);
+                    ctx.lineTo(bx, by + size);
+                    ctx.stroke();
+                });
+                ctx.restore();
 
                 const drawPresentPlane = () => {
                     ctx.save();
@@ -2428,35 +2439,40 @@
                     const labelColor = `rgba(255, 255, 255, ${0.55 * revealScale * easedScale})`;
                     const planeAxisColor = `rgba(255, 255, 255, ${0.22 * revealScale * easedScale * planeFade})`;
                     const planeLabelColor = `rgba(255, 255, 255, ${0.55 * revealScale * easedScale * planeFade})`;
-                    
+
                     // Y-Axis: TIME (from bottom to top)
                     const yAxisFrom = scalePoint(p(0.5, 1.0), event, revealScale * easedScale);
                     const yAxisTo = scalePoint(p(0.5, 0.04), event, revealScale * easedScale);
                     drawDashedArrow(yAxisFrom[0], yAxisFrom[1], yAxisTo[0], yAxisTo[1], axisColor);
-                    
-                    // X-Axis: SPACE (aligned along the space plane's horizontal diagonal)
-                    const xAxisFrom = scalePoint(plane[0], event, revealScale * easedScale);
-                    const xAxisTo = scalePoint(plane[2], event, revealScale * easedScale);
+
+                    // X-Axis: SPACE — anchored through event (red dot) along plane direction
+                    // Compute unit direction of the plane and extend from event in both directions
+                    const rawDir = [plane[2][0] - plane[0][0], plane[2][1] - plane[0][1]];
+                    const rawLen = Math.sqrt(rawDir[0] ** 2 + rawDir[1] ** 2);
+                    const dir = [rawDir[0] / rawLen, rawDir[1] / rawLen];
+                    const halfSpan = 0.44;
+                    const xAxisFrom = scalePoint([event[0] - dir[0] * halfSpan, event[1] - dir[1] * halfSpan], event, revealScale * easedScale);
+                    const xAxisTo = scalePoint([event[0] + dir[0] * halfSpan, event[1] + dir[1] * halfSpan], event, revealScale * easedScale);
                     drawDashedArrow(xAxisFrom[0], xAxisFrom[1], xAxisTo[0], xAxisTo[1], planeAxisColor);
-                    
+
                     // Labels
                     ctx.save();
                     ctx.fillStyle = labelColor;
                     ctx.font = `700 ${Math.max(10, width * 0.026 * easedScale * revealScale)}px Courier Prime, monospace`;
-                    
+
                     // Time Label (near top arrow, moved upwards)
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'bottom';
                     const timeLabelPos = scalePoint(p(0.5, 0.015), event, revealScale * easedScale);
                     ctx.fillText('TIME', timeLabelPos[0], timeLabelPos[1]);
-                    
+
                     // Space Label (near right arrow, aligned along plane slant, positioned to avoid clipping)
                     ctx.textAlign = 'right';
                     ctx.textBaseline = 'bottom';
                     ctx.fillStyle = planeLabelColor;
                     const spaceLabelPos = scalePoint(p(0.94, 0.502), event, revealScale * easedScale);
                     ctx.fillText('SPACE', spaceLabelPos[0], spaceLabelPos[1]);
-                    
+
                     ctx.restore();
                 }
 
@@ -2470,56 +2486,56 @@
                 ctx.fillText('You are here', event[0], event[1] + height * 0.047 * easedScale);
                 ctx.restore();
 
-                 // Draw expanding supernova blast shockwaves from the red-dot click.
-                 if (blastGlow > 0.01) {
-                     ctx.save();
-                     ctx.globalCompositeOperation = 'screen';
-                     const progress = Math.min(blastAge, 1);
-                     const easeOutExpo = progress >= 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-                     const coreRadius = width * (0.035 + 0.34 * easeOutExpo);
-                     const outerRadius = width * (0.05 + 0.86 * easeOutExpo);
+                // Draw expanding supernova blast shockwaves from the red-dot click.
+                if (blastGlow > 0.01) {
+                    ctx.save();
+                    ctx.globalCompositeOperation = 'screen';
+                    const progress = Math.min(blastAge, 1);
+                    const easeOutExpo = progress >= 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                    const coreRadius = width * (0.035 + 0.34 * easeOutExpo);
+                    const outerRadius = width * (0.05 + 0.86 * easeOutExpo);
 
-                     const coreGradient = ctx.createRadialGradient(event[0], event[1], 0, event[0], event[1], coreRadius);
-                     coreGradient.addColorStop(0, `rgba(255, 255, 255, ${0.92 * blastGlow})`);
-                     coreGradient.addColorStop(0.22, `rgba(254, 65, 100, ${0.82 * blastGlow})`);
-                     coreGradient.addColorStop(0.58, `rgba(111, 0, 255, ${0.38 * blastGlow})`);
-                     coreGradient.addColorStop(1, 'rgba(0, 229, 255, 0)');
-                     ctx.fillStyle = coreGradient;
-                     ctx.beginPath();
-                     ctx.arc(event[0], event[1], coreRadius, 0, Math.PI * 2);
-                     ctx.fill();
+                    const coreGradient = ctx.createRadialGradient(event[0], event[1], 0, event[0], event[1], coreRadius);
+                    coreGradient.addColorStop(0, `rgba(255, 255, 255, ${0.92 * blastGlow})`);
+                    coreGradient.addColorStop(0.22, `rgba(254, 65, 100, ${0.82 * blastGlow})`);
+                    coreGradient.addColorStop(0.58, `rgba(111, 0, 255, ${0.38 * blastGlow})`);
+                    coreGradient.addColorStop(1, 'rgba(0, 229, 255, 0)');
+                    ctx.fillStyle = coreGradient;
+                    ctx.beginPath();
+                    ctx.arc(event[0], event[1], coreRadius, 0, Math.PI * 2);
+                    ctx.fill();
 
-                     [
-                         [outerRadius, 0.9, '#ffffff', width * 0.012],
-                         [outerRadius * 0.64, 0.58, '#fe4164', width * 0.008],
-                         [outerRadius * 0.42, 0.42, '#00e5ff', width * 0.005],
-                     ].forEach(([radius, alpha, color, lineWidth]) => {
-                         ctx.strokeStyle = color;
-                         ctx.globalAlpha = alpha * blastGlow;
-                         ctx.lineWidth = Math.max(1.5, lineWidth * blastGlow);
-                         ctx.shadowColor = color;
-                         ctx.shadowBlur = width * 0.075 * blastGlow;
-                         ctx.beginPath();
-                         ctx.arc(event[0], event[1], radius, 0, Math.PI * 2);
-                         ctx.stroke();
-                     });
+                    [
+                        [outerRadius, 0.9, '#ffffff', width * 0.012],
+                        [outerRadius * 0.64, 0.58, '#fe4164', width * 0.008],
+                        [outerRadius * 0.42, 0.42, '#00e5ff', width * 0.005],
+                    ].forEach(([radius, alpha, color, lineWidth]) => {
+                        ctx.strokeStyle = color;
+                        ctx.globalAlpha = alpha * blastGlow;
+                        ctx.lineWidth = Math.max(1.5, lineWidth * blastGlow);
+                        ctx.shadowColor = color;
+                        ctx.shadowBlur = width * 0.075 * blastGlow;
+                        ctx.beginPath();
+                        ctx.arc(event[0], event[1], radius, 0, Math.PI * 2);
+                        ctx.stroke();
+                    });
 
-                     ctx.globalAlpha = 0.85 * blastGlow;
-                     ctx.strokeStyle = '#ffffff';
-                     ctx.lineWidth = Math.max(1, width * 0.0028 * blastGlow);
-                     ctx.shadowColor = '#fe4164';
-                     ctx.shadowBlur = width * 0.05 * blastGlow;
-                     for (let i = 0; i < 18; i++) {
-                         const angle = (Math.PI * 2 * i) / 18 + progress * 0.34;
-                         const inner = width * (0.018 + 0.08 * easeOutExpo);
-                         const outer = width * (0.13 + 0.48 * easeOutExpo) * (0.74 + (i % 3) * 0.16);
-                         ctx.beginPath();
-                         ctx.moveTo(event[0] + Math.cos(angle) * inner, event[1] + Math.sin(angle) * inner);
-                         ctx.lineTo(event[0] + Math.cos(angle) * outer, event[1] + Math.sin(angle) * outer);
-                         ctx.stroke();
-                     }
-                     ctx.restore();
-                 }
+                    ctx.globalAlpha = 0.85 * blastGlow;
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = Math.max(1, width * 0.0028 * blastGlow);
+                    ctx.shadowColor = '#fe4164';
+                    ctx.shadowBlur = width * 0.05 * blastGlow;
+                    for (let i = 0; i < 18; i++) {
+                        const angle = (Math.PI * 2 * i) / 18 + progress * 0.34;
+                        const inner = width * (0.018 + 0.08 * easeOutExpo);
+                        const outer = width * (0.13 + 0.48 * easeOutExpo) * (0.74 + (i % 3) * 0.16);
+                        ctx.beginPath();
+                        ctx.moveTo(event[0] + Math.cos(angle) * inner, event[1] + Math.sin(angle) * inner);
+                        ctx.lineTo(event[0] + Math.cos(angle) * outer, event[1] + Math.sin(angle) * outer);
+                        ctx.stroke();
+                    }
+                    ctx.restore();
+                }
 
                 // Draw and update click explosion particles
                 if (clickParticles.length > 0) {
@@ -2529,7 +2545,7 @@
                         p.y += p.vy;
                         p.vy += 0.045; // simulated gravity pull down
                         p.alpha -= p.decay;
-                        
+
                         if (p.alpha > 0) {
                             ctx.fillStyle = p.color;
                             ctx.globalAlpha = p.alpha;
@@ -2868,7 +2884,7 @@
                     if (synthAudio.paused) {
                         // Pause all playing videos when synth track starts
                         pauseAllVideosExcept(null);
-                        
+
                         synthAudio.play().then(() => {
                             synthPlayBtn.classList.add('is-playing');
                             if (synthPlayIcon) synthPlayIcon.textContent = '❚❚';

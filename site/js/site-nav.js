@@ -264,7 +264,7 @@
         style.textContent = `
             .site-mark {
                 position: absolute;
-                left: 50%;
+                left: 50vw;
                 transform: translateX(-50%);
                 bottom: max(10px, env(safe-area-inset-bottom));
                 z-index: 8500;
