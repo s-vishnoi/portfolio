@@ -109,7 +109,7 @@ body.fade-out {
     letter-spacing: 2px;
     transition: all 0.2s ease;
     position: relative;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+
     text-decoration: none;
     animation: cycleColors 2.4s infinite linear;
 }
@@ -123,18 +123,18 @@ body.fade-out {
     transform: scaleX(1.18);
     transform-origin: left center;
     animation: none;
-    text-shadow: none;
+
 }
 
 .home-only .text-btn:hover {
     color: #fff;
     letter-spacing: 4px;
-    text-shadow: 0 0 10px #dfff00;
+
 }
 
 .text-btn.active-page {
     color: #dfff00 !important;
-    text-shadow: 0 0 20px #dfff00 !important;
+
     animation: none !important;
 }
 
@@ -229,7 +229,7 @@ body.fade-out {
     font-weight: 400;
     line-height: 1;
     letter-spacing: 0;
-    text-shadow: 0 0 14px rgba(223, 255, 0, 0.48), 0 0 28px rgba(255, 255, 255, 0.26);
+
     cursor: pointer;
     z-index: 40;
 }
@@ -261,7 +261,7 @@ body.fade-out {
     text-transform: var(--project-title-transform);
     color: #dfff00;
     text-align: center;
-    text-shadow: 0 0 20px rgba(223, 255, 0, 0.5);
+
     transform: var(--project-title-stretch);
     transform-origin: center;
     text-wrap: balance;
@@ -334,14 +334,14 @@ body.fade-out {
     text-transform: uppercase;
     color: #dfff00;
     opacity: 0.95;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 5px rgba(0, 0, 0, 0.8), 0 0 16px rgba(223, 255, 0, 0.42);
+
 }
 
 .collab-date {
     font-weight: 500;
     opacity: 0.6;
     color: #ffffff;
-    text-shadow: none;
+
 }
 
 .detail-collaboration {
@@ -349,7 +349,7 @@ body.fade-out {
     font-size: clamp(0.9rem, 1.25vw, 1.16rem);
     line-height: 1.28;
     color: rgba(255, 255, 255, 0.86);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.75), 0 0 16px rgba(223, 255, 0, 0.28);
+
 }
 
 #detail-desc {
@@ -358,7 +358,7 @@ body.fade-out {
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 3rem;
     white-space: normal;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.75), 0 0 16px rgba(223, 255, 0, 0.22);
+
 }
 
 .detail-project-description {
@@ -368,7 +368,7 @@ body.fade-out {
     font-size: clamp(1.45rem, 2.3vw, 2.1rem);
     line-height: 1.38;
     color: rgba(255, 255, 255, 0.84);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.75), 0 0 16px rgba(223, 255, 0, 0.28);
+
 }
 
 #detail-desc-container.align-left .detail-project-description,
@@ -453,7 +453,7 @@ body.fade-out {
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
     animation: cycleColors 2.4s infinite linear;
-    text-shadow: 0 0 15px currentColor;
+
 }
 
 .detail-publication-list {
@@ -486,7 +486,7 @@ body.fade-out {
     color: rgba(255, 255, 255, 0.96);
     font-style: italic;
     letter-spacing: 0.01em;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.75), 0 0 12px rgba(223, 255, 0, 0.2);
+
 }
 
 .detail-author-marker {
@@ -505,7 +505,7 @@ body.fade-out {
     color: rgba(255, 255, 255, 0.72);
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.75), 0 0 14px rgba(223, 255, 0, 0.22);
+
 }
 
 .detail-status {
