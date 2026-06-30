@@ -257,6 +257,49 @@
         });
     };
 
+    const injectSiteMark = () => {
+        if (document.querySelector('.site-mark')) return;
+
+        const style = document.createElement('style');
+        style.textContent = `
+            .site-mark {
+                position: fixed;
+                left: clamp(8px, 1.8vw, 24px);
+                bottom: max(10px, env(safe-area-inset-bottom));
+                z-index: 8500;
+                color: rgba(255, 255, 255, 0.24);
+                font-family: 'Courier Prime', 'Courier New', monospace;
+                font-size: clamp(0.72rem, 1.25vw, 1.05rem);
+                font-weight: 700;
+                letter-spacing: 0.38em;
+                line-height: 1;
+                text-transform: uppercase;
+                pointer-events: none;
+                user-select: none;
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
+            }
+
+            @media (max-width: 768px) {
+                .site-mark {
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: max(8px, env(safe-area-inset-bottom));
+                    font-size: clamp(0.58rem, 3vw, 0.72rem);
+                    letter-spacing: 0.28em;
+                    white-space: nowrap;
+                }
+            }
+        `;
+
+        const mark = document.createElement('div');
+        mark.className = 'site-mark';
+        mark.setAttribute('aria-hidden', 'true');
+        mark.textContent = 'VISHNOI © 2026';
+
+        document.head.appendChild(style);
+        document.body.appendChild(mark);
+    };
+
     const animateIncomingPortalReveal = () => {
         const params = new URLSearchParams(window.location.search);
         const cx = params.get('cx');
@@ -309,6 +352,7 @@
     };
 
     document.addEventListener('DOMContentLoaded', () => {
+        injectSiteMark();
         animateIncomingPortalReveal();
         restoreAboutPosition();
         configureNavLinks();
