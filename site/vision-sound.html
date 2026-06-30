@@ -682,6 +682,37 @@
             text-decoration-color: #00e5ff;
         }
 
+        .project-external-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.62em;
+            color: #00e5ff !important;
+            font-size: clamp(1.05rem, 1.9vw, 1.6rem);
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            text-decoration: none;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.32);
+        }
+
+        .project-external-link::after {
+            content: "↗";
+            font-size: 1.15em;
+            line-height: 1;
+            transform: translateY(-0.06em);
+            transition: transform 0.25s ease, text-shadow 0.25s ease;
+        }
+
+        .project-external-link:hover {
+            color: #ffffff !important;
+            text-shadow: 0 0 14px rgba(0, 229, 255, 0.52);
+        }
+
+        .project-external-link:hover::after {
+            transform: translate(0.18em, -0.24em);
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.75);
+        }
+
         .life-panel {
             position: relative;
             width: 100%;
@@ -1618,8 +1649,8 @@
             </div>
 
             <p class="piece-note">
-                <a href="https://deformativesignal.alexia-bryan-5.workers.dev" target="_blank"
-                    rel="noopener noreferrer">See project</a>
+                <a class="project-external-link" href="https://deformativesignal.alexia-bryan-5.workers.dev"
+                    target="_blank" rel="noopener noreferrer" aria-label="See project, opens external site">See project</a>
             </p>
         </div>
     </section>
