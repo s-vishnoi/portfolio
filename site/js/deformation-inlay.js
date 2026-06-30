@@ -1212,16 +1212,6 @@
                 avatarCtx.translate(-renderWidth / 2, 0);
             }
 
-            avatarCtx.strokeStyle = 'rgba(255, 255, 255, 0.008)';
-            avatarCtx.lineWidth = 1;
-            const grid = renderWidth / 14;
-            for (let x = 0; x < renderWidth; x += grid) {
-                avatarCtx.beginPath();
-                avatarCtx.moveTo(x, 0);
-                avatarCtx.lineTo(x, renderHeight);
-                avatarCtx.stroke();
-            }
-
             pelvisX = renderWidth * 0.38 + shiverX + state.pelvisDragX;
             pelvisY = renderHeight / 2 + 65 + shiverY + state.pelvisDragY;
             const pelvis = { x: pelvisX, y: pelvisY };
