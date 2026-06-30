@@ -263,8 +263,9 @@
         const style = document.createElement('style');
         style.textContent = `
             .site-mark {
-                position: fixed;
-                left: clamp(8px, 1.8vw, 24px);
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
                 bottom: max(10px, env(safe-area-inset-bottom));
                 z-index: 8500;
                 color: rgba(255, 255, 255, 0.24);
@@ -276,18 +277,8 @@
                 text-transform: uppercase;
                 pointer-events: none;
                 user-select: none;
+                white-space: nowrap;
                 text-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
-            }
-
-            @media (max-width: 768px) {
-                .site-mark {
-                    left: 50%;
-                    transform: translateX(-50%);
-                    bottom: max(8px, env(safe-area-inset-bottom));
-                    font-size: clamp(0.58rem, 3vw, 0.72rem);
-                    letter-spacing: 0.28em;
-                    white-space: nowrap;
-                }
             }
         `;
 
