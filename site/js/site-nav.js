@@ -301,7 +301,7 @@
 
         const footer = document.createElement('footer');
         footer.className = 'site-footer';
-        footer.textContent = 'VISHNOI@2026';
+        footer.textContent = 'VISHNOI © 2026';
 
         document.head.appendChild(style);
         document.body.classList.add('has-site-footer');
