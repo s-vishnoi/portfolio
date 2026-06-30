@@ -280,6 +280,40 @@
                 white-space: nowrap;
                 text-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
             }
+
+            body.no-glow * {
+                text-shadow: none !important;
+            }
+
+            .glow-toggle {
+                position: fixed;
+                bottom: max(10px, env(safe-area-inset-bottom));
+                right: clamp(8px, 1.8vw, 24px);
+                z-index: 8500;
+                background: transparent;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                color: rgba(255, 255, 255, 0.3);
+                font-family: 'Courier Prime', 'Courier New', monospace;
+                font-size: 0.6rem;
+                font-weight: 700;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                padding: 3px 6px;
+                cursor: pointer;
+                user-select: none;
+                transition: color 0.2s, border-color 0.2s;
+                line-height: 1;
+            }
+
+            .glow-toggle:hover {
+                color: rgba(255, 255, 255, 0.7);
+                border-color: rgba(255, 255, 255, 0.4);
+            }
+
+            .glow-toggle.active {
+                color: rgba(223, 255, 0, 0.6);
+                border-color: rgba(223, 255, 0, 0.35);
+            }
         `;
 
         const mark = document.createElement('div');
@@ -287,8 +321,31 @@
         mark.setAttribute('aria-hidden', 'true');
         mark.textContent = 'VISHNOI © 2026';
 
+        // Glow toggle
+        const toggle = document.createElement('button');
+        toggle.className = 'glow-toggle';
+        toggle.setAttribute('aria-label', 'Toggle text glow');
+        toggle.setAttribute('title', 'Toggle glow');
+
+        const noGlow = localStorage.getItem('no-glow') === '1';
+        if (noGlow) {
+            document.body.classList.add('no-glow');
+            toggle.textContent = 'GLOW OFF';
+            toggle.classList.add('active');
+        } else {
+            toggle.textContent = 'GLOW';
+        }
+
+        toggle.addEventListener('click', () => {
+            const isOff = document.body.classList.toggle('no-glow');
+            toggle.textContent = isOff ? 'GLOW OFF' : 'GLOW';
+            toggle.classList.toggle('active', isOff);
+            localStorage.setItem('no-glow', isOff ? '1' : '0');
+        });
+
         document.head.appendChild(style);
         document.body.appendChild(mark);
+        document.body.appendChild(toggle);
     };
 
     const animateIncomingPortalReveal = () => {
