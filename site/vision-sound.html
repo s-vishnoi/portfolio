@@ -600,6 +600,20 @@
             letter-spacing: 0.05em;
         }
 
+        .piece-title-sub a {
+            color: #fe4164;
+            text-decoration: underline;
+            text-decoration-color: rgba(254, 65, 100, 0.62);
+            text-underline-offset: 0.14em;
+            transition: color 0.25s ease, text-decoration-color 0.25s ease, text-shadow 0.25s ease;
+        }
+
+        .piece-title-sub a:hover {
+            color: #00e5ff;
+            text-decoration-color: rgba(0, 229, 255, 0.78);
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.38);
+        }
+
         .piece-process-photo {
             width: min(310px, 72%);
             margin: clamp(0.1rem, 0.5vh, 0.28rem) 0 0;
@@ -1542,7 +1556,7 @@
     <section class="piece-section" aria-labelledby="cellular-automata-title">
         <div class="piece-layout">
             <div class="piece-copy">
-                <div class="piece-label">Generative Art</div>
+                <div class="piece-label">Art Installation</div>
                 <h2 id="cellular-automata-title" class="piece-title">Touch-Guided Self-Evolving Cellular Automata Display</h2>
                 <figure class="piece-process-photo">
                     <img src="images/meCA.png" alt="Vishnoi working on the physical cellular automata LED grid.">
@@ -1591,7 +1605,7 @@
         <div class="piece-layout">
             <div class="piece-copy">
                 <div class="piece-label">Collaborative Performance</div>
-                <h2 id="postural-noise-title" class="piece-title">Deformation Noise <span class="piece-title-sub">with Angeliki</span></h2>
+                <h2 id="postural-noise-title" class="piece-title">Deformation Noise <span class="piece-title-sub">with <a href="https://angeliki.org" target="_blank" rel="noopener noreferrer">Angeliki</a></span></h2>
                 <div class="piece-meta">
                     <span>2026</span>
                     <span>Interactive Performance & Sound Installation</span>
