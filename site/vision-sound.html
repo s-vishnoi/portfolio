@@ -22,6 +22,7 @@
         :root {
             --bg-dark: #0a0a0a;
             --accent-primary: #fe4164;
+            --accent-neon: #99DC1B;
         }
 
         html,
@@ -808,18 +809,182 @@
         .body-inlay {
             position: relative;
             width: 100%;
-            height: min(78svh, 760px);
             min-height: 620px;
             background: #040404;
             overflow: hidden;
+            padding: clamp(18px, 2.4vw, 28px);
         }
 
-        .body-inlay iframe {
+        .body-proof-copy {
+            margin: 0 0 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(0.62rem, 0.82vw, 0.85rem);
+            line-height: 1.55;
+            letter-spacing: 0.05em;
+            text-align: center;
+        }
+
+        .control-btn {
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 15px 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: none;
+            transition: all 0.3s;
+            outline: none;
+            border-radius: 0;
+        }
+
+        .control-btn:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+        }
+
+        #avatar-container {
+            position: relative;
+            width: 100%;
+            max-width: none;
+            aspect-ratio: 16 / 10;
+            margin: 0 auto;
+            background: #040404;
+            border: 0;
+            border-radius: 0;
+            overflow: hidden;
+        }
+
+        #avatar-canvas {
             display: block;
             width: 100%;
             height: 100%;
+            touch-action: none;
+        }
+
+        .sound-help-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 6;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #99DC1B;
+            border-radius: 0;
+            background: rgba(4, 4, 4, 0.82);
+            color: #99DC1B;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.95rem;
+            line-height: 1;
+            cursor: none;
+            outline: none;
+            box-shadow: 0 0 12px rgba(153, 220, 27, 0.22);
+        }
+
+        .sound-help-btn.active,
+        .sound-help-btn:hover {
+            background: #99DC1B;
+            color: #040404;
+        }
+
+        .sound-flow-popup {
+            position: absolute;
+            top: 50px;
+            right: 12px;
+            z-index: 5;
+            width: min(430px, calc(100% - 24px));
+            max-height: calc(100% - 70px);
+            overflow: auto;
+            padding: 14px 16px;
+            border: 1px solid rgba(153, 220, 27, 0.8);
+            border-radius: 0;
+            background: rgba(4, 4, 4, 0.92);
+            color: rgba(255, 255, 255, 0.82);
+            text-align: left;
+            box-shadow: 0 0 18px rgba(153, 220, 27, 0.18);
+            display: none;
+        }
+
+        .sound-flow-popup.active {
+            display: block;
+        }
+
+        .sound-flow-popup pre {
+            margin: 0;
+            white-space: pre-wrap;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.62rem;
+            line-height: 1.36;
+            letter-spacing: 0;
+        }
+
+        .keys-legend {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+            margin: 25px auto 0;
+            max-width: 760px;
+            padding: 4px 0;
             border: 0;
-            background: #040404;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 10px;
+            padding: 0;
+            border-left: 0;
+        }
+
+        .control-label {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 2px;
+            color: #99DC1B;
+            text-transform: uppercase;
+            margin: 0 0 2px;
+            text-shadow: 0 0 8px rgba(153, 220, 27, 0.42);
+        }
+
+        .key-tag {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.68rem;
+            line-height: 1.35;
+            padding: 0;
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            color: rgba(255, 255, 255, 0.62);
+            text-transform: uppercase;
+        }
+
+        .key-tag.active {
+            color: #99DC1B;
+            text-shadow: 0 0 8px rgba(153, 220, 27, 0.35);
+        }
+
+        span.key-tag.active::before {
+            content: "> ";
+        }
+
+        button.key-tag {
+            min-width: 92px;
+            padding: 0;
+            border: 0;
+            border-radius: 0 !important;
+            background: transparent !important;
+            text-align: left;
+            letter-spacing: 1px;
         }
 
         .quote-intermission {
@@ -1652,7 +1817,85 @@
             </div>
 
             <div class="body-inlay">
-                <iframe src="body-added.html" title="Deformation Noise interactive body instrument" allow="autoplay"></iframe>
+                <p class="body-proof-copy">
+                    Explore the physical structure of the body. Click to activate, then drag joints with your mouse to
+                    stretch the body, or press and hold keys 1 to 6 to flex individual limbs smoothly.
+                </p>
+
+                <button id="avatar-activate-btn" class="control-btn"
+                    style="margin-bottom: 20px; border-color: #99DC1B; color: #99DC1B;">Activate Motion Engine</button>
+
+                <div id="avatar-workspace" style="display: none;">
+                    <div id="avatar-container">
+                        <canvas id="avatar-canvas"></canvas>
+                        <button id="sound-help-btn" class="sound-help-btn" aria-label="Sound generation flow"
+                            type="button">?</button>
+                        <div id="sound-flow-popup" class="sound-flow-popup" aria-hidden="true">
+                            <pre>Body Motion / Sensor Input
+        |
+        v
+Tracked Body Parts
+Hands | Spine | Legs | Head | Whole Body
+        |
+        v
+Sound Mapping
+Hands      -> melody / arpeggio
+Spine      -> chord root / drone pitch
+Legs       -> bass / sub pulse
+Head       -> filter cutoff / noise color / high-pass
+Whole Body -> tempo / density / rhythmic intensity
+        |
+        v
+Motion Engine
+Joint tension + drag distance + posture bend
+        |
+        v
+Sound Modes
+Direct Body Map
+or
+Cellular Automata Toggle
+        |
+        v
+Synthesis Layer
+FM drone
+Plucked notes
+Sub bass
+Noise texture
+Delay feedback
+High-pass / low-pass filters
+        |
+        v
+Live Output
+Raw bodily soundscape
+responsive to contortion, tension, and movement
+
+--- work in progress ---</pre>
+                        </div>
+                    </div>
+
+                    <div class="keys-legend" style="margin-top: 25px;">
+                        <div class="control-group">
+                            <span class="control-label">Keys</span>
+                            <span class="key-tag" id="tag-1">1: Neck</span>
+                            <span class="key-tag" id="tag-2">2: Left Leg</span>
+                            <span class="key-tag" id="tag-3">3: Right Leg</span>
+                            <span class="key-tag" id="tag-4">4: Left Arm</span>
+                            <span class="key-tag" id="tag-5">5: Right Arm</span>
+                            <span class="key-tag" id="tag-6">6: Spine</span>
+                            <span class="key-tag" id="tag-shift">Shift: Amplify</span>
+                            <span class="key-tag" id="tag-r">R: Reset</span>
+                            <span class="key-tag">Mouse: Drag</span>
+                        </div>
+                        <div class="control-group">
+                            <button class="key-tag" id="random-btn"
+                                style="color: #99DC1B; cursor: none; font-weight: bold; text-transform: uppercase; font-family: 'Courier Prime', monospace; font-size: 0.65rem; outline: none; transition: all 0.2s;">Random</button>
+                            <button class="key-tag" id="spin-btn"
+                                style="color: #5fa8d3; cursor: none; font-weight: bold; text-transform: uppercase; font-family: 'Courier Prime', monospace; font-size: 0.65rem; outline: none; transition: all 0.2s;">Spin</button>
+                            <button class="key-tag" id="ca-btn"
+                                style="color: #fe4164; cursor: none; font-weight: bold; text-transform: uppercase; font-family: 'Courier Prime', monospace; font-size: 0.65rem; outline: none; transition: all 0.2s;">CA</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -2856,6 +3099,7 @@
     </script>
     <script src="js/cursor.js"></script>
     <script src="js/site-nav.js"></script>
+    <script src="js/deformation-inlay.js"></script>
 </body>
 
 </html>
