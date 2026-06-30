@@ -39,7 +39,7 @@
 .preloader-die {
     width: 100px;
     height: 100px;
-    background: url('../images/dice_rolling.gif') no-repeat center center;
+    background: url('../images/dice_fall.gif') no-repeat center center;
     background-size: contain;
     /* No animation needed, GIF is animated */
     /* Remove invert, GIF is white on black */

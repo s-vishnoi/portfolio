@@ -371,6 +371,7 @@
 
         .about-text p {
             font-size: clamp(0.95rem, 1.24vw, 1.42rem);
+            font-weight: 600;
             line-height: 1.14;
         }
 
@@ -806,187 +807,6 @@
                 0 0 30px rgba(255, 255, 255, 0.1);
         }
 
-        .body-inlay {
-            position: relative;
-            width: 100%;
-            min-height: 620px;
-            background: #040404;
-            overflow: hidden;
-            padding: clamp(18px, 2.4vw, 28px);
-        }
-
-        .body-proof-copy {
-            margin: 0 0 20px;
-            color: rgba(255, 255, 255, 0.5);
-            font-family: 'Courier Prime', monospace;
-            font-size: clamp(0.62rem, 0.82vw, 0.85rem);
-            line-height: 1.55;
-            letter-spacing: 0.05em;
-            text-align: center;
-        }
-
-        .control-btn {
-            background: transparent;
-            border: 1px solid #fff;
-            color: #fff;
-            padding: 15px 30px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: none;
-            transition: all 0.3s;
-            outline: none;
-            border-radius: 0;
-        }
-
-        .control-btn:hover {
-            background: #fff;
-            color: #000;
-            box-shadow: 0 0 20px rgba(255,255,255,0.3);
-        }
-
-        #avatar-container {
-            position: relative;
-            width: 100%;
-            max-width: none;
-            aspect-ratio: 16 / 10;
-            margin: 0 auto;
-            background: #040404;
-            border: 0;
-            border-radius: 0;
-            overflow: hidden;
-        }
-
-        #avatar-canvas {
-            display: block;
-            width: 100%;
-            height: 100%;
-            touch-action: none;
-        }
-
-        .sound-help-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            z-index: 6;
-            width: 30px;
-            height: 30px;
-            border: 1px solid #99DC1B;
-            border-radius: 0;
-            background: rgba(4, 4, 4, 0.82);
-            color: #99DC1B;
-            font-family: 'Courier Prime', monospace;
-            font-size: 0.95rem;
-            line-height: 1;
-            cursor: none;
-            outline: none;
-            box-shadow: 0 0 12px rgba(153, 220, 27, 0.22);
-        }
-
-        .sound-help-btn.active,
-        .sound-help-btn:hover {
-            background: #99DC1B;
-            color: #040404;
-        }
-
-        .sound-flow-popup {
-            position: absolute;
-            top: 50px;
-            right: 12px;
-            z-index: 5;
-            width: min(430px, calc(100% - 24px));
-            max-height: calc(100% - 70px);
-            overflow: auto;
-            padding: 14px 16px;
-            border: 1px solid rgba(153, 220, 27, 0.8);
-            border-radius: 0;
-            background: rgba(4, 4, 4, 0.92);
-            color: rgba(255, 255, 255, 0.82);
-            text-align: left;
-            box-shadow: 0 0 18px rgba(153, 220, 27, 0.18);
-            display: none;
-        }
-
-        .sound-flow-popup.active {
-            display: block;
-        }
-
-        .sound-flow-popup pre {
-            margin: 0;
-            white-space: pre-wrap;
-            font-family: 'Courier Prime', monospace;
-            font-size: 0.62rem;
-            line-height: 1.36;
-            letter-spacing: 0;
-        }
-
-        .keys-legend {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px 14px;
-            margin: 25px auto 0;
-            max-width: 760px;
-            padding: 4px 0;
-            border: 0;
-            border-radius: 0;
-            background: transparent;
-            box-shadow: none;
-        }
-
-        .control-group {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px 10px;
-            padding: 0;
-            border-left: 0;
-        }
-
-        .control-label {
-            font-family: 'Courier Prime', monospace;
-            font-size: 0.62rem;
-            letter-spacing: 2px;
-            color: #99DC1B;
-            text-transform: uppercase;
-            margin: 0 0 2px;
-            text-shadow: 0 0 8px rgba(153, 220, 27, 0.42);
-        }
-
-        .key-tag {
-            font-family: 'Courier Prime', monospace;
-            font-size: 0.68rem;
-            line-height: 1.35;
-            padding: 0;
-            background: transparent;
-            border: 0;
-            border-radius: 0;
-            color: rgba(255, 255, 255, 0.62);
-            text-transform: uppercase;
-        }
-
-        .key-tag.active {
-            color: #99DC1B;
-            text-shadow: 0 0 8px rgba(153, 220, 27, 0.35);
-        }
-
-        span.key-tag.active::before {
-            content: "> ";
-        }
-
-        button.key-tag {
-            min-width: 92px;
-            padding: 0;
-            border: 0;
-            border-radius: 0 !important;
-            background: transparent !important;
-            text-align: left;
-            letter-spacing: 1px;
-        }
-
         .quote-intermission {
             position: relative;
             z-index: 10;
@@ -1243,29 +1063,6 @@
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .audio-player-inner.is-fixed {
-            position: fixed;
-            bottom: clamp(24px, 4vh, 48px);
-            left: 50%;
-            transform: translateX(-50%);
-            width: min(520px, 90vw);
-            background: rgba(10, 10, 15, 0.82);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 16px;
-            padding: clamp(12px, 1.8vh, 18px) clamp(16px, 2.5vw, 24px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 229, 255, 0.14);
-            z-index: 9999;
-        }
-
-        .audio-player-inner.is-fixed .synth-track-meta {
-            margin-top: 8px;
-            text-align: center;
-            font-size: 0.72rem;
-            max-width: 100%;
-        }
-
         .synth-play-btn {
             background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.25);
@@ -1345,7 +1142,7 @@
             z-index: 4;
             color: rgba(255, 255, 255, 0.78);
             font-family: 'Courier Prime', monospace;
-            font-size: clamp(0.62rem, 1.18vw, 0.94rem);
+            font-size: clamp(0.78rem, 1.42vw, 1.16rem);
             line-height: 1.18;
             letter-spacing: 0.11em;
             text-transform: uppercase;
@@ -1402,11 +1199,20 @@
                 width: 100%;
                 max-width: none;
                 align-self: auto !important;
-                text-align: left !important;
                 grid-column: 1 !important;
                 grid-row: auto !important;
                 font-size: clamp(0.62rem, 2.75vw, 0.82rem);
                 line-height: 1.12;
+            }
+
+            .about-text p:nth-of-type(odd) {
+                text-align: left !important;
+                transform-origin: left center;
+            }
+
+            .about-text p:nth-of-type(even) {
+                text-align: right !important;
+                transform-origin: right center;
             }
 
             .artist-name {
@@ -1509,7 +1315,7 @@
             }
 
             .cone-label {
-                font-size: clamp(0.5rem, 2.35vw, 0.66rem);
+                font-size: clamp(0.62rem, 2.85vw, 0.82rem);
                 letter-spacing: 0.08em;
             }
 
@@ -1524,13 +1330,6 @@
 
             .audio-player-inner {
                 width: min(100%, 430px);
-            }
-
-            .audio-player-inner.is-fixed {
-                bottom: max(14px, env(safe-area-inset-bottom));
-                width: min(430px, calc(100vw - 28px));
-                border-radius: 12px;
-                padding: 10px 12px;
             }
 
             .synth-play-btn {
@@ -1557,8 +1356,7 @@
                 letter-spacing: 0.12em;
             }
 
-            .synth-track-meta,
-            .audio-player-inner.is-fixed .synth-track-meta {
+            .synth-track-meta {
                 margin-top: 8px;
                 font-size: clamp(0.54rem, 2.35vw, 0.66rem);
                 line-height: 1.35;
@@ -1625,10 +1423,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .body-inlay {
-                height: 720px;
-                min-height: 720px;
-            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1674,7 +1468,6 @@
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
-        window.scrollTo(0, 0);
     </script>
 </head>
 
@@ -1803,11 +1596,6 @@
                     <span>2026</span>
                     <span>Interactive Performance & Sound Installation</span>
                 </div>
-                <div class="piece-specs">
-                    <span>Body Motion / Sensor Input -> Sound Mapping</span>
-                    <span>Hands, Spine, Legs, Head -> Melody, Drone, Bass, Noise</span>
-                    <span>Direct Body Map or Cellular Automata Toggle</span>
-                </div>
                 <p class="piece-note">
                     Deformation Noise translates Angeliki's contortionist practice into a live acoustic signal. I'm
                     connecting her to neuromuscular sensors and converting her raw contortion stress into feed for a
@@ -1816,87 +1604,10 @@
                 </p>
             </div>
 
-            <div class="body-inlay">
-                <p class="body-proof-copy">
-                    Explore the physical structure of the body. Click to activate, then drag joints with your mouse to
-                    stretch the body, or press and hold keys 1 to 6 to flex individual limbs smoothly.
-                </p>
-
-                <button id="avatar-activate-btn" class="control-btn"
-                    style="margin-bottom: 20px; border-color: #99DC1B; color: #99DC1B;">Activate Motion Engine</button>
-
-                <div id="avatar-workspace" style="display: none;">
-                    <div id="avatar-container">
-                        <canvas id="avatar-canvas"></canvas>
-                        <button id="sound-help-btn" class="sound-help-btn" aria-label="Sound generation flow"
-                            type="button">?</button>
-                        <div id="sound-flow-popup" class="sound-flow-popup" aria-hidden="true">
-                            <pre>Body Motion / Sensor Input
-        |
-        v
-Tracked Body Parts
-Hands | Spine | Legs | Head | Whole Body
-        |
-        v
-Sound Mapping
-Hands      -> melody / arpeggio
-Spine      -> chord root / drone pitch
-Legs       -> bass / sub pulse
-Head       -> filter cutoff / noise color / high-pass
-Whole Body -> tempo / density / rhythmic intensity
-        |
-        v
-Motion Engine
-Joint tension + drag distance + posture bend
-        |
-        v
-Sound Modes
-Direct Body Map
-or
-Cellular Automata Toggle
-        |
-        v
-Synthesis Layer
-FM drone
-Plucked notes
-Sub bass
-Noise texture
-Delay feedback
-High-pass / low-pass filters
-        |
-        v
-Live Output
-Raw bodily soundscape
-responsive to contortion, tension, and movement
-
---- work in progress ---</pre>
-                        </div>
-                    </div>
-
-                    <div class="keys-legend" style="margin-top: 25px;">
-                        <div class="control-group">
-                            <span class="control-label">Keys</span>
-                            <span class="key-tag" id="tag-1">1: Neck</span>
-                            <span class="key-tag" id="tag-2">2: Left Leg</span>
-                            <span class="key-tag" id="tag-3">3: Right Leg</span>
-                            <span class="key-tag" id="tag-4">4: Left Arm</span>
-                            <span class="key-tag" id="tag-5">5: Right Arm</span>
-                            <span class="key-tag" id="tag-6">6: Spine</span>
-                            <span class="key-tag" id="tag-shift">Shift: Amplify</span>
-                            <span class="key-tag" id="tag-r">R: Reset</span>
-                            <span class="key-tag">Mouse: Drag</span>
-                        </div>
-                        <div class="control-group">
-                            <button class="key-tag" id="random-btn"
-                                style="color: #99DC1B; cursor: none; font-weight: bold; text-transform: uppercase; font-family: 'Courier Prime', monospace; font-size: 0.65rem; outline: none; transition: all 0.2s;">Random</button>
-                            <button class="key-tag" id="spin-btn"
-                                style="color: #5fa8d3; cursor: none; font-weight: bold; text-transform: uppercase; font-family: 'Courier Prime', monospace; font-size: 0.65rem; outline: none; transition: all 0.2s;">Spin</button>
-                            <button class="key-tag" id="ca-btn"
-                                style="color: #fe4164; cursor: none; font-weight: bold; text-transform: uppercase; font-family: 'Courier Prime', monospace; font-size: 0.65rem; outline: none; transition: all 0.2s;">CA</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <p class="piece-note">
+                <a href="https://deformativesignal.alexia-bryan-5.workers.dev" target="_blank"
+                    rel="noopener noreferrer">See project</a>
+            </p>
         </div>
     </section>
 
@@ -2126,6 +1837,7 @@ responsive to contortion, tension, and movement
             let mouseY = null;
             let clickParticles = [];
             let blastGlow = 0;
+            let blastAge = 1;
 
             const fitCanvas = () => {
                 const rect = canvas.getBoundingClientRect();
@@ -2397,6 +2109,7 @@ responsive to contortion, tension, and movement
 
                  // Decay blastGlow smoothly
                  blastGlow += (0 - blastGlow) * 0.04;
+                 blastAge = Math.min(blastAge + 0.024, 1);
 
                  const pulse = reduceMotion ? 0 : (Math.sin(time / 520) + 1) / 2;
 
@@ -2710,18 +2423,54 @@ responsive to contortion, tension, and movement
                 ctx.fillText('You are here', event[0], event[1] + height * 0.047 * easedScale);
                 ctx.restore();
 
-                 // Draw expanding supernova blast shockwave ring
+                 // Draw expanding supernova blast shockwaves from the red-dot click.
                  if (blastGlow > 0.01) {
                      ctx.save();
-                     const shockwaveRadius = width * 0.75 * (1 - blastGlow);
-                     const opacity = blastGlow * 0.85;
-                     ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
-                     ctx.lineWidth = Math.max(1.5, width * 0.009 * blastGlow);
-                     ctx.shadowColor = '#ffffff';
-                     ctx.shadowBlur = width * 0.05 * blastGlow;
+                     ctx.globalCompositeOperation = 'screen';
+                     const progress = Math.min(blastAge, 1);
+                     const easeOutExpo = progress >= 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                     const coreRadius = width * (0.035 + 0.34 * easeOutExpo);
+                     const outerRadius = width * (0.05 + 0.86 * easeOutExpo);
+
+                     const coreGradient = ctx.createRadialGradient(event[0], event[1], 0, event[0], event[1], coreRadius);
+                     coreGradient.addColorStop(0, `rgba(255, 255, 255, ${0.92 * blastGlow})`);
+                     coreGradient.addColorStop(0.22, `rgba(254, 65, 100, ${0.82 * blastGlow})`);
+                     coreGradient.addColorStop(0.58, `rgba(111, 0, 255, ${0.38 * blastGlow})`);
+                     coreGradient.addColorStop(1, 'rgba(0, 229, 255, 0)');
+                     ctx.fillStyle = coreGradient;
                      ctx.beginPath();
-                     ctx.arc(event[0], event[1], shockwaveRadius, 0, Math.PI * 2);
-                     ctx.stroke();
+                     ctx.arc(event[0], event[1], coreRadius, 0, Math.PI * 2);
+                     ctx.fill();
+
+                     [
+                         [outerRadius, 0.9, '#ffffff', width * 0.012],
+                         [outerRadius * 0.64, 0.58, '#fe4164', width * 0.008],
+                         [outerRadius * 0.42, 0.42, '#00e5ff', width * 0.005],
+                     ].forEach(([radius, alpha, color, lineWidth]) => {
+                         ctx.strokeStyle = color;
+                         ctx.globalAlpha = alpha * blastGlow;
+                         ctx.lineWidth = Math.max(1.5, lineWidth * blastGlow);
+                         ctx.shadowColor = color;
+                         ctx.shadowBlur = width * 0.075 * blastGlow;
+                         ctx.beginPath();
+                         ctx.arc(event[0], event[1], radius, 0, Math.PI * 2);
+                         ctx.stroke();
+                     });
+
+                     ctx.globalAlpha = 0.85 * blastGlow;
+                     ctx.strokeStyle = '#ffffff';
+                     ctx.lineWidth = Math.max(1, width * 0.0028 * blastGlow);
+                     ctx.shadowColor = '#fe4164';
+                     ctx.shadowBlur = width * 0.05 * blastGlow;
+                     for (let i = 0; i < 18; i++) {
+                         const angle = (Math.PI * 2 * i) / 18 + progress * 0.34;
+                         const inner = width * (0.018 + 0.08 * easeOutExpo);
+                         const outer = width * (0.13 + 0.48 * easeOutExpo) * (0.74 + (i % 3) * 0.16);
+                         ctx.beginPath();
+                         ctx.moveTo(event[0] + Math.cos(angle) * inner, event[1] + Math.sin(angle) * inner);
+                         ctx.lineTo(event[0] + Math.cos(angle) * outer, event[1] + Math.sin(angle) * outer);
+                         ctx.stroke();
+                     }
                      ctx.restore();
                  }
 
@@ -2789,22 +2538,23 @@ responsive to contortion, tension, and movement
                 isHoveringDot = false;
 
                 // Spike the blast glow!
-                blastGlow = 1.0;
+                blastGlow = 1.35;
+                blastAge = 0;
 
                 // Spacetime release explosion sparks!
                 const eventX = width * 0.5;
                 const eventY = height * 0.5;
-                for (let i = 0; i < 36; i++) {
+                for (let i = 0; i < 96; i++) {
                     const angle = Math.random() * Math.PI * 2;
-                    const speed = Math.random() * 3.5 + 2.0;
+                    const speed = Math.random() * 6.4 + 2.4;
                     clickParticles.push({
                         x: eventX,
                         y: eventY,
                         vx: Math.cos(angle) * speed,
                         vy: Math.sin(angle) * speed,
                         alpha: 1.0,
-                        decay: Math.random() * 0.015 + 0.012,
-                        color: Math.random() < 0.5 ? '#00e5ff' : '#fe4164'
+                        decay: Math.random() * 0.014 + 0.008,
+                        color: Math.random() < 0.42 ? '#fe4164' : (Math.random() < 0.64 ? '#ffffff' : '#00e5ff')
                     });
                 }
             });
@@ -3022,7 +2772,6 @@ responsive to contortion, tension, and movement
             const synthAudio = document.getElementById('synth-audio');
             const synthPlayBtn = document.getElementById('synth-play-btn');
             const playerContainer = document.querySelector('.audio-player-container');
-            const audioPlayerInner = document.getElementById('audio-player-inner');
             const synthPlayIcon = synthPlayBtn ? synthPlayBtn.querySelector('.play-icon') : null;
 
             const pauseSynth = () => {
@@ -3030,7 +2779,6 @@ responsive to contortion, tension, and movement
                     synthAudio.pause();
                     if (synthPlayBtn) synthPlayBtn.classList.remove('is-playing');
                     if (synthPlayIcon) synthPlayIcon.textContent = '▶';
-                    if (audioPlayerInner) audioPlayerInner.classList.remove('is-fixed');
                 }
             };
 
@@ -3077,7 +2825,6 @@ responsive to contortion, tension, and movement
                         synthAudio.play().then(() => {
                             synthPlayBtn.classList.add('is-playing');
                             if (synthPlayIcon) synthPlayIcon.textContent = '❚❚';
-                            if (audioPlayerInner) audioPlayerInner.classList.add('is-fixed');
                         }).catch(err => {
                             console.error('Audio play failed:', err);
                         });
@@ -3085,21 +2832,18 @@ responsive to contortion, tension, and movement
                         synthAudio.pause();
                         synthPlayBtn.classList.remove('is-playing');
                         if (synthPlayIcon) synthPlayIcon.textContent = '▶';
-                        if (audioPlayerInner) audioPlayerInner.classList.remove('is-fixed');
                     }
                 });
 
                 synthAudio.addEventListener('ended', () => {
                     synthPlayBtn.classList.remove('is-playing');
                     if (synthPlayIcon) synthPlayIcon.textContent = '▶';
-                    if (audioPlayerInner) audioPlayerInner.classList.remove('is-fixed');
                 });
             }
         })();
     </script>
     <script src="js/cursor.js"></script>
     <script src="js/site-nav.js"></script>
-    <script src="js/deformation-inlay.js"></script>
 </body>
 
 </html>
