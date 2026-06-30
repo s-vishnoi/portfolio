@@ -285,7 +285,7 @@
                 padding: 24px clamp(20px, 5vw, 64px) max(10px, env(safe-area-inset-bottom));
                 position: relative;
                 z-index: 20;
-                color: rgba(255, 255, 255, 0.24);
+                color: rgba(255, 255, 255, 0.14);
                 font-family: 'Courier Prime', 'Courier New', monospace;
                 font-size: clamp(0.72rem, 1.25vw, 1.05rem);
                 font-weight: 700;
@@ -301,7 +301,7 @@
 
         const footer = document.createElement('footer');
         footer.className = 'site-footer';
-        footer.textContent = 'vishnoi@2026';
+        footer.textContent = 'VISHNOI@2026';
 
         document.head.appendChild(style);
         document.body.classList.add('has-site-footer');
