@@ -1917,6 +1917,67 @@
             let blastGlow = 0;
             let blastAge = 1;
 
+            // --- POINT CLOUD PARTICLE SYSTEM ---
+            const coneParticles = [];
+            const numConeParticles = 4000; // Even denser point cloud for intense visual richness
+            
+            // Future cone colors: neon pinks, oranges, warm white, glowing gold
+            const futureColors = ['#fe4164', '#ff5d50', '#ff2a85', '#ffffff', '#ffb03b'];
+            // Past cone colors: neon cyans, deep blues, cool white, glowing light cyans
+            const pastColors = ['#00e5ff', '#00a8ff', '#6f00ff', '#ffffff', '#cbf3f0'];
+
+            for (let i = 0; i < numConeParticles; i++) {
+                const isPast = Math.random() < 0.5;
+                const colors = isPast ? pastColors : futureColors;
+                coneParticles.push({
+                    t: isPast ? -Math.random() : Math.random(), // height progression along cone (negative for past)
+                    theta: Math.random() * Math.PI * 2, // angle around axis
+                    isPast: isPast,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    size: 1.8 + Math.random() * 2.8, // Increased sizes (1.8px to 4.6px) for maximum visibility
+                    speed: 0.0018 + Math.random() * 0.003, // flow speed
+                    spin: (Math.random() > 0.5 ? 1 : -1) * (0.001 + Math.random() * 0.0025), // orbital spin speed
+                    brightness: 0.6 + Math.random() * 0.4
+                });
+            }
+
+            const planeParticles = [];
+            const cols = 14;
+            const rows = 9;
+            const stepsPerLine = 48; // Increased steps for denser space-plane points
+
+            // Generate points along grid columns
+            for (let i = 0; i <= cols; i++) {
+                const u = i / cols;
+                for (let k = 0; k <= stepsPerLine; k++) {
+                    const v = k / stepsPerLine;
+                    planeParticles.push({ u, v, size: 1.5 + Math.random() * 2.0 }); // Larger plane particles
+                }
+            }
+            // Generate points along grid rows
+            for (let j = 0; j <= rows; j++) {
+                const v = j / rows;
+                for (let k = 0; k <= stepsPerLine; k++) {
+                    const u = k / stepsPerLine;
+                    planeParticles.push({ u, v, size: 1.5 + Math.random() * 2.0 }); // Larger plane particles
+                }
+            }
+
+            const getPlaneColor = (u, alpha = 1) => {
+                let r, g, b;
+                if (u < 0.36) {
+                    const t = u / 0.36;
+                    r = 0; g = 39 + (114 - 39) * t; b = 140 + (230 - 140) * t;
+                } else if (u < 0.68) {
+                    const t = (u - 0.36) / 0.32;
+                    r = 0; g = 114 + (206 - 114) * t; b = 230 + (255 - 230) * t;
+                } else {
+                    const t = (u - 0.68) / 0.32;
+                    r = 0 + (56 - 0) * t; g = 206 + (32 - 206) * t; b = 255 + (180 - 255) * t;
+                }
+                return `rgba(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)}, ${alpha})`;
+            };
+
             const fitCanvas = () => {
                 const rect = canvas.getBoundingClientRect();
                 const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -1993,120 +2054,7 @@
                 return basePt;
             };
 
-            const drawPlaneMesh = (quad, columns = 12, rows = 8, time = 0) => {
-                ctx.save();
-                pathPolygon(quad);
-                ctx.clip();
-                ctx.strokeStyle = 'rgba(210, 242, 255, 0.28)';
-                ctx.lineWidth = Math.max(0.7, width * 0.0011);
 
-                // Active scanning sweep line across the grid columns
-                const sweepProgress = (time / 3600) % 1;
-
-                for (let i = 0; i <= columns; i += 1) {
-                    const u = i / columns;
-                    const a = quadPoint(quad, u, 0);
-                    const b = quadPoint(quad, u, 1);
-                    ctx.beginPath();
-                    ctx.moveTo(a[0], a[1]);
-                    ctx.lineTo(b[0], b[1]);
-
-                    // Highlight columns near sweep
-                    const distToSweep = Math.abs(u - sweepProgress);
-                    if (distToSweep < 0.06) {
-                        ctx.strokeStyle = `rgba(0, 229, 255, ${0.8 * (1 - distToSweep / 0.06)})`;
-                        ctx.lineWidth = Math.max(1.2, width * 0.0018);
-                    } else {
-                        ctx.strokeStyle = 'rgba(210, 242, 255, 0.28)';
-                        ctx.lineWidth = Math.max(0.7, width * 0.0011);
-                    }
-                    ctx.stroke();
-                }
-                for (let j = 0; j <= rows; j += 1) {
-                    const v = j / rows;
-                    const a = quadPoint(quad, 0, v);
-                    const b = quadPoint(quad, 1, v);
-                    ctx.beginPath();
-                    ctx.moveTo(a[0], a[1]);
-                    ctx.lineTo(b[0], b[1]);
-                    ctx.strokeStyle = 'rgba(210, 242, 255, 0.28)';
-                    ctx.lineWidth = Math.max(0.7, width * 0.0011);
-                    ctx.stroke();
-                }
-                ctx.restore();
-            };
-
-            const drawConeMesh = (tip, rimCenter, rimRx, rimRy, ySign, color, time = 0) => {
-                ctx.save();
-                ctx.strokeStyle = color;
-                ctx.lineWidth = Math.max(0.55, width * 0.0009);
-                ctx.shadowColor = color;
-                ctx.shadowBlur = width * 0.0025;
-
-                // Concentric circles ripple outward
-                const offset = (time / 1400) % 1;
-                for (let i = 0; i <= 8; i += 1) {
-                    const t = (i + offset) / 8;
-                    if (t > 1) continue;
-                    const cx = tip[0] + (rimCenter[0] - tip[0]) * t;
-                    const cy = tip[1] + (rimCenter[1] - tip[1]) * t;
-
-                    ctx.save();
-                    // Fade out smoothly towards the rim and fade in from the center
-                    ctx.globalAlpha = Math.sin(t * Math.PI);
-                    ctx.beginPath();
-                    ctx.ellipse(cx, cy, rimRx * t, rimRy * t, 0, 0, Math.PI * 2);
-                    ctx.stroke();
-                    ctx.restore();
-                }
-
-                // Spoke lines and flowing photon pulses
-                const isPastCone = rimCenter[1] > tip[1];
-                for (let i = 0; i < 18; i += 1) {
-                    const angle = (Math.PI * 2 * i) / 18;
-                    const x = rimCenter[0] + Math.cos(angle) * rimRx;
-                    const y = rimCenter[1] + Math.sin(angle) * rimRy * ySign;
-                    ctx.beginPath();
-                    ctx.moveTo(tip[0], tip[1]);
-                    ctx.lineTo(x, y);
-                    ctx.stroke();
-
-                    // Draw a flowing photon along the line
-                    if (revealScale > 0.01) {
-                        const photonProgress = ((time / 2000) + (i / 18)) % 1;
-                        // Past cone: flow towards tip (present observer). Future cone: flow away from tip.
-                        const pT = isPastCone ? (1 - photonProgress) : photonProgress;
-                        const px = tip[0] + (x - tip[0]) * pT;
-                        const py = tip[1] + (y - tip[1]) * pT;
-                        ctx.save();
-                        ctx.fillStyle = isPastCone ? 'rgba(0, 229, 255, 0.95)' : 'rgba(254, 65, 100, 0.95)';
-                        ctx.shadowColor = ctx.fillStyle;
-                        ctx.shadowBlur = width * 0.01;
-                        ctx.beginPath();
-                        ctx.arc(px, py, Math.max(2, width * 0.0028), 0, Math.PI * 2);
-                        ctx.fill();
-                        ctx.restore();
-                    }
-                }
-                ctx.restore();
-            };
-
-            const drawLightEdge = (a, b, index, alpha = 1) => {
-                const edgeGradient = makeGradient(a[0], a[1], b[0], b[1], [
-                    [0, index === 0 ? `rgba(0, 229, 255, ${0.94 * alpha})` : `rgba(223, 255, 0, ${0.8 * alpha})`],
-                    [0.5, `rgba(255, 255, 255, ${0.92 * alpha})`],
-                    [1, index === 0 ? `rgba(223, 255, 0, ${0.8 * alpha})` : `rgba(254, 65, 100, ${0.86 * alpha})`],
-                ]);
-                ctx.strokeStyle = edgeGradient;
-                ctx.lineWidth = Math.max(1.2, width * 0.0018);
-                ctx.shadowColor = index === 0 ? `rgba(0, 229, 255, ${0.72 * alpha})` : `rgba(254, 65, 100, ${0.5 * alpha})`;
-                ctx.shadowBlur = width * 0.011;
-                ctx.beginPath();
-                ctx.moveTo(a[0], a[1]);
-                ctx.lineTo(b[0], b[1]);
-                ctx.stroke();
-                ctx.shadowBlur = 0;
-            };
 
             const drawDashedArrow = (fromX, fromY, toX, toY, color) => {
                 ctx.save();
@@ -2277,9 +2225,9 @@
                 });
                 ctx.restore();
 
-                const drawPresentPlane = () => {
+                const drawPresentPlaneBacking = () => {
                     ctx.save();
-                    ctx.globalAlpha = planeFade;
+                    ctx.globalAlpha = planeFade * 0.15; // Low opacity background for glassmorphic plane
                     pathPolygon(plane);
                     ctx.fillStyle = makeGradient(plane[0][0], plane[0][1], plane[2][0], plane[2][1], [
                         [0, 'rgba(0, 39, 140, 0.94)'],
@@ -2287,13 +2235,13 @@
                         [0.68, 'rgba(0, 206, 255, 0.88)'],
                         [1, 'rgba(56, 32, 180, 0.94)'],
                     ]);
-                    ctx.shadowColor = 'rgba(0, 102, 255, 0.5)';
-                    ctx.shadowBlur = width * 0.02 * planeFade * (1 + blastGlow * 3.5);
                     ctx.fill();
-                    ctx.shadowBlur = 0;
+                    ctx.restore();
+                };
 
-                    drawPlaneMesh(plane, 14, 9, time);
-
+                const drawPresentPlaneLabels = () => {
+                    ctx.save();
+                    ctx.globalAlpha = planeFade;
                     pathPolygon(plane);
                     ctx.clip();
                     drawProjectedPlaneText('Anything you cannot touch', originX + width * 0.25, originY + height * 0.502, -0.08, width * 0.036);
@@ -2340,63 +2288,374 @@
                     ctx.restore();
                 }
 
-                // Cone shapes and lines fade in based on revealScale
+                // Cone shapes and lines fade in based on revealScale (lowered opacity for particle backing)
                 pathPolygon([event, bottomLeft, bottomRight]);
                 ctx.fillStyle = makeGradient(bottomLeft[0], bottomLeft[1], bottomRight[0], bottomRight[1], [
-                    [0, `rgba(55, 46, 126, ${0.62 * easedScale * revealScale})`],
-                    [0.45, `rgba(202, 205, 255, ${0.78 * easedScale * revealScale})`],
-                    [1, `rgba(30, 86, 150, ${0.62 * easedScale * revealScale})`],
+                    [0, `rgba(55, 46, 126, ${0.12 * easedScale * revealScale})`],
+                    [0.45, `rgba(202, 205, 255, ${0.12 * easedScale * revealScale})`],
+                    [1, `rgba(30, 86, 150, ${0.12 * easedScale * revealScale})`],
                 ]);
                 ctx.fill();
 
                 pathPolygon([event, topLeft, topRight]);
                 ctx.fillStyle = makeGradient(topLeft[0], topLeft[1], topRight[0], topRight[1], [
-                    [0, `rgba(54, 90, 196, ${0.72 * easedScale * revealScale})`],
-                    [0.34, `rgba(97, 255, 239, ${0.52 * easedScale * revealScale})`],
-                    [0.52, `rgba(255, 255, 255, ${0.56 * easedScale * revealScale})`],
-                    [0.78, `rgba(255, 93, 80, ${0.38 * easedScale * revealScale})`],
-                    [1, `rgba(111, 0, 255, ${0.58 * easedScale * revealScale})`],
+                    [0, `rgba(54, 90, 196, ${0.12 * easedScale * revealScale})`],
+                    [0.34, `rgba(97, 255, 239, ${0.1 * easedScale * revealScale})`],
+                    [0.52, `rgba(255, 255, 255, ${0.1 * easedScale * revealScale})`],
+                    [0.78, `rgba(255, 93, 80, ${0.08 * easedScale * revealScale})`],
+                    [1, `rgba(111, 0, 255, ${0.1 * easedScale * revealScale})`],
                 ]);
                 ctx.fill();
 
                 ctx.save();
                 ctx.globalCompositeOperation = 'screen';
                 ctx.fillStyle = makeGradient(event[0], top[1], event[0], event[1], [
-                    [0, `rgba(255, 255, 255, ${0.28 * easedScale * revealScale})`],
-                    [1, `rgba(255, 255, 255, ${0.02 * easedScale * revealScale})`],
+                    [0, `rgba(255, 255, 255, ${0.06 * easedScale * revealScale})`],
+                    [1, `rgba(255, 255, 255, ${0.01 * easedScale * revealScale})`],
                 ]);
                 pathPolygon([[event[0] - width * 0.028 * easedScale, event[1]], [event[0] + width * 0.028 * easedScale, event[1]], [event[0] + width * 0.012 * easedScale, top[1]], [event[0] - width * 0.012 * easedScale, top[1]]]);
                 ctx.fill();
                 ctx.restore();
 
                 const topCapGradient = ctx.createRadialGradient(top[0], top[1] - height * 0.018 * easedScale, 0, top[0], top[1], width * 0.31 * easedScale);
-                topCapGradient.addColorStop(0, `rgba(255, 255, 255, ${revealScale * easedScale})`);
-                topCapGradient.addColorStop(0.32, `rgba(97, 255, 239, ${revealScale * easedScale})`);
-                topCapGradient.addColorStop(0.66, `rgba(0, 168, 255, ${revealScale * easedScale})`);
-                topCapGradient.addColorStop(1, `rgba(0, 55, 255, ${revealScale * easedScale})`);
-                drawEllipse(top[0], top[1], topRx, topRy, topCapGradient, `rgba(225, 250, 255, ${0.42 * easedScale * revealScale})`, Math.max(1, width * 0.0014));
+                topCapGradient.addColorStop(0, `rgba(255, 255, 255, ${0.12 * revealScale * easedScale})`);
+                topCapGradient.addColorStop(0.32, `rgba(97, 255, 239, ${0.12 * revealScale * easedScale})`);
+                topCapGradient.addColorStop(0.66, `rgba(0, 168, 255, ${0.08 * revealScale * easedScale})`);
+                topCapGradient.addColorStop(1, `rgba(0, 55, 255, ${0.06 * revealScale * easedScale})`);
+                drawEllipse(top[0], top[1], topRx, topRy, topCapGradient, `rgba(225, 250, 255, ${0.08 * easedScale * revealScale})`, Math.max(1, width * 0.0014));
 
                 const bottomCapGradient = ctx.createRadialGradient(bottom[0], bottom[1], 0, bottom[0], bottom[1], width * 0.31 * easedScale);
-                bottomCapGradient.addColorStop(0, `rgba(255, 255, 255, ${0.78 * revealScale * easedScale})`);
-                bottomCapGradient.addColorStop(0.48, `rgba(183, 183, 255, ${0.74 * revealScale * easedScale})`);
-                bottomCapGradient.addColorStop(0.78, `rgba(254, 65, 100, ${0.26 * revealScale * easedScale})`);
-                bottomCapGradient.addColorStop(1, `rgba(40, 43, 94, ${0.86 * revealScale * easedScale})`);
-                drawEllipse(bottom[0], bottom[1], bottomRx, bottomRy, bottomCapGradient, `rgba(225, 250, 255, ${0.26 * easedScale * revealScale})`, Math.max(1, width * 0.0011));
+                bottomCapGradient.addColorStop(0, `rgba(255, 255, 255, ${0.12 * revealScale * easedScale})`);
+                bottomCapGradient.addColorStop(0.48, `rgba(183, 183, 255, ${0.12 * revealScale * easedScale})`);
+                bottomCapGradient.addColorStop(0.78, `rgba(254, 65, 100, ${0.06 * revealScale * easedScale})`);
+                bottomCapGradient.addColorStop(1, `rgba(40, 43, 94, ${0.08 * revealScale * easedScale})`);
+                drawEllipse(bottom[0], bottom[1], bottomRx, bottomRy, bottomCapGradient, `rgba(225, 250, 255, ${0.06 * easedScale * revealScale})`, Math.max(1, width * 0.0011));
 
-                drawConeMesh(event, bottom, bottomRx, bottomRy, 1, `rgba(220, 250, 255, ${0.28 * easedScale * revealScale})`, time);
-                /*drawLightEdge(event, bottomRight, 0, 0.62 * easedScale * revealScale);
-                drawLightEdge(event, bottomLeft, 1, 0.62 * easedScale * revealScale);*/
+                // --- POINT CLOUD RENDERING PASS ---
+                const renderList = [];
+                const sweepProgress = (time / 3600) % 1;
 
-                // Present Space Plane is always drawn
-                drawPresentPlane();
+                // 1. Process Cone Particles (Mathematical 3D Projection)
+                if (revealScale > 0.01) {
+                    const maxRadius = width * 0.42;
+                    const maxHeight = height * 0.38;
 
-                drawConeMesh(event, top, topRx, topRy, 1, `rgba(220, 250, 255, ${0.34 * easedScale * revealScale})`, time);
+                    // Dynamically calculate tilt beta based on cap aspect ratio
+                    const sinBeta = topRx > 0 ? topRy / topRx : 0.25;
+                    const cosBeta = Math.sqrt(1 - sinBeta * sinBeta);
 
-                /*drawLightEdge(topLeft, event, 0, easedScale * revealScale);
-                drawLightEdge(topRight, event, 1, easedScale * revealScale);*/
+                    coneParticles.forEach(p => {
+                        // Update spin and flow height
+                        p.theta = (p.theta + p.spin) % (Math.PI * 2);
+                        
+                        // Height coordinate flows dynamically:
+                        // Future: flows from 0 (tip) to 1 (rim cap)
+                        // Past: flows from 0 (tip) to -1 (rim cap)
+                        if (p.isPast) {
+                            p.t -= p.speed;
+                            if (p.t < -1) {
+                                p.t = 0; // Wrap back to the present tip
+                                p.prevX = null;
+                                p.prevY = null;
+                            }
+                        } else {
+                            p.t += p.speed;
+                            if (p.t > 1) {
+                                p.t = 0; // Wrap back to the present tip
+                                p.prevX = null;
+                                p.prevY = null;
+                            }
+                        }
+
+                        // Radius at height p.t
+                        const r = Math.abs(p.t) * maxRadius * currentScale;
+
+                        // 3D coordinates relative to present center (0, 0, 0)
+                        const x3D = r * Math.cos(p.theta);
+                        const z3D = r * Math.sin(p.theta);
+                        const y3D = p.t * maxHeight * currentScale;
+
+                        // Rotate coordinate system about X-axis to simulate perspective tilt:
+                        const xRot = x3D;
+                        const yRot = y3D * cosBeta - z3D * sinBeta;
+                        // Tilted away from us (negative depth) at top, towards us at bottom
+                        const zRot = -y3D * sinBeta + z3D * cosBeta;
+
+                        // Project 3D rotated point to 2D canvas screen space
+                        let px = event[0] + xRot;
+                        let py = event[1] - yRot; // subtract yRot since canvas screen Y goes down
+
+                        // A. Accretion Vortex (Swirl) & Gravitational lensing around mouse cursor
+                        let pColor = p.color;
+                        if (mouseX !== null && mouseY !== null) {
+                            const dx = mouseX - px;
+                            const dy = mouseY - py;
+                            const distance = Math.hypot(dx, dy);
+                            const influenceRadius = width * 0.22;
+                            if (distance < influenceRadius) {
+                                const force = (1 - distance / influenceRadius);
+                                // Pull inwards (suction)
+                                px += dx * force * 0.42;
+                                py += dy * force * 0.42;
+                                // Swirl tangentially (vortex)
+                                const angle = Math.atan2(dy, dx);
+                                const swirlStrength = force * 0.22; // Dramatic accretion swirl
+                                px += Math.sin(angle) * distance * swirlStrength;
+                                py -= Math.cos(angle) * distance * swirlStrength;
+
+                                // Relativistic color shift inside accretion disk
+                                if (force > 0.42) {
+                                    pColor = p.isPast ? '#00e5ff' : '#ff9f43';
+                                }
+                            }
+                        }
+
+                        // B. Supernova Blast Shockwave Deflection
+                        if (blastGlow > 0.01) {
+                            const blastProgress = Math.min(blastAge, 1);
+                            const blastEase = 1 - Math.pow(2, -10 * blastProgress);
+                            const blastRadius = width * (0.05 + 0.86 * blastEase); // Outer shockwave boundary
+                            
+                            const dx = px - event[0];
+                            const dy = py - event[1];
+                            const dist = Math.hypot(dx, dy);
+                            if (dist > 0) {
+                                const thickness = width * 0.14; // Wider push boundary for more volume
+                                const distToBlast = Math.abs(dist - blastRadius);
+                                if (distToBlast < thickness) {
+                                    const pushForce = (1 - distToBlast / thickness) * blastGlow * 1.5; // Double base force
+                                    px += (dx / dist) * pushForce * width * 0.28; // 2.8x stronger push distance
+                                    py += (dy / dist) * pushForce * width * 0.28;
+                                }
+                            }
+                        }
+
+                        // Fade out near cap rim and tip for seamless loop boundaries
+                        const loopFade = Math.sin(Math.abs(p.t) * Math.PI);
+                        // Increase base brightness/opacity for better visibility over BG
+                        const opacity = Math.min(1.0, p.brightness * easedScale * revealScale * (0.42 + 0.58 * loopFade) * 1.5);
+                        
+                        // Z-depth scaling for size (foreground particles appear larger)
+                        // Depth is scaled relative to max vertical offset
+                        const maxDepth = maxHeight * sinBeta * currentScale + maxRadius * cosBeta * currentScale;
+                        const normalizedZ = maxDepth > 0 ? zRot / maxDepth : 0;
+                        const zScaleFactor = 0.65 + 0.6 * normalizedZ;
+                        const finalSize = p.size * easedScale * zScaleFactor;
+
+                        renderList.push({
+                            x: px,
+                            y: py,
+                            prevX: p.prevX,
+                            prevY: p.prevY,
+                            z: zRot,
+                            size: finalSize,
+                            color: pColor,
+                            opacity: opacity
+                        });
+
+                        // Store current coordinates for trailing on next frame
+                        p.prevX = px;
+                        p.prevY = py;
+                    });
+                }
+
+                // 2. Process Space Plane Particles
+                if (planeFade > 0.01) {
+                    const maxHeight = height * 0.38;
+                    const sinBeta = topRx > 0 ? topRy / topRx : 0.25;
+
+                    planeParticles.forEach(p => {
+                        const basePt = quadPoint(plane, p.u, p.v);
+                        let px = basePt[0];
+                        let py = basePt[1];
+
+                        // A. Accretion Vortex Swirl on the space plane particles
+                        let pColor;
+                        let sizeBonus = 0;
+                        let isSwirled = false;
+                        if (mouseX !== null && mouseY !== null) {
+                            const dx = mouseX - px;
+                            const dy = mouseY - py;
+                            const distance = Math.hypot(dx, dy);
+                            const influenceRadius = width * 0.22;
+                            if (distance < influenceRadius) {
+                                const force = (1 - distance / influenceRadius);
+                                px += dx * force * 0.42;
+                                py += dy * force * 0.42;
+                                const angle = Math.atan2(dy, dx);
+                                const swirlStrength = force * 0.22;
+                                px += Math.sin(angle) * distance * swirlStrength;
+                                py -= Math.cos(angle) * distance * swirlStrength;
+                                
+                                pColor = `rgba(223, 255, 0, ${Math.min(1.0, planeFade * (0.6 + 0.4 * force))})`; // Shift swirled plane points to yellow
+                                isSwirled = true;
+                            }
+                        }
+
+                        // B. Supernova Blast Shockwave Deflection on plane particles
+                        if (blastGlow > 0.01) {
+                            const blastProgress = Math.min(blastAge, 1);
+                            const blastEase = 1 - Math.pow(2, -10 * blastProgress);
+                            const blastRadius = width * (0.05 + 0.86 * blastEase);
+                            
+                            const dx = px - event[0];
+                            const dy = py - event[1];
+                            const dist = Math.hypot(dx, dy);
+                            if (dist > 0) {
+                                const thickness = width * 0.14; // Wider push boundary
+                                const distToBlast = Math.abs(dist - blastRadius);
+                                if (distToBlast < thickness) {
+                                    const pushForce = (1 - distToBlast / thickness) * blastGlow * 1.5; // Double base force
+                                    px += (dx / dist) * pushForce * width * 0.28; // 2.8x stronger push distance
+                                    py += (dy / dist) * pushForce * width * 0.28;
+                                }
+                            }
+                        }
+                        
+                        // Map plane depth (v goes 0 to 1) to match cone zRot scale
+                        // v=0 is back (deeper, negative z), v=1 is front (closer, positive z)
+                        const zPlane = (p.v - 0.2) * maxHeight * sinBeta * planeFade;
+
+                        if (!isSwirled) {
+                            const distToSweep = Math.abs(p.u - sweepProgress);
+                            if (distToSweep < 0.06) {
+                                const factor = 1 - distToSweep / 0.06;
+                                pColor = `rgba(0, 229, 255, ${Math.min(1.0, planeFade * (0.6 + 0.4 * factor))})`;
+                                sizeBonus = 1.3 * factor * easedScale;
+                            } else {
+                                pColor = getPlaneColor(p.u, planeFade * 0.65);
+                            }
+                        }
+
+                        const finalSize = p.size * easedScale * (0.75 + 0.45 * p.v) + sizeBonus;
+
+                        renderList.push({
+                            x: px,
+                            y: py,
+                            prevX: p.prevX,
+                            prevY: p.prevY,
+                            z: zPlane,
+                            size: finalSize,
+                            color: pColor,
+                            opacity: planeFade
+                        });
+
+                        p.prevX = px;
+                        p.prevY = py;
+                    });
+                }
+
+                // 3. Sort by z-depth (ascending) so back draws first
+                renderList.sort((a, b) => a.z - b.z);
+
+                // Helper to draw the central observer node
+                const drawCenterNode = () => {
+                    ctx.save();
+                    ctx.shadowColor = getCycleColor(time, 0.9);
+                    ctx.shadowBlur = width * (0.018 + pulse * 0.018) * easedScale * dotHoverScale * (1 + blastGlow * 14);
+                    ctx.fillStyle = getCycleColor(time, 1);
+                    ctx.beginPath();
+                    const dotRadius = width * (0.014 + pulse * 0.004) * easedScale * dotHoverScale;
+                    ctx.arc(event[0], event[1], dotRadius, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+
+                    // Draw the word "CLICK" inside/on top of the dot and a floating arrow above it
+                    if (revealScale < 0.99) {
+                        ctx.save();
+                        const arrowPulse = Math.sin(time / 180) * 6; // Bouncing motion
+                        const arrowY = event[1] - 32 * easedScale * dotHoverScale + arrowPulse;
+                        const arrowWidth = 9 * easedScale * dotHoverScale;
+                        const arrowHeight = 11 * easedScale * dotHoverScale;
+
+                        ctx.fillStyle = getCycleColor(time, 1 - revealScale);
+                        ctx.shadowColor = ctx.fillStyle;
+                        ctx.shadowBlur = 10 * easedScale * (1 + blastGlow * 8);
+
+                        ctx.beginPath();
+                        ctx.moveTo(event[0], arrowY + arrowHeight); // tip pointing down
+                        ctx.lineTo(event[0] - arrowWidth, arrowY); // left corner
+                        ctx.lineTo(event[0] + arrowWidth, arrowY); // right corner
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.restore();
+
+                        ctx.save();
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = `700 ${Math.max(8, width * 0.017 * easedScale * dotHoverScale)}px 'Courier Prime', monospace`;
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText('CLICK', event[0], event[1]);
+                        ctx.restore();
+                    }
+                };
+
+                // 4. Render particles and center node in correct depth order (using additive composite screen blend for glow)
+                let centerDrawn = false;
+                ctx.save();
+                ctx.globalCompositeOperation = 'screen'; // Crucial for making neon points stand out and glow over background
+                renderList.forEach(pt => {
+                    if (!centerDrawn && pt.z >= 0) {
+                        ctx.restore(); // exit composite for standard center node rendering
+                        drawPresentPlaneBacking();
+                        drawCenterNode();
+                        ctx.save();
+                        ctx.globalCompositeOperation = 'screen';
+                        centerDrawn = true;
+                    }
+                    
+                    ctx.fillStyle = pt.color;
+                    ctx.globalAlpha = pt.opacity;
+
+                    // Draw trails (line from prev position)
+                    if (pt.prevX && pt.prevY && Math.hypot(pt.x - pt.prevX, pt.y - pt.prevY) < width * 0.15) {
+                        const speed = Math.hypot(pt.x - pt.prevX, pt.y - pt.prevY);
+                        
+                        // Relativistic Chromatic Aberration Glitch Shift (splits paths into red/cyan offsets at high speeds)
+                        if (speed > 2.2) {
+                            const splitOffset = Math.min(7, speed * 0.48);
+                            // Red aberration trail
+                            ctx.beginPath();
+                            ctx.strokeStyle = '#fe4164';
+                            ctx.lineWidth = pt.size * 0.5;
+                            ctx.moveTo(pt.prevX + splitOffset, pt.prevY);
+                            ctx.lineTo(pt.x + splitOffset, pt.y);
+                            ctx.stroke();
+                            // Cyan aberration trail
+                            ctx.beginPath();
+                            ctx.strokeStyle = '#00e5ff';
+                            ctx.lineWidth = pt.size * 0.5;
+                            ctx.moveTo(pt.prevX - splitOffset, pt.prevY);
+                            ctx.lineTo(pt.x - splitOffset, pt.y);
+                            ctx.stroke();
+                        }
+
+                        // Core glowing particle path
+                        ctx.beginPath();
+                        ctx.strokeStyle = pt.color;
+                        ctx.lineWidth = pt.size * 0.85;
+                        ctx.lineCap = 'round';
+                        ctx.moveTo(pt.prevX, pt.prevY);
+                        ctx.lineTo(pt.x, pt.y);
+                        ctx.stroke();
+                    } else {
+                        // Fallback to block pixel if no prev position or if wrapped/loaded
+                        ctx.fillRect(pt.x - pt.size / 2, pt.y - pt.size / 2, pt.size, pt.size);
+                    }
+                });
+                if (!centerDrawn) {
+                    ctx.restore();
+                    drawPresentPlaneBacking();
+                    drawCenterNode();
+                } else {
+                    ctx.restore();
+                }
 
                 // Speed limit of reality - drawn once, big
                 drawFlowText('The speed limit of reality', topLeft, event, -width * 0.046 * easedScale, width * 0.04 * easedScale, `rgba(177, 246, 255, ${0.82 * easedScale * revealScale})`);
+
+                // Present plane slanted texts
+                drawPresentPlaneLabels();
 
                 // Future Cone Text - straight, big, legible at the end of the cone
                 ctx.save();
@@ -2517,43 +2776,48 @@
                     ctx.globalCompositeOperation = 'screen';
                     const progress = Math.min(blastAge, 1);
                     const easeOutExpo = progress >= 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-                    const coreRadius = width * (0.035 + 0.34 * easeOutExpo);
-                    const outerRadius = width * (0.05 + 0.86 * easeOutExpo);
+                    
+                    // Wider and more explosive radii
+                    const coreRadius = width * (0.045 + 0.45 * easeOutExpo);
+                    const outerRadius = width * (0.06 + 1.15 * easeOutExpo);
 
                     const coreGradient = ctx.createRadialGradient(event[0], event[1], 0, event[0], event[1], coreRadius);
-                    coreGradient.addColorStop(0, `rgba(255, 255, 255, ${0.92 * blastGlow})`);
-                    coreGradient.addColorStop(0.22, `rgba(254, 65, 100, ${0.82 * blastGlow})`);
-                    coreGradient.addColorStop(0.58, `rgba(111, 0, 255, ${0.38 * blastGlow})`);
+                    coreGradient.addColorStop(0, `rgba(255, 255, 255, ${1.0 * blastGlow})`);
+                    coreGradient.addColorStop(0.2, `rgba(254, 65, 100, ${0.9 * blastGlow})`);
+                    coreGradient.addColorStop(0.55, `rgba(111, 0, 255, ${0.5 * blastGlow})`);
                     coreGradient.addColorStop(1, 'rgba(0, 229, 255, 0)');
                     ctx.fillStyle = coreGradient;
                     ctx.beginPath();
                     ctx.arc(event[0], event[1], coreRadius, 0, Math.PI * 2);
                     ctx.fill();
 
+                    // Multiple massive glowing rings
                     [
-                        [outerRadius, 0.9, '#ffffff', width * 0.012],
-                        [outerRadius * 0.64, 0.58, '#fe4164', width * 0.008],
-                        [outerRadius * 0.42, 0.42, '#00e5ff', width * 0.005],
+                        [outerRadius, 0.95, '#ffffff', width * 0.024],
+                        [outerRadius * 0.72, 0.72, '#fe4164', width * 0.016],
+                        [outerRadius * 0.48, 0.58, '#00e5ff', width * 0.01],
                     ].forEach(([radius, alpha, color, lineWidth]) => {
                         ctx.strokeStyle = color;
                         ctx.globalAlpha = alpha * blastGlow;
-                        ctx.lineWidth = Math.max(1.5, lineWidth * blastGlow);
+                        ctx.lineWidth = Math.max(2.5, lineWidth * blastGlow);
                         ctx.shadowColor = color;
-                        ctx.shadowBlur = width * 0.075 * blastGlow;
+                        ctx.shadowBlur = width * 0.16 * blastGlow; // Highly increased blur for insane neon glow
                         ctx.beginPath();
                         ctx.arc(event[0], event[1], radius, 0, Math.PI * 2);
                         ctx.stroke();
                     });
 
-                    ctx.globalAlpha = 0.85 * blastGlow;
+                    // Radial spikes - increased to 36 spikes and made much larger
+                    ctx.globalAlpha = 0.9 * blastGlow;
                     ctx.strokeStyle = '#ffffff';
-                    ctx.lineWidth = Math.max(1, width * 0.0028 * blastGlow);
+                    ctx.lineWidth = Math.max(1.8, width * 0.0045 * blastGlow);
                     ctx.shadowColor = '#fe4164';
-                    ctx.shadowBlur = width * 0.05 * blastGlow;
-                    for (let i = 0; i < 18; i++) {
-                        const angle = (Math.PI * 2 * i) / 18 + progress * 0.34;
-                        const inner = width * (0.018 + 0.08 * easeOutExpo);
-                        const outer = width * (0.13 + 0.48 * easeOutExpo) * (0.74 + (i % 3) * 0.16);
+                    ctx.shadowBlur = width * 0.08 * blastGlow;
+                    const numSpikes = 36;
+                    for (let i = 0; i < numSpikes; i++) {
+                        const angle = (Math.PI * 2 * i) / numSpikes + progress * 0.45;
+                        const inner = width * (0.018 + 0.12 * easeOutExpo);
+                        const outer = width * (0.18 + 0.65 * easeOutExpo) * (0.8 + (i % 4) * 0.25);
                         ctx.beginPath();
                         ctx.moveTo(event[0] + Math.cos(angle) * inner, event[1] + Math.sin(angle) * inner);
                         ctx.lineTo(event[0] + Math.cos(angle) * outer, event[1] + Math.sin(angle) * outer);
@@ -2625,23 +2889,23 @@
                 canvas.style.cursor = 'default';
                 isHoveringDot = false;
 
-                // Spike the blast glow!
-                blastGlow = 1.35;
+                // Spike the blast glow! (Much stronger initial flash)
+                blastGlow = 2.2;
                 blastAge = 0;
 
-                // Spacetime release explosion sparks!
+                // Spacetime release explosion sparks! (Increased to 250 for huge blast particle trail count)
                 const eventX = originX + width * 0.5;
                 const eventY = originY + height * 0.5;
-                for (let i = 0; i < 96; i++) {
+                for (let i = 0; i < 250; i++) {
                     const angle = Math.random() * Math.PI * 2;
-                    const speed = Math.random() * 6.4 + 2.4;
+                    const speed = Math.random() * 12.0 + 4.0; // Higher velocities
                     clickParticles.push({
                         x: eventX,
                         y: eventY,
                         vx: Math.cos(angle) * speed,
                         vy: Math.sin(angle) * speed,
                         alpha: 1.0,
-                        decay: Math.random() * 0.014 + 0.008,
+                        decay: Math.random() * 0.008 + 0.004, // Slower decay makes sparks last longer
                         color: Math.random() < 0.42 ? '#fe4164' : (Math.random() < 0.64 ? '#ffffff' : '#00e5ff')
                     });
                 }
