@@ -130,12 +130,6 @@
         transform: none !important;
     }
 
-    .contact-block.story-beat.is-active .contact-list a,
-    .contact-block.story-beat.is-active .contact-handle {
-        color: #dfff00 !important;
-
-    }
-
     .contact-list {
         margin-top: 3rem !important;
         gap: 0.2rem !important;
@@ -173,6 +167,26 @@
         letter-spacing: 0.01em !important;
         line-height: 1.1 !important;
         transform: none !important;
+    }
+
+    .contact-block.story-beat.is-active .contact-list .contact-row:nth-child(1) a,
+    .contact-block.story-beat.is-active .contact-list .contact-row:nth-child(1) .contact-handle {
+        color: var(--c1) !important;
+    }
+
+    .contact-block.story-beat.is-active .contact-list .contact-row:nth-child(2) a,
+    .contact-block.story-beat.is-active .contact-list .contact-row:nth-child(2) .contact-handle {
+        color: var(--c3) !important;
+    }
+
+    .contact-block.story-beat.is-active .contact-list .contact-row:nth-child(3) a,
+    .contact-block.story-beat.is-active .contact-list .contact-row:nth-child(3) .contact-handle {
+        color: var(--c4) !important;
+    }
+
+    .contact-block.story-beat.is-active .contact-list .contact-row:nth-child(4) a,
+    .contact-block.story-beat.is-active .contact-list .contact-row:nth-child(4) .contact-handle {
+        color: var(--c2) !important;
     }
 
     .about-text p.story-beat,
