@@ -132,7 +132,7 @@
 
     .contact-list {
         margin-top: 3rem !important;
-        gap: 0.2rem !important;
+        gap: 0.02rem !important;
         font-size: clamp(1.18rem, 5.2vw, 1.45rem) !important;
         letter-spacing: 0.1em !important;
         width: 100% !important;
@@ -142,17 +142,13 @@
         display: grid !important;
         grid-template-columns: max-content minmax(0, 1fr) !important;
         align-items: center !important;
-        gap: 0.85rem !important;
+        gap: 0.55rem !important;
         width: 100% !important;
-        min-height: 44px !important;
-    }
-
-    .contact-row:first-child {
-        grid-template-columns: minmax(7.4rem, 34%) minmax(0, 1fr) !important;
+        min-height: 34px !important;
     }
 
     .contact-row a {
-        min-height: 44px !important;
+        min-height: 34px !important;
         display: flex !important;
         align-items: center !important;
         white-space: nowrap !important;
