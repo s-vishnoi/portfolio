@@ -1630,13 +1630,12 @@
             document.body.classList.add('intro-ready');
         }, reduceIntroMotion ? 100 : (_viaPortal ? 1050 : 520));
 
-        // The four highlighted intro beats finish at 9.6s. Keep the rest of the
-        // page hidden and scrolling locked until that opening sequence completes.
+        // Keep the rest of the page hidden and scrolling locked for the opening.
         window.setTimeout(() => {
             document.documentElement.classList.remove('intro-scroll-locked');
             document.body.classList.remove('intro-scroll-locked');
             document.body.classList.add('intro-content-ready');
-        }, reduceIntroMotion ? 150 : 9600);
+        }, reduceIntroMotion ? 150 : 4000);
     </script>
 
     <div id="gradient-frame"></div>
