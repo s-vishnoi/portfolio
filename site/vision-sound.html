@@ -1908,13 +1908,11 @@
             if (!beats.length) return;
             beats.forEach((beat, index) => {
                 window.setTimeout(() => {
-                    beats.forEach((item) => item.classList.remove('intro-active'));
                     beat.classList.add('intro-active');
                 }, 1200 + index * 2000);
             });
             window.setTimeout(() => {
-                beats.forEach((item) => item.classList.remove('intro-active'));
-                beats[beats.length - 1].classList.add('is-active');
+                beats.forEach((item) => item.classList.add('is-active'));
             }, 1200 + beats.length * 2000 + 400);
         })();
         (() => {
@@ -1926,7 +1924,10 @@
             }
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    quoteSection.classList.toggle('is-visible', entry.isIntersecting);
+                    if (entry.isIntersecting) {
+                        quoteSection.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
                 });
             }, { threshold: 0.22 });
             observer.observe(quoteSection);
@@ -1941,7 +1942,10 @@
             }
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    intermission.classList.toggle('is-visible', entry.isIntersecting);
+                    if (entry.isIntersecting) {
+                        intermission.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
                 });
             }, { threshold: 0.32 });
             observer.observe(intermission);
