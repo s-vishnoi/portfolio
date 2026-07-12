@@ -43,6 +43,29 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        html.intro-scroll-locked,
+        body.intro-scroll-locked {
+            height: 100svh;
+            overflow: hidden;
+            overscroll-behavior: none;
+        }
+
+        body.intro-scroll-locked .piece-section,
+        body.intro-scroll-locked .cone-intermission,
+        body.intro-scroll-locked .nav-container {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(28px);
+        }
+
+        body.intro-content-ready .piece-section,
+        body.intro-content-ready .cone-intermission,
+        body.intro-content-ready .nav-container {
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
         #bg-container {
             position: fixed;
             top: 0;
@@ -1590,8 +1613,9 @@
     </script>
 </head>
 
-<body data-page="visionSound">
+<body class="intro-scroll-locked" data-page="visionSound">
     <script>
+        document.documentElement.classList.add('intro-scroll-locked');
         const reduceIntroMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         // If arriving via portal nav (cx/cy params), briefly delay content reveal
         // so the clip-path glow-circle animation has room to register.
@@ -1605,6 +1629,14 @@
         window.setTimeout(() => {
             document.body.classList.add('intro-ready');
         }, reduceIntroMotion ? 100 : (_viaPortal ? 1050 : 520));
+
+        // The four highlighted intro beats finish at 9.6s. Keep the rest of the
+        // page hidden and scrolling locked until that opening sequence completes.
+        window.setTimeout(() => {
+            document.documentElement.classList.remove('intro-scroll-locked');
+            document.body.classList.remove('intro-scroll-locked');
+            document.body.classList.add('intro-content-ready');
+        }, reduceIntroMotion ? 150 : 9600);
     </script>
 
     <div id="gradient-frame"></div>
