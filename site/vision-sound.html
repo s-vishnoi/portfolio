@@ -1202,8 +1202,22 @@
             transition: transform 0.25s ease;
         }
 
+        .bandcamp-link::after {
+            content: "↗";
+            display: inline-block;
+            margin-left: 0.3em;
+            font-size: 0.55em;
+            font-weight: 700;
+            transform: translateY(-0.28em);
+            transition: transform 0.25s ease;
+        }
+
         .bandcamp-link:hover {
             transform: translateY(-2px) rotate(-1deg) scale(1.04);
+        }
+
+        .bandcamp-link:hover::after {
+            transform: translate(0.18em, -0.48em);
         }
 
         @keyframes bandcamp-cycle-glow {
@@ -1791,8 +1805,8 @@
                     </div>
                 </div>
                 <a class="bandcamp-link" href="https://vishnoi.bandcamp.com/album/beyond-linguistic"
-                    target="_blank" rel="noopener noreferrer" aria-label="Vishnoi on Bandcamp — experimental guitar soundscapes">
-                    Vishnoi on Bandcamp — experimental guitar soundscapes
+                    target="_blank" rel="noopener noreferrer" aria-label="Vishnoi on Bandcamp">
+                    Vishnoi on Bandcamp
                 </a>
             </div>
         </div>
