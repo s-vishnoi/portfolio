@@ -1056,7 +1056,7 @@
             place-items: center;
             isolation: isolate;
             overflow: visible;
-            background: transparent;
+            background: var(--bg-dark);
         }
 
         .cone-intermission::before,
@@ -1161,39 +1161,26 @@
         .bandcamp-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.55em;
-            margin-top: 14px;
-            padding: 7px 14px;
-            border: 1px solid currentColor;
-            border-radius: 999px;
+            position: absolute;
+            top: calc(100% + clamp(28px, 5svh, 62px));
+            left: max(24px, calc((100% - 100vw) / 2 + 5vw));
+            padding: 0;
+            border: 0;
             color: #ff7eb6;
-            background: rgba(10, 10, 10, 0.72);
-            font-family: 'Courier Prime', monospace;
-            font-size: clamp(0.68rem, 0.9vw, 0.84rem);
-            font-weight: 700;
-            letter-spacing: 0.1em;
+            background: transparent;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.35rem, 2.8vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: 0.025em;
+            line-height: 0.95;
             text-decoration: none;
-            text-transform: lowercase;
+            text-transform: uppercase;
             animation: bandcamp-cycle-glow 4.2s ease-in-out infinite;
-            transition: transform 0.25s ease, background 0.25s ease;
-        }
-
-        .bandcamp-link::before,
-        .bandcamp-link::after {
-            font-size: 0.9em;
-        }
-
-        .bandcamp-link::before {
-            content: "♡";
-        }
-
-        .bandcamp-link::after {
-            content: "♫";
+            transition: transform 0.25s ease;
         }
 
         .bandcamp-link:hover {
             transform: translateY(-2px) rotate(-1deg) scale(1.04);
-            background: rgba(255, 255, 255, 0.08);
         }
 
         @keyframes bandcamp-cycle-glow {
@@ -1485,6 +1472,11 @@
                 line-height: 1.35;
             }
 
+            .bandcamp-link {
+                left: 20px;
+                font-size: clamp(1.2rem, 6.2vw, 2rem);
+            }
+
             .piece-layout {
                 grid-template-columns: 1fr;
                 gap: 1.3rem;
@@ -1760,10 +1752,6 @@
                         <span class="play-icon">▶</span>
                         <span class="btn-text">Vishnoi on SYNTH — THE TIME</span>
                     </button>
-                    <a class="bandcamp-link" href="https://vishnoi.bandcamp.com/album/beyond-linguistic"
-                        target="_blank" rel="noopener noreferrer" aria-label="Listen to Beyond Linguistic on Bandcamp">
-                        beyond linguistic on bandcamp
-                    </a>
                     <div class="synth-track-meta">
                         Truly Bald Records / Fundraiser <a
                             href="https://trulybald.bandcamp.com/album/compilation-fundraiser-for-morris-home-philadelphia"
@@ -1771,6 +1759,10 @@
                         Trans Youth safety
                     </div>
                 </div>
+                <a class="bandcamp-link" href="https://vishnoi.bandcamp.com/album/beyond-linguistic"
+                    target="_blank" rel="noopener noreferrer" aria-label="Vishnoi on Bandcamp — experimental guitar soundscapes">
+                    Vishnoi on Bandcamp — experimental guitar soundscapes
+                </a>
             </div>
         </div>
     </section>
