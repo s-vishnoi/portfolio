@@ -113,6 +113,14 @@
         }
     };
 
+    const keepAboutPositionCurrent = () => {
+        if (pageFromPath() !== 'about') return;
+
+        // Covers native/internal links that do not pass through navigate().
+        // pagehide fires at the last settled scroll position before leaving HOME.
+        window.addEventListener('pagehide', rememberAboutPosition);
+    };
+
     const restoreAboutPosition = () => {
         if (pageFromPath() !== 'about') return;
         const params = new URLSearchParams(window.location.search);
@@ -363,6 +371,7 @@
         injectSiteFooter();
         animateIncomingPortalReveal();
         restoreAboutPosition();
+        keepAboutPositionCurrent();
         configureNavLinks();
         configurePortalLinks();
         configureDie();

@@ -88,7 +88,7 @@ body.fade-out {
 }
 
 .nav-container.home-only {
-    top: 72px;
+    top: 24px;
     left: 40px;
     right: auto;
     transform: none;
@@ -597,7 +597,7 @@ body.fade-out {
     }
 
     .nav-container.home-only {
-        top: 72px;
+        top: 20px;
         left: 40px;
         right: auto;
     }
