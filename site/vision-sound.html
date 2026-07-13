@@ -1189,7 +1189,7 @@
             left: max(24px, calc((100% - 100vw) / 2 + 5vw));
             padding: 0;
             border: 0;
-            color: #ff7eb6;
+            color: #9ddcff;
             background: transparent;
             font-family: 'Montserrat', sans-serif;
             font-size: clamp(1.35rem, 2.8vw, 3.2rem);
@@ -1198,8 +1198,8 @@
             line-height: 0.95;
             text-decoration: none;
             text-transform: uppercase;
-            animation: bandcamp-cycle-glow 4.2s ease-in-out infinite;
-            transition: transform 0.25s ease;
+            box-shadow: none;
+            transition: color 0.2s ease;
         }
 
         .bandcamp-link::after {
@@ -1209,32 +1209,11 @@
             font-size: 0.55em;
             font-weight: 700;
             transform: translateY(-0.28em);
-            transition: transform 0.25s ease;
         }
 
-        .bandcamp-link:hover {
-            transform: translateY(-2px) rotate(-1deg) scale(1.04);
-        }
-
-        .bandcamp-link:hover::after {
-            transform: translate(0.18em, -0.48em);
-        }
-
-        @keyframes bandcamp-cycle-glow {
-            0%, 100% {
-                color: #ff7eb6;
-                box-shadow: 0 0 7px rgba(255, 126, 182, 0.45), 0 0 18px rgba(255, 126, 182, 0.2);
-            }
-
-            33% {
-                color: #76e6ff;
-                box-shadow: 0 0 9px rgba(118, 230, 255, 0.55), 0 0 24px rgba(118, 230, 255, 0.24);
-            }
-
-            66% {
-                color: #c6ff72;
-                box-shadow: 0 0 9px rgba(198, 255, 114, 0.55), 0 0 24px rgba(198, 255, 114, 0.24);
-            }
+        .bandcamp-link:hover,
+        .bandcamp-link:focus-visible {
+            color: #dfff00;
         }
 
         .synth-track-meta {
@@ -1582,9 +1561,6 @@
                 animation: none;
             }
 
-            .bandcamp-link {
-                animation: none;
-            }
         }
 
         @media (min-width: 769px) and (max-height: 680px) {
