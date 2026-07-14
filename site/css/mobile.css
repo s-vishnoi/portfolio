@@ -233,9 +233,9 @@
     }
 
     .about-work-meta {
-        font-size: clamp(0.38rem, 1.85vw, 0.56rem) !important;
-        letter-spacing: 0.01em !important;
-        line-height: 1.15 !important;
+        font-size: 0.82rem !important;
+        letter-spacing: 7px !important;
+        line-height: 1 !important;
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: clip !important;

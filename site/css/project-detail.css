@@ -330,12 +330,13 @@ body.fade-out {
     width: min(32rem, 72%);
     max-width: 100%;
     padding: 1px 0;
-    font-size: clamp(0.72rem, 0.9vw, 0.9rem);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
     line-height: 1;
-    font-weight: 500;
-    letter-spacing: 0.14em;
+    font-weight: 400;
+    letter-spacing: 7px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.68);
+    color: rgba(255, 255, 255, 0.45);
     background: rgba(0, 0, 0, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(8px);
