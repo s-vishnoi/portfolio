@@ -321,7 +321,7 @@ body.fade-out {
 }
 
 .project-title + #detail-header {
-    margin-top: 0.55rem;
+    margin-top: 0.2rem;
     margin-bottom: 0;
 }
 
@@ -329,7 +329,7 @@ body.fade-out {
     display: block;
     font-size: clamp(0.72rem, 0.9vw, 0.9rem);
     line-height: 1.35;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.68);
