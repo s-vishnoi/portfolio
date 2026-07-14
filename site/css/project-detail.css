@@ -326,13 +326,28 @@ body.fade-out {
 }
 
 .detail-meta {
-    display: block;
+    display: inline-block;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0.16rem 0.48rem;
     font-size: clamp(0.72rem, 0.9vw, 0.9rem);
     line-height: 1.35;
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.68);
+    background: rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+#animation-container.align-left .detail-meta {
+    margin-right: auto;
+}
+
+#animation-container.align-right .detail-meta {
+    margin-left: auto;
 }
 
 #detail-header .detail-subtitle {
