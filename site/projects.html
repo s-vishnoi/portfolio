@@ -329,6 +329,18 @@
             text-transform: uppercase;
         }
 
+        .about-work-title::after {
+            content: "↗";
+            display: inline-block;
+            margin-left: 0.24em;
+            font-size: 0.72em;
+            transition: transform 0.25s ease;
+        }
+
+        .about-work-card:hover .about-work-title::after {
+            transform: translate(3px, -3px);
+        }
+
         .cities-project .about-work-title { animation: cycleColorsLime 2.8s infinite linear; }
         .equality-project .about-work-title { animation: cycleColorsIndigo 2.8s infinite linear; }
         .bike-project .about-work-title { animation: cycleColorsFuchsia 2.8s infinite linear; }

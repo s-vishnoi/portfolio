@@ -787,6 +787,18 @@
             animation: cycleColors 2.4s infinite linear;
         }
 
+        .about-work-title::after {
+            content: "↗";
+            display: inline-block;
+            margin-left: 0.24em;
+            font-size: 0.72em;
+            transition: transform 0.25s ease;
+        }
+
+        .about-work-card:hover .about-work-title::after {
+            transform: translate(3px, -3px);
+        }
+
         .about-work-collab-label {
             display: block;
             margin-top: 0.58rem;
