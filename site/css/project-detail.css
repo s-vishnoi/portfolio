@@ -326,20 +326,45 @@ body.fade-out {
 }
 
 .detail-meta {
-    display: inline-block;
-    width: fit-content;
+    display: block;
+    width: min(32rem, 72%);
     max-width: 100%;
-    padding: 0.16rem 0.48rem;
+    padding: 1px 0;
     font-size: clamp(0.72rem, 0.9vw, 0.9rem);
-    line-height: 1.35;
+    line-height: 1;
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.68);
-    background: rgba(0, 0, 0, 0.12);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.035);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.descriptor-track {
+    display: flex;
+    width: max-content;
+    animation: descriptorMarquee 14s linear infinite;
+}
+
+.descriptor-track > span {
+    flex: none;
+    padding-right: 2.4rem;
+}
+
+@keyframes descriptorMarquee {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .descriptor-track {
+        animation: none;
+    }
 }
 
 #animation-container.align-left .detail-meta {

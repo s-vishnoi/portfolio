@@ -407,22 +407,47 @@
         }
 
         .about-work-meta {
-            display: inline-block;
+            display: block;
             align-self: flex-start;
-            width: fit-content;
+            width: min(32rem, 72%);
             max-width: 100%;
             margin-top: 0.2rem;
-            padding: 0.16rem 0.48rem;
+            padding: 1px 0;
             font-size: clamp(0.72rem, 0.9vw, 0.9rem);
-            line-height: 1.35;
+            line-height: 1;
             font-weight: 500;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.68);
-            background: rgba(0, 0, 0, 0.12);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.035);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .descriptor-track {
+            display: flex;
+            width: max-content;
+            animation: descriptorMarquee 14s linear infinite;
+        }
+
+        .descriptor-track > span {
+            flex: none;
+            padding-right: 2.4rem;
+        }
+
+        @keyframes descriptorMarquee {
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .descriptor-track {
+                animation: none;
+            }
         }
 
         /* Rolling Die Placement */
@@ -591,7 +616,7 @@
             <!-- Project 1 -->
             <a href="city-scaling.html" class="about-work-card cities-project" data-portal-link>
                 <span class="about-work-title">The Scale-Free Dynamics of U.S. Cities</span>
-                <span class="about-work-meta">URBAN DATA MODELING | 344 U.S. CITIES | MISSING FBI DATA</span>
+                <span class="about-work-meta"><span class="descriptor-track"><span>URBAN DATA MODELING | 344 U.S. CITIES | MISSING FBI DATA</span><span aria-hidden="true">URBAN DATA MODELING | 344 U.S. CITIES | MISSING FBI DATA</span></span></span>
                 <span class="about-work-collab-label">Ph.D. in Physics · Complex Systems</span>
                 <span class="about-work-collab">Northwestern University</span>
                 <span class="about-work-date">Jan 2022 - Present</span>
@@ -600,7 +625,7 @@
             <!-- Project 2 -->
             <a href="scientific-equality.html" class="about-work-card equality-project" data-portal-link>
                 <span class="about-work-title">A Global Measure of Scientific Equality</span>
-                <span class="about-work-meta">DEMOGRAPHIC FORECASTING | 47M Publications | 183 countries</span>
+                <span class="about-work-meta"><span class="descriptor-track"><span>DEMOGRAPHIC FORECASTING | 47M Publications | 183 countries</span><span aria-hidden="true">DEMOGRAPHIC FORECASTING | 47M Publications | 183 countries</span></span></span>
                 <span class="about-work-collab-label">Visiting Data Scientist</span>
                 <span class="about-work-collab">Max Planck Institute for Demographic Research, Germany</span>
                 <span class="about-work-date">Jun 2023 - Present</span>
@@ -609,7 +634,7 @@
             <!-- Project 3 -->
             <a href="passion.html" class="about-work-card bike-project" data-portal-link>
                 <span class="about-work-title">Chicago Bike Safety Map</span>
-                <span class="about-work-meta">CHICAGO DATA PORTAL | INTERACTIVE DATA MAP</span>
+                <span class="about-work-meta"><span class="descriptor-track"><span>CHICAGO DATA PORTAL | INTERACTIVE DATA MAP</span><span aria-hidden="true">CHICAGO DATA PORTAL | INTERACTIVE DATA MAP</span></span></span>
                 <span class="about-work-collab-label">Civic Safety Map</span>
                 <span class="about-work-collab">Civic Data Infrastructure</span>
             </a>
